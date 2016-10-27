@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FluentGuard")]
-[assembly: AssemblyDescription("A fluent guard library for validating inputs")]
+[assembly: AssemblyTitle("FluentGuard Tests")]
+[assembly: AssemblyDescription("Unit tests for FluentGuard library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Edgerunner")]
-[assembly: AssemblyProduct("FluentGuard")]
+[assembly: AssemblyProduct("FluentGuard Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f8064cf1-e1b9-40e4-873a-b9df8c43646a")]
+[assembly: Guid("82a70526-6388-473f-86aa-423edffff6c3")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,5 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.1.0.0")]
 [assembly: AssemblyFileVersion("0.1.0.0")]
-
-[assembly: InternalsVisibleTo("Org.Edgerunner.FluentGuard.Tests")]

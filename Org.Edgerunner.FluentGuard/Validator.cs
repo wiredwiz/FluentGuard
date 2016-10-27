@@ -46,7 +46,7 @@ namespace Org.Edgerunner.FluentGuard
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
-         Mode = CombinationMode.Or;
+         Mode = CombinationMode.And;
          CurrentException = null;
       }
 
@@ -72,6 +72,28 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
+      /// Combines the current conditional check with a new one using 'And' logic.
+      /// </summary>
+      /// <param name="validator">The validator to AND against.</param>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      // ReSharper disable once MethodNameNotMeaningful
+      public Validator<T> And(Validator<T> validator)
+      {
+         Validator<T> result = null;
+
+         if (this.CurrentException != null)
+            result = this;
+         else if (validator.CurrentException != null)
+            result = validator;
+
+         if (result == null)
+            result = this;
+
+         result.Mode = CombinationMode.And;
+         return result;
+      }
+
+      /// <summary>
       ///    Determines whether the parameter being validated is greater than the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
@@ -79,7 +101,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
       public Validator<T> IsGreaterThan(T value)
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue.CompareTo(value) == 1))
+         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) == 1))
             return this;
 
          if (CurrentException == null)
@@ -96,7 +118,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
       public Validator<T> IsGreaterThanOrEqualTo(T value)
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue.CompareTo(value) > -1))
+         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) > -1))
             return this;
 
          if (CurrentException == null)
@@ -113,7 +135,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
       public Validator<T> IsLessThan(T value)
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue.CompareTo(value) == -1))
+         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) == -1))
             return this;
 
          if (CurrentException == null)
@@ -130,7 +152,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
       public Validator<T> IsLessThanOrEqualTo(T value)
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue.CompareTo(value) < 1))
+         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) < 1))
             return this;
 
          if (CurrentException == null)
@@ -147,7 +169,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
       public Validator<T> IsEqualTo(T value)
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue.Equals(value)))
+         if (ShouldReturnAfterEvaluation(ParameterValue.Equals(value)))
             return this;
 
          if (CurrentException == null)
@@ -163,7 +185,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentOutOfRangeException">Must not be null.</exception>
       public Validator<T> IsNotNull()
       {
-         if (ShouldReturnAfterEvaulation(ParameterValue != null))
+         if (ShouldReturnAfterEvaluation(ParameterValue != null))
             return this;
 
          if (CurrentException == null)
@@ -180,8 +202,8 @@ namespace Org.Edgerunner.FluentGuard
       public Validator<T> IsNotNullOrEmpty()
       {
          var paramAsString = ParameterValue as string;
-         var valueIsNull = ParameterValue.Equals(null);
-         if (ShouldReturnAfterEvaulation(!string.IsNullOrEmpty(paramAsString)))
+         var valueIsNull = ParameterValue == null;
+         if (ShouldReturnAfterEvaluation(!string.IsNullOrEmpty(paramAsString)))
             return this;
 
          if (CurrentException == null)
@@ -200,17 +222,18 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must start with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentException"><paramref name="value"/> is null or empty.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
       public Validator<T> StartsWith(string value)
       {
-         if (string.IsNullOrEmpty(value))
-            throw new ArgumentException(Resources.ValueIsNullOrEmpty, nameof(value));
+         if (value == null)
+            throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
 
          var paramAsString = ParameterValue as string;
-         if (ShouldReturnAfterEvaulation(paramAsString != null && paramAsString.StartsWith(value)))
+         if (ShouldReturnAfterEvaluation(paramAsString != null && paramAsString.StartsWith(value)))
             return this;
 
          if (CurrentException == null)
-            CurrentException = new ArgumentException(Resources.MustStartWithX, ParameterName);
+            CurrentException = new ArgumentException(string.Format(Resources.MustStartWithX, value), ParameterName);
 
          return this;
       }
@@ -224,15 +247,15 @@ namespace Org.Edgerunner.FluentGuard
       /// <exception cref="ArgumentException"><paramref name="value"/> is null or empty.</exception>
       public Validator<T> EndsWith(string value)
       {
-         if (string.IsNullOrEmpty(value))
-            throw new ArgumentException(Resources.ValueIsNullOrEmpty, nameof(value));
+         if (value == null)
+            throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
 
          var paramAsString = ParameterValue as string;
-         if (ShouldReturnAfterEvaulation(paramAsString != null && paramAsString.EndsWith(value)))
+         if (ShouldReturnAfterEvaluation(paramAsString != null && paramAsString.EndsWith(value)))
             return this;
 
          if (CurrentException == null)
-            CurrentException = new ArgumentException(Resources.MustEndWithX, ParameterName);
+            CurrentException = new ArgumentException(string.Format(Resources.MustEndWithX, value), ParameterName);
 
          return this;
       }
@@ -256,21 +279,29 @@ namespace Org.Edgerunner.FluentGuard
       // ReSharper disable once MethodNameNotMeaningful
       public Validator<T> Or(Validator<T> validator)
       {
-         if (this.CurrentException == null || validator.CurrentException == null)
-            this.CurrentException = null;
+         Validator<T> result = null;
 
-         Mode = CombinationMode.Or;
-         return this;
+         if (this.CurrentException == null)
+            result = this;
+         else if (validator.CurrentException == null)
+            result = validator;
+
+         if (result == null)
+            result = this;
+
+         result.Mode = CombinationMode.Or;
+         return result;
       }
 
       /// <summary>
       ///    Throws a new exception.
       /// </summary>
-      public void ThrowException()
+      public void OtherwiseThrowException()
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
-         throw CurrentException;
+         if (CurrentException != null)
+            throw CurrentException;
       }
 
       /// <summary>
@@ -279,14 +310,18 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="evaluationResult">The result of a rule evaluation.</param>
       /// <returns><c>true</c> if the rule evaluation method should return, <c>false</c> otherwise.</returns>
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
-      private bool ShouldReturnAfterEvaulation(bool evaluationResult)
+      private bool ShouldReturnAfterEvaluation(bool evaluationResult)
       {
          if (Mode == CombinationMode.And)
             if (CurrentException != null)
                return true;
 
          if (!evaluationResult)
-            return false;
+            if (Mode == CombinationMode.Or
+                && CurrentException == null)
+               return true;
+         else
+               return false;
 
          if (Mode == CombinationMode.Or)
             CurrentException = null;

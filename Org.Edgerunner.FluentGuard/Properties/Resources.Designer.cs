@@ -142,7 +142,16 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to value is null or empty..
+        ///   Looks up a localized string similar to Value is null..
+        /// </summary>
+        internal static string ValueIsNull {
+            get {
+                return ResourceManager.GetString("ValueIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value is null or empty..
         /// </summary>
         internal static string ValueIsNullOrEmpty {
             get {

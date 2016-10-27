@@ -145,8 +145,11 @@
   <data name="MustStartWithX" xml:space="preserve">
     <value>Must start with {0}</value>
   </data>
+  <data name="ValueIsNull" xml:space="preserve">
+    <value>Value is null.</value>
+  </data>
   <data name="ValueIsNullOrEmpty" xml:space="preserve">
-    <value>value is null or empty.</value>
+    <value>Value is null or empty.</value>
     <comment>ValueIsNullOrEmpty description</comment>
   </data>
 </root>
