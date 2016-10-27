@@ -278,6 +278,60 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
+      /// Determines whether the parameter being validated is false.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="System.ArgumentException">Must be <see langword="false"/>.</exception>
+      public Validator<T> IsFalse()
+      {
+         var couldConvert = true;
+         var result = false;
+         try
+         {
+            result = Convert.ToBoolean(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && !result))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentException(Resources.MustBeFalse, ParameterName);
+
+         return this;
+      }
+
+      /// <summary>
+      /// Determines whether the parameter being validated is true.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="System.ArgumentException">Must be <see langword="true"/>.</exception>
+      public Validator<T> IsTrue()
+      {
+         var couldConvert = true;
+         var result = false;
+         try
+         {
+            result = Convert.ToBoolean(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && result))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentException(Resources.MustBeTrue, ParameterName);
+
+         return this;
+      }
+
+      /// <summary>
       ///    Ors the current conditional check against a new one.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
@@ -338,7 +392,7 @@ namespace Org.Edgerunner.FluentGuard
             if (Mode == CombinationMode.Or
                 && CurrentException == null)
                return true;
-         else
+            else
                return false;
 
          if (Mode == CombinationMode.Or)

@@ -70,6 +70,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must be false.
+        /// </summary>
+        internal static string MustBeFalse {
+            get {
+                return ResourceManager.GetString("MustBeFalse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be greater than or equal to {0}.
         /// </summary>
         internal static string MustBeGreaterThanOrEqualToX {
@@ -102,6 +111,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         internal static string MustBeLessThanX {
             get {
                 return ResourceManager.GetString("MustBeLessThanX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be true.
+        /// </summary>
+        internal static string MustBeTrue {
+            get {
+                return ResourceManager.GetString("MustBeTrue", resourceCulture);
             }
         }
         
@@ -151,7 +169,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value is null..
+        ///   Looks up a localized string similar to Value is null.
         /// </summary>
         internal static string ValueIsNull {
             get {

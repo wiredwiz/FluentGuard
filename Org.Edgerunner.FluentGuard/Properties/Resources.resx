@@ -120,6 +120,9 @@
   <data name="MustBeEqualToX" xml:space="preserve">
     <value>Must be equal to {0}</value>
   </data>
+  <data name="MustBeFalse" xml:space="preserve">
+    <value>Must be false</value>
+  </data>
   <data name="MustBeGreaterThanOrEqualToX" xml:space="preserve">
     <value>Must be greater than or equal to {0}</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="MustBeLessThanX" xml:space="preserve">
     <value>Must be less than {0}</value>
     <comment>MustBeLessThanX description</comment>
+  </data>
+  <data name="MustBeTrue" xml:space="preserve">
+    <value>Must be true</value>
   </data>
   <data name="MustEndWithX" xml:space="preserve">
     <value>Must end with {0}</value>
@@ -149,7 +155,7 @@
     <value>Must start with {0}</value>
   </data>
   <data name="ValueIsNull" xml:space="preserve">
-    <value>Value is null.</value>
+    <value>Value is null</value>
   </data>
   <data name="ValueIsNullOrEmpty" xml:space="preserve">
     <value>Value is null or empty</value>

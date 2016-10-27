@@ -645,5 +645,95 @@ namespace Org.Edgerunner.FluentGuard.Tests
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
       }
+
+      /// <summary>
+      /// Tests IsTrue validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", null)]
+      [Example("foo", false)]
+      [Example("foo", 0)]
+      public void TestParameterIsTrueFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is true"
+            .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format(Properties.Resources.MustBeTrue + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsTrue validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", true)]
+      [Example("foo", 1)]
+      public void TestParameterIsTruePasses(string parameterName, bool parameterValue, Validator<bool> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is true"
+            .x(() => validator.IsTrue().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsFalse validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", true)]
+      [Example("foo", 1)]
+      public void TestParameterIsFalseFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => act = () => validator.IsFalse().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format(Properties.Resources.MustBeFalse + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsFalse validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", false)]
+      [Example("foo", 0)]
+      [Example("foo", null)]
+      public void TestParameterIsFalsePasses(string parameterName, bool parameterValue, Validator<bool> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => validator.IsFalse().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
    }
 }
