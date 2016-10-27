@@ -18,24 +18,25 @@
 
 #endregion
 
+using System;
+
 namespace Org.Edgerunner.FluentGuard
 {
    /// <summary>
    /// Class for validation of inputs.
    /// </summary>
-   public static class Guard
+   public static class Ensure
    {
       /// <summary>
       /// Validates the specified parameter value.
       /// </summary>
       /// <typeparam name="T">The type of data being validated.</typeparam>
       /// <param name="nameOfParameter">The name of parameter.</param>
-      /// <param name="value">The value of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
-      // ReSharper disable once MethodNameNotMeaningful
-      public static Validator<T> If<T>(string nameOfParameter, T value)
+      public static Validator<T> That<T>(string nameOfParameter, T parameterValue) where T : IEquatable<T>, IComparable<T>
       {
-         return new Validator<T>();
+         return new Validator<T>(nameOfParameter, parameterValue);
       }
    }
 }
