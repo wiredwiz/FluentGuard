@@ -34,7 +34,6 @@ namespace Org.Edgerunner.FluentGuard
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
    public class Validator<T>
-      where T : IEquatable<T>, IComparable<T>
    {
       #region Constructors And Finalizers
 
@@ -111,14 +110,16 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is greater than the specified value.
+      /// Determines whether the parameter being validated is greater than the specified value.
       /// </summary>
+      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThan(T value)
+      public Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) == 1))
+         var paramValue = (IComparable<TS>)ParameterValue;
+         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == 1))
             return this;
 
          if (CurrentException == null)
@@ -130,12 +131,14 @@ namespace Org.Edgerunner.FluentGuard
       /// <summary>
       ///    Determines whether the parameter being validated is greater than or equal to the specified value.
       /// </summary>
+      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThanOrEqualTo(T value)
+      public Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) > -1))
+         var paramValue = (IComparable<TS>)ParameterValue;
+         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) > -1))
             return this;
 
          if (CurrentException == null)
@@ -147,12 +150,14 @@ namespace Org.Edgerunner.FluentGuard
       /// <summary>
       ///    Determines whether the parameter being validated is less than the specified value.
       /// </summary>
+      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      public Validator<T> IsLessThan(T value)
+      public Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) == -1))
+         var paramValue = (IComparable<TS>)ParameterValue;
+         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == -1))
             return this;
 
          if (CurrentException == null)
@@ -164,12 +169,14 @@ namespace Org.Edgerunner.FluentGuard
       /// <summary>
       ///    Determines whether the parameter being validated is less than or equal to the specified value.
       /// </summary>
+      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsLessThanOrEqualTo(T value)
+      public Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue.CompareTo(value) < 1))
+         var paramValue = (IComparable<TS>)ParameterValue;
+         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) < 1))
             return this;
 
          if (CurrentException == null)
@@ -196,10 +203,10 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is not null.
+      ///    Determines whether the parameter being validated is not <c>null</c>.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentNullException">Must not be null.</exception>
+      /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       public Validator<T> IsNotNull()
       {
          if (ShouldReturnAfterEvaluation(ParameterValue != null))
@@ -212,10 +219,10 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is not null or empty.
+      ///    Determines whether the parameter being validated is not <c>null</c> or empty.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentNullException">Must not be null.</exception>
+      /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       /// <exception cref="ArgumentException">Must not be empty.</exception>
       public Validator<T> IsNotNullOrEmpty()
       {
@@ -239,7 +246,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
       public Validator<T> StartsWith(string value)
       {
          if (value == null)
@@ -261,7 +268,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
       public Validator<T> EndsWith(string value)
       {
          if (value == null)
@@ -278,10 +285,10 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      /// Determines whether the parameter being validated is false.
+      /// Determines whether the parameter being validated is <c>false</c>.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="System.ArgumentException">Must be <see langword="false"/>.</exception>
+      /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
       public Validator<T> IsFalse()
       {
          var couldConvert = true;
@@ -305,10 +312,10 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      /// Determines whether the parameter being validated is true.
+      /// Determines whether the parameter being validated is <c>true</c>.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="System.ArgumentException">Must be <see langword="true"/>.</exception>
+      /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
       public Validator<T> IsTrue()
       {
          var couldConvert = true;
@@ -327,6 +334,130 @@ namespace Org.Edgerunner.FluentGuard
 
          if (CurrentException == null)
             CurrentException = new ArgumentException(Resources.MustBeTrue, ParameterName);
+
+         return this;
+      }
+
+      /// <summary>
+      /// Determines whether the parameter being validated is positive.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be positive.</exception>
+      public Validator<T> IsPositive()
+      {
+         var couldConvert = true;
+         double result = 0;
+         try
+         {
+            result = Convert.ToDouble(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+         catch (OverflowException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && result > 0))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustBePositive);
+
+         return this;
+      }
+
+      /// <summary>
+      /// Determines whether the parameter being validated is negative.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be negative.</exception>
+      public Validator<T> IsNegative()
+      {
+         var couldConvert = true;
+         double result = 0;
+         try
+         {
+            result = Convert.ToDouble(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+         catch (OverflowException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && result < 0))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustBeNegative);
+
+         return this;
+      }
+
+      /// <summary>
+      /// Determines whether the parameter being validated is not negative.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be negative.</exception>
+      public Validator<T> IsNotNegative()
+      {
+         var couldConvert = true;
+         double result = 0;
+         try
+         {
+            result = Convert.ToDouble(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+         catch (OverflowException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && result >= 0))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBeNegative);
+
+         return this;
+      }
+
+      /// <summary>
+      /// Determines whether the parameter being validated is not positive.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be positive.</exception>
+      public Validator<T> IsNotPositive()
+      {
+         var couldConvert = true;
+         double result = 0;
+         try
+         {
+            result = Convert.ToDouble(ParameterValue);
+         }
+         catch (InvalidCastException)
+         {
+            couldConvert = false;
+         }
+         catch (OverflowException)
+         {
+            couldConvert = false;
+         }
+
+         if (ShouldReturnAfterEvaluation(couldConvert && result <= 0))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBePositive);
 
          return this;
       }

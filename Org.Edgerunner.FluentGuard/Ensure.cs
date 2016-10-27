@@ -34,7 +34,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
-      public static Validator<T> That<T>(string nameOfParameter, T parameterValue) where T : IEquatable<T>, IComparable<T>
+      public static Validator<T> That<T>(string nameOfParameter, T parameterValue)// where T : IEquatable<T>, IComparable<T>
       {
          return new Validator<T>(nameOfParameter, parameterValue);
       }

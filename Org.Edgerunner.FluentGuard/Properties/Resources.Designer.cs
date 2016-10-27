@@ -115,6 +115,24 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must be negative.
+        /// </summary>
+        internal static string MustBeNegative {
+            get {
+                return ResourceManager.GetString("MustBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be positive.
+        /// </summary>
+        internal static string MustBePositive {
+            get {
+                return ResourceManager.GetString("MustBePositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be true.
         /// </summary>
         internal static string MustBeTrue {
@@ -142,6 +160,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must not be negative.
+        /// </summary>
+        internal static string MustNotBeNegative {
+            get {
+                return ResourceManager.GetString("MustNotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must not be null.
         /// </summary>
         internal static string MustNotBeNull {
@@ -156,6 +183,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         internal static string MustNotBeNullOrEmpty {
             get {
                 return ResourceManager.GetString("MustNotBeNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must not be positive.
+        /// </summary>
+        internal static string MustNotBePositive {
+            get {
+                return ResourceManager.GetString("MustNotBePositive", resourceCulture);
             }
         }
         

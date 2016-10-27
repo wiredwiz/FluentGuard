@@ -136,6 +136,12 @@
     <value>Must be less than {0}</value>
     <comment>MustBeLessThanX description</comment>
   </data>
+  <data name="MustBeNegative" xml:space="preserve">
+    <value>Must be negative</value>
+  </data>
+  <data name="MustBePositive" xml:space="preserve">
+    <value>Must be positive</value>
+  </data>
   <data name="MustBeTrue" xml:space="preserve">
     <value>Must be true</value>
   </data>
@@ -145,11 +151,17 @@
   <data name="MustNotBeEmpty" xml:space="preserve">
     <value>Must not be empty</value>
   </data>
+  <data name="MustNotBeNegative" xml:space="preserve">
+    <value>Must not be negative</value>
+  </data>
   <data name="MustNotBeNull" xml:space="preserve">
     <value>Must not be null</value>
   </data>
   <data name="MustNotBeNullOrEmpty" xml:space="preserve">
     <value>Must not be null or empty</value>
+  </data>
+  <data name="MustNotBePositive" xml:space="preserve">
+    <value>Must not be positive</value>
   </data>
   <data name="MustStartWithX" xml:space="preserve">
     <value>Must start with {0}</value>
