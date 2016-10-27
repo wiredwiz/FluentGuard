@@ -32,6 +32,7 @@ namespace Org.Edgerunner.FluentGuard
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
+   [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
    public class Validator<T>
       where T : IEquatable<T>, IComparable<T>
    {
@@ -52,12 +53,28 @@ namespace Org.Edgerunner.FluentGuard
 
       #endregion
 
+      /// <summary>
+      /// Gets or sets the current exception.
+      /// </summary>
+      /// <value>The current exception.</value>
       internal Exception CurrentException { get; set; }
 
+      /// <summary>
+      /// Gets or sets the <see cref="CombinationMode"/> to use when combining conditions.
+      /// </summary>
+      /// <value>The mode.</value>
       internal CombinationMode Mode { get; set; }
 
+      /// <summary>
+      /// Gets or sets the name of the parameter being checked.
+      /// </summary>
+      /// <value>The name of the parameter.</value>
       internal string ParameterName { get; set; }
 
+      /// <summary>
+      /// Gets or sets the parameter value being checked.
+      /// </summary>
+      /// <value>The parameter value.</value>
       internal T ParameterValue { get; set; }
 
       /// <summary>
@@ -310,6 +327,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="evaluationResult">The result of a rule evaluation.</param>
       /// <returns><c>true</c> if the rule evaluation method should return, <c>false</c> otherwise.</returns>
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
+      // ReSharper disable once FlagArgument
       private bool ShouldReturnAfterEvaluation(bool evaluationResult)
       {
          if (Mode == CombinationMode.And)
