@@ -338,7 +338,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
-            .WithMessage(string.Format(Properties.Resources.MustNotBeNullOrEmpty + "\r\nParameter name: {0}", parameterName)));
+            .WithMessage(string.Format(Properties.Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
       }
 
       /// <summary>
@@ -360,7 +360,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentException>()
-            .WithMessage(string.Format(Properties.Resources.MustNotBeNullOrEmpty + "\r\nParameter name: {0}", parameterName)));
+            .WithMessage(string.Format(Properties.Resources.MustNotBeEmpty + "\r\nParameter name: {0}", parameterName)));
       }
 
       /// <summary>

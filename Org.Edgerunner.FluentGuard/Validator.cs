@@ -182,7 +182,7 @@ namespace Org.Edgerunner.FluentGuard
       ///    Determines whether the parameter being validated is not null.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must not be null.</exception>
+      /// <exception cref="ArgumentNullException">Must not be null.</exception>
       public Validator<T> IsNotNull()
       {
          if (ShouldReturnAfterEvaluation(ParameterValue != null))
@@ -198,7 +198,8 @@ namespace Org.Edgerunner.FluentGuard
       ///    Determines whether the parameter being validated is not null or empty.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must not be empty or null.</exception>
+      /// <exception cref="ArgumentNullException">Must not be null.</exception>
+      /// <exception cref="ArgumentException">Must not be empty.</exception>
       public Validator<T> IsNotNullOrEmpty()
       {
          var paramAsString = ParameterValue as string;
@@ -208,9 +209,9 @@ namespace Org.Edgerunner.FluentGuard
 
          if (CurrentException == null)
             if (valueIsNull)
-               CurrentException = new ArgumentNullException(ParameterName, Resources.MustNotBeNullOrEmpty);
+               CurrentException = new ArgumentNullException(ParameterName, Resources.MustNotBeNull);
             else
-               CurrentException = new ArgumentException(Resources.MustNotBeNullOrEmpty, ParameterName);
+               CurrentException = new ArgumentException(Resources.MustNotBeEmpty, ParameterName);
 
          return this;
       }
@@ -220,8 +221,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must start with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentException"><paramref name="value"/> is null or empty.</exception>
+      /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
       public Validator<T> StartsWith(string value)
       {
@@ -243,8 +243,8 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must end with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentException"><paramref name="value"/> is null or empty.</exception>
+      /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
       public Validator<T> EndsWith(string value)
       {
          if (value == null)

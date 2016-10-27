@@ -115,6 +115,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must not be empty.
+        /// </summary>
+        internal static string MustNotBeEmpty {
+            get {
+                return ResourceManager.GetString("MustNotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must not be null.
         /// </summary>
         internal static string MustNotBeNull {
@@ -151,7 +160,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value is null or empty..
+        ///   Looks up a localized string similar to Value is null or empty.
         /// </summary>
         internal static string ValueIsNullOrEmpty {
             get {

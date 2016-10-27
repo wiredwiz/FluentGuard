@@ -136,6 +136,9 @@
   <data name="MustEndWithX" xml:space="preserve">
     <value>Must end with {0}</value>
   </data>
+  <data name="MustNotBeEmpty" xml:space="preserve">
+    <value>Must not be empty</value>
+  </data>
   <data name="MustNotBeNull" xml:space="preserve">
     <value>Must not be null</value>
   </data>
@@ -149,7 +152,7 @@
     <value>Value is null.</value>
   </data>
   <data name="ValueIsNullOrEmpty" xml:space="preserve">
-    <value>Value is null or empty.</value>
+    <value>Value is null or empty</value>
     <comment>ValueIsNullOrEmpty description</comment>
   </data>
 </root>
