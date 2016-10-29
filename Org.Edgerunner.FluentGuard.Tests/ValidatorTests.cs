@@ -657,7 +657,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", null)]
       [Example("foo", false)]
       [Example("foo", 0)]
-      public void TestParameterIsTrueFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestParameterIsTrueFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -679,7 +680,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", true)]
       [Example("foo", 1)]
-      public void TestParameterIsTruePasses(string parameterName, bool parameterValue, Validator<bool> validator)
+      public void TestParameterIsTruePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -701,7 +702,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", true)]
       [Example("foo", 1)]
-      public void TestParameterIsFalseFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestParameterIsFalseFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -724,13 +726,203 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false)]
       [Example("foo", 0)]
       [Example("foo", null)]
-      public void TestParameterIsFalsePasses(string parameterName, bool parameterValue, Validator<bool> validator)
+      public void TestParameterIsFalsePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
             .x(() => validator.IsFalse().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsPositive validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0)]
+      [Example("foo", -0.001)]
+      [Example("foo", -1)]
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestIsPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .WithMessage(string.Format(Properties.Resources.MustBePositive + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsPositive validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0.00001)]
+      [Example("foo", 1)]
+      [Example("foo", 4)]
+      public void TestIsPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => validator.IsPositive().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsNegative validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0)]
+      [Example("foo", 0.001)]
+      [Example("foo", 1)]
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestIsNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .WithMessage(string.Format(Properties.Resources.MustBeNegative + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsNegative validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", -0.00001)]
+      [Example("foo", -1)]
+      [Example("foo", -4)]
+      public void TestIsNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => validator.IsNegative().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsNotNegative validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", -0.001)]
+      [Example("foo", -1)]
+      [Example("foo", -4)]
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestIsNotNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => act = () => validator.IsNotNegative().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .WithMessage(string.Format(Properties.Resources.MustNotBeNegative + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsNotNegative validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0)]
+      [Example("foo", 0.00001)]
+      [Example("foo", 1)]
+      [Example("foo", 4)]
+      public void TestIsNotNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => validator.IsNotNegative().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsNotPositive validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0.001)]
+      [Example("foo", 1)]
+      [Example("foo", 4)]
+      [Example("foo", new[] { 'a', 'b' })]
+      public void TestIsNotPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => act = () => validator.IsNotPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .WithMessage(string.Format(Properties.Resources.MustNotBePositive + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsNotNegative validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0)]
+      [Example("foo", -0.00001)]
+      [Example("foo", -1)]
+      [Example("foo", -4)]
+      public void TestIsNotPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is false"
+            .x(() => validator.IsNotPositive().OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
