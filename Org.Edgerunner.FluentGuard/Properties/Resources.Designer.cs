@@ -160,6 +160,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must not be equal to {0}.
+        /// </summary>
+        internal static string MustNotBeEqualToX {
+            get {
+                return ResourceManager.GetString("MustNotBeEqualToX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must not be negative.
         /// </summary>
         internal static string MustNotBeNegative {

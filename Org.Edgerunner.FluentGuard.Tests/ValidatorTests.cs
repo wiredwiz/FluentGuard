@@ -277,6 +277,56 @@ namespace Org.Edgerunner.FluentGuard.Tests
       }
 
       /// <summary>
+      /// Tests equal to validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 2, 2)]
+      [Example("foo", 1, 1)]
+      [Example("foo", 0, 0)]
+      [Example("foo", -4, -4)]
+      public void TestParameterNotEqualToFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is equal to the value to compare against"
+            .x(() => act = () => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .WithMessage(string.Format(Properties.Resources.MustNotBeEqualToX + "\r\nParameter name: {1}", valueToCompare, parameterName)));
+      }
+
+      /// <summary>
+      /// Tests equal to validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      [Scenario]
+      [Example("foo", 0, 1)]
+      [Example("foo", 0, -1)]
+      [Example("foo", 1, 2)]
+      [Example("foo", -1, 2)]
+      public void TestParameterNotEqualToPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is equal to the value to compare against"
+            .x(() => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
       /// Tests not null validation.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
@@ -750,7 +800,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -0.001)]
       [Example("foo", -1)]
       [Example("foo", new[] { 'a', 'b' })]
-      public void TestIsPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public void TestParameterIsPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -773,7 +823,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0.00001)]
       [Example("foo", 1)]
       [Example("foo", 4)]
-      public void TestIsPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public void TestParameterIsPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -797,7 +847,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0.001)]
       [Example("foo", 1)]
       [Example("foo", new[] { 'a', 'b' })]
-      public void TestIsNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public void TestParameterIsNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -820,7 +870,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -0.00001)]
       [Example("foo", -1)]
       [Example("foo", -4)]
-      public void TestIsNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public void TestParameterIsNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -844,7 +894,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1)]
       [Example("foo", -4)]
       [Example("foo", new[] { 'a', 'b' })]
-      public void TestIsNotNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public void TestParameterIsNotNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -868,7 +918,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0.00001)]
       [Example("foo", 1)]
       [Example("foo", 4)]
-      public void TestIsNotNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public void TestParameterIsNotNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -892,7 +942,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1)]
       [Example("foo", 4)]
       [Example("foo", new[] { 'a', 'b' })]
-      public void TestIsNotPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public void TestParameterIsNotPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -916,7 +966,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -0.00001)]
       [Example("foo", -1)]
       [Example("foo", -4)]
-      public void TestIsNotPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public void TestParameterIsNotPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
