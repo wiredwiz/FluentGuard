@@ -19,11 +19,13 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using MiscUtil;
 using Org.Edgerunner.FluentGuard.Properties;
 
-namespace Org.Edgerunner.FluentGuard
+namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
    ///    Class that validates data.
@@ -33,7 +35,7 @@ namespace Org.Edgerunner.FluentGuard
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
-   public class Validator<T>
+   public class Validator<T> : IValidator<T>
    {
       #region Constructors And Finalizers
 
@@ -65,23 +67,23 @@ namespace Org.Edgerunner.FluentGuard
       internal CombinationMode Mode { get; set; }
 
       /// <summary>
-      /// Gets or sets the name of the parameter being checked.
+      /// Gets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      internal string ParameterName { get; set; }
+      public virtual string ParameterName { get; private set; }
 
       /// <summary>
-      /// Gets or sets the parameter value being checked.
+      /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      internal T ParameterValue { get; set; }
+      public virtual T ParameterValue { get; private set; }
 
       /// <summary>
       ///    Combines the current conditional check with a new one using 'And' logic.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> And()
+      public virtual Validator<T> And()
       {
          Mode = CombinationMode.And;
          return this;
@@ -93,7 +95,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="validator">The validator to AND against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> And(Validator<T> validator)
+      public virtual Validator<T> And(Validator<T> validator)
       {
          Validator<T> result = null;
 
@@ -116,7 +118,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == 1))
@@ -135,7 +137,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) > -1))
@@ -148,16 +150,16 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is less than the specified value.
+      /// Determines whether the parameter being validated is less than the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      public Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
+      public virtual Validator<T> IsLessThan(T value)
       {
-         var paramValue = (IComparable<TS>)ParameterValue;
-         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == -1))
+         // ReSharper disable once EventExceptionNotDocumented
+         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -173,7 +175,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) < 1))
@@ -191,7 +193,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
-      public Validator<T> IsEqualTo(T value)
+      public virtual Validator<T> IsEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(ParameterValue.Equals(value)))
             return this;
@@ -208,7 +210,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
-      public Validator<T> IsNotEqualTo(T value)
+      public virtual Validator<T> IsNotEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(!ParameterValue.Equals(value)))
             return this;
@@ -224,7 +226,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
-      public Validator<T> IsNotNull()
+      public virtual Validator<T> IsNotNull()
       {
          if (ShouldReturnAfterEvaluation(ParameterValue != null))
             return this;
@@ -241,7 +243,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       /// <exception cref="ArgumentException">Must not be empty.</exception>
-      public Validator<T> IsNotNullOrEmpty()
+      public virtual Validator<T> IsNotNullOrEmpty()
       {
          var paramAsString = ParameterValue as string;
          var valueIsNull = ParameterValue == null;
@@ -264,7 +266,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public Validator<T> StartsWith(string value)
+      public virtual Validator<T> StartsWith(string value)
       {
          if (value == null)
             throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
@@ -286,7 +288,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public Validator<T> EndsWith(string value)
+      public virtual Validator<T> EndsWith(string value)
       {
          if (value == null)
             throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
@@ -306,7 +308,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
-      public Validator<T> IsFalse()
+      public virtual Validator<T> IsFalse()
       {
          var couldConvert = true;
          var result = false;
@@ -333,7 +335,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
-      public Validator<T> IsTrue()
+      public virtual Validator<T> IsTrue()
       {
          var couldConvert = true;
          var result = false;
@@ -360,7 +362,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be positive.</exception>
-      public Validator<T> IsPositive()
+      public virtual Validator<T> IsPositive()
       {
          var couldConvert = true;
          double result = 0;
@@ -391,7 +393,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be negative.</exception>
-      public Validator<T> IsNegative()
+      public virtual Validator<T> IsNegative()
       {
          var couldConvert = true;
          double result = 0;
@@ -422,7 +424,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be negative.</exception>
-      public Validator<T> IsNotNegative()
+      public virtual Validator<T> IsNotNegative()
       {
          var couldConvert = true;
          double result = 0;
@@ -453,7 +455,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be positive.</exception>
-      public Validator<T> IsNotPositive()
+      public virtual Validator<T> IsNotPositive()
       {
          var couldConvert = true;
          double result = 0;
@@ -484,7 +486,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> Or()
+      public virtual Validator<T> Or()
       {
          Mode = CombinationMode.Or;
          return this;
@@ -496,7 +498,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="validator">The validator to OR against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> Or(Validator<T> validator)
+      public virtual Validator<T> Or(Validator<T> validator)
       {
          Validator<T> result = null;
 
@@ -515,7 +517,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <summary>
       ///    Throws a new exception.
       /// </summary>
-      public void OtherwiseThrowException()
+      public virtual void OtherwiseThrowException()
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
@@ -528,7 +530,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <typeparam name="TE">The type of exception.</typeparam>
       /// <param name="exception">The exception to throw.</param>
-      public void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
+      public virtual void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
@@ -542,7 +544,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns><c>true</c> if the rule evaluation method should return, <c>false</c> otherwise.</returns>
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
       // ReSharper disable once FlagArgument
-      private bool ShouldReturnAfterEvaluation(bool evaluationResult)
+      protected bool ShouldReturnAfterEvaluation(bool evaluationResult)
       {
          if (Mode == CombinationMode.And)
             if (CurrentException != null)
@@ -559,6 +561,122 @@ namespace Org.Edgerunner.FluentGuard
             CurrentException = null;
 
          return true;
+      }
+
+      /// <summary>
+      /// Performs the less than operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
+      protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
+         return original.CompareTo(referenceValue) == -1;
+      }
+
+      /// <summary>
+      /// Performs the less than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than Or Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
+         return original.CompareTo(referenceValue) < 1;
+      }
+
+      /// <summary>
+      /// Performs the greater than operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than operation on the supplied value type.</exception>
+      protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
+         return original.CompareTo(referenceValue) == 1;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
+         return original.CompareTo(referenceValue) > -1;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
+         return original.CompareTo(referenceValue) == 0;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformNotNullOperation(T currentValue)
+      {
+         object original = ParameterValue;
+         return original != null;
+      }
+
+      /// <summary>
+      /// Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsPositiveOperation(T currentValue)
+      {
+         return false;
+      }
+
+      /// <summary>
+      /// Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsNegativeOperation(T currentValue)
+      {
+         return false;
+      }
+
+      /// <summary>
+      /// Performs the IsTrue operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsTrueOperation(T currentValue)
+      {
+         return false;
       }
    }
 }

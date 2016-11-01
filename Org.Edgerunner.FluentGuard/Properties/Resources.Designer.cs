@@ -232,6 +232,51 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to perform a Greater Than operation on the supplied value type..
+        /// </summary>
+        internal static string UnableToPerformAGreaterThanOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformAGreaterThanOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to perform a Greater Than Or Equal To operation on the supplied value type..
+        /// </summary>
+        internal static string UnableToPerformAGreaterThanOrEqualToOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformAGreaterThanOrEqualToOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to perform a Less Than operation on the supplied value type..
+        /// </summary>
+        internal static string UnableToPerformALessThanOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformALessThanOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to perform a Less Than Or Equal To operation on the supplied value type..
+        /// </summary>
+        internal static string UnableToPerformALessThanOrEqualToOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformALessThanOrEqualToOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to perform an equality operation on the supplied value type..
+        /// </summary>
+        internal static string UnableToPerformAnEqualToOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformAnEqualToOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value is null.
         /// </summary>
         internal static string ValueIsNull {
