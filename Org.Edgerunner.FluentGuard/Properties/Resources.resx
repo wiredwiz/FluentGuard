@@ -184,4 +184,20 @@
     <value>Unable to access {0}</value>
     <comment>UnableToAccess description</comment>
   </data>
+  <data name="UnableToPerformALessThanOp" xml:space="preserve">
+    <value>Unable to perform a Less Than operation on the supplied value type.</value>
+    <comment>UnableToPerformALessThanOp description</comment>
+  </data>
+  <data name="UnableToPerformAGreaterThanOp" xml:space="preserve">
+    <value>Unable to perform a Greater Than operation on the supplied value type.</value>
+  </data>
+  <data name="UnableToPerformAGreaterThanOrEqualToOp" xml:space="preserve">
+    <value>Unable to perform a Greater Than Or Equal To operation on the supplied value type.</value>
+  </data>
+  <data name="UnableToPerformALessThanOrEqualToOp" xml:space="preserve">
+    <value>Unable to perform a Less Than Or Equal To operation on the supplied value type.</value>
+  </data>
+  <data name="UnableToPerformAnEqualToOp" xml:space="preserve">
+    <value>Unable to perform an equality operation on the supplied value type.</value>
+  </data>
 </root>

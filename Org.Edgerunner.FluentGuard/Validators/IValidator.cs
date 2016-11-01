@@ -19,9 +19,8 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Validators;
 
-namespace Org.Edgerunner.FluentGuard
+namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
    /// Interface that defines a validator.
@@ -97,13 +96,12 @@ namespace Org.Edgerunner.FluentGuard
       Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>;
 
       /// <summary>
-      ///    Determines whether the parameter being validated is less than the specified value.
+      /// Determines whether the parameter being validated is less than the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>;
+      Validator<T> IsLessThan(T value);
 
       /// <summary>
       ///    Determines whether the parameter being validated is less than or equal to the specified value.

@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MiscUtil">
-      <HintPath>E:\Projects\FluentGuard Library\Libs\MiscUtil\MiscUtil.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,9 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CombinationMode.cs" />
+    <Compile Include="DoubleValidator.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="ExpressionExtensions.cs" />
-    <Compile Include="IValidator.cs" />
+    <Compile Include="Validators\DecimalValidator.cs" />
+    <Compile Include="Validators\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,6 +55,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TypeHelper.cs" />
+    <Compile Include="Validators\ULongValidator.cs" />
+    <Compile Include="Validators\ValidatorFactory.cs" />
+    <Compile Include="Validators\IntValidator.cs" />
+    <Compile Include="Validators\LongValidator.cs" />
+    <Compile Include="Validators\ShortValidator.cs" />
     <Compile Include="Validators\Validator.cs" />
   </ItemGroup>
   <ItemGroup>

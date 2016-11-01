@@ -19,8 +19,10 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using MiscUtil;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validators
@@ -148,16 +150,16 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is less than the specified value.
+      /// Determines whether the parameter being validated is less than the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      public virtual Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
+      public virtual Validator<T> IsLessThan(T value)
       {
-         var paramValue = (IComparable<TS>)ParameterValue;
-         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == -1))
+         // ReSharper disable once EventExceptionNotDocumented
+         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -559,6 +561,122 @@ namespace Org.Edgerunner.FluentGuard.Validators
             CurrentException = null;
 
          return true;
+      }
+
+      /// <summary>
+      /// Performs the less than operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
+      protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
+         return original.CompareTo(referenceValue) == -1;
+      }
+
+      /// <summary>
+      /// Performs the less than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than Or Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
+         return original.CompareTo(referenceValue) < 1;
+      }
+
+      /// <summary>
+      /// Performs the greater than operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than operation on the supplied value type.</exception>
+      protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
+         return original.CompareTo(referenceValue) == 1;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
+         return original.CompareTo(referenceValue) > -1;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+      /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
+      protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
+         return original.CompareTo(referenceValue) == 0;
+      }
+
+      /// <summary>
+      /// Performs the greater than or equal to operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformNotNullOperation(T currentValue)
+      {
+         object original = ParameterValue;
+         return original != null;
+      }
+
+      /// <summary>
+      /// Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsPositiveOperation(T currentValue)
+      {
+         return false;
+      }
+
+      /// <summary>
+      /// Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsNegativeOperation(T currentValue)
+      {
+         return false;
+      }
+
+      /// <summary>
+      /// Performs the IsTrue operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsTrueOperation(T currentValue)
+      {
+         return false;
       }
    }
 }
