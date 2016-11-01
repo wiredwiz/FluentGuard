@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using FluentAssertions;
+using Org.Edgerunner.FluentGuard.Validators;
 using Xbehave;
 
 namespace Org.Edgerunner.FluentGuard.Tests

@@ -23,7 +23,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Org.Edgerunner.FluentGuard.Properties;
 
-namespace Org.Edgerunner.FluentGuard
+namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
    ///    Class that validates data.
@@ -542,7 +542,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns><c>true</c> if the rule evaluation method should return, <c>false</c> otherwise.</returns>
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
       // ReSharper disable once FlagArgument
-      private bool ShouldReturnAfterEvaluation(bool evaluationResult)
+      protected bool ShouldReturnAfterEvaluation(bool evaluationResult)
       {
          if (Mode == CombinationMode.And)
             if (CurrentException != null)
