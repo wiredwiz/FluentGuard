@@ -52,7 +52,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>A new <see cref="Validator{TS}" /> instance.</returns>
       /// <exception cref="ArgumentException">Not a member access expression.</exception>
       /// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types.</exception>
-      public static Validator<TV> That<TO, TV>(TO objectValue, Expression<Func<TO, object>> expression)
+      public static Validator<TV> That<TO, TV>(TO objectValue, Expression<Func<object>> expression)
       {
          MemberExpression memberExpression = null;
 

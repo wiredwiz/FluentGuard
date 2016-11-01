@@ -59,11 +59,11 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="expectedLength">The expected length.</param>
       /// <param name="validator">The validator to test with.</param>
       [Scenario]
-      [Example("Crazy Text", "x.Length", 10)]
+      [Example("Crazy Text", "text.Length", 11)]
       public void CreationOfValidatorUsingALambdaPasses(string text, string expectedName, int expectedLength, Validator<int> validator)
       {
          "Ensuring that a given parameter and its value, results in a new validator"
-            .x(() => validator = Ensure.That<string, int>(text, x => x.Length));
+            .x(() => validator = Ensure.That<string, int>(text, () => text.Length));
 
          "Where its name matches the supplied parameter name"
             .x(() => validator.ParameterName.Should().Be(expectedName));
