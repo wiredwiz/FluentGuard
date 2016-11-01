@@ -33,7 +33,7 @@ namespace Org.Edgerunner.FluentGuard
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
-   public class Validator<T>
+   public class Validator<T> : IValidator<T>
    {
       #region Constructors And Finalizers
 
@@ -65,23 +65,23 @@ namespace Org.Edgerunner.FluentGuard
       internal CombinationMode Mode { get; set; }
 
       /// <summary>
-      /// Gets or sets the name of the parameter being checked.
+      /// Gets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      internal string ParameterName { get; set; }
+      public virtual string ParameterName { get; private set; }
 
       /// <summary>
-      /// Gets or sets the parameter value being checked.
+      /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      internal T ParameterValue { get; set; }
+      public virtual T ParameterValue { get; private set; }
 
       /// <summary>
       ///    Combines the current conditional check with a new one using 'And' logic.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> And()
+      public virtual Validator<T> And()
       {
          Mode = CombinationMode.And;
          return this;
@@ -93,7 +93,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="validator">The validator to AND against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> And(Validator<T> validator)
+      public virtual Validator<T> And(Validator<T> validator)
       {
          Validator<T> result = null;
 
@@ -116,7 +116,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == 1))
@@ -135,7 +135,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) > -1))
@@ -154,7 +154,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      public Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsLessThan<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == -1))
@@ -173,7 +173,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
-      public Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
       {
          var paramValue = (IComparable<TS>)ParameterValue;
          if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) < 1))
@@ -191,7 +191,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
-      public Validator<T> IsEqualTo(T value)
+      public virtual Validator<T> IsEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(ParameterValue.Equals(value)))
             return this;
@@ -208,7 +208,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
-      public Validator<T> IsNotEqualTo(T value)
+      public virtual Validator<T> IsNotEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(!ParameterValue.Equals(value)))
             return this;
@@ -224,7 +224,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
-      public Validator<T> IsNotNull()
+      public virtual Validator<T> IsNotNull()
       {
          if (ShouldReturnAfterEvaluation(ParameterValue != null))
             return this;
@@ -241,7 +241,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       /// <exception cref="ArgumentException">Must not be empty.</exception>
-      public Validator<T> IsNotNullOrEmpty()
+      public virtual Validator<T> IsNotNullOrEmpty()
       {
          var paramAsString = ParameterValue as string;
          var valueIsNull = ParameterValue == null;
@@ -264,7 +264,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public Validator<T> StartsWith(string value)
+      public virtual Validator<T> StartsWith(string value)
       {
          if (value == null)
             throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
@@ -286,7 +286,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
       /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public Validator<T> EndsWith(string value)
+      public virtual Validator<T> EndsWith(string value)
       {
          if (value == null)
             throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
@@ -306,7 +306,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
-      public Validator<T> IsFalse()
+      public virtual Validator<T> IsFalse()
       {
          var couldConvert = true;
          var result = false;
@@ -333,7 +333,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
-      public Validator<T> IsTrue()
+      public virtual Validator<T> IsTrue()
       {
          var couldConvert = true;
          var result = false;
@@ -360,7 +360,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be positive.</exception>
-      public Validator<T> IsPositive()
+      public virtual Validator<T> IsPositive()
       {
          var couldConvert = true;
          double result = 0;
@@ -391,7 +391,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be negative.</exception>
-      public Validator<T> IsNegative()
+      public virtual Validator<T> IsNegative()
       {
          var couldConvert = true;
          double result = 0;
@@ -422,7 +422,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be negative.</exception>
-      public Validator<T> IsNotNegative()
+      public virtual Validator<T> IsNotNegative()
       {
          var couldConvert = true;
          double result = 0;
@@ -453,7 +453,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must not be positive.</exception>
-      public Validator<T> IsNotPositive()
+      public virtual Validator<T> IsNotPositive()
       {
          var couldConvert = true;
          double result = 0;
@@ -484,7 +484,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> Or()
+      public virtual Validator<T> Or()
       {
          Mode = CombinationMode.Or;
          return this;
@@ -496,7 +496,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="validator">The validator to OR against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       // ReSharper disable once MethodNameNotMeaningful
-      public Validator<T> Or(Validator<T> validator)
+      public virtual Validator<T> Or(Validator<T> validator)
       {
          Validator<T> result = null;
 
@@ -515,7 +515,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <summary>
       ///    Throws a new exception.
       /// </summary>
-      public void OtherwiseThrowException()
+      public virtual void OtherwiseThrowException()
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
@@ -528,7 +528,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <typeparam name="TE">The type of exception.</typeparam>
       /// <param name="exception">The exception to throw.</param>
-      public void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
+      public virtual void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
