@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="Guard.cs" company="Edgerunner.org">
+// <copyright file="Ensure.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -19,6 +19,9 @@
 #endregion
 
 using System;
+using System.Linq.Expressions;
+using System.Reflection;
+using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard
 {
@@ -34,9 +37,47 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
-      public static Validator<T> That<T>(string nameOfParameter, T parameterValue)// where T : IEquatable<T>, IComparable<T>
+      public static Validator<T> That<T>(string nameOfParameter, T parameterValue)
       {
          return new Validator<T>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified member value.
+      /// </summary>
+      /// <typeparam name="TO">The type of object being inspected.</typeparam>
+      /// <typeparam name="TV">The type of data being validated.</typeparam>
+      /// <param name="objectValue">The object value being inspected.</param>
+      /// <param name="expression">The member expression.</param>
+      /// <returns>A new <see cref="Validator{TS}" /> instance.</returns>
+      /// <exception cref="ArgumentException">Not a member access expression.</exception>
+      /// <exception cref="NotSupportedException">A field is marked literal, but the field does not have one of the accepted literal types.</exception>
+      public static Validator<TV> That<TO, TV>(TO objectValue, Expression<Func<TO, object>> expression)
+      {
+         MemberExpression memberExpression = null;
+
+         if (expression.Body.NodeType == ExpressionType.Convert)
+         {
+            var body = (UnaryExpression)expression.Body;
+            memberExpression = body.Operand as MemberExpression;
+         }
+         else if (expression.Body.NodeType == ExpressionType.MemberAccess)
+            memberExpression = expression.Body as MemberExpression;
+
+         if (memberExpression == null)
+            throw new ArgumentException(Resources.NotAMemberAccess, nameof(expression));
+
+         var propertyInfo = memberExpression.Member as PropertyInfo;
+         if (propertyInfo != null)
+            return new Validator<TV>(memberExpression.ToString(), (TV)propertyInfo.GetValue(objectValue));
+
+         var fieldInfo = memberExpression.Member as FieldInfo;
+         if (fieldInfo != null)
+            // ReSharper disable once ExceptionNotDocumented
+            return new Validator<TV>(memberExpression.ToString(), (TV)fieldInfo.GetValue(objectValue));
+
+         // ReSharper disable once ExceptionNotDocumentedOptional
+         throw new ArgumentException(string.Format(Resources.UnableToAccess, expression), nameof(expression));
       }
    }
 }

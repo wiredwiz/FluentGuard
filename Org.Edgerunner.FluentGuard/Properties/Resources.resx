@@ -176,4 +176,12 @@
     <value>Value is null or empty</value>
     <comment>ValueIsNullOrEmpty description</comment>
   </data>
+  <data name="NotAMemberAccess" xml:space="preserve">
+    <value>Not a member access</value>
+    <comment>NotAMemberAccess description</comment>
+  </data>
+  <data name="UnableToAccess" xml:space="preserve">
+    <value>Unable to access {0}</value>
+    <comment>UnableToAccess description</comment>
+  </data>
 </root>

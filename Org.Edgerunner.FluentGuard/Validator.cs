@@ -524,6 +524,18 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
+      /// Throws a new exception.
+      /// </summary>
+      /// <typeparam name="TE">The type of exception.</typeparam>
+      /// <param name="exception">The exception to throw.</param>
+      public void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
+      {
+         // ReSharper disable once ExceptionNotDocumented
+         // ReSharper disable once ThrowingSystemException
+         throw exception;
+      }
+
+      /// <summary>
       ///    Determines whether the current condition evaluation should return.
       /// </summary>
       /// <param name="evaluationResult">The result of a rule evaluation.</param>

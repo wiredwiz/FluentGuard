@@ -19,6 +19,8 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using FluentAssertions;
 using Xbehave;
 
@@ -37,7 +39,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The validator to test with.</param>
       [Scenario]
       [Example("foo", 2)]
-      public void Scenario1(string parameterName, int parameterValue, Validator<int> validator)
+      public void CreationOfValidatorPasses(string parameterName, int parameterValue, Validator<int> validator)
       {
          "Ensuring that a given parameter and its value, results in a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -47,6 +49,27 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "And its value matches the supplied parameter value"
             .x(() => validator.ParameterValue.Should().Be(parameterValue));
+      }
+
+      /// <summary>
+      /// Scenario1s the specified parameter name.
+      /// </summary>
+      /// <param name="text">The text to test with.</param>
+      /// <param name="expectedName">The expected name.</param>
+      /// <param name="expectedLength">The expected length.</param>
+      /// <param name="validator">The validator to test with.</param>
+      [Scenario]
+      [Example("Crazy Text", "x.Length", 10)]
+      public void CreationOfValidatorUsingALambdaPasses(string text, string expectedName, int expectedLength, Validator<int> validator)
+      {
+         "Ensuring that a given parameter and its value, results in a new validator"
+            .x(() => validator = Ensure.That<string, int>(text, x => x.Length));
+
+         "Where its name matches the supplied parameter name"
+            .x(() => validator.ParameterName.Should().Be(expectedName));
+
+         "And its value matches the supplied parameter value"
+            .x(() => validator.ParameterValue.Should().Be(expectedLength));
       }
    }
 }

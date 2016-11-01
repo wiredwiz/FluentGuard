@@ -214,6 +214,24 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not a member access.
+        /// </summary>
+        internal static string NotAMemberAccess {
+            get {
+                return ResourceManager.GetString("NotAMemberAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to access {0}.
+        /// </summary>
+        internal static string UnableToAccess {
+            get {
+                return ResourceManager.GetString("UnableToAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value is null.
         /// </summary>
         internal static string ValueIsNull {
