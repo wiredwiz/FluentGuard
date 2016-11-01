@@ -203,6 +203,23 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
+      ///    Determines whether the parameter being validated is not equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
+      public Validator<T> IsNotEqualTo(T value)
+      {
+         if (ShouldReturnAfterEvaluation(!ParameterValue.Equals(value)))
+            return this;
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+
+         return this;
+      }
+
+      /// <summary>
       ///    Determines whether the parameter being validated is not <c>null</c>.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>

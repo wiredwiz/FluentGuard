@@ -151,6 +151,9 @@
   <data name="MustNotBeEmpty" xml:space="preserve">
     <value>Must not be empty</value>
   </data>
+  <data name="MustNotBeEqualToX" xml:space="preserve">
+    <value>Must not be equal to {0}</value>
+  </data>
   <data name="MustNotBeNegative" xml:space="preserve">
     <value>Must not be negative</value>
   </data>
