@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
    ///    A Validator class for type <see cref="int" />.
    /// </summary>
    /// <seealso cref="int" />
-   public class IntegerValidator : Validator<int>, IValidator<int>
+   public class IntegerValidator : Validator<int>
    {
       #region Constructors And Finalizers
 
