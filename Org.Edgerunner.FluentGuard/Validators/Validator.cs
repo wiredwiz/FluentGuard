@@ -27,14 +27,15 @@ using Org.Edgerunner.FluentGuard.Properties;
 namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
-   ///    Class that validates data.
+   /// Class that validates data.
    /// </summary>
    /// <typeparam name="T">The type of data to validate.</typeparam>
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
-   public class Validator<T> : IValidator<T>
+   // ReSharper disable once ClassTooBig
+   public class Validator<T>
    {
       #region Constructors And Finalizers
 
@@ -113,14 +114,12 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <summary>
       /// Determines whether the parameter being validated is greater than the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
-      public virtual Validator<T> IsGreaterThan<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThan(T value)
       {
-         var paramValue = (IComparable<TS>)ParameterValue;
-         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) == 1))
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -130,16 +129,14 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is greater than or equal to the specified value.
+      /// Determines whether the parameter being validated is greater than or equal to the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
-      public virtual Validator<T> IsGreaterThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsGreaterThanOrEqualTo(T value)
       {
-         var paramValue = (IComparable<TS>)ParameterValue;
-         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) > -1))
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -168,16 +165,14 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is less than or equal to the specified value.
+      /// Determines whether the parameter being validated is less than or equal to the specified value.
       /// </summary>
-      /// <typeparam name="TS">The type of value to compare.</typeparam>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
-      public virtual Validator<T> IsLessThanOrEqualTo<TS>(TS value) where TS : IComparable<T>
+      public virtual Validator<T> IsLessThanOrEqualTo(T value)
       {
-         var paramValue = (IComparable<TS>)ParameterValue;
-         if (ShouldReturnAfterEvaluation(paramValue.CompareTo(value) < 1))
+         if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -308,18 +303,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
       public virtual Validator<T> IsFalse()
       {
-         var couldConvert = true;
-         var result = false;
-         try
-         {
-            result = Convert.ToBoolean(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && !result))
+         if (ShouldReturnAfterEvaluation(!PerformIsTrueOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -335,18 +319,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
       public virtual Validator<T> IsTrue()
       {
-         var couldConvert = true;
-         var result = false;
-         try
-         {
-            result = Convert.ToBoolean(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && result))
+         if (ShouldReturnAfterEvaluation(PerformIsTrueOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -362,22 +335,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must be positive.</exception>
       public virtual Validator<T> IsPositive()
       {
-         var couldConvert = true;
-         double result = 0;
-         try
-         {
-            result = Convert.ToDouble(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-         catch (OverflowException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && result > 0))
+         if (ShouldReturnAfterEvaluation(PerformIsPositiveOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -393,22 +351,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must be negative.</exception>
       public virtual Validator<T> IsNegative()
       {
-         var couldConvert = true;
-         double result = 0;
-         try
-         {
-            result = Convert.ToDouble(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-         catch (OverflowException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && result < 0))
+         if (ShouldReturnAfterEvaluation(PerformIsNegativeOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -424,22 +367,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must not be negative.</exception>
       public virtual Validator<T> IsNotNegative()
       {
-         var couldConvert = true;
-         double result = 0;
-         try
-         {
-            result = Convert.ToDouble(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-         catch (OverflowException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && result >= 0))
+         if (ShouldReturnAfterEvaluation(!PerformIsNegativeOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -455,22 +383,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must not be positive.</exception>
       public virtual Validator<T> IsNotPositive()
       {
-         var couldConvert = true;
-         double result = 0;
-         try
-         {
-            result = Convert.ToDouble(ParameterValue);
-         }
-         catch (InvalidCastException)
-         {
-            couldConvert = false;
-         }
-         catch (OverflowException)
-         {
-            couldConvert = false;
-         }
-
-         if (ShouldReturnAfterEvaluation(couldConvert && result <= 0))
+         if (ShouldReturnAfterEvaluation(!PerformIsPositiveOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
