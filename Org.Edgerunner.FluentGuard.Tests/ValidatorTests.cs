@@ -145,10 +145,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
-      [Example("foo", 9, 2)]
-      [Example("foo", 4, 2)]
-      [Example("foo", 1, 0)]
-      public void TestParameterGreaterThanPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
+      public virtual void TestParameterGreaterThanPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));

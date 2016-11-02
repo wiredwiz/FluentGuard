@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="IntegerValidatorTests.cs" company="Edgerunner.org">
+// <copyright file="LongValidatorTests.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -28,15 +28,15 @@ using Xbehave;
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class IntegerValidatorTests.
+   ///    Class LongValidatorTests.
    /// </summary>
-   /// <seealso cref="int" />
+   /// <seealso cref="long" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "EventExceptionNotDocumented", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "Is a necessity of xBehave tests")]
 
    // ReSharper disable once ClassTooBig
-   public class IntegerValidatorTests : ValidatorTests<int>
+   public class LongValidatorTests : ValidatorTests<long>
    {
       /// <summary>
       /// Tests greater than validation.
@@ -49,7 +49,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 9, 2)]
       [Example("foo", 4, 2)]
       [Example("foo", 1, 0)]
-      public override void TestParameterGreaterThanPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      public override void TestParameterGreaterThanPasses(string parameterName, long parameterValue, long valueToCompare, Validator<long> validator)
       {
          base.TestParameterGreaterThanPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -67,10 +67,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1, 2, 5)]
       public override void TestParameterConditionAndFailsLower(
          string parameterName,
-         int parameterValue,
-         int lowerBound,
-         int upperBound,
-         Validator<int> validator,
+         long parameterValue,
+         long lowerBound,
+         long upperBound,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterConditionAndFailsLower(parameterName, parameterValue, lowerBound, upperBound, validator, act);
@@ -89,10 +89,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 8, 2, 5)]
       public override void TestParameterConditionAndFailsUpper(
          string parameterName,
-         int parameterValue,
-         int lowerBound,
-         int upperBound,
-         Validator<int> validator,
+         long parameterValue,
+         long lowerBound,
+         long upperBound,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterConditionAndFailsUpper(parameterName, parameterValue, lowerBound, upperBound, validator, act);
@@ -112,10 +112,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 5, 2, 5)]
       public override void TestParameterConditionAndPasses(
          string parameterName,
-         int parameterValue,
-         int lowerBound,
-         int upperBound,
-         Validator<int> validator)
+         long parameterValue,
+         long lowerBound,
+         long upperBound,
+         Validator<long> validator)
       {
          base.TestParameterConditionAndPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
       }
@@ -135,10 +135,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 5, 2, 6)]
       public override void TestParameterConditionOrFails(
          string parameterName,
-         int parameterValue,
-         int lowerBound,
-         int upperBound,
-         Validator<int> validator,
+         long parameterValue,
+         long lowerBound,
+         long upperBound,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterConditionOrFails(parameterName, parameterValue, lowerBound, upperBound, validator, act);
@@ -161,10 +161,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 9, 2, 5)]
       public override void TestParameterConditionOrPasses(
          string parameterName,
-         int parameterValue,
-         int lowerBound,
-         int upperBound,
-         Validator<int> validator)
+         long parameterValue,
+         long lowerBound,
+         long upperBound,
+         Validator<long> validator)
       {
          base.TestParameterConditionOrPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
       }
@@ -184,9 +184,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 4, 2)]
       public override void TestParameterEqualToFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -205,9 +205,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1, -1)]
       public override void TestParameterEqualToPasses(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator)
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator)
       {
          base.TestParameterEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -226,9 +226,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0, 1)]
       public override void TestParameterGreaterThanFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterGreaterThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -248,9 +248,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 2, 4)]
       public override void TestParameterGreaterThanOrEqualToFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterGreaterThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -270,9 +270,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1, 0)]
       public override void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator)
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator)
       {
          base.TestParameterGreaterThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -288,7 +288,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1)]
       [Example("foo", 0)]
       [Example("foo", 1)]
-      public override void TestParameterIsFalseFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsFalseFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
 
@@ -310,7 +310,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", 0)]
       [Example("foo", 1)]
-      public override void TestParameterIsNegativeFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsNegativeFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          base.TestParameterIsNegativeFails(parameterName, parameterValue, validator, act);
       }
@@ -324,7 +324,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", -1)]
       [Example("foo", -4)]
-      public override void TestParameterIsNegativePasses(string parameterName, int parameterValue, Validator<int> validator)
+      public override void TestParameterIsNegativePasses(string parameterName, long parameterValue, Validator<long> validator)
       {
          base.TestParameterIsNegativePasses(parameterName, parameterValue, validator);
       }
@@ -339,7 +339,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", -1)]
       [Example("foo", -4)]
-      public override void TestParameterIsNotNegativeFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsNotNegativeFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          base.TestParameterIsNotNegativeFails(parameterName, parameterValue, validator, act);
       }
@@ -354,7 +354,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0)]
       [Example("foo", 1)]
       [Example("foo", 4)]
-      public override void TestParameterIsNotNegativePasses(string parameterName, int parameterValue, Validator<int> validator)
+      public override void TestParameterIsNotNegativePasses(string parameterName, long parameterValue, Validator<long> validator)
       {
          base.TestParameterIsNotNegativePasses(parameterName, parameterValue, validator);
       }
@@ -369,7 +369,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", 1)]
       [Example("foo", 4)]
-      public override void TestParameterIsNotPositiveFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsNotPositiveFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          base.TestParameterIsNotPositiveFails(parameterName, parameterValue, validator, act);
       }
@@ -384,7 +384,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0)]
       [Example("foo", -1)]
       [Example("foo", -4)]
-      public override void TestParameterIsNotPositivePasses(string parameterName, int parameterValue, Validator<int> validator)
+      public override void TestParameterIsNotPositivePasses(string parameterName, long parameterValue, Validator<long> validator)
       {
          base.TestParameterIsNotPositivePasses(parameterName, parameterValue, validator);
       }
@@ -400,7 +400,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0)]
       [Example("foo", -0.001)]
       [Example("foo", -1)]
-      public override void TestParameterIsPositiveFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsPositiveFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          base.TestParameterIsPositiveFails(parameterName, parameterValue, validator, act);
       }
@@ -414,7 +414,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       [Example("foo", 1)]
       [Example("foo", 4)]
-      public override void TestParameterIsPositivePasses(string parameterName, int parameterValue, Validator<int> validator)
+      public override void TestParameterIsPositivePasses(string parameterName, long parameterValue, Validator<long> validator)
       {
          base.TestParameterIsPositivePasses(parameterName, parameterValue, validator);
       }
@@ -430,7 +430,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1)]
       [Example("foo", 0)]
       [Example("foo", 1)]
-      public override void TestParameterIsTrueFails(string parameterName, int parameterValue, Validator<int> validator, Action act)
+      public override void TestParameterIsTrueFails(string parameterName, long parameterValue, Validator<long> validator, Action act)
       {
          "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
 
@@ -456,9 +456,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 3, 2)]
       public override void TestParameterLessThanFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterLessThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -478,9 +478,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1, 0)]
       public override void TestParameterLessThanOrEqualToFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterLessThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -500,9 +500,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0, 1)]
       public override void TestParameterLessThanOrEqualToPasses(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator)
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator)
       {
          base.TestParameterLessThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -520,9 +520,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 0, 2)]
       public override void TestParameterLessThanPasses(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator)
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator)
       {
          base.TestParameterLessThanPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -542,9 +542,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -4, -4)]
       public override void TestParameterNotEqualToFails(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator,
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator,
          Action act)
       {
          base.TestParameterNotEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -564,9 +564,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1, 2)]
       public override void TestParameterNotEqualToPasses(
          string parameterName,
-         int parameterValue,
-         int valueToCompare,
-         Validator<int> validator)
+         long parameterValue,
+         long valueToCompare,
+         Validator<long> validator)
       {
          base.TestParameterNotEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -581,7 +581,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", -1)]
       [Example("foo", 0)]
       [Example("foo", 1)]
-      public override void TestParameterNotNullPasses(string parameterName, int parameterValue, Validator<int> validator)
+      public override void TestParameterNotNullPasses(string parameterName, long parameterValue, Validator<long> validator)
       {
          base.TestParameterNotNullPasses(parameterName, parameterValue, validator);
       }

@@ -74,9 +74,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoubleValidatorTests.cs" />
     <Compile Include="EnsureTests.cs" />
     <Compile Include="IntegerValidatorTests.cs" />
+    <Compile Include="LongValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortValidatorTests.cs" />
     <Compile Include="ValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
