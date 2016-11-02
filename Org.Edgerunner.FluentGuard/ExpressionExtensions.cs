@@ -99,6 +99,69 @@ namespace Org.Edgerunner.FluentGuard
       }
 
       /// <summary>
+      /// Gets a dotted path of property names representing the property expression. E.g. Parent.Child.Sibling.Name.
+      /// </summary>
+      /// <typeparam name="TPropertyType">The type of the property or field referenced.</typeparam>
+      /// <param name="expression">The expression being evaluated.</param>
+      /// <returns>A dotted path <see cref="string" /> representing the expression.</returns>
+      /// <exception cref="System.NullReferenceException">Expected an expression, but found <c>null</c>.</exception>
+      /// <exception cref="System.ArgumentException"></exception>
+      /// <exception cref="ArgumentException">Expected an expression, but found <c>null</c>.</exception>
+      public static string GetMemberPath<TPropertyType>(this Expression<Func<TPropertyType>> expression)
+      {
+         var segments = new List<string>();
+         Expression node = expression;
+
+         if (node == null)
+         {
+            throw new NullReferenceException("Expected an expression, but found <null>.");
+         }
+
+         while (node != null)
+         {
+            switch (node.NodeType)
+            {
+               case ExpressionType.Lambda:
+                  node = ((LambdaExpression)node).Body;
+                  break;
+
+               case ExpressionType.Convert:
+               case ExpressionType.ConvertChecked:
+                  var unaryExpression = (UnaryExpression)node;
+                  node = unaryExpression.Operand;
+                  break;
+
+               case ExpressionType.MemberAccess:
+                  var memberExpression = (MemberExpression)node;
+                  node = memberExpression.Expression;
+
+                  segments.Add(memberExpression.Member.Name);
+                  break;
+
+               case ExpressionType.ArrayIndex:
+                  var binaryExpression = (BinaryExpression)node;
+                  var constantExpression = (ConstantExpression)binaryExpression.Right;
+                  node = binaryExpression.Left;
+
+                  segments.Add("[" + constantExpression.Value + "]");
+                  break;
+
+               case ExpressionType.Parameter:
+                  node = null;
+                  break;
+
+               default:
+                  throw new ArgumentException($"Expression <{expression.Body}> cannot be used to select a member.");
+            }
+         }
+
+         // ReSharper disable ExceptionNotDocumentedOptional
+         return string.Join(".", segments.AsEnumerable().Reverse().ToArray()).Replace(".[", "[");
+
+         // ReSharper restore ExceptionNotDocumentedOptional
+      }
+
+      /// <summary>
       ///    Gets the property information from an expression.
       /// </summary>
       /// <typeparam name="T">The type of the declaring type.</typeparam>

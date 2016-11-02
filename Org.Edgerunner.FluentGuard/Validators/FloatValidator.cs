@@ -51,7 +51,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </returns>
       protected override bool PerformEqualToOperation(float currentValue, float referenceValue)
       {
-         return currentValue.CompareTo(referenceValue) == 0;
+         return currentValue.Equals(referenceValue);
       }
 
       /// <summary>

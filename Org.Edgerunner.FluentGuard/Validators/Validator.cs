@@ -532,7 +532,8 @@ namespace Org.Edgerunner.FluentGuard.Validators
       {
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
-         throw exception;
+         if (CurrentException != null)
+            throw exception;
       }
 
       /// <summary>

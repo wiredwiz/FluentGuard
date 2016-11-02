@@ -86,16 +86,6 @@ namespace Org.Edgerunner.FluentGuard.Validators
       {
          throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
       }
-
-      /// <summary>
-      ///    Performs the IsNegative operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(string currentValue)
-      {
-         return false;
-      }
       
       /// <summary>
       ///    Performs the less than operation.
