@@ -277,11 +277,29 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to perform an EndsWith operation on the supplied value type.
+        /// </summary>
+        internal static string UnableToPerformAnEndsWithOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformAnEndsWithOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to perform an equality operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformAnEqualToOp {
             get {
                 return ResourceManager.GetString("UnableToPerformAnEqualToOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to perform a StartsWith operation on the supplied value type.
+        /// </summary>
+        internal static string UnableToPerformAStartsWithOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformAStartsWithOp", resourceCulture);
             }
         }
         

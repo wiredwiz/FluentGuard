@@ -27,12 +27,14 @@ using Xbehave;
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class that tests the validator methods.
+   /// Class that tests the validator methods.
    /// </summary>
+   /// <typeparam name="T">Type of data to test with.</typeparam>
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "EventExceptionNotDocumented", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "Is a necessity of xBehave tests")]
-   public class ValidatorTests
+   // ReSharper disable once ClassTooBig
+   public abstract class ValidatorTests<T>
    {
       /// <summary>
       /// Tests less than validation.
@@ -42,11 +44,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 5, 2)]
-      [Example("foo", 2, 2)]
-      [Example("foo", 3, 2)]
-      public void TestParameterLessThanFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+
+      public virtual void TestParameterLessThanFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -66,11 +65,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 5)]
-      [Example("foo", 2, 3)]
-      [Example("foo", 0, 2)]
-      public void TestParameterLessThanPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      public virtual void TestParameterLessThanPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -89,12 +84,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 5, 2)]
-      [Example("foo", 3, 2)]
-      [Example("foo", 1, 0)]
-      public void TestParameterLessThanOrEqualToFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      public virtual void TestParameterLessThanOrEqualToFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -113,13 +104,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 5)]
-      [Example("foo", 2, 3)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 0, 1)]
-      public void TestParameterLessThanOrEqualToPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
+      public virtual void TestParameterLessThanOrEqualToPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -138,12 +124,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 4)]
-      [Example("foo", 2, 2)]
-      [Example("foo", 0, 1)]
-      public void TestParameterGreaterThanFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      public virtual void TestParameterGreaterThanFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -162,12 +144,11 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
       [Example("foo", 9, 2)]
       [Example("foo", 4, 2)]
       [Example("foo", 1, 0)]
-      public void TestParameterGreaterThanPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      public void TestParameterGreaterThanPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -186,12 +167,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 6)]
-      [Example("foo", 1, 2)]
-      [Example("foo", 2, 4)]
-      public void TestParameterGreaterThanOrEqualToFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      public virtual void TestParameterGreaterThanOrEqualToFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -210,13 +187,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 4, 2)]
-      [Example("foo", 3, 2)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 1, 0)]
-      public void TestParameterGreaterThanOrEqualToPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>      
+      public virtual void TestParameterGreaterThanOrEqualToPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -235,13 +207,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 6)]
-      [Example("foo", 1, 2)]
-      [Example("foo", 2, 1)]
-      [Example("foo", 4, 2)]
-      public void TestParameterEqualToFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>     
+      public virtual void TestParameterEqualToFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -260,12 +227,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0, 0)]
-      [Example("foo", 1, 1)]
-      [Example("foo", -1, -1)]
-      public void TestParameterEqualToPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>      
+      public virtual void TestParameterEqualToPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -284,13 +247,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 2)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 0, 0)]
-      [Example("foo", -4, -4)]
-      public void TestParameterNotEqualToFails(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>     
+      public virtual void TestParameterNotEqualToFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -309,13 +267,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0, 1)]
-      [Example("foo", 0, -1)]
-      [Example("foo", 1, 2)]
-      [Example("foo", -1, 2)]
-      public void TestParameterNotEqualToPasses(string parameterName, int parameterValue, int valueToCompare, Validator<int> validator)
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
+      public virtual void TestParameterNotEqualToPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -334,9 +287,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", null)]
-      public void TestParameterNotNullFails(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      public virtual void TestParameterNotNullFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -355,10 +307,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "bar")]
-      [Example("foo", "")]
-      public void TestParameterNotNullPasses(string parameterName, string parameterValue, Validator<string> validator)
+      public virtual void TestParameterNotNullPasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -377,9 +326,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", null)]
-      public void TestParameterNotNullOrEmptyFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      public virtual void TestParameterNotNullOrEmptyFailsNull(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -399,9 +347,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", "")]
-      public void TestParameterNotNullOrEmptyFailsEmpty(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      public virtual void TestParameterNotNullOrEmptyFailsEmpty(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -420,9 +367,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar")]
-      public void TestParameterNotNullOrEmptyPasses(string parameterName, string parameterValue, Validator<string> validator)
+      public virtual void TestParameterNotNullOrEmptyPasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -442,11 +388,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar maid", "bah")]
       [Example("foo", null, "bah")]
       [Example("foo", "", "bah")]
-      public void TestParameterStartsWithFails(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator, Action act)
+      public virtual void TestParameterStartsWithFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -464,17 +409,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "bar maid")]
-      public void TestParameterStartsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      [Example("foo", "bar maid", null)]
+      public virtual void TestParameterStartsWithFailsNull(string parameterName, T parameterValue, T nullValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
 
          "Testing that the parameter starts with a null string"
-            .x(() => act = () => validator.StartsWith(null).OtherwiseThrowException());
+            .x(() => act = () => validator.StartsWith(nullValue).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>());
@@ -487,11 +432,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar maid", "bar")]
       [Example("foo", "Big Bear", "Bi")]
       [Example("foo", "Trolley", "")]
-      public void TestParameterStartsWithPasses(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator)
+      public virtual void TestParameterStartsWithPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -511,11 +455,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar maid", "bah")]
       [Example("foo", null, "bah")]
       [Example("foo", "", "bah")]
-      public void TestParameterEndsWithFails(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator, Action act)
+      public virtual void TestParameterEndsWithFails(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -535,9 +478,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar maid")]
-      public void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      public virtual void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -556,11 +498,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
       [Example("foo", "bar maid", "aid")]
       [Example("foo", "Big Bear", "ear")]
       [Example("foo", "Trolley", "")]
-      public void TestParameterEndsWithPasses(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator)
+      public virtual void TestParameterEndsWithPasses(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -581,9 +522,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="upperBound">The upper bound.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 1, 2, 5)]
-      public void TestParameterConditionAndFailsLower(string parameterName, int parameterValue, int lowerBound, int upperBound, Validator<int> validator, Action act)
+      public virtual void TestParameterConditionAndFailsLower(string parameterName, T parameterValue, T lowerBound, T upperBound, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -605,9 +544,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="upperBound">The upper bound.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 8, 2, 5)]
-      public void TestParameterConditionAndFailsUpper(string parameterName, int parameterValue, int lowerBound, int upperBound, Validator<int> validator, Action act)
+      public virtual void TestParameterConditionAndFailsUpper(string parameterName, T parameterValue, T lowerBound, T upperBound, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -628,11 +565,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 2, 5)]
-      [Example("foo", 4, 2, 5)]
-      [Example("foo", 5, 2, 5)]
-      public void TestParameterConditionAndPasses(string parameterName, int parameterValue, int lowerBound, int upperBound, Validator<int> validator)
+      public virtual void TestParameterConditionAndPasses(string parameterName, T parameterValue, T lowerBound, T upperBound, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -652,12 +585,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 3, 2, 6)]
-      [Example("foo", 4, 2, 6)]
-      [Example("foo", 5, 2, 6)]
-      public void TestParameterConditionOrFails(string parameterName, int parameterValue, int lowerBound, int upperBound, Validator<int> validator, Action act)
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      public virtual void TestParameterConditionOrFails(string parameterName, T parameterValue, T lowerBound, T upperBound, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -669,7 +598,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
             .WithMessage(string.Format(Properties.Resources.MustBeLessThanOrEqualToX + "\r\nParameter name: {1}", lowerBound, parameterName)));
       }
-      
+
       /// <summary>
       /// Tests OR combining in validation.
       /// </summary>
@@ -678,14 +607,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 2, 5)]
-      [Example("foo", 1, 2, 5)]
-      [Example("foo", 0, 2, 5)]
-      [Example("foo", 5, 2, 5)]
-      [Example("foo", 6, 2, 5)]
-      [Example("foo", 9, 2, 5)]
-      public void TestParameterConditionOrPasses(string parameterName, int parameterValue, int lowerBound, int upperBound, Validator<int> validator)
+      public virtual void TestParameterConditionOrPasses(string parameterName, T parameterValue, T lowerBound, T upperBound, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -704,12 +626,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", null)]
-      [Example("foo", false)]
-      [Example("foo", 0)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsTrueFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsTrueFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -728,10 +645,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", true)]
-      [Example("foo", 1)]
-      public void TestParameterIsTruePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsTruePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -750,11 +664,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", true)]
-      [Example("foo", 1)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsFalseFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsFalseFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -773,11 +683,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", false)]
-      [Example("foo", 0)]
-      [Example("foo", null)]
-      public void TestParameterIsFalsePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsFalsePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -796,12 +702,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", -0.001)]
-      [Example("foo", -1)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsPositiveFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -820,11 +721,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0.00001)]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      public void TestParameterIsPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsPositivePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -843,12 +740,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", 0.001)]
-      [Example("foo", 1)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsNegativeFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -867,11 +759,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", -0.00001)]
-      [Example("foo", -1)]
-      [Example("foo", -4)]
-      public void TestParameterIsNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsNegativePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -890,12 +778,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", -0.001)]
-      [Example("foo", -1)]
-      [Example("foo", -4)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsNotNegativeFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsNotNegativeFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -914,12 +797,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", 0.00001)]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      public void TestParameterIsNotNegativePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsNotNegativePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -938,12 +816,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0.001)]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      [Example("foo", new[] { 'a', 'b' })]
-      public void TestParameterIsNotPositiveFails(string parameterName, object parameterValue, Validator<object> validator, Action act)
+      public virtual void TestParameterIsNotPositiveFails(string parameterName, T parameterValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -962,12 +835,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", -0.00001)]
-      [Example("foo", -1)]
-      [Example("foo", -4)]
-      public void TestParameterIsNotPositivePasses(string parameterName, object parameterValue, Validator<object> validator)
+      public virtual void TestParameterIsNotPositivePasses(string parameterName, T parameterValue, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));

@@ -258,14 +258,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public virtual Validator<T> StartsWith(string value)
+      public virtual Validator<T> StartsWith(T value)
       {
-         if (value == null)
-            throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
-
-         var paramAsString = ParameterValue as string;
-         if (ShouldReturnAfterEvaluation(paramAsString != null && paramAsString.StartsWith(value)))
+         if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -280,14 +275,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="value"/> is <c>null</c>.</exception>
-      public virtual Validator<T> EndsWith(string value)
+      public virtual Validator<T> EndsWith(T value)
       {
-         if (value == null)
-            throw new ArgumentNullException(Resources.ValueIsNull, nameof(value));
-
-         var paramAsString = ParameterValue as string;
-         if (ShouldReturnAfterEvaluation(paramAsString != null && paramAsString.EndsWith(value)))
+         if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -599,9 +589,34 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
       protected virtual bool PerformIsTrueOperation(T currentValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformBooleanOp);
+      }
+
+      /// <summary>
+      /// Performs the StartsWith operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> starts with <paramref name="referenceValue" />, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to perform a StartsWith operation on the supplied value type.</exception>
+      protected virtual bool PerformStartsWithOperation(T currentValue, T referenceValue)
+      {
+         throw new InvalidOperationException(Resources.UnableToPerformAStartsWithOp);
+      }
+
+      /// <summary>
+      /// Performs the EndsWith operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> ends with <paramref name="referenceValue" />, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to perform an EndsWith operation on the supplied value type.</exception>
+      protected virtual bool PerformEndsWithOperation(T currentValue, T referenceValue)
+      {
+         throw new InvalidOperationException(Resources.UnableToPerformAnEndsWithOp);
       }
    }
 }

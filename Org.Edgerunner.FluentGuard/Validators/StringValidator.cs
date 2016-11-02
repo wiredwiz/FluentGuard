@@ -1,7 +1,7 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="StringValidator.cs">
-// Copyright (c)  2016
+// <copyright file="StringValidator.cs" company="Edgerunner.org">
+// Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,6 +42,21 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       #endregion
+
+      /// <summary>
+      ///    Performs the EndsWith operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns>
+      ///    <c>true</c> if <paramref name="currentValue" /> ends with <paramref name="referenceValue" />, <c>false</c>
+      ///    otherwise.
+      /// </returns>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      protected override bool PerformEndsWithOperation(string currentValue, string referenceValue)
+      {
+         return currentValue.EndsWith(referenceValue);
+      }
 
       /// <summary>
       ///    Performs the greater than or equal to operation.
@@ -86,7 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       {
          throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
       }
-      
+
       /// <summary>
       ///    Performs the less than operation.
       /// </summary>
@@ -118,6 +133,16 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
+      ///    Performs the NotEmpty operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
+      protected override bool PerformNotEmptyOperation(string currentValue)
+      {
+         return currentValue != string.Empty;
+      }
+
+      /// <summary>
       ///    Performs the greater than or equal to operation.
       /// </summary>
       /// <param name="currentValue">The current value.</param>
@@ -128,13 +153,18 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
-      /// Performs the NotEmpty operation.
+      ///    Performs the StartsWith operation.
       /// </summary>
       /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotEmptyOperation(string currentValue)
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns>
+      ///    <c>true</c> if <paramref name="currentValue" /> starts with <paramref name="referenceValue" />, <c>false</c>
+      ///    otherwise.
+      /// </returns>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      protected override bool PerformStartsWithOperation(string currentValue, string referenceValue)
       {
-         return currentValue != string.Empty;
+         return currentValue.StartsWith(referenceValue);
       }
    }
 }

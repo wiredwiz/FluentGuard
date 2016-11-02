@@ -210,4 +210,12 @@
   <data name="UnableToPerformPosNegOp" xml:space="preserve">
     <value>Unable to evaluate type for positivity or negativity</value>
   </data>
+  <data name="UnableToPerformAnEndsWithOp" xml:space="preserve">
+    <value>Unable to perform an EndsWith operation on the supplied value type</value>
+    <comment>UnableToPerformAnEndsWithOp description</comment>
+  </data>
+  <data name="UnableToPerformAStartsWithOp" xml:space="preserve">
+    <value>Unable to perform a StartsWith operation on the supplied value type</value>
+    <comment>UnableToPerformAStartsWithOp description</comment>
+  </data>
 </root>
