@@ -223,6 +223,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only strings can be evaluated for Empty.
+        /// </summary>
+        internal static string OnlyStringsCanBeEvaluatedForEmpty {
+            get {
+                return ResourceManager.GetString("OnlyStringsCanBeEvaluatedForEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to access {0}.
         /// </summary>
         internal static string UnableToAccess {
@@ -232,7 +241,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to perform a Greater Than operation on the supplied value type..
+        ///   Looks up a localized string similar to Unable to perform a Greater Than operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformAGreaterThanOp {
             get {
@@ -241,7 +250,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to perform a Greater Than Or Equal To operation on the supplied value type..
+        ///   Looks up a localized string similar to Unable to perform a Greater Than Or Equal To operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformAGreaterThanOrEqualToOp {
             get {
@@ -250,7 +259,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to perform a Less Than operation on the supplied value type..
+        ///   Looks up a localized string similar to Unable to perform a Less Than operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformALessThanOp {
             get {
@@ -259,7 +268,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to perform a Less Than Or Equal To operation on the supplied value type..
+        ///   Looks up a localized string similar to Unable to perform a Less Than Or Equal To operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformALessThanOrEqualToOp {
             get {
@@ -268,11 +277,29 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to perform an equality operation on the supplied value type..
+        ///   Looks up a localized string similar to Unable to perform an equality operation on the supplied value type.
         /// </summary>
         internal static string UnableToPerformAnEqualToOp {
             get {
                 return ResourceManager.GetString("UnableToPerformAnEqualToOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to evalute type for true or false.
+        /// </summary>
+        internal static string UnableToPerformBooleanOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformBooleanOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to evaluate type for positivity or negativity.
+        /// </summary>
+        internal static string UnableToPerformPosNegOp {
+            get {
+                return ResourceManager.GetString("UnableToPerformPosNegOp", resourceCulture);
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿#region Apache License 2.0
-// <copyright file="ULongValidator.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+
+// <copyright company="Edgerunner.org" file="StringValidator.cs">
+// Copyright (c)  2016
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,24 +15,33 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
+
+using System;
+using Org.Edgerunner.FluentGuard.Properties;
+
 namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
-   ///    A Validator class for type <see cref="ulong" />.
+   ///    A Validator class for type <see cref="string" />.
    /// </summary>
-   /// <seealso cref="ulong" />
-   public class ULongValidator : Validator<ulong>
+   /// <seealso cref="string" />
+   public class StringValidator : Validator<string>
    {
+      #region Constructors And Finalizers
+
       /// <summary>
-      /// Initializes a new instance of the <see cref="ULongValidator"/> class.
+      ///    Initializes a new instance of the <see cref="StringValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      internal ULongValidator(string parameterName, ulong parameterValue)
+      internal StringValidator(string parameterName, string parameterValue)
          : base(parameterName, parameterValue)
       {
       }
+
+      #endregion
 
       /// <summary>
       ///    Performs the greater than or equal to operation.
@@ -42,7 +52,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformEqualToOperation(string currentValue, string referenceValue)
       {
          return currentValue == referenceValue;
       }
@@ -56,9 +66,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(ulong currentValue, ulong referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type string.</exception>
+      protected override bool PerformGreaterThanOperation(string currentValue, string referenceValue)
       {
-         return currentValue > referenceValue;
+         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
       }
 
       /// <summary>
@@ -70,9 +81,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(ulong currentValue, ulong referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type string.</exception>
+      protected override bool PerformGreaterThanOrEqualToOperation(string currentValue, string referenceValue)
       {
-         return currentValue >= referenceValue;
+         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
       }
 
       /// <summary>
@@ -80,21 +92,11 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(ulong currentValue)
+      protected override bool PerformIsNegativeOperation(string currentValue)
       {
          return false;
       }
-
-      /// <summary>
-      ///    Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(ulong currentValue)
-      {
-         return currentValue > 0;
-      }
-
+      
       /// <summary>
       ///    Performs the less than operation.
       /// </summary>
@@ -104,9 +106,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(ulong currentValue, ulong referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type string.</exception>
+      protected override bool PerformLessThanOperation(string currentValue, string referenceValue)
       {
-         return currentValue < referenceValue;
+         throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
       }
 
       /// <summary>
@@ -118,9 +121,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(ulong currentValue, ulong referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type string.</exception>
+      protected override bool PerformLessThanOrEqualToOperation(string currentValue, string referenceValue)
       {
-         return currentValue <= referenceValue;
+         throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
       }
 
       /// <summary>
@@ -128,9 +132,19 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(ulong currentValue)
+      protected override bool PerformNotNullOperation(string currentValue)
       {
-         return true;
+         return currentValue != null;
+      }
+
+      /// <summary>
+      /// Performs the NotEmpty operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
+      protected override bool PerformNotEmptyOperation(string currentValue)
+      {
+         return currentValue != string.Empty;
       }
    }
 }

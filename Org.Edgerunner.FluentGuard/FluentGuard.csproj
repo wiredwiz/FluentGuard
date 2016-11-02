@@ -43,10 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CombinationMode.cs" />
-    <Compile Include="DoubleValidator.cs" />
+    <Compile Include="Validators\DateTimeValidator.cs" />
+    <Compile Include="Validators\DoubleValidator.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="ExpressionExtensions.cs" />
+    <Compile Include="Validators\BooleanValidator.cs" />
+    <Compile Include="Validators\ByteValidator.cs" />
+    <Compile Include="Validators\CharacterValidator.cs" />
     <Compile Include="Validators\DecimalValidator.cs" />
+    <Compile Include="Validators\FloatValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -55,9 +60,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TypeHelper.cs" />
-    <Compile Include="Validators\ULongValidator.cs" />
+    <Compile Include="Validators\SByteValidator.cs" />
+    <Compile Include="Validators\StringValidator.cs" />
+    <Compile Include="Validators\UnsignedIntegerValidator.cs" />
+    <Compile Include="Validators\UnsignedLongValidator.cs" />
+    <Compile Include="Validators\UnsignedShortValidator.cs" />
     <Compile Include="Validators\ValidatorFactory.cs" />
-    <Compile Include="Validators\IntValidator.cs" />
+    <Compile Include="Validators\IntegerValidator.cs" />
     <Compile Include="Validators\LongValidator.cs" />
     <Compile Include="Validators\ShortValidator.cs" />
     <Compile Include="Validators\Validator.cs" />

@@ -40,7 +40,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
       public static Validator<T> That<T>(string nameOfParameter, T parameterValue)
       {
-         return new Validator<T>(nameOfParameter, parameterValue);
+         return ValidatorFactory.Create<T>(nameOfParameter, parameterValue);
       }
 
       /// <summary>

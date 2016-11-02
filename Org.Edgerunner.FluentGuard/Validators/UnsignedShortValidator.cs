@@ -1,6 +1,7 @@
 ﻿#region Apache License 2.0
-// <copyright file="DoubleValidator.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+
+// <copyright company="Edgerunner.org" file="UnsignedShortValidator.cs">
+// Copyright (c)  2016
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +15,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
-using Org.Edgerunner.FluentGuard.Validators;
-
-namespace Org.Edgerunner.FluentGuard
+namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
-   /// Class DoubleValidator.
+   ///    A Validator class for type <see cref="ushort" />.
    /// </summary>
-   /// <seealso cref="double" />
-   public class DoubleValidator : Validator<double>
+   /// <seealso cref="ushort" />
+   public class UnsignedShortValidator : Validator<ushort>
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="DoubleValidator" /> class.
+      ///    Initializes a new instance of the <see cref="UnsignedShortValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      internal DoubleValidator(string parameterName, double parameterValue)
+      internal UnsignedShortValidator(string parameterName, ushort parameterValue)
          : base(parameterName, parameterValue)
       {
       }
@@ -49,9 +49,9 @@ namespace Org.Edgerunner.FluentGuard
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(double currentValue, double referenceValue)
+      protected override bool PerformEqualToOperation(ushort currentValue, ushort referenceValue)
       {
-         return currentValue.CompareTo(referenceValue) == 0;
+         return currentValue == referenceValue;
       }
 
       /// <summary>
@@ -63,7 +63,7 @@ namespace Org.Edgerunner.FluentGuard
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(double currentValue, double referenceValue)
+      protected override bool PerformGreaterThanOperation(ushort currentValue, ushort referenceValue)
       {
          return currentValue > referenceValue;
       }
@@ -77,7 +77,7 @@ namespace Org.Edgerunner.FluentGuard
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(double currentValue, double referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(ushort currentValue, ushort referenceValue)
       {
          return currentValue >= referenceValue;
       }
@@ -87,9 +87,9 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(double currentValue)
+      protected override bool PerformIsNegativeOperation(ushort currentValue)
       {
-         return currentValue < 0;
+         return false;
       }
 
       /// <summary>
@@ -97,7 +97,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(double currentValue)
+      protected override bool PerformIsPositiveOperation(ushort currentValue)
       {
          return currentValue > 0;
       }
@@ -111,7 +111,7 @@ namespace Org.Edgerunner.FluentGuard
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(double currentValue, double referenceValue)
+      protected override bool PerformLessThanOperation(ushort currentValue, ushort referenceValue)
       {
          return currentValue < referenceValue;
       }
@@ -125,7 +125,7 @@ namespace Org.Edgerunner.FluentGuard
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(double currentValue, double referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(ushort currentValue, ushort referenceValue)
       {
          return currentValue <= referenceValue;
       }
@@ -135,7 +135,7 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(double currentValue)
+      protected override bool PerformNotNullOperation(ushort currentValue)
       {
          return true;
       }

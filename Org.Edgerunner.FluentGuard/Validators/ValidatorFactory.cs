@@ -32,8 +32,41 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
       /// <returns>A new <see cref="IValidator{T}"/> instance.</returns>
-      public static IValidator<T> Create<T>(string parameterName, T parameterValue)
+      public static Validator<T> Create<T>(string parameterName, T parameterValue)
       {
+         var typeData = typeof(T);
+
+         if (typeData == typeof(bool))
+            return new BooleanValidator(parameterName, Convert.ToBoolean(parameterValue)) as Validator<T>;
+         if (typeData == typeof(int))
+            return new IntegerValidator(parameterName, Convert.ToInt32(parameterValue)) as Validator<T>;
+         if (typeData == typeof(string))
+            return new StringValidator(parameterName, parameterValue == null ? null : Convert.ToString(parameterValue)) as Validator<T>;
+         if (typeData == typeof(double))
+            return new DoubleValidator(parameterName, Convert.ToDouble(parameterValue)) as Validator<T>;
+         if (typeData == typeof(decimal))
+            return new DecimalValidator(parameterName, Convert.ToDecimal(parameterValue)) as Validator<T>;
+         if (typeData == typeof(DateTime))
+            return new DateTimeValidator(parameterName, Convert.ToDateTime(parameterValue)) as Validator<T>;
+         if (typeData == typeof(long))
+            return new LongValidator(parameterName, Convert.ToInt64(parameterValue)) as Validator<T>;
+         if (typeData == typeof(short))
+            return new ShortValidator(parameterName, Convert.ToInt16(parameterValue)) as Validator<T>;
+         if (typeData == typeof(char))
+            return new CharacterValidator(parameterName, Convert.ToChar(parameterValue)) as Validator<T>;
+         if (typeData == typeof(float))
+            return new FloatValidator(parameterName, Convert.ToSingle(parameterValue)) as Validator<T>;
+         if (typeData == typeof(ulong))
+            return new UnsignedLongValidator(parameterName, Convert.ToUInt64(parameterValue)) as Validator<T>;
+         if (typeData == typeof(ushort))
+            return new UnsignedShortValidator(parameterName, Convert.ToUInt16(parameterValue)) as Validator<T>;
+         if (typeData == typeof(uint))
+            return new UnsignedIntegerValidator(parameterName, Convert.ToUInt32(parameterValue)) as Validator<T>;
+         if (typeData == typeof(byte))
+            return new ByteValidator(parameterName, Convert.ToByte(parameterValue)) as Validator<T>;
+         if (typeData == typeof(sbyte))
+            return new SByteValidator(parameterName, Convert.ToSByte(parameterValue)) as Validator<T>;       
+
          return new Validator<T>(parameterName, parameterValue);
       }
    }

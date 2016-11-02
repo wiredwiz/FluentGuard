@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using MiscUtil;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validators
@@ -228,7 +227,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       public virtual Validator<T> IsNotNull()
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue != null))
+         if (ShouldReturnAfterEvaluation(PerformNotNullOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -245,9 +244,8 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentException">Must not be empty.</exception>
       public virtual Validator<T> IsNotNullOrEmpty()
       {
-         var paramAsString = ParameterValue as string;
-         var valueIsNull = ParameterValue == null;
-         if (ShouldReturnAfterEvaluation(!string.IsNullOrEmpty(paramAsString)))
+         var valueIsNull = !PerformNotNullOperation(ParameterValue);
+         if (ShouldReturnAfterEvaluation(!valueIsNull && PerformNotEmptyOperation(ParameterValue)))
             return this;
 
          if (CurrentException == null)
@@ -650,13 +648,25 @@ namespace Org.Edgerunner.FluentGuard.Validators
       }
 
       /// <summary>
+      /// Performs the NotEmpty operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Only strings can be evaluated for Empty.</exception>
+      protected virtual bool PerformNotEmptyOperation(T currentValue)
+      {
+         throw new InvalidOperationException(Resources.OnlyStringsCanBeEvaluatedForEmpty);
+      }
+
+      /// <summary>
       /// Performs the IsPositive operation.
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
       protected virtual bool PerformIsPositiveOperation(T currentValue)
       {
-         return false;
+         throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
       }
 
       /// <summary>
@@ -664,9 +674,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
       protected virtual bool PerformIsNegativeOperation(T currentValue)
       {
-         return false;
+         throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
       }
 
       /// <summary>
@@ -676,7 +687,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
       protected virtual bool PerformIsTrueOperation(T currentValue)
       {
-         return false;
+         throw new InvalidOperationException(Resources.UnableToPerformBooleanOp);
       }
    }
 }
