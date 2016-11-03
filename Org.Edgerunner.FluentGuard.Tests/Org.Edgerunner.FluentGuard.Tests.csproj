@@ -74,12 +74,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecimalValidatorTests.cs" />
     <Compile Include="DoubleValidatorTests.cs" />
     <Compile Include="EnsureTests.cs" />
+    <Compile Include="FloatValidatorTests.cs" />
     <Compile Include="IntegerValidatorTests.cs" />
     <Compile Include="LongValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShortValidatorTests.cs" />
+    <Compile Include="UnsignedShortValidatorTests.cs" />
+    <Compile Include="UnsignedIntegerValidatorTests.cs" />
+    <Compile Include="UnsignedLongValidatorTests.cs" />
     <Compile Include="ValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -189,7 +189,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
       public virtual Validator<T> IsEqualTo(T value)
       {
-         if (ShouldReturnAfterEvaluation(ParameterValue.Equals(value)))
+         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
@@ -206,7 +206,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
       public virtual Validator<T> IsNotEqualTo(T value)
       {
-         if (ShouldReturnAfterEvaluation(!ParameterValue.Equals(value)))
+         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
