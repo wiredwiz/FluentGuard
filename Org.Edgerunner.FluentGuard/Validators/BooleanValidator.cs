@@ -27,6 +27,17 @@ namespace Org.Edgerunner.FluentGuard.Validators
    public class BooleanValidator : Validator<bool>
    {
       /// <summary>
+      /// Performs the IsTrue operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
+      protected override bool PerformIsTrueOperation(bool currentValue)
+      {
+         return currentValue;
+      }
+
+      /// <summary>
       /// Initializes a new instance of the <see cref="BooleanValidator"/> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>

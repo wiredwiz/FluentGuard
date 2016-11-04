@@ -47,7 +47,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false, false)]
       public override void TestParameterLessThanFails(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator, Action act)
       {
-         base.TestParameterLessThanFails(parameterName, parameterValue, valueToCompare, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformALessThanOp));
       }
 
       /// <summary>
@@ -63,24 +71,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false, true)]
       public override void TestParameterLessThanOrEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator, Action act)
       {
-         base.TestParameterLessThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
 
-      /// <summary>
-      /// Tests less than or equal to validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
-      [Scenario]
-      [Example("foo", true, true)]
-      [Example("foo", false, false)]
-      public override void TestParameterLessThanOrEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator)
-      {
-         base.TestParameterLessThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformALessThanOrEqualToOp));
+      }
+      
       /// <summary>
       /// Tests greater than validation.
       /// </summary>
@@ -96,7 +97,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false, false)]
       public override void TestParameterGreaterThanFails(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator, Action act)
       {
-         base.TestParameterGreaterThanFails(parameterName, parameterValue, valueToCompare, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAGreaterThanOp));
       }
 
       /// <summary>
@@ -112,24 +121,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false, true)]
       public override void TestParameterGreaterThanOrEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator, Action act)
       {
-         base.TestParameterGreaterThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
 
-      /// <summary>
-      /// Tests greater than or equal to validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>      
-      [Scenario]
-      [Example("foo", true, true)]
-      [Example("foo", false, false)]
-      public override void TestParameterGreaterThanOrEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, Validator<bool> validator)
-      {
-         base.TestParameterGreaterThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAGreaterThanOrEqualToOp));
+      }
+      
       /// <summary>
       /// Tests equal to validation.
       /// </summary>
@@ -272,7 +274,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false)]
       public override void TestParameterIsPositiveFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
       {
-         base.TestParameterIsPositiveFails(parameterName, parameterValue, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
       }
 
       /// <summary>
@@ -287,7 +297,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false)]
       public override void TestParameterIsNegativeFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
       {
-         base.TestParameterIsNegativeFails(parameterName, parameterValue, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
       }
 
       /// <summary>
@@ -302,7 +320,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false)]
       public override void TestParameterIsNotNegativeFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
       {
-         base.TestParameterIsNotNegativeFails(parameterName, parameterValue, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
       }
 
       /// <summary>
@@ -317,7 +343,15 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", false)]
       public override void TestParameterIsNotPositiveFails(string parameterName, bool parameterValue, Validator<bool> validator, Action act)
       {
-         base.TestParameterIsNotPositiveFails(parameterName, parameterValue, validator, act);
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
       }
    }
 }

@@ -18,6 +18,8 @@
 
 #endregion
 
+using System;
+
 namespace Org.Edgerunner.FluentGuard.Validators
 {
    /// <summary>
@@ -118,6 +120,28 @@ namespace Org.Edgerunner.FluentGuard.Validators
       protected override bool PerformNotNullOperation(sbyte currentValue)
       {
          return true;
+      }
+
+      /// <summary>
+      /// Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
+      protected override bool PerformIsPositiveOperation(sbyte currentValue)
+      {
+         return currentValue > 0;
+      }
+
+      /// <summary>
+      /// Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
+      protected override bool PerformIsNegativeOperation(sbyte currentValue)
+      {
+         return currentValue < 0;
       }
    }
 }

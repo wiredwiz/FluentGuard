@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="ULongValidator.cs">
+// <copyright company="Edgerunner.org" file="UnsignedLongValidator.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
