@@ -385,9 +385,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Example("foo", "bar maid", "bah")]
-      [Example("foo", null, "bah")]
-      [Example("foo", "", "bah")]
       public virtual void TestParameterStartsWithFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
@@ -429,9 +426,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Example("foo", "bar maid", "bar")]
-      [Example("foo", "Big Bear", "Bi")]
-      [Example("foo", "Trolley", "")]
       public virtual void TestParameterStartsWithPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
@@ -451,10 +445,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Example("foo", "bar maid", "bah")]
-      [Example("foo", null, "bah")]
-      [Example("foo", "", "bah")]
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
       public virtual void TestParameterEndsWithFails(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator, Action act)
       {
          "Given a new validator"
@@ -475,7 +466,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Example("foo", "bar maid")]
       public virtual void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
       {
          "Given a new validator"
@@ -495,9 +485,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Example("foo", "bar maid", "aid")]
-      [Example("foo", "Big Bear", "ear")]
-      [Example("foo", "Trolley", "")]
       public virtual void TestParameterEndsWithPasses(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator)
       {
          "Given a new validator"

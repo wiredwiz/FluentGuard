@@ -277,7 +277,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
       public virtual Validator<T> EndsWith(T value)
       {
-         if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))
+         if (ShouldReturnAfterEvaluation(PerformEndsWithOperation(ParameterValue, value)))
             return this;
 
          if (CurrentException == null)
