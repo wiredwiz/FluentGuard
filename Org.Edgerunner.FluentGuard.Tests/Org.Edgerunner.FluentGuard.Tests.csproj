@@ -85,6 +85,7 @@
     <Compile Include="BooleanValidatorTests.cs" />
     <Compile Include="ByteValidatorTests.cs" />
     <Compile Include="CharacterValidatorTests.cs" />
+    <Compile Include="DateTimeData.cs" />
     <Compile Include="DateTimeValidatorTests.cs" />
     <Compile Include="DecimalValidatorTests.cs" />
     <Compile Include="DoubleValidatorTests.cs" />
