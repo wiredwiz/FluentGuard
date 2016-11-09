@@ -18,10 +18,6 @@
 
 #endregion
 
-using System;
-using System.Linq.Expressions;
-using System.Reflection;
-using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Validators;
 
 namespace Org.Edgerunner.FluentGuard
@@ -32,6 +28,12 @@ namespace Org.Edgerunner.FluentGuard
    public static class Ensure
    {
       /// <summary>
+      /// Gets or sets the factory to use for generating new validators.
+      /// </summary>
+      /// <value>An <see cref="IValidatorFactory"/> instance.</value>
+      public static IValidatorFactory Factory { get; set; } = new ValidatorFactory();
+
+      /// <summary>
       /// Validates the specified parameter value.
       /// </summary>
       /// <typeparam name="T">The type of data being validated.</typeparam>
@@ -40,7 +42,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
       public static Validator<T> That<T>(string nameOfParameter, T parameterValue)
       {
-         return ValidatorFactory.Create<T>(nameOfParameter, parameterValue);
+         return Factory.Create(nameOfParameter, parameterValue);
       }
    }
 }

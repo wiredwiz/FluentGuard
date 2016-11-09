@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Validators\IValidatorFactory.cs" />
     <Compile Include="Validators\SByteValidator.cs" />
     <Compile Include="Validators\StringValidator.cs" />
     <Compile Include="Validators\UnsignedIntegerValidator.cs" />

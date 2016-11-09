@@ -23,16 +23,16 @@ namespace Org.Edgerunner.FluentGuard.Validators
    /// <summary>
    /// Factory class for creating new validator instances.
    /// </summary>
-   internal static class ValidatorFactory
+   internal class ValidatorFactory : IValidatorFactory
    {
       /// <summary>
-      /// Creates a new instance of <see cref="IValidator{T}"/>.
+      /// Creates a new instance of <see cref="Validator{T}"/>.
       /// </summary>
       /// <typeparam name="T">The type of data to validate.</typeparam>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      /// <returns>A new <see cref="IValidator{T}"/> instance.</returns>
-      public static Validator<T> Create<T>(string parameterName, T parameterValue)
+      /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
+      public Validator<T> Create<T>(string parameterName, T parameterValue)
       {
          var typeData = typeof(T);
 
