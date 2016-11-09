@@ -19,7 +19,6 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Org.Edgerunner.FluentGuard.Properties;
@@ -534,10 +533,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
+         IEquatable<T> original = ParameterValue as IEquatable<T>;
          if (original == null)
             throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
-         return original.CompareTo(referenceValue) == 0;
+         return original.Equals(referenceValue);
       }
 
       /// <summary>

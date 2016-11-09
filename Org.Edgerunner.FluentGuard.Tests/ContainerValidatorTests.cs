@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="DateTimeValidatorTests.cs" company="Edgerunner.org">
+// <copyright file="ContainerValidatorTests.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -23,6 +23,7 @@ using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Tests.Data;
+using Org.Edgerunner.FluentGuard.Tests.Models;
 using Org.Edgerunner.FluentGuard.Validators;
 using Xbehave;
 using Xunit;
@@ -30,15 +31,15 @@ using Xunit;
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class DateTimeValidatorTests.
+   ///    Class ContainerValidatorTests.
    /// </summary>
-   /// <seealso cref="DateTime" />
+   /// <seealso cref="Container" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "EventExceptionNotDocumented", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "Is a necessity of xBehave tests")]
 
    // ReSharper disable once ClassTooBig
-   public class DateTimeValidatorTests : ValidatorTests<DateTime>
+   public class ContainerValidatorTests : ValidatorTests<Container>
    {
       /// <summary>
       /// Tests greater than validation.
@@ -48,8 +49,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsGreaterThan), MemberType = typeof(DateTimeData))]
-      public override void TestParameterGreaterThanPasses(string parameterName, DateTime parameterValue, DateTime valueToCompare, Validator<DateTime> validator)
+      [MemberData(nameof(ContainerData.IsGreaterThan), MemberType = typeof(ContainerData))]
+      public override void TestParameterGreaterThanPasses(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator)
       {
          base.TestParameterGreaterThanPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -63,12 +64,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsNotEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsNotEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterEqualToFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -82,12 +83,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterEqualToPasses(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -101,12 +102,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsLessThanOrEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsLessThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterGreaterThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -121,12 +122,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsLessThan), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsLessThan), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanOrEqualToFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterGreaterThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -140,12 +141,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsGreaterThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterGreaterThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -158,8 +159,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsFalseFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsFalseFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -180,8 +181,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsNegativeFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -202,8 +203,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsNotNegativeFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNotNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -224,8 +225,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsNotPositiveFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNotPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -246,8 +247,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsPositiveFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -268,8 +269,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterIsTrueFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsTrueFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -291,12 +292,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsGreaterThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterLessThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -311,12 +312,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsGreaterThan), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsGreaterThan), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanOrEqualToFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterLessThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -330,12 +331,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsLessThanOrEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsLessThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanOrEqualToPasses(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterLessThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -348,12 +349,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsLessThan), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsLessThan), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanPasses(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterLessThanPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -367,12 +368,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterNotEqualToFails(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterNotEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -386,12 +387,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.IsNotEqualTo), MemberType = typeof(DateTimeData))]
+      [MemberData(nameof(ContainerData.IsNotEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterNotEqualToPasses(
          string parameterName,
-         DateTime parameterValue,
-         DateTime valueToCompare,
-         Validator<DateTime> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterNotEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -403,10 +404,24 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
-      public override void TestParameterNotNullPasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterNotNullPasses(string parameterName, Container parameterValue, Validator<Container> validator)
       {
          base.TestParameterNotNullPasses(parameterName, parameterValue, validator);
+      }
+
+      /// <summary>
+      /// Tests not null validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.IsNull), MemberType = typeof(ContainerData))]
+      public override void TestParameterNotNullFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
+      {
+         base.TestParameterNotNullFails(parameterName, parameterValue, validator, act);
       }
    }
 }

@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Org.Edgerunner.FluentGuard.Tests
+namespace Org.Edgerunner.FluentGuard.Tests.Data
 {
    /// <summary>
-   /// Class that yields up DateTime test data.
+   /// Class that yields up <see cref="DateTime"/> unit test data.
    /// </summary>
    public class DateTimeData
    {
@@ -43,7 +43,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                    {
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 1, 2) },
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 2, 1) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 1) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 1) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -63,7 +63,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 2, 1) },
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 1, 1) },
                       new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 1) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -81,7 +81,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                    {
                       new object[] { "foo", new DateTime(2016, 1, 2), new DateTime(2016, 1, 1) },
                       new object[] { "foo", new DateTime(2016, 2, 1), new DateTime(2016, 1, 1) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 1), new DateTime(2016, 1, 1, 12, 0, 0) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 1), new DateTime(2016, 1, 1, 12, 0, 0) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -101,7 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                       new object[] { "foo", new DateTime(2016, 2, 1), new DateTime(2016, 1, 1) },
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 1, 1) },
                       new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 1), new DateTime(2016, 1, 1, 12, 0, 0) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -118,7 +118,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
          return new[]
                    {
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 1, 1) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 0) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -136,7 +136,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                    {
                       new object[] { "foo", new DateTime(2016, 1, 1), new DateTime(2016, 1, 2) },
                       new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 0, 1) },
-                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 1, 0) },
+                      new object[] { "foo", new DateTime(2016, 1, 1, 12, 0, 0), new DateTime(2016, 1, 1, 12, 1, 0) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -154,7 +154,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
                    {
                       new object[] { "foo", GetRandomDate(new DateTime(1900, 1, 1), new DateTime(2020, 12, 31)) },
                       new object[] { "foo", GetRandomDate(new DateTime(1900, 1, 1), new DateTime(2020, 12, 31)) },
-                      new object[] { "foo", GetRandomDate(new DateTime(1900, 1, 1), new DateTime(2020, 12, 31)) },
+                      new object[] { "foo", GetRandomDate(new DateTime(1900, 1, 1), new DateTime(2020, 12, 31)) }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional
@@ -164,7 +164,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// Gets a new random <see cref="DateTime"/>.
       /// </summary>
       /// <param name="from">The lower inclusive bound.</param>
-      /// <param name="to">The upper inclusive bound.</param>
+      /// <param name="to">The upper exclusive bound.</param>
       /// <returns>A <see cref="DateTime"/>.</returns>
       private static DateTime GetRandomDate(DateTime from, DateTime to)
       {

@@ -49,7 +49,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </returns>
       protected override bool PerformEqualToOperation(double currentValue, double referenceValue)
       {
-         return currentValue.CompareTo(referenceValue) == 0;
+         return currentValue.Equals(referenceValue);
       }
 
       /// <summary>
