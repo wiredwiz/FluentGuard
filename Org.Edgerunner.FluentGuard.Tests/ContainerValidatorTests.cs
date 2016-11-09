@@ -42,6 +42,120 @@ namespace Org.Edgerunner.FluentGuard.Tests
    public class ContainerValidatorTests : ValidatorTests<Container>
    {
       /// <summary>
+      /// Tests not null or empty validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", null)]
+      public override void TestParameterNotNullOrEmptyFailsNull(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter is not null or empty"
+            .x(() => act = () => validator.IsNotNullOrEmpty().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests StartsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterStartsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter starts with a given string"
+            .x(() => act = () => validator.StartsWith(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAStartsWithOp));
+      }
+
+      /// <summary>
+      /// Tests StartsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterStartsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter starts with a given string"
+            .x(() => act = () => validator.StartsWith(null).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAStartsWithOp));
+      }
+
+      /// <summary>
+      /// Tests EndsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterEndsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter ends with a given string"
+            .x(() => act = () => validator.EndsWith(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAnEndsWithOp));
+      }
+
+      /// <summary>
+      /// Tests EndsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterEndsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Ensure.That(parameterName, parameterValue));
+
+         "Testing that the parameter ends with a given string"
+            .x(() => act = () => validator.EndsWith(nullValue).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAnEndsWithOp));
+      }
+
+      /// <summary>
       /// Tests greater than validation.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>

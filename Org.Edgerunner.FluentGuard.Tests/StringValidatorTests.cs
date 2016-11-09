@@ -161,13 +161,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid")]
-      public override void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      [Example("foo", "bar maid", null)]
+      public override void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, string nullValue, Validator<string> validator, Action act)
       {
-         base.TestParameterEndsWithFailsNull(parameterName, parameterValue, validator, act);
+         base.TestParameterEndsWithFailsNull(parameterName, parameterValue, null, validator, act);
       }
 
       /// <summary>

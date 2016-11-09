@@ -406,7 +406,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="nullValue">The null value.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Example("foo", "bar maid", null)]
       public virtual void TestParameterStartsWithFailsNull(string parameterName, T parameterValue, T nullValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
@@ -446,7 +445,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>      
-      public virtual void TestParameterEndsWithFails(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator, Action act)
+      public virtual void TestParameterEndsWithFails(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
@@ -464,15 +463,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
-      public virtual void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, Validator<string> validator, Action act)
+      public virtual void TestParameterEndsWithFailsNull(string parameterName, T parameterValue, T nullValue, Validator<T> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
 
          "Testing that the parameter ends with a null string"
-            .x(() => act = () => validator.EndsWith(null).OtherwiseThrowException());
+            .x(() => act = () => validator.EndsWith(nullValue).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>());
@@ -485,7 +485,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      public virtual void TestParameterEndsWithPasses(string parameterName, string parameterValue, string valueToCompare, Validator<string> validator)
+      public virtual void TestParameterEndsWithPasses(string parameterName, T parameterValue, T valueToCompare, Validator<T> validator)
       {
          "Given a new validator"
             .x(() => validator = Ensure.That(parameterName, parameterValue));
