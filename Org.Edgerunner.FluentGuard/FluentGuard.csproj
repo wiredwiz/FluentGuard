@@ -46,7 +46,6 @@
     <Compile Include="Validators\DateTimeValidator.cs" />
     <Compile Include="Validators\DoubleValidator.cs" />
     <Compile Include="Ensure.cs" />
-    <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="Validators\BooleanValidator.cs" />
     <Compile Include="Validators\ByteValidator.cs" />
     <Compile Include="Validators\CharacterValidator.cs" />
@@ -58,7 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TypeHelper.cs" />
     <Compile Include="Validators\SByteValidator.cs" />
     <Compile Include="Validators\StringValidator.cs" />
     <Compile Include="Validators\UnsignedIntegerValidator.cs" />
