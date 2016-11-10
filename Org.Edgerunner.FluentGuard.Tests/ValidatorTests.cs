@@ -21,7 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
 
 namespace Org.Edgerunner.FluentGuard.Tests

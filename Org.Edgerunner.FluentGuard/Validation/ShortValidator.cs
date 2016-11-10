@@ -1,7 +1,7 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="SByteValidator.cs">
-// Copyright (c)  2016
+// <copyright file="ShortValidator.cs" company="Edgerunner.org">
+// Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,22 @@
 
 #endregion
 
-using System;
-
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="sbyte" />.
+   ///    A Validator class for type <see cref="long" />.
    /// </summary>
-   /// <seealso cref="sbyte" />
-   public class SByteValidator : Validator<sbyte>
+   /// <seealso cref="short" />
+   public class ShortValidator : Validator<short>
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="SByteValidator" /> class.
+      ///    Initializes a new instance of the <see cref="ShortValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      internal SByteValidator(string parameterName, sbyte parameterValue)
+      internal ShortValidator(string parameterName, short parameterValue)
          : base(parameterName, parameterValue)
       {
       }
@@ -51,7 +49,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(sbyte currentValue, sbyte referenceValue)
+      protected override bool PerformEqualToOperation(short currentValue, short referenceValue)
       {
          return currentValue == referenceValue;
       }
@@ -65,7 +63,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(sbyte currentValue, sbyte referenceValue)
+      protected override bool PerformGreaterThanOperation(short currentValue, short referenceValue)
       {
          return currentValue > referenceValue;
       }
@@ -79,9 +77,29 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(sbyte currentValue, sbyte referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(short currentValue, short referenceValue)
       {
          return currentValue >= referenceValue;
+      }
+
+      /// <summary>
+      ///    Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsNegativeOperation(short currentValue)
+      {
+         return currentValue < 0;
+      }
+
+      /// <summary>
+      ///    Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsPositiveOperation(short currentValue)
+      {
+         return currentValue > 0;
       }
 
       /// <summary>
@@ -93,7 +111,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(sbyte currentValue, sbyte referenceValue)
+      protected override bool PerformLessThanOperation(short currentValue, short referenceValue)
       {
          return currentValue < referenceValue;
       }
@@ -107,7 +125,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(sbyte currentValue, sbyte referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(short currentValue, short referenceValue)
       {
          return currentValue <= referenceValue;
       }
@@ -117,31 +135,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(sbyte currentValue)
+      protected override bool PerformNotNullOperation(short currentValue)
       {
          return true;
-      }
-
-      /// <summary>
-      /// Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
-      protected override bool PerformIsPositiveOperation(sbyte currentValue)
-      {
-         return currentValue > 0;
-      }
-
-      /// <summary>
-      /// Performs the IsNegative operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
-      protected override bool PerformIsNegativeOperation(sbyte currentValue)
-      {
-         return currentValue < 0;
       }
    }
 }

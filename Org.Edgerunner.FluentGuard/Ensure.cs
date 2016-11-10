@@ -21,7 +21,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Validation;
 
 namespace Org.Edgerunner.FluentGuard
 {

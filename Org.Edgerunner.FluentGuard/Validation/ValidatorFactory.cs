@@ -18,7 +18,7 @@
 
 using System;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Factory class for creating new validator instances.

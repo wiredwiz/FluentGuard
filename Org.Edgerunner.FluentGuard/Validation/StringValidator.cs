@@ -21,7 +21,7 @@
 using System;
 using Org.Edgerunner.FluentGuard.Properties;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    ///    A Validator class for type <see cref="string" />.

@@ -20,7 +20,7 @@
 
 using System;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    ///    Interface that defines a validator factory.

@@ -16,7 +16,7 @@
 // limitations under the License.
 #endregion
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    ///    A Validator class for type <see cref="double" />.

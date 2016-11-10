@@ -23,7 +23,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Org.Edgerunner.FluentGuard.Properties;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Class that validates data.
@@ -43,7 +43,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="parameterName">The name of the parameter being validated.</param>
       /// <param name="parameterValue">The value of the parameter being validated.</param>
-      internal Validator(string parameterName, T parameterValue)
+      public Validator(string parameterName, T parameterValue)
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
@@ -69,13 +69,13 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// Gets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      public virtual string ParameterName { get; private set; }
+      public virtual string ParameterName { get; internal set; }
 
       /// <summary>
       /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      public virtual T ParameterValue { get; private set; }
+      public virtual T ParameterValue { get; internal set; }
 
       /// <summary>
       ///    Combines the current conditional check with a new one using 'And' logic.

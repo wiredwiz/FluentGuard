@@ -24,7 +24,7 @@ using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Tests.Data;
 using Org.Edgerunner.FluentGuard.Tests.Models;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
 using Xunit;
 
