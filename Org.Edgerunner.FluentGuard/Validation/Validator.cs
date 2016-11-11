@@ -43,7 +43,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="parameterName">The name of the parameter being validated.</param>
       /// <param name="parameterValue">The value of the parameter being validated.</param>
-      public Validator(string parameterName, T parameterValue)
+      internal Validator(string parameterName, T parameterValue)
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
@@ -69,13 +69,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Gets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      public virtual string ParameterName { get; internal set; }
+      public virtual string ParameterName { get; }
 
       /// <summary>
       /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      public virtual T ParameterValue { get; internal set; }
+      public virtual T ParameterValue { get; }
 
       /// <summary>
       ///    Combines the current conditional check with a new one using 'And' logic.

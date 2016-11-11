@@ -36,8 +36,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       {
          var typeData = typeof(T);
 
+         // ReSharper disable ExceptionNotDocumented
+         // ReSharper disable ExceptionNotDocumentedOptional
          if (typeData == typeof(bool))
-            return new BooleanValidator(parameterName, Convert.ToBoolean(parameterValue)) as Validator<T>;
+            return new BooleanValidator(parameterName, Convert.ToBoolean(parameterValue)) as Validator<T>;         
          if (typeData == typeof(int))
             return new IntegerValidator(parameterName, Convert.ToInt32(parameterValue)) as Validator<T>;
          if (typeData == typeof(string))
@@ -65,7 +67,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
          if (typeData == typeof(byte))
             return new ByteValidator(parameterName, Convert.ToByte(parameterValue)) as Validator<T>;
          if (typeData == typeof(sbyte))
-            return new SByteValidator(parameterName, Convert.ToSByte(parameterValue)) as Validator<T>;       
+            return new SByteValidator(parameterName, Convert.ToSByte(parameterValue)) as Validator<T>;
+         // ReSharper restore ExceptionNotDocumentedOptional
+         // ReSharper restore ExceptionNotDocumented
 
          return new Validator<T>(parameterName, parameterValue);
       }

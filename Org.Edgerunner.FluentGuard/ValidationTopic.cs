@@ -47,7 +47,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
       public TV UsingA<TV>() where TV : Validator<T>, new()
       {
-         return new TV { ParameterName = Name, ParameterValue = Value };
+         return Validate.Factory.Create(Name, Value) as TV;
       }
 
       /// <summary>
