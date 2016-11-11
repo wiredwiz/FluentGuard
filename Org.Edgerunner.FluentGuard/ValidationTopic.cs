@@ -45,16 +45,26 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <typeparam name="TV">The type of the validator to construct.</typeparam>
       /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
-      public TV Using<TV>() where TV : Validator<T>, new()
+      public TV UsingA<TV>() where TV : Validator<T>, new()
       {
          return new TV { ParameterName = Name, ParameterValue = Value };
+      }
+
+      /// <summary>
+      /// Constructs a new validator to use.
+      /// </summary>
+      /// <typeparam name="TV">The type of the validator to construct.</typeparam>
+      /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
+      public TV UsingAn<TV>() where TV : Validator<T>, new()
+      {
+         return UsingA<TV>();
       }
 
       /// <summary>
       /// Constructs a new generic validator to use.
       /// </summary>
       /// <returns>A new <see cref="Validator{T}" /> instance.</returns>
-      public Validator<T> UsingDefaultValidator()
+      public Validator<T> UsingTheDefaultValidator()
       {
          return new Validator<T>(Name, Value);
       }
