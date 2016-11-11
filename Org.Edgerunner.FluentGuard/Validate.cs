@@ -52,18 +52,25 @@ namespace Org.Edgerunner.FluentGuard
       /// Validates the specified parameter value.
       /// </summary>
       /// <typeparam name="T">The type of data being validated.</typeparam>
-      /// <param name="variableExpression">The variable expression to validate.</param>
+      /// <param name="expression">The variable expression to validate.</param>
       /// <returns>A new <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="TargetException"><paramref name="variableExpression"/> is null.</exception>
-      public static Validator<T> That<T>(Expression<Func<T>> variableExpression)
+      /// <exception cref="TargetException"><paramref name="expression"/> is null.</exception>
+      public static Validator<T> That<T>(Expression<Func<T>> expression)
       {
-         var body = (MemberExpression)variableExpression.Body;
-         var nameOfParameter = body.Member.Name;
-         // ReSharper disable ExceptionNotDocumentedOptional
-         // ReSharper disable ExceptionNotDocumented
-         var parameterValue = (T)((FieldInfo)body.Member).GetValue(((ConstantExpression)body.Expression).Value);
-         // ReSharper restore ExceptionNotDocumented
-         // ReSharper restore ExceptionNotDocumentedOptional
+         T parameterValue;
+         var body = (MemberExpression)expression.Body;
+         var nameOfParameter = expression.GetMemberPath(); // body.Member.Name;
+         if (body.Member.MemberType == MemberTypes.Field)
+            parameterValue = (T)((FieldInfo)body.Member).GetValue(((ConstantExpression)body.Expression).Value);
+         else if (body.Member.MemberType == MemberTypes.Property)
+         {
+            var memberInfo = (PropertyInfo)body.Member;
+            while (body.Expression.NodeType == ExpressionType.MemberAccess)
+               body = (MemberExpression)body.Expression;
+            parameterValue = (T)memberInfo.GetValue(((ConstantExpression)body.Expression).Value);
+         }
+         else
+            throw new ArgumentException("Only variable, property or field expressions are allowed");
          return Factory.Create(nameOfParameter, parameterValue);
       }
    }

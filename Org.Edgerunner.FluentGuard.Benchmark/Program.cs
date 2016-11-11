@@ -1,38 +1,21 @@
-﻿#region Apache License 2.0
-
-// <copyright file="Program.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
-// </copyright>
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-#endregion
-
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Org.Edgerunner.FluentGuard.Validation;
 
 namespace Org.Edgerunner.FluentGuard.Benchmark
 {
    class Program
    {
-      #region Static
-
       static void Main(string[] args)
       {
-         var foo = 5;
-         Using<IntegerValidator, int>.EnsureThat(() => foo).IsPositive().And().IsLessThan(10);
+         var foo = new Dictionary<string, int> { { "test", 1} };
+         var validator = Validate.That(() => foo.Keys.Count);
+         Console.WriteLine($"Name: {validator.ParameterName}");
+         Console.WriteLine($"Value: {validator.ParameterValue}");
+         Console.ReadKey();
       }
-
-      #endregion
    }
 }

@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="Using.cs" company="Edgerunner.org">
+// <copyright file="UsingA.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -28,7 +28,7 @@ namespace Org.Edgerunner.FluentGuard
    /// <summary>
    /// Class for validation of inputs.
    /// </summary>
-   public static class Using<TV, T> where TV : Validator<T>
+   public static class UsingA<TV, T> where TV : Validator<T>
    {
       /// <summary>
       /// Gets or sets the factory to use for generating new validators.
@@ -42,7 +42,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="Validator{T}" /> instance.</returns>
-      public static TV EnsureThat(string nameOfParameter, T parameterValue)
+      public static TV ValidateThat(string nameOfParameter, T parameterValue)
       {
          return Factory.Create(nameOfParameter, parameterValue) as TV;
       }
@@ -53,7 +53,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="variableExpression">The variable expression to validate.</param>
       /// <returns>A new <see cref="Validator{T}" /> instance.</returns>
       /// <exception cref="TargetException"><paramref name="variableExpression" /> is null.</exception>
-      public static TV EnsureThat(Expression<Func<T>> variableExpression)
+      public static TV ValidateThat(Expression<Func<T>> variableExpression)
       {
          var body = (MemberExpression)variableExpression.Body;
          var nameOfParameter = body.Member.Name;

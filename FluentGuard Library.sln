@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentGuard", "Org.Edgerunn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Org.Edgerunner.FluentGuard.Tests", "Org.Edgerunner.FluentGuard.Tests\Org.Edgerunner.FluentGuard.Tests.csproj", "{82A70526-6388-473F-86AA-423EDFFFF6C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Org.Edgerunner.FluentGuard.Benchmark\Benchmark.csproj", "{5BAA68B5-ABEA-4013-84CF-370A3EE69D95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Org.Edgerunner.FluentGuard.Benchmark\Benchmark.csproj", "{13D4A36C-D0DF-4628-BC23-896DCFD32B05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{82A70526-6388-473F-86AA-423EDFFFF6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82A70526-6388-473F-86AA-423EDFFFF6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82A70526-6388-473F-86AA-423EDFFFF6C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BAA68B5-ABEA-4013-84CF-370A3EE69D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BAA68B5-ABEA-4013-84CF-370A3EE69D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BAA68B5-ABEA-4013-84CF-370A3EE69D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BAA68B5-ABEA-4013-84CF-370A3EE69D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D4A36C-D0DF-4628-BC23-896DCFD32B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D4A36C-D0DF-4628-BC23-896DCFD32B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D4A36C-D0DF-4628-BC23-896DCFD32B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D4A36C-D0DF-4628-BC23-896DCFD32B05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
