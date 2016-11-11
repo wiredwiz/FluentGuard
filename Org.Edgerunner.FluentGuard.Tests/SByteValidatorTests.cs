@@ -292,7 +292,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsFalseFails(string parameterName, sbyte parameterValue, Validator<sbyte> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
             .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
@@ -434,7 +434,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsTrueFails(string parameterName, sbyte parameterValue, Validator<sbyte> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
             .x(() => act = () => validator.IsTrue().OtherwiseThrowException());

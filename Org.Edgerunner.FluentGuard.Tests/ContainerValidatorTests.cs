@@ -53,7 +53,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterNotNullOrEmptyFailsNull(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is not null or empty"
             .x(() => act = () => validator.IsNotNullOrEmpty().OtherwiseThrowException());
@@ -76,7 +76,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterStartsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter starts with a given string"
             .x(() => act = () => validator.StartsWith(valueToCompare).OtherwiseThrowException());
@@ -99,7 +99,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterStartsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter starts with a given string"
             .x(() => act = () => validator.StartsWith(null).OtherwiseThrowException());
@@ -122,7 +122,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterEndsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter ends with a given string"
             .x(() => act = () => validator.EndsWith(valueToCompare).OtherwiseThrowException());
@@ -145,7 +145,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterEndsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter ends with a given string"
             .x(() => act = () => validator.EndsWith(nullValue).OtherwiseThrowException());
@@ -277,7 +277,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsFalseFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
             .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
@@ -299,7 +299,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
             .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
@@ -321,7 +321,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsNotNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
             .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
@@ -343,7 +343,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsNotPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
             .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
@@ -365,7 +365,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
             .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
@@ -387,7 +387,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public override void TestParameterIsTrueFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
             .x(() => act = () => validator.IsTrue().OtherwiseThrowException());

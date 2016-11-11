@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="Ensure.cs" company="Edgerunner.org">
+// <copyright file="Validate.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -28,7 +28,7 @@ namespace Org.Edgerunner.FluentGuard
    /// <summary>
    /// Class for validation of inputs.
    /// </summary>
-   public static class Ensure
+   public static class Validate
    {
       /// <summary>
       /// Gets or sets the factory to use for generating new validators.

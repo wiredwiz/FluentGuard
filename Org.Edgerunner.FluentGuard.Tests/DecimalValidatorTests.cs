@@ -300,7 +300,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1.00001)]
       public override void TestParameterIsFalseFails(string parameterName, decimal parameterValue, Validator<decimal> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
+         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 
@@ -445,7 +445,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1)]
       public override void TestParameterIsTrueFails(string parameterName, decimal parameterValue, Validator<decimal> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
+         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 

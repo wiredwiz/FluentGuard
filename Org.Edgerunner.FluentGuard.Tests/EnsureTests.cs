@@ -43,7 +43,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public void CreationOfValidatorPasses(string parameterName, int parameterValue, Validator<int> validator)
       {
          "Ensuring that a given parameter and its value, results in a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Where its name matches the supplied parameter name"
             .x(() => validator.ParameterName.Should().Be(parameterName));
@@ -62,7 +62,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public void CreationOfLambdaValidatorPasses(int parameterValue, Validator<int> validator)
       {
          "Ensuring that a given parameter and its value, results in a new validator"
-            .x(() => validator = Ensure.That(() => parameterValue));
+            .x(() => validator = Validate.That(() => parameterValue));
 
          "Where its name matches the supplied parameter name"
             .x(() => validator.ParameterName.Should().Be("parameterValue"));
