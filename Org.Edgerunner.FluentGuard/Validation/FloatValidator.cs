@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="float" />.
    /// </summary>
    /// <seealso cref="float" />
-   public class FloatValidator : Validator<float>
+   public class FloatValidator : NumericValidator<float>
    {
       #region Constructors And Finalizers
 

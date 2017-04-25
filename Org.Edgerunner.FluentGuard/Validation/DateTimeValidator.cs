@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -120,6 +121,108 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected override bool PerformNotNullOperation(DateTime currentValue)
       {
          return true;
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsEqualTo(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is greater than the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsGreaterThan(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is greater than or equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsGreaterThanOrEqualTo(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is less than the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsLessThan(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is less than or equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsLessThanOrEqualTo(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanOrEqualToX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<DateTimeValidator> IsNotEqualTo(DateTime value)
+      {
+         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<DateTimeValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+
+         return new ValidatorLinkage<DateTimeValidator>(this);
       }
    }
 }

@@ -26,7 +26,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="sbyte" />.
    /// </summary>
    /// <seealso cref="sbyte" />
-   public class SByteValidator : Validator<sbyte>
+   public class SByteValidator : NumericValidator<sbyte>
    {
       #region Constructors And Finalizers
 

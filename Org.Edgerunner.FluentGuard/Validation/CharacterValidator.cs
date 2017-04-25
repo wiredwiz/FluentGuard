@@ -15,13 +15,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
+
+using System;
+using Org.Edgerunner.FluentGuard.Properties;
+
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// A Validator class for type <see cref="char" />.
    /// </summary>
    /// <seealso cref="char" />
-   public class CharacterValidator : Validator<char>
+   public class CharacterValidator : UnsignedNumericValidator<char>
    {
       /// <summary>
       /// Initializes a new instance of the <see cref="CharacterValidator"/> class.
@@ -131,6 +135,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected override bool PerformNotNullOperation(char currentValue)
       {
          return true;
-      }
+      }      
    }
 }

@@ -218,4 +218,7 @@
     <value>Unable to perform a StartsWith operation on the supplied value type</value>
     <comment>UnableToPerformAStartsWithOp description</comment>
   </data>
+  <data name="MustBeNull" xml:space="preserve">
+    <value>Must be null</value>
+  </data>
 </root>

@@ -31,47 +31,168 @@ namespace Org.Edgerunner.FluentGuard
    public static class Validate
    {
       /// <summary>
-      /// Gets or sets the factory to use for generating new validators.
-      /// </summary>
-      /// <value>An <see cref="IValidatorFactory"/> instance.</value>
-      public static IValidatorFactory Factory { get; set; } = new ValidatorFactory();
-
-      /// <summary>
       /// Validates the specified parameter value.
       /// </summary>
-      /// <typeparam name="T">The type of data being validated.</typeparam>
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
-      public static Validator<T> That<T>(string nameOfParameter, T parameterValue)
+      /// <returns>A new <see cref="BooleanValidator" /> instance.</returns>
+      public static BooleanValidator That(string nameOfParameter, bool parameterValue)
       {
-         return Factory.Create(nameOfParameter, parameterValue);
+         return new BooleanValidator(nameOfParameter, parameterValue);
       }
 
       /// <summary>
       /// Validates the specified parameter value.
       /// </summary>
-      /// <typeparam name="T">The type of data being validated.</typeparam>
-      /// <param name="expression">The variable expression to validate.</param>
-      /// <returns>A new <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="TargetException"><paramref name="expression"/> is null.</exception>
-      public static Validator<T> That<T>(Expression<Func<T>> expression)
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="NullableBooleanValidator"/> instance.</returns>
+      public static NullableBooleanValidator That(string nameOfParameter, bool? parameterValue)
       {
-         T parameterValue;
-         var body = (MemberExpression)expression.Body;
-         var nameOfParameter = expression.GetMemberPath(); // body.Member.Name;
-         if (body.Member.MemberType == MemberTypes.Field)
-            parameterValue = (T)((FieldInfo)body.Member).GetValue(((ConstantExpression)body.Expression).Value);
-         else if (body.Member.MemberType == MemberTypes.Property)
-         {
-            var memberInfo = (PropertyInfo)body.Member;
-            while (body.Expression.NodeType == ExpressionType.MemberAccess)
-               body = (MemberExpression)body.Expression;
-            parameterValue = (T)memberInfo.GetValue(((ConstantExpression)body.Expression).Value);
-         }
-         else
-            throw new ArgumentException("Only variable, property or field expressions are allowed");
-         return Factory.Create(nameOfParameter, parameterValue);
+         return new NullableBooleanValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="StringValidator" /> instance.</returns>
+      public static StringValidator That(string nameOfParameter, string parameterValue)
+      {
+         return new StringValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="IntegerValidator" /> instance.</returns>
+      public static IntegerValidator That(string nameOfParameter, int parameterValue)
+      {
+         return new IntegerValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedIntegerValidator" /> instance.</returns>
+      public static UnsignedIntegerValidator That(string nameOfParameter, uint parameterValue)
+      {
+         return new UnsignedIntegerValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="LongValidator" /> instance.</returns>
+      public static LongValidator That(string nameOfParameter, long parameterValue)
+      {
+         return new LongValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedLongValidator" /> instance.</returns>
+      public static UnsignedLongValidator That(string nameOfParameter, ulong parameterValue)
+      {
+         return new UnsignedLongValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="ShortValidator" /> instance.</returns>
+      public static ShortValidator That(string nameOfParameter, short parameterValue)
+      {
+         return new ShortValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedShortValidator" /> instance.</returns>
+      public static UnsignedShortValidator That(string nameOfParameter, ushort parameterValue)
+      {
+         return new UnsignedShortValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="DecimalValidator" /> instance.</returns>
+      public static DecimalValidator That(string nameOfParameter, decimal parameterValue)
+      {
+         return new DecimalValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="DoubleValidator" /> instance.</returns>
+      public static DoubleValidator That(string nameOfParameter, double parameterValue)
+      {
+         return new DoubleValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="FloatValidator" /> instance.</returns>
+      public static FloatValidator That(string nameOfParameter, float parameterValue)
+      {
+         return new FloatValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="DateTimeValidator" /> instance.</returns>
+      public static DateTimeValidator That(string nameOfParameter, DateTime parameterValue)
+      {
+         return new DateTimeValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="ByteValidator" /> instance.</returns>
+      public static ByteValidator That(string nameOfParameter, byte parameterValue)
+      {
+         return new ByteValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="SByteValidator" /> instance.</returns>
+      public static SByteValidator That(string nameOfParameter, sbyte parameterValue)
+      {
+         return new SByteValidator(nameOfParameter, parameterValue);
       }
    }
 }

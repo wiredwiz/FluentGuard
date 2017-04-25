@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="long" />.
    /// </summary>
    /// <seealso cref="short" />
-   public class ShortValidator : Validator<short>
+   public class ShortValidator : NumericValidator<short>
    {
       #region Constructors And Finalizers
 

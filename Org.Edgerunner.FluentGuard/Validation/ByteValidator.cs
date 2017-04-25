@@ -26,7 +26,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="byte" />.
    /// </summary>
    /// <seealso cref="byte" />
-   public class ByteValidator : Validator<byte>
+   public class ByteValidator : UnsignedNumericValidator<byte>
    {
       #region Constructors And Finalizers
 

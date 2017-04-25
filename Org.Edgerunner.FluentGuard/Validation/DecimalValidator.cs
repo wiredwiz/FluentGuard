@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="decimal" />.
    /// </summary>
    /// <seealso cref="decimal" />
-   public class DecimalValidator : Validator<decimal>
+   public class DecimalValidator : NumericValidator<decimal>
    {
       #region Constructors And Finalizers
 

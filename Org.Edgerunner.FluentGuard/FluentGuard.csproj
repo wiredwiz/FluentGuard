@@ -59,17 +59,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Validation\IBooleanValidator.cs" />
+    <Compile Include="Validation\IComparableValidator.cs" />
+    <Compile Include="Validation\IEquatableValidator.cs" />
+    <Compile Include="Validation\INullableValidator.cs" />
+    <Compile Include="Validation\IPositivityValidator.cs" />
     <Compile Include="Validation\IValidatorFactory.cs" />
+    <Compile Include="Validation\NullableBooleanValidator.cs" />
+    <Compile Include="Validation\NullableNumericValidator.cs" />
+    <Compile Include="Validation\NullableUnsignedNumericValidator.cs" />
+    <Compile Include="Validation\NumericValidator.cs" />
     <Compile Include="Validation\SByteValidator.cs" />
     <Compile Include="Validation\StringValidator.cs" />
     <Compile Include="Validation\UnsignedIntegerValidator.cs" />
     <Compile Include="Validation\UnsignedLongValidator.cs" />
+    <Compile Include="Validation\UnsignedNumericValidator.cs" />
     <Compile Include="Validation\UnsignedShortValidator.cs" />
     <Compile Include="Validation\ValidatorFactory.cs" />
     <Compile Include="Validation\IntegerValidator.cs" />
     <Compile Include="Validation\LongValidator.cs" />
     <Compile Include="Validation\ShortValidator.cs" />
     <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Validation\ValidatorLinkage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

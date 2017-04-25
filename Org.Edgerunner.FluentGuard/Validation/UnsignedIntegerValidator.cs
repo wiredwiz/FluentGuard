@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="uint" />.
    /// </summary>
    /// <seealso cref="uint" />
-   public class UnsignedIntegerValidator : Validator<uint>
+   public class UnsignedIntegerValidator : UnsignedNumericValidator<uint>
    {
       #region Constructors And Finalizers
 

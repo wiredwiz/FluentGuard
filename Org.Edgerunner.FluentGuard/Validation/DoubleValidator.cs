@@ -22,7 +22,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="double" />.
    /// </summary>
    /// <seealso cref="double" />
-   public class DoubleValidator : Validator<double>
+   public class DoubleValidator : NumericValidator<double>
    {
       #region Constructors And Finalizers
 

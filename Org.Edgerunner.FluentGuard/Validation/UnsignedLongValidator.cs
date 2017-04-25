@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="ulong" />.
    /// </summary>
    /// <seealso cref="ulong" />
-   public class UnsignedLongValidator : Validator<ulong>
+   public class UnsignedLongValidator : UnsignedNumericValidator<ulong>
    {
       #region Constructors And Finalizers
 

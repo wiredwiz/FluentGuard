@@ -166,5 +166,92 @@ namespace Org.Edgerunner.FluentGuard.Validation
       {
          return currentValue.StartsWith(referenceValue);
       }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<StringValidator> IsEqualTo(string value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
+      /// <exception cref="System.NotImplementedException"></exception>
+      public ValidatorLinkage<StringValidator> IsNotEqualTo(string value)
+      {
+         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not <c>null</c>.
+      /// </summary>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
+      public ValidatorLinkage<StringValidator> IsNotNull()
+      {
+         if (ShouldReturnAfterEvaluation(PerformNotNullOperation(ParameterValue)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentNullException(ParameterName, Resources.MustNotBeNull);
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is <c>null</c>.
+      /// </summary>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentException">Must be <c>null</c>.</exception>
+      public ValidatorLinkage<StringValidator> IsNull()
+      {
+         if (ShouldReturnAfterEvaluation(!PerformNotNullOperation(ParameterValue)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentNullException(ParameterName, Resources.MustBeNull);
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not <c>null</c> or empty.
+      /// </summary>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
+      /// <exception cref="ArgumentException">Must not be empty.</exception>
+      public ValidatorLinkage<StringValidator> IsNotNullOrEmpty()
+      {
+         var valueIsNull = !PerformNotNullOperation(ParameterValue);
+         if (ShouldReturnAfterEvaluation(!valueIsNull && PerformNotEmptyOperation(ParameterValue)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            if (valueIsNull)
+               CurrentException = new ArgumentNullException(ParameterName, Resources.MustNotBeNull);
+            else
+               CurrentException = new ArgumentException(Resources.MustNotBeEmpty, ParameterName);
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
    }
 }

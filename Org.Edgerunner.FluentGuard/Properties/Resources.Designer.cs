@@ -124,6 +124,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must be null.
+        /// </summary>
+        internal static string MustBeNull {
+            get {
+                return ResourceManager.GetString("MustBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be positive.
         /// </summary>
         internal static string MustBePositive {
