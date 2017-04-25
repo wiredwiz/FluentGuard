@@ -1,0 +1,1240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root CoveredStatements="1688" TotalStatements="1819" CoveragePercent="93" ReportType="NDependXML" DotCoverVersion="2017.1.1">
+  <Assembly Name="Org.Edgerunner.FluentGuard" CoveredStatements="323" TotalStatements="454" CoveragePercent="71">
+    <Namespace Name="Org.Edgerunner.FluentGuard" CoveredStatements="1" TotalStatements="71" CoveragePercent="1">
+      <Type Name="Ensure" CoveredStatements="1" TotalStatements="1" CoveragePercent="100">
+        <Method Name="That&lt;T&gt;(String,T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="43" />
+      </Type>
+      <Type Name="ExpressionExtensions" CoveredStatements="0" TotalStatements="60" CoveragePercent="0">
+        <Method Name="AttemptToGetMemberInfoFromCastExpression&lt;T,TValue&gt;(Expression&lt;Func&lt;T,TValue&gt;&gt;)" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="211" />
+        <Method Name="AttemptToGetMemberInfoFromMemberExpression&lt;T,TValue&gt;(Expression&lt;Func&lt;T,TValue&gt;&gt;)" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="224" />
+        <Method Name="GetMemberPath&lt;TDeclaringType,TPropertyType&gt;(Expression&lt;Func&lt;TDeclaringType,TPropertyType&gt;&gt;)" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" FirstStatementLine="49" />
+        <Method Name="GetMemberPath&lt;TPropertyType&gt;(Expression&lt;Func&lt;TPropertyType&gt;&gt;)" CoveredStatements="0" TotalStatements="24" CoveragePercent="0" FirstStatementLine="112" />
+        <Method Name="GetMethodName(Expression&lt;Action&gt;)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="199" />
+        <Method Name="GetPropertyInfo&lt;T,TValue&gt;(Expression&lt;Func&lt;T,TValue&gt;&gt;)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" FirstStatementLine="175" />
+      </Type>
+      <Type Name="TypeHelper" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+        <Method Name="GetMemberExpression&lt;TModel,T&gt;(Expression&lt;Func&lt;TModel,T&gt;&gt;)" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" FirstStatementLine="43" />
+      </Type>
+    </Namespace>
+    <Namespace Name="Org.Edgerunner.FluentGuard.Properties" CoveredStatements="26" TotalStatements="40" CoveragePercent="65">
+      <Type Name="Resources" CoveredStatements="26" TotalStatements="40" CoveragePercent="65">
+        <Method Name=".ctor()" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="32" />
+        <Method Name="get_Culture()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="56" />
+        <Method Name="get_MustBeEqualToX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="get_MustBeFalse()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="77" />
+        <Method Name="get_MustBeGreaterThanOrEqualToX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="86" />
+        <Method Name="get_MustBeGreaterThanX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="95" />
+        <Method Name="get_MustBeLessThanOrEqualToX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="104" />
+        <Method Name="get_MustBeLessThanX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="113" />
+        <Method Name="get_MustBeNegative()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="122" />
+        <Method Name="get_MustBePositive()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="131" />
+        <Method Name="get_MustBeTrue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+        <Method Name="get_MustEndWithX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="149" />
+        <Method Name="get_MustNotBeEmpty()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="158" />
+        <Method Name="get_MustNotBeEqualToX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="167" />
+        <Method Name="get_MustNotBeNegative()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="176" />
+        <Method Name="get_MustNotBeNull()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="185" />
+        <Method Name="get_MustNotBeNullOrEmpty()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="194" />
+        <Method Name="get_MustNotBePositive()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="203" />
+        <Method Name="get_MustStartWithX()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="get_NotAMemberAccess()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="221" />
+        <Method Name="get_OnlyStringsCanBeEvaluatedForEmpty()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="230" />
+        <Method Name="get_ResourceManager()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="41" />
+        <Method Name="get_UnableToAccess()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="239" />
+        <Method Name="get_UnableToPerformAGreaterThanOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="248" />
+        <Method Name="get_UnableToPerformAGreaterThanOrEqualToOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="257" />
+        <Method Name="get_UnableToPerformALessThanOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="266" />
+        <Method Name="get_UnableToPerformALessThanOrEqualToOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="275" />
+        <Method Name="get_UnableToPerformAnEndsWithOp()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="284" />
+        <Method Name="get_UnableToPerformAnEqualToOp()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="293" />
+        <Method Name="get_UnableToPerformAStartsWithOp()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="302" />
+        <Method Name="get_UnableToPerformBooleanOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="311" />
+        <Method Name="get_UnableToPerformPosNegOp()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="320" />
+        <Method Name="get_ValueIsNull()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="329" />
+        <Method Name="get_ValueIsNullOrEmpty()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="338" />
+        <Method Name="set_Culture(CultureInfo)" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="59" />
+      </Type>
+    </Namespace>
+    <Namespace Name="Org.Edgerunner.FluentGuard.Validators" CoveredStatements="296" TotalStatements="343" CoveragePercent="86">
+      <Type Name="BooleanValidator" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+        <Method Name=".ctor(String,Boolean)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="46" />
+        <Method Name="PerformEqualToOperation(Boolean,Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="PerformGreaterThanOperation(Boolean,Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Boolean,Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="91" />
+        <Method Name="PerformIsTrueOperation(Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformLessThanOperation(Boolean,Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="106" />
+        <Method Name="PerformLessThanOrEqualToOperation(Boolean,Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="121" />
+        <Method Name="PerformNotNullOperation(Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="131" />
+      </Type>
+      <Type Name="ByteValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Byte)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="39" />
+        <Method Name="PerformEqualToOperation(Byte,Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="56" />
+        <Method Name="PerformGreaterThanOperation(Byte,Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="70" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Byte,Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="PerformIsNegativeOperation(Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="PerformIsPositiveOperation(Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="133" />
+        <Method Name="PerformLessThanOperation(Byte,Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="PerformLessThanOrEqualToOperation(Byte,Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="112" />
+        <Method Name="PerformNotNullOperation(Byte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="122" />
+      </Type>
+      <Type Name="CharacterValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Char)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="32" />
+        <Method Name="PerformEqualToOperation(Char,Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="47" />
+        <Method Name="PerformGreaterThanOperation(Char,Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Char,Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="75" />
+        <Method Name="PerformIsNegativeOperation(Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="85" />
+        <Method Name="PerformIsPositiveOperation(Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="95" />
+        <Method Name="PerformLessThanOperation(Char,Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="109" />
+        <Method Name="PerformLessThanOrEqualToOperation(Char,Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="123" />
+        <Method Name="PerformNotNullOperation(Char)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="133" />
+      </Type>
+      <Type Name="DateTimeValidator" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+        <Method Name=".ctor(String,DateTime)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="39" />
+        <Method Name="PerformEqualToOperation(DateTime,DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="56" />
+        <Method Name="PerformGreaterThanOperation(DateTime,DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="70" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(DateTime,DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="PerformLessThanOperation(DateTime,DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="PerformLessThanOrEqualToOperation(DateTime,DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="112" />
+        <Method Name="PerformNotNullOperation(DateTime)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="122" />
+      </Type>
+      <Type Name="DecimalValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Decimal)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(Decimal,Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(Decimal,Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Decimal,Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(Decimal,Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(Decimal,Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="DoubleValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Double)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="35" />
+        <Method Name="PerformEqualToOperation(Double,Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="52" />
+        <Method Name="PerformGreaterThanOperation(Double,Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="66" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Double,Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="80" />
+        <Method Name="PerformIsNegativeOperation(Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="90" />
+        <Method Name="PerformIsPositiveOperation(Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="100" />
+        <Method Name="PerformLessThanOperation(Double,Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="114" />
+        <Method Name="PerformLessThanOrEqualToOperation(Double,Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="128" />
+        <Method Name="PerformNotNullOperation(Double)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="138" />
+      </Type>
+      <Type Name="FloatValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Single)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(Single,Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(Single,Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Single,Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(Single,Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(Single,Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(Single)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="IntegerValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Int32)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(Int32,Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(Int32,Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Int32,Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(Int32,Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(Int32,Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(Int32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="LongValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Int64)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(Int64,Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(Int64,Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Int64,Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(Int64,Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(Int64,Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(Int64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="SByteValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,SByte)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="39" />
+        <Method Name="PerformEqualToOperation(SByte,SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="56" />
+        <Method Name="PerformGreaterThanOperation(SByte,SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="70" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(SByte,SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="PerformIsNegativeOperation(SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="PerformIsPositiveOperation(SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="133" />
+        <Method Name="PerformLessThanOperation(SByte,SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="PerformLessThanOrEqualToOperation(SByte,SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="112" />
+        <Method Name="PerformNotNullOperation(SByte)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="122" />
+      </Type>
+      <Type Name="ShortValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,Int16)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(Int16,Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(Int16,Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Int16,Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(Int16,Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(Int16,Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(Int16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="StringValidator" CoveredStatements="11" TotalStatements="11" CoveragePercent="100">
+        <Method Name=".ctor(String,String)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="40" />
+        <Method Name="PerformEndsWithOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="58" />
+        <Method Name="PerformEqualToOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="72" />
+        <Method Name="PerformGreaterThanOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="87" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="117" />
+        <Method Name="PerformLessThanOrEqualToOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="132" />
+        <Method Name="PerformNotEmptyOperation(String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="142" />
+        <Method Name="PerformNotNullOperation(String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="152" />
+        <Method Name="PerformStartsWithOperation(String,String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="167" />
+      </Type>
+      <Type Name="UnsignedIntegerValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,UInt32)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(UInt32,UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(UInt32,UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(UInt32,UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(UInt32,UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(UInt32,UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(UInt32)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="UnsignedLongValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,UInt64)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(UInt64,UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(UInt64,UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(UInt64,UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(UInt64,UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(UInt64,UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(UInt64)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="UnsignedShortValidator" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+        <Method Name=".ctor(String,UInt16)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="37" />
+        <Method Name="PerformEqualToOperation(UInt16,UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="PerformGreaterThanOperation(UInt16,UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(UInt16,UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="82" />
+        <Method Name="PerformIsNegativeOperation(UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="92" />
+        <Method Name="PerformIsPositiveOperation(UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="PerformLessThanOperation(UInt16,UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="PerformLessThanOrEqualToOperation(UInt16,UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="PerformNotNullOperation(UInt16)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="Validator&lt;T&gt;" CoveredStatements="117" TotalStatements="163" CoveragePercent="72">
+        <Method Name=".ctor(String,T)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" FirstStatementLine="47" />
+        <Method Name="And()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="88" />
+        <Method Name="And(Validator&lt;T&gt;)" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" FirstStatementLine="100" />
+        <Method Name="EndsWith(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="280" />
+        <Method Name="get_CurrentException()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="get_Mode()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="67" />
+        <Method Name="get_ParameterName()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="73" />
+        <Method Name="get_ParameterValue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="79" />
+        <Method Name="IsEqualTo(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="IsFalse()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="296" />
+        <Method Name="IsGreaterThan(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="122" />
+        <Method Name="IsGreaterThanOrEqualTo(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="139" />
+        <Method Name="IsLessThan(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="158" />
+        <Method Name="IsLessThanOrEqualTo(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="175" />
+        <Method Name="IsNegative()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="344" />
+        <Method Name="IsNotEqualTo(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="209" />
+        <Method Name="IsNotNegative()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="360" />
+        <Method Name="IsNotNull()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="225" />
+        <Method Name="IsNotNullOrEmpty()" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" FirstStatementLine="242" />
+        <Method Name="IsNotPositive()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="376" />
+        <Method Name="IsPositive()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="328" />
+        <Method Name="IsTrue()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="312" />
+        <Method Name="Or()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="392" />
+        <Method Name="Or(Validator&lt;T&gt;)" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" FirstStatementLine="404" />
+        <Method Name="OtherwiseThrow&lt;TE&gt;(TE)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="438" />
+        <Method Name="OtherwiseThrowException()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="425" />
+        <Method Name="PerformEndsWithOperation(T,T)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="619" />
+        <Method Name="PerformEqualToOperation(T,T)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="537" />
+        <Method Name="PerformGreaterThanOperation(T,T)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="507" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(T,T)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="522" />
+        <Method Name="PerformIsNegativeOperation(T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="584" />
+        <Method Name="PerformIsPositiveOperation(T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="573" />
+        <Method Name="PerformIsTrueOperation(T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="595" />
+        <Method Name="PerformLessThanOperation(T,T)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="477" />
+        <Method Name="PerformLessThanOrEqualToOperation(T,T)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="492" />
+        <Method Name="PerformNotEmptyOperation(T)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="562" />
+        <Method Name="PerformNotNullOperation(T)" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="550" />
+        <Method Name="PerformStartsWithOperation(T,T)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="607" />
+        <Method Name="set_CurrentException(Exception)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="set_Mode(CombinationMode)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="67" />
+        <Method Name="set_ParameterName(String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="73" />
+        <Method Name="set_ParameterValue(T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="79" />
+        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="10" TotalStatements="10" CoveragePercent="100" FirstStatementLine="451" />
+        <Method Name="StartsWith(T)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="263" />
+      </Type>
+      <Type Name="ValidatorFactory" CoveredStatements="31" TotalStatements="32" CoveragePercent="97">
+        <Method Name="Create&lt;T&gt;(String,T)" CoveredStatements="31" TotalStatements="32" CoveragePercent="97" FirstStatementLine="37" />
+      </Type>
+    </Namespace>
+  </Assembly>
+  <Assembly Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="1365" TotalStatements="1365" CoveragePercent="100">
+    <Namespace Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="1365" TotalStatements="1365" CoveragePercent="100">
+      <Type Name="BooleanValidatorTests" CoveredStatements="82" TotalStatements="82" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="51" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="57" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass1_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="75" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="78" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="78" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="81" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass13_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="278" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="281" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="281" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="284" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass14_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="301" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="304" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="304" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="307" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass15_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="324" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="327" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="327" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="330" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass16_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="347" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="350" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="350" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="353" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass2_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="101" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="104" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="104" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="107" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass3_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="125" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="128" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="128" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="131" />
+        </Type>
+        <Method Name="TestParameterEqualToFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="148" />
+        <Method Name="TestParameterEqualToPasses(String,Boolean,Boolean,Validator&lt;Boolean&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="163" />
+        <Method Name="TestParameterGreaterThanFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="100" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="124" />
+        <Method Name="TestParameterIsFalseFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="249" />
+        <Method Name="TestParameterIsFalsePasses(String,Boolean,Validator&lt;Boolean&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="262" />
+        <Method Name="TestParameterIsNegativeFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="300" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="323" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="346" />
+        <Method Name="TestParameterIsPositiveFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterIsTrueFails(String,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="222" />
+        <Method Name="TestParameterIsTruePasses(String,Boolean,Validator&lt;Boolean&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="235" />
+        <Method Name="TestParameterLessThanFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="50" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="74" />
+        <Method Name="TestParameterNotEqualToFails(String,Boolean,Boolean,Validator&lt;Boolean&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="179" />
+        <Method Name="TestParameterNotEqualToPasses(String,Boolean,Boolean,Validator&lt;Boolean&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="194" />
+        <Method Name="TestParameterNotNullPasses(String,Boolean,Validator&lt;Boolean&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="208" />
+      </Type>
+      <Type Name="ByteValidatorTests" CoveredStatements="64" TotalStatements="64" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="402" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Byte,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Byte,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,Byte,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,Byte,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,Byte,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="330" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="345" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="358" />
+        <Method Name="TestParameterIsPositiveFails(String,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsPositivePasses(String,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="386" />
+        <Method Name="TestParameterIsTrueFails(String,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterLessThanFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="431" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="453" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="474" />
+        <Method Name="TestParameterLessThanPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="494" />
+        <Method Name="TestParameterNotEqualToFails(String,Byte,Byte,Validator&lt;Byte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="517" />
+        <Method Name="TestParameterNotEqualToPasses(String,Byte,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="537" />
+        <Method Name="TestParameterNotNullPasses(String,Byte,Validator&lt;Byte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="551" />
+      </Type>
+      <Type Name="CharacterValidatorTests" CoveredStatements="64" TotalStatements="64" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="296" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="296" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="405" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="411" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Char,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Char,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="99" />
+        <Method Name="TestParameterConditionAndPasses(String,Char,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="123" />
+        <Method Name="TestParameterConditionOrFails(String,Char,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="147" />
+        <Method Name="TestParameterConditionOrPasses(String,Char,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="172" />
+        <Method Name="TestParameterEqualToFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="193" />
+        <Method Name="TestParameterEqualToPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="213" />
+        <Method Name="TestParameterGreaterThanFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="235" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="276" />
+        <Method Name="TestParameterGreaterThanPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="53" />
+        <Method Name="TestParameterIsFalseFails(String,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="292" />
+        <Method Name="TestParameterIsNegativeFails(String,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="316" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="331" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="346" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="359" />
+        <Method Name="TestParameterIsPositiveFails(String,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="373" />
+        <Method Name="TestParameterIsPositivePasses(String,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="388" />
+        <Method Name="TestParameterIsTrueFails(String,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="404" />
+        <Method Name="TestParameterLessThanFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="435" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="457" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="478" />
+        <Method Name="TestParameterLessThanPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="498" />
+        <Method Name="TestParameterNotEqualToFails(String,Char,Char,Validator&lt;Char&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="520" />
+        <Method Name="TestParameterNotEqualToPasses(String,Char,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="541" />
+        <Method Name="TestParameterNotNullPasses(String,Char,Validator&lt;Char&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="556" />
+      </Type>
+      <Type Name="DateTimeValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="258" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="261" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="261" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="264" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="378" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="380" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="380" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="384" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,DateTime,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="72" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,DateTime,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="93" />
+        <Method Name="TestParameterConditionAndPasses(String,DateTime,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="112" />
+        <Method Name="TestParameterConditionOrFails(String,DateTime,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="133" />
+        <Method Name="TestParameterConditionOrPasses(String,DateTime,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="152" />
+        <Method Name="TestParameterEqualToFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="171" />
+        <Method Name="TestParameterEqualToPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="188" />
+        <Method Name="TestParameterGreaterThanFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="207" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="227" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="244" />
+        <Method Name="TestParameterGreaterThanPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="51" />
+        <Method Name="TestParameterIsFalseFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="257" />
+        <Method Name="TestParameterIsNegativeFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="278" />
+        <Method Name="TestParameterIsNegativePasses(String,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="290" />
+        <Method Name="TestParameterIsNotNegativeFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="303" />
+        <Method Name="TestParameterIsNotNegativePasses(String,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNotPositiveFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="328" />
+        <Method Name="TestParameterIsNotPositivePasses(String,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="340" />
+        <Method Name="TestParameterIsPositiveFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="353" />
+        <Method Name="TestParameterIsPositivePasses(String,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="365" />
+        <Method Name="TestParameterIsTrueFails(String,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="378" />
+        <Method Name="TestParameterLessThanFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="404" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="423" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="440" />
+        <Method Name="TestParameterLessThanPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="457" />
+        <Method Name="TestParameterNotEqualToFails(String,DateTime,DateTime,Validator&lt;DateTime&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="476" />
+        <Method Name="TestParameterNotEqualToPasses(String,DateTime,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="493" />
+        <Method Name="TestParameterNotNullPasses(String,DateTime,Validator&lt;DateTime&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="505" />
+      </Type>
+      <Type Name="DecimalValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="303" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="305" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="305" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="309" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="448" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="450" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="450" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="454" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Decimal,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Decimal,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="TestParameterConditionAndPasses(String,Decimal,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="107" />
+        <Method Name="TestParameterConditionOrFails(String,Decimal,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="132" />
+        <Method Name="TestParameterConditionOrPasses(String,Decimal,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="158" />
+        <Method Name="TestParameterEqualToFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="182" />
+        <Method Name="TestParameterEqualToPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="203" />
+        <Method Name="TestParameterGreaterThanFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="225" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="265" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="286" />
+        <Method Name="TestParameterGreaterThanPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="242" />
+        <Method Name="TestParameterIsFalseFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="303" />
+        <Method Name="TestParameterIsNegativeFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="326" />
+        <Method Name="TestParameterIsNegativePasses(String,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="341" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="357" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="387" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterIsPositiveFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="418" />
+        <Method Name="TestParameterIsPositivePasses(String,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="432" />
+        <Method Name="TestParameterIsTrueFails(String,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="448" />
+        <Method Name="TestParameterLessThanFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="477" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="499" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="520" />
+        <Method Name="TestParameterLessThanPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="540" />
+        <Method Name="TestParameterNotEqualToFails(String,Decimal,Decimal,Validator&lt;Decimal&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="563" />
+        <Method Name="TestParameterNotEqualToPasses(String,Decimal,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="584" />
+        <Method Name="TestParameterNotNullPasses(String,Decimal,Validator&lt;Decimal&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="599" />
+      </Type>
+      <Type Name="DoubleValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="303" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="305" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="305" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="309" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="448" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="450" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="450" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="454" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Double,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Double,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="TestParameterConditionAndPasses(String,Double,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="107" />
+        <Method Name="TestParameterConditionOrFails(String,Double,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="132" />
+        <Method Name="TestParameterConditionOrPasses(String,Double,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="158" />
+        <Method Name="TestParameterEqualToFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="182" />
+        <Method Name="TestParameterEqualToPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="203" />
+        <Method Name="TestParameterGreaterThanFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="225" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="265" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="286" />
+        <Method Name="TestParameterGreaterThanPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="242" />
+        <Method Name="TestParameterIsFalseFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="303" />
+        <Method Name="TestParameterIsNegativeFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="326" />
+        <Method Name="TestParameterIsNegativePasses(String,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="341" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="357" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="387" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterIsPositiveFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="418" />
+        <Method Name="TestParameterIsPositivePasses(String,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="432" />
+        <Method Name="TestParameterIsTrueFails(String,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="448" />
+        <Method Name="TestParameterLessThanFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="477" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="499" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="520" />
+        <Method Name="TestParameterLessThanPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="540" />
+        <Method Name="TestParameterNotEqualToFails(String,Double,Double,Validator&lt;Double&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="563" />
+        <Method Name="TestParameterNotEqualToPasses(String,Double,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="584" />
+        <Method Name="TestParameterNotNullPasses(String,Double,Validator&lt;Double&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="599" />
+      </Type>
+      <Type Name="EnsureTests" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;CreationOfValidatorPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="46" />
+          <Method Name="&lt;CreationOfValidatorPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="49" />
+          <Method Name="&lt;CreationOfValidatorPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="52" />
+        </Type>
+        <Method Name="CreationOfValidatorPasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="45" />
+      </Type>
+      <Type Name="FloatValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="305" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="307" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="307" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="311" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="450" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="452" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="452" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="456" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Single,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="61" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Single,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="84" />
+        <Method Name="TestParameterConditionAndPasses(String,Single,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="107" />
+        <Method Name="TestParameterConditionOrFails(String,Single,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="132" />
+        <Method Name="TestParameterConditionOrPasses(String,Single,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="158" />
+        <Method Name="TestParameterEqualToFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="182" />
+        <Method Name="TestParameterEqualToPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="204" />
+        <Method Name="TestParameterGreaterThanFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="226" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="266" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="288" />
+        <Method Name="TestParameterGreaterThanPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="243" />
+        <Method Name="TestParameterIsFalseFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="305" />
+        <Method Name="TestParameterIsNegativeFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="328" />
+        <Method Name="TestParameterIsNegativePasses(String,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="343" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="359" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="374" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="389" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="404" />
+        <Method Name="TestParameterIsPositiveFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="420" />
+        <Method Name="TestParameterIsPositivePasses(String,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="434" />
+        <Method Name="TestParameterIsTrueFails(String,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="450" />
+        <Method Name="TestParameterLessThanFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="479" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="501" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="522" />
+        <Method Name="TestParameterLessThanPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="542" />
+        <Method Name="TestParameterNotEqualToFails(String,Single,Single,Validator&lt;Single&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="565" />
+        <Method Name="TestParameterNotEqualToPasses(String,Single,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="586" />
+        <Method Name="TestParameterNotNullPasses(String,Single,Validator&lt;Single&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="601" />
+      </Type>
+      <Type Name="IntegerValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="435" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="441" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Int32,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Int32,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,Int32,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,Int32,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,Int32,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNegativePasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="329" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="344" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="359" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="374" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="389" />
+        <Method Name="TestParameterIsPositiveFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="405" />
+        <Method Name="TestParameterIsPositivePasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="419" />
+        <Method Name="TestParameterIsTrueFails(String,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="435" />
+        <Method Name="TestParameterLessThanFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="464" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="486" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="507" />
+        <Method Name="TestParameterLessThanPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="527" />
+        <Method Name="TestParameterNotEqualToFails(String,Int32,Int32,Validator&lt;Int32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="550" />
+        <Method Name="TestParameterNotEqualToPasses(String,Int32,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="571" />
+        <Method Name="TestParameterNotNullPasses(String,Int32,Validator&lt;Int32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="586" />
+      </Type>
+      <Type Name="LongValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="435" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="441" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Int64,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Int64,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,Int64,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,Int64,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,Int64,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNegativePasses(String,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="329" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="344" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="359" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="374" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="389" />
+        <Method Name="TestParameterIsPositiveFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="405" />
+        <Method Name="TestParameterIsPositivePasses(String,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="419" />
+        <Method Name="TestParameterIsTrueFails(String,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="435" />
+        <Method Name="TestParameterLessThanFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="464" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="486" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="507" />
+        <Method Name="TestParameterLessThanPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="527" />
+        <Method Name="TestParameterNotEqualToFails(String,Int64,Int64,Validator&lt;Int64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="550" />
+        <Method Name="TestParameterNotEqualToPasses(String,Int64,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="571" />
+        <Method Name="TestParameterNotNullPasses(String,Int64,Validator&lt;Int64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="586" />
+      </Type>
+      <Type Name="SByteValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="298" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="298" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="301" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="440" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="440" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="443" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,SByte,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,SByte,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,SByte,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,SByte,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,SByte,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="235" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="257" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="278" />
+        <Method Name="TestParameterGreaterThanPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="294" />
+        <Method Name="TestParameterIsNegativeFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="317" />
+        <Method Name="TestParameterIsNegativePasses(String,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="331" />
+        <Method Name="TestParameterIsNotNegativeFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="346" />
+        <Method Name="TestParameterIsNotNegativePasses(String,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="361" />
+        <Method Name="TestParameterIsNotPositiveFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="376" />
+        <Method Name="TestParameterIsNotPositivePasses(String,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="391" />
+        <Method Name="TestParameterIsPositiveFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="406" />
+        <Method Name="TestParameterIsPositivePasses(String,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="420" />
+        <Method Name="TestParameterIsTrueFails(String,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="436" />
+        <Method Name="TestParameterLessThanFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="466" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="488" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="511" />
+        <Method Name="TestParameterLessThanPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="532" />
+        <Method Name="TestParameterNotEqualToFails(String,SByte,SByte,Validator&lt;SByte&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="555" />
+        <Method Name="TestParameterNotEqualToPasses(String,SByte,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="576" />
+        <Method Name="TestParameterNotNullPasses(String,SByte,Validator&lt;SByte&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="591" />
+      </Type>
+      <Type Name="ShortValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="435" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="437" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="441" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,Int16,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,Int16,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,Int16,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,Int16,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,Int16,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNegativePasses(String,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="329" />
+        <Method Name="TestParameterIsNotNegativeFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="344" />
+        <Method Name="TestParameterIsNotNegativePasses(String,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="359" />
+        <Method Name="TestParameterIsNotPositiveFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="374" />
+        <Method Name="TestParameterIsNotPositivePasses(String,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="389" />
+        <Method Name="TestParameterIsPositiveFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="405" />
+        <Method Name="TestParameterIsPositivePasses(String,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="419" />
+        <Method Name="TestParameterIsTrueFails(String,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="435" />
+        <Method Name="TestParameterLessThanFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="464" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="486" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="507" />
+        <Method Name="TestParameterLessThanPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="527" />
+        <Method Name="TestParameterNotEqualToFails(String,Int16,Int16,Validator&lt;Int16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="550" />
+        <Method Name="TestParameterNotEqualToPasses(String,Int16,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="571" />
+        <Method Name="TestParameterNotNullPasses(String,Int16,Validator&lt;Int16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="586" />
+      </Type>
+      <Type Name="StringValidatorTests" CoveredStatements="110" TotalStatements="110" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass12_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="252" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="255" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="255" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="258" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass13_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="283" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="286" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="286" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="289" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass14_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="307" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="310" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="310" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="313" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass15_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="331" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="334" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="334" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="337" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass16_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="355" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="358" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="358" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="361" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass17_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="379" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="382" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="382" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="385" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="403" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="406" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="406" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="409" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass19_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="427" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="430" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="430" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="433" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="458" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="461" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="461" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="464" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass21_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="489" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="492" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="492" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="495" />
+        </Type>
+        <Method Name="TestParameterEndsWithFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="156" />
+        <Method Name="TestParameterEndsWithFailsNull(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="170" />
+        <Method Name="TestParameterEndsWithPasses(String,String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="186" />
+        <Method Name="TestParameterEqualToFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="208" />
+        <Method Name="TestParameterEqualToPasses(String,String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="228" />
+        <Method Name="TestParameterGreaterThanFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="251" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="282" />
+        <Method Name="TestParameterIsFalseFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="306" />
+        <Method Name="TestParameterIsNegativeFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="330" />
+        <Method Name="TestParameterIsNotNegativeFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="354" />
+        <Method Name="TestParameterIsNotPositiveFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="378" />
+        <Method Name="TestParameterIsPositiveFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterIsTrueFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="426" />
+        <Method Name="TestParameterLessThanFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="457" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="488" />
+        <Method Name="TestParameterNotEqualToFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="518" />
+        <Method Name="TestParameterNotEqualToPasses(String,String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="538" />
+        <Method Name="TestParameterNotNullFails(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="52" />
+        <Method Name="TestParameterNotNullOrEmptyFailsEmpty(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="80" />
+        <Method Name="TestParameterNotNullOrEmptyFailsNull(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="66" />
+        <Method Name="TestParameterNotNullOrEmptyPasses(String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="93" />
+        <Method Name="TestParameterNotNullPasses(String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="553" />
+        <Method Name="TestParameterStartsWithFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="109" />
+        <Method Name="TestParameterStartsWithFailsNull(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="124" />
+        <Method Name="TestParameterStartsWithPasses(String,String,String,Validator&lt;String&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="140" />
+      </Type>
+      <Type Name="UnsignedIntegerValidatorTests" CoveredStatements="64" TotalStatements="64" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="402" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,UInt32,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,UInt32,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,UInt32,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,UInt32,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,UInt32,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNotNegativePasses(String,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="330" />
+        <Method Name="TestParameterIsNotPositiveFails(String,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="345" />
+        <Method Name="TestParameterIsNotPositivePasses(String,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="358" />
+        <Method Name="TestParameterIsPositiveFails(String,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsPositivePasses(String,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="386" />
+        <Method Name="TestParameterIsTrueFails(String,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterLessThanFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="431" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="453" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="474" />
+        <Method Name="TestParameterLessThanPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="494" />
+        <Method Name="TestParameterNotEqualToFails(String,UInt32,UInt32,Validator&lt;UInt32&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="517" />
+        <Method Name="TestParameterNotEqualToPasses(String,UInt32,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="537" />
+        <Method Name="TestParameterNotNullPasses(String,UInt32,Validator&lt;UInt32&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="551" />
+      </Type>
+      <Type Name="UnsignedLongValidatorTests" CoveredStatements="64" TotalStatements="64" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="402" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,UInt64,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,UInt64,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,UInt64,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,UInt64,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,UInt64,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNotNegativePasses(String,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="330" />
+        <Method Name="TestParameterIsNotPositiveFails(String,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="345" />
+        <Method Name="TestParameterIsNotPositivePasses(String,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="358" />
+        <Method Name="TestParameterIsPositiveFails(String,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsPositivePasses(String,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="386" />
+        <Method Name="TestParameterIsTrueFails(String,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterLessThanFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="431" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="453" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="474" />
+        <Method Name="TestParameterLessThanPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="494" />
+        <Method Name="TestParameterNotEqualToFails(String,UInt64,UInt64,Validator&lt;UInt64&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="517" />
+        <Method Name="TestParameterNotEqualToPasses(String,UInt64,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="537" />
+        <Method Name="TestParameterNotNullPasses(String,UInt64,Validator&lt;UInt64&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="551" />
+      </Type>
+      <Type Name="UnsignedShortValidatorTests" CoveredStatements="64" TotalStatements="64" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="293" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="295" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="299" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="402" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="404" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="408" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,UInt16,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,UInt16,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="TestParameterConditionAndPasses(String,UInt16,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="120" />
+        <Method Name="TestParameterConditionOrFails(String,UInt16,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="144" />
+        <Method Name="TestParameterConditionOrPasses(String,UInt16,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="169" />
+        <Method Name="TestParameterEqualToFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="192" />
+        <Method Name="TestParameterEqualToPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="212" />
+        <Method Name="TestParameterGreaterThanFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="234" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="256" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="277" />
+        <Method Name="TestParameterGreaterThanPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="54" />
+        <Method Name="TestParameterIsFalseFails(String,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="293" />
+        <Method Name="TestParameterIsNegativeFails(String,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="315" />
+        <Method Name="TestParameterIsNotNegativePasses(String,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="330" />
+        <Method Name="TestParameterIsNotPositiveFails(String,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="345" />
+        <Method Name="TestParameterIsNotPositivePasses(String,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="358" />
+        <Method Name="TestParameterIsPositiveFails(String,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="372" />
+        <Method Name="TestParameterIsPositivePasses(String,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="386" />
+        <Method Name="TestParameterIsTrueFails(String,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="402" />
+        <Method Name="TestParameterLessThanFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="431" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="453" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="474" />
+        <Method Name="TestParameterLessThanPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="494" />
+        <Method Name="TestParameterNotEqualToFails(String,UInt16,UInt16,Validator&lt;UInt16&gt;,Action)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="517" />
+        <Method Name="TestParameterNotEqualToPasses(String,UInt16,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="537" />
+        <Method Name="TestParameterNotNullPasses(String,UInt16,Validator&lt;UInt16&gt;)" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="551" />
+      </Type>
+      <Type Name="ValidatorTests&lt;T&gt;" CoveredStatements="302" TotalStatements="302" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="51" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
+          <Method Name="&lt;TestParameterLessThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="57" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass1_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="71" />
+          <Method Name="&lt;TestParameterLessThanPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="74" />
+          <Method Name="&lt;TestParameterLessThanPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="77" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass10_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="251" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="254" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="254" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="257" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass11_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="271" />
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="274" />
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="277" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass12_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotNullFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="291" />
+          <Method Name="&lt;TestParameterNotNullFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="294" />
+          <Method Name="&lt;TestParameterNotNullFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="294" />
+          <Method Name="&lt;TestParameterNotNullFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="297" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass13_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotNullPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="310" />
+          <Method Name="&lt;TestParameterNotNullPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="313" />
+          <Method Name="&lt;TestParameterNotNullPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="316" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass14_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsNull&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="330" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsNull&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="333" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsNull&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="333" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsNull&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="336" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass15_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsEmpty&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="351" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsEmpty&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="354" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsEmpty&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="354" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyFailsEmpty&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="357" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass16_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterNotNullOrEmptyPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="371" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="374" />
+          <Method Name="&lt;TestParameterNotNullOrEmptyPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="377" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass17_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterStartsWithFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="391" />
+          <Method Name="&lt;TestParameterStartsWithFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="394" />
+          <Method Name="&lt;TestParameterStartsWithFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="394" />
+          <Method Name="&lt;TestParameterStartsWithFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="397" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass18_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterStartsWithFailsNull&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="413" />
+          <Method Name="&lt;TestParameterStartsWithFailsNull&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="416" />
+          <Method Name="&lt;TestParameterStartsWithFailsNull&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="416" />
+          <Method Name="&lt;TestParameterStartsWithFailsNull&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="419" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass19_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterStartsWithPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="432" />
+          <Method Name="&lt;TestParameterStartsWithPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="435" />
+          <Method Name="&lt;TestParameterStartsWithPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="438" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass2_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="91" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="94" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="94" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="97" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass20_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEndsWithFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="452" />
+          <Method Name="&lt;TestParameterEndsWithFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="455" />
+          <Method Name="&lt;TestParameterEndsWithFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="455" />
+          <Method Name="&lt;TestParameterEndsWithFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="458" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass21_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEndsWithFailsNull&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="472" />
+          <Method Name="&lt;TestParameterEndsWithFailsNull&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="475" />
+          <Method Name="&lt;TestParameterEndsWithFailsNull&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="475" />
+          <Method Name="&lt;TestParameterEndsWithFailsNull&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="478" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass22_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEndsWithPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="491" />
+          <Method Name="&lt;TestParameterEndsWithPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="494" />
+          <Method Name="&lt;TestParameterEndsWithPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="497" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass23_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterConditionAndFailsLower&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="512" />
+          <Method Name="&lt;TestParameterConditionAndFailsLower&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="515" />
+          <Method Name="&lt;TestParameterConditionAndFailsLower&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="515" />
+          <Method Name="&lt;TestParameterConditionAndFailsLower&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="518" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass24_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterConditionAndFailsUpper&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="534" />
+          <Method Name="&lt;TestParameterConditionAndFailsUpper&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="537" />
+          <Method Name="&lt;TestParameterConditionAndFailsUpper&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="537" />
+          <Method Name="&lt;TestParameterConditionAndFailsUpper&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="540" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass25_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterConditionAndPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="555" />
+          <Method Name="&lt;TestParameterConditionAndPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="558" />
+          <Method Name="&lt;TestParameterConditionAndPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="561" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass26_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterConditionOrFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="576" />
+          <Method Name="&lt;TestParameterConditionOrFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="579" />
+          <Method Name="&lt;TestParameterConditionOrFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="579" />
+          <Method Name="&lt;TestParameterConditionOrFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="582" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass27_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterConditionOrPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="597" />
+          <Method Name="&lt;TestParameterConditionOrPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="600" />
+          <Method Name="&lt;TestParameterConditionOrPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="603" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass28_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="616" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="619" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="619" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="622" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass29_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="635" />
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="638" />
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="641" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass3_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterLessThanOrEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="111" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="114" />
+          <Method Name="&lt;TestParameterLessThanOrEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="117" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass30_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="654" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="657" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="657" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="660" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass31_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="673" />
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="676" />
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="679" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass32_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="692" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="695" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="695" />
+          <Method Name="&lt;TestParameterIsPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="698" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass33_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsPositivePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="711" />
+          <Method Name="&lt;TestParameterIsPositivePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="714" />
+          <Method Name="&lt;TestParameterIsPositivePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="717" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass34_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="730" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="733" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="733" />
+          <Method Name="&lt;TestParameterIsNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="736" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass35_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNegativePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="749" />
+          <Method Name="&lt;TestParameterIsNegativePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="752" />
+          <Method Name="&lt;TestParameterIsNegativePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="755" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass36_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="768" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="771" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="771" />
+          <Method Name="&lt;TestParameterIsNotNegativeFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="774" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass37_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotNegativePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="787" />
+          <Method Name="&lt;TestParameterIsNotNegativePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="790" />
+          <Method Name="&lt;TestParameterIsNotNegativePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="793" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass38_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="806" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="809" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="809" />
+          <Method Name="&lt;TestParameterIsNotPositiveFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="812" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass39_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsNotPositivePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="825" />
+          <Method Name="&lt;TestParameterIsNotPositivePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="828" />
+          <Method Name="&lt;TestParameterIsNotPositivePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="831" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass4_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="131" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="134" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="134" />
+          <Method Name="&lt;TestParameterGreaterThanFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="137" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass5_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="151" />
+          <Method Name="&lt;TestParameterGreaterThanPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="154" />
+          <Method Name="&lt;TestParameterGreaterThanPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="157" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass6_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="171" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="174" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="174" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="177" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass7_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="191" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="194" />
+          <Method Name="&lt;TestParameterGreaterThanOrEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="197" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass8_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="211" />
+          <Method Name="&lt;TestParameterEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="214" />
+          <Method Name="&lt;TestParameterEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="214" />
+          <Method Name="&lt;TestParameterEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="217" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass9_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="231" />
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="234" />
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="237" />
+        </Type>
+        <Method Name="TestParameterConditionAndFailsLower(String,T,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="511" />
+        <Method Name="TestParameterConditionAndFailsUpper(String,T,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="533" />
+        <Method Name="TestParameterConditionAndPasses(String,T,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="554" />
+        <Method Name="TestParameterConditionOrFails(String,T,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="575" />
+        <Method Name="TestParameterConditionOrPasses(String,T,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="596" />
+        <Method Name="TestParameterEndsWithFails(String,String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="451" />
+        <Method Name="TestParameterEndsWithFailsNull(String,String,Validator&lt;String&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="471" />
+        <Method Name="TestParameterEndsWithPasses(String,String,String,Validator&lt;String&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="490" />
+        <Method Name="TestParameterEqualToFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="210" />
+        <Method Name="TestParameterEqualToPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="230" />
+        <Method Name="TestParameterGreaterThanFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="130" />
+        <Method Name="TestParameterGreaterThanOrEqualToFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="170" />
+        <Method Name="TestParameterGreaterThanOrEqualToPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="190" />
+        <Method Name="TestParameterGreaterThanPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="150" />
+        <Method Name="TestParameterIsFalseFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="653" />
+        <Method Name="TestParameterIsFalsePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="672" />
+        <Method Name="TestParameterIsNegativeFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="729" />
+        <Method Name="TestParameterIsNegativePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="748" />
+        <Method Name="TestParameterIsNotNegativeFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="767" />
+        <Method Name="TestParameterIsNotNegativePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="786" />
+        <Method Name="TestParameterIsNotPositiveFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="805" />
+        <Method Name="TestParameterIsNotPositivePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="824" />
+        <Method Name="TestParameterIsPositiveFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="691" />
+        <Method Name="TestParameterIsPositivePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="710" />
+        <Method Name="TestParameterIsTrueFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="615" />
+        <Method Name="TestParameterIsTruePasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="634" />
+        <Method Name="TestParameterLessThanFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="50" />
+        <Method Name="TestParameterLessThanOrEqualToFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="90" />
+        <Method Name="TestParameterLessThanOrEqualToPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="110" />
+        <Method Name="TestParameterLessThanPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="70" />
+        <Method Name="TestParameterNotEqualToFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="250" />
+        <Method Name="TestParameterNotEqualToPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="270" />
+        <Method Name="TestParameterNotNullFails(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="290" />
+        <Method Name="TestParameterNotNullOrEmptyFailsEmpty(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="350" />
+        <Method Name="TestParameterNotNullOrEmptyFailsNull(String,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="329" />
+        <Method Name="TestParameterNotNullOrEmptyPasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="370" />
+        <Method Name="TestParameterNotNullPasses(String,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="309" />
+        <Method Name="TestParameterStartsWithFails(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="390" />
+        <Method Name="TestParameterStartsWithFailsNull(String,T,T,Validator&lt;T&gt;,Action)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="412" />
+        <Method Name="TestParameterStartsWithPasses(String,T,T,Validator&lt;T&gt;)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="431" />
+      </Type>
+    </Namespace>
+  </Assembly>
+</Root>
