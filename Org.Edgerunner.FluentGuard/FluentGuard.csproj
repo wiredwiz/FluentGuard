@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CombinationMode.cs" />
+    <Compile Include="Validation\CombinationMode.cs" />
     <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="UsingA.cs" />
     <Compile Include="Validate.cs" />

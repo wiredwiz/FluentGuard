@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
-namespace Org.Edgerunner.FluentGuard
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Enumeration that specifies how to conditionals should be combined.

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="FluentGuard Library" Platform="DotNet" FileWrittenByProductVersion="2017.1.1.8920">
   <OutputDir KeepXmlFiles="False">C:\Projects\Edgerunner FluentGuard\NDependOut</OutputDir>
   <Assemblies>
@@ -20,7 +20,7 @@
   <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <CoverageFiles CoverageDir="" UncoverableAttribute="">
-    <CoverageFile>\\Drobo\Projects\Edgerunner FluentGuard\All tests from Solution.xml</CoverageFile>
+    <CoverageFile>\\Drobo\Projects\Edgerunner Buffers\Testing Coverage.xml</CoverageFile>
   </CoverageFiles>
   <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="">
     <Chart Name="Size" ShowInReport="True">
@@ -70,8 +70,8 @@
       <Currency>USD</Currency>
       <CurrencyLocation>After</CurrencyLocation>
       <EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>18</EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>
-      <NumberOfWorkDayPerYear>150</NumberOfWorkDayPerYear>
-      <NumberOfWorkHourPerDay>3</NumberOfWorkHourPerDay>
+      <NumberOfWorkDayPerYear>294</NumberOfWorkDayPerYear>
+      <NumberOfWorkHourPerDay>7</NumberOfWorkHourPerDay>
       <A2B_RatingThreshold>5</A2B_RatingThreshold>
       <B2C_RatingThreshold>10</B2C_RatingThreshold>
       <C2D_RatingThreshold>20</C2D_RatingThreshold>
@@ -81,8 +81,7 @@
       <Major2Critical_SeverityThreshold>72000000000</Major2Critical_SeverityThreshold>
       <Critical2Blocker_SeverityThreshold>360000000000</Critical2Blocker_SeverityThreshold>
     </DebtSettings>
-  </ProjectDebtSettings>
-  <Queries>
+  </ProjectDebtSettings><Queries>
     <Group Name="Quality Gates" Active="True" ShownInReport="True">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Quality Gates Evolution</Name>
 from qg in QualityGates
@@ -10916,5 +10915,4 @@ select new {
 //</HowToFix>]]></Query>
       </Group>
     </Group>
-  </Queries>
-</NDepend>
+  </Queries></NDepend>
