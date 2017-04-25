@@ -1,6 +1,5 @@
 ﻿#region Apache License 2.0
-
-// <copyright company="Edgerunner.org" file="UnsignedShortValidator.cs">
+// <copyright company="Edgerunner.org" file="BooleanValidator.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -15,30 +14,38 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #endregion
 
-namespace Org.Edgerunner.FluentGuard.Validators
+using System;
+
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="ushort" />.
+   /// A Validator class for type <see cref="bool" />.
    /// </summary>
-   /// <seealso cref="ushort" />
-   public class UnsignedShortValidator : Validator<ushort>
+   /// <seealso cref="bool" />
+   public class BooleanValidator : Validator<bool>
    {
-      #region Constructors And Finalizers
+      /// <summary>
+      /// Performs the IsTrue operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
+      protected override bool PerformIsTrueOperation(bool currentValue)
+      {
+         return currentValue;
+      }
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="UnsignedShortValidator" /> class.
+      /// Initializes a new instance of the <see cref="BooleanValidator"/> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The parameter value.</param>
-      internal UnsignedShortValidator(string parameterName, ushort parameterValue)
+      /// <param name="parameterValue">if set to <c>true</c> [parameter value].</param>
+      internal BooleanValidator(string parameterName, bool parameterValue)
          : base(parameterName, parameterValue)
       {
       }
-
-      #endregion
 
       /// <summary>
       ///    Performs the greater than or equal to operation.
@@ -49,7 +56,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(ushort currentValue, ushort referenceValue)
+      protected override bool PerformEqualToOperation(bool currentValue, bool referenceValue)
       {
          return currentValue == referenceValue;
       }
@@ -63,9 +70,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(ushort currentValue, ushort referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type boolean.</exception>
+      protected override bool PerformGreaterThanOperation(bool currentValue, bool referenceValue)
       {
-         return currentValue > referenceValue;
+         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOp);
       }
 
       /// <summary>
@@ -77,29 +85,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(ushort currentValue, ushort referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type boolean.</exception>
+      protected override bool PerformGreaterThanOrEqualToOperation(bool currentValue, bool referenceValue)
       {
-         return currentValue >= referenceValue;
-      }
-
-      /// <summary>
-      ///    Performs the IsNegative operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(ushort currentValue)
-      {
-         return false;
-      }
-
-      /// <summary>
-      ///    Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(ushort currentValue)
-      {
-         return currentValue > 0;
+         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOrEqualToOp);
       }
 
       /// <summary>
@@ -111,9 +100,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(ushort currentValue, ushort referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type boolean.</exception>
+      protected override bool PerformLessThanOperation(bool currentValue, bool referenceValue)
       {
-         return currentValue < referenceValue;
+         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOp);
       }
 
       /// <summary>
@@ -125,9 +115,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(ushort currentValue, ushort referenceValue)
+      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type boolean.</exception>
+      protected override bool PerformLessThanOrEqualToOperation(bool currentValue, bool referenceValue)
       {
-         return currentValue <= referenceValue;
+         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOrEqualToOp);
       }
 
       /// <summary>
@@ -135,7 +126,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(ushort currentValue)
+      protected override bool PerformNotNullOperation(bool currentValue)
       {
          return true;
       }

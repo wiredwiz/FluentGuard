@@ -22,7 +22,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
 
 namespace Org.Edgerunner.FluentGuard.Tests
@@ -302,7 +302,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1.00001)]
       public override void TestParameterIsFalseFails(string parameterName, float parameterValue, Validator<float> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
+         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 
@@ -447,7 +447,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Example("foo", 1)]
       public override void TestParameterIsTrueFails(string parameterName, float parameterValue, Validator<float> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
+         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 

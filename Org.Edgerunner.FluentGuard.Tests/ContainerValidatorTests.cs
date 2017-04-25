@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="ByteValidatorTests.cs" company="Edgerunner.org">
+// <copyright file="ContainerValidatorTests.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -22,22 +22,139 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.FluentGuard.Tests.Data;
+using Org.Edgerunner.FluentGuard.Tests.Models;
 using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
+using Xunit;
 
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class UnsignedLongValidatorTests.
+   ///    Class ContainerValidatorTests.
    /// </summary>
-   /// <seealso cref="byte" />
+   /// <seealso cref="Container" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "EventExceptionNotDocumented", Justification = "Can be skipped for unit tests.")]
    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "Is a necessity of xBehave tests")]
 
    // ReSharper disable once ClassTooBig
-   public class ByteValidatorTests : ValidatorTests<byte>
+   public class ContainerValidatorTests : ValidatorTests<Container>
    {
+      /// <summary>
+      /// Tests not null or empty validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo", null)]
+      public override void TestParameterNotNullOrEmptyFailsNull(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is not null or empty"
+            .x(() => act = () => validator.IsNotNullOrEmpty().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests StartsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterStartsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter starts with a given string"
+            .x(() => act = () => validator.StartsWith(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAStartsWithOp));
+      }
+
+      /// <summary>
+      /// Tests StartsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterStartsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter starts with a given string"
+            .x(() => act = () => validator.StartsWith(null).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAStartsWithOp));
+      }
+
+      /// <summary>
+      /// Tests EndsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>      
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterEndsWithFails(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter ends with a given string"
+            .x(() => act = () => validator.EndsWith(valueToCompare).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAnEndsWithOp));
+      }
+
+      /// <summary>
+      /// Tests EndsWith validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="nullValue">The null value.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterEndsWithFailsNull(string parameterName, Container parameterValue, Container nullValue, Validator<Container> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter ends with a given string"
+            .x(() => act = () => validator.EndsWith(nullValue).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformAnEndsWithOp));
+      }
+
       /// <summary>
       /// Tests greater than validation.
       /// </summary>
@@ -46,127 +163,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
       [Scenario]
-      [Example("foo", 9, 2)]
-      [Example("foo", 4, 2)]
-      [Example("foo", 1, 0)]
-      public override void TestParameterGreaterThanPasses(string parameterName, byte parameterValue, byte valueToCompare, Validator<byte> validator)
+      [MemberData(nameof(ContainerData.IsGreaterThan), MemberType = typeof(ContainerData))]
+      public override void TestParameterGreaterThanPasses(string parameterName, Container parameterValue, Container valueToCompare, Validator<Container> validator)
       {
          base.TestParameterGreaterThanPasses(parameterName, parameterValue, valueToCompare, validator);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 1, 2, 5)]
-      public override void TestParameterConditionAndFailsLower(
-         string parameterName,
-         byte parameterValue,
-         byte lowerBound,
-         byte upperBound,
-         Validator<byte> validator,
-         Action act)
-      {
-         base.TestParameterConditionAndFailsLower(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 8, 2, 5)]
-      public override void TestParameterConditionAndFailsUpper(
-         string parameterName,
-         byte parameterValue,
-         byte lowerBound,
-         byte upperBound,
-         Validator<byte> validator,
-         Action act)
-      {
-         base.TestParameterConditionAndFailsUpper(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 2, 5)]
-      [Example("foo", 4, 2, 5)]
-      [Example("foo", 5, 2, 5)]
-      public override void TestParameterConditionAndPasses(
-         string parameterName,
-         byte parameterValue,
-         byte lowerBound,
-         byte upperBound,
-         Validator<byte> validator)
-      {
-         base.TestParameterConditionAndPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
-      }
-
-      /// <summary>
-      ///    Tests OR combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 3, 2, 6)]
-      [Example("foo", 4, 2, 6)]
-      [Example("foo", 5, 2, 6)]
-      public override void TestParameterConditionOrFails(
-         string parameterName,
-         byte parameterValue,
-         byte lowerBound,
-         byte upperBound,
-         Validator<byte> validator,
-         Action act)
-      {
-         base.TestParameterConditionOrFails(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests OR combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 2, 2, 5)]
-      [Example("foo", 1, 2, 5)]
-      [Example("foo", 0, 2, 5)]
-      [Example("foo", 5, 2, 5)]
-      [Example("foo", 6, 2, 5)]
-      [Example("foo", 9, 2, 5)]
-      public override void TestParameterConditionOrPasses(
-         string parameterName,
-         byte parameterValue,
-         byte lowerBound,
-         byte upperBound,
-         Validator<byte> validator)
-      {
-         base.TestParameterConditionOrPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
       }
 
       /// <summary>
@@ -178,15 +178,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 6)]
-      [Example("foo", 1, 2)]
-      [Example("foo", 2, 1)]
-      [Example("foo", 4, 2)]
+      [MemberData(nameof(ContainerData.IsNotEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterEqualToFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -200,14 +197,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0, 0)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 5, 5)]
+      [MemberData(nameof(ContainerData.IsEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterEqualToPasses(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -221,14 +216,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 4)]
-      [Example("foo", 2, 2)]
-      [Example("foo", 0, 1)]
+      [MemberData(nameof(ContainerData.IsLessThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterGreaterThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -243,14 +236,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 6)]
-      [Example("foo", 1, 2)]
-      [Example("foo", 2, 4)]
+      [MemberData(nameof(ContainerData.IsLessThan), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanOrEqualToFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterGreaterThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -264,15 +255,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 4, 2)]
-      [Example("foo", 3, 2)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 1, 0)]
+      [MemberData(nameof(ContainerData.IsGreaterThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterGreaterThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -285,19 +273,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 5)]
-      [Example("foo", 0)]
-      [Example("foo", 1)]
-      public override void TestParameterIsFalseFails(string parameterName, byte parameterValue, Validator<byte> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsFalseFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-         "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
+         "Testing that the parameter is true"
+            .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 
-         "Should throw an exception".x(
-                                       () =>
-                                          act.ShouldThrow<InvalidOperationException>()
-                                             .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
       }
 
       /// <summary>
@@ -308,11 +295,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", 1)]
-      public override void TestParameterIsNegativeFails(string parameterName, byte parameterValue, Validator<byte> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         base.TestParameterIsNegativeFails(parameterName, parameterValue, validator, act);
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
       }
       
       /// <summary>
@@ -321,15 +315,22 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      public override void TestParameterIsNotNegativePasses(string parameterName, byte parameterValue, Validator<byte> validator)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNotNegativeFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         base.TestParameterIsNotNegativePasses(parameterName, parameterValue, validator);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsNotPositive validation.
       /// </summary>
@@ -338,26 +339,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      public override void TestParameterIsNotPositiveFails(string parameterName, byte parameterValue, Validator<byte> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsNotPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         base.TestParameterIsNotPositiveFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsNotNegative validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 0)]
-      public override void TestParameterIsNotPositivePasses(string parameterName, byte parameterValue, Validator<byte> validator)
-      {
-         base.TestParameterIsNotPositivePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsPositive validation.
       /// </summary>
@@ -366,26 +361,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0)]
-      public override void TestParameterIsPositiveFails(string parameterName, byte parameterValue, Validator<byte> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsPositiveFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         base.TestParameterIsPositiveFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsPositive validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      [Example("foo", 1)]
-      [Example("foo", 4)]
-      public override void TestParameterIsPositivePasses(string parameterName, byte parameterValue, Validator<byte> validator)
-      {
-         base.TestParameterIsPositivePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsTrue validation.
       /// </summary>
@@ -394,19 +383,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 5)]
-      [Example("foo", 0)]
-      [Example("foo", 1)]
-      public override void TestParameterIsTrueFails(string parameterName, byte parameterValue, Validator<byte> validator, Action act)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterIsTrueFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-         "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
+         "Testing that the parameter is true"
+            .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 
-         "Should throw an exception".x(
-                                       () =>
-                                          act.ShouldThrow<InvalidOperationException>()
-                                             .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
       }
 
       /// <summary>
@@ -418,14 +406,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 5, 2)]
-      [Example("foo", 2, 2)]
-      [Example("foo", 3, 2)]
+      [MemberData(nameof(ContainerData.IsGreaterThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterLessThanFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -440,14 +426,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 5, 2)]
-      [Example("foo", 3, 2)]
-      [Example("foo", 1, 0)]
+      [MemberData(nameof(ContainerData.IsGreaterThan), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanOrEqualToFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterLessThanOrEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -461,15 +445,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 5)]
-      [Example("foo", 2, 3)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 0, 1)]
+      [MemberData(nameof(ContainerData.IsLessThanOrEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanOrEqualToPasses(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterLessThanOrEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -482,14 +463,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 5)]
-      [Example("foo", 2, 3)]
-      [Example("foo", 0, 2)]
+      [MemberData(nameof(ContainerData.IsLessThan), MemberType = typeof(ContainerData))]
       public override void TestParameterLessThanPasses(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterLessThanPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -503,15 +482,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 2, 2)]
-      [Example("foo", 1, 1)]
-      [Example("foo", 0, 0)]
-      [Example("foo", 5, 5)]
+      [MemberData(nameof(ContainerData.IsEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterNotEqualToFails(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator,
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator,
          Action act)
       {
          base.TestParameterNotEqualToFails(parameterName, parameterValue, valueToCompare, validator, act);
@@ -525,14 +501,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0, 1)]
-      [Example("foo", 0, 6)]
-      [Example("foo", 1, 2)]
+      [MemberData(nameof(ContainerData.IsNotEqualTo), MemberType = typeof(ContainerData))]
       public override void TestParameterNotEqualToPasses(
          string parameterName,
-         byte parameterValue,
-         byte valueToCompare,
-         Validator<byte> validator)
+         Container parameterValue,
+         Container valueToCompare,
+         Validator<Container> validator)
       {
          base.TestParameterNotEqualToPasses(parameterName, parameterValue, valueToCompare, validator);
       }
@@ -544,11 +518,24 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 0)]
-      [Example("foo", 1)]
-      public override void TestParameterNotNullPasses(string parameterName, byte parameterValue, Validator<byte> validator)
+      [MemberData(nameof(ContainerData.RandomContainerValues), MemberType = typeof(ContainerData))]
+      public override void TestParameterNotNullPasses(string parameterName, Container parameterValue, Validator<Container> validator)
       {
          base.TestParameterNotNullPasses(parameterName, parameterValue, validator);
+      }
+
+      /// <summary>
+      /// Tests not null validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ContainerData.IsNull), MemberType = typeof(ContainerData))]
+      public override void TestParameterNotNullFails(string parameterName, Container parameterValue, Validator<Container> validator, Action act)
+      {
+         base.TestParameterNotNullFails(parameterName, parameterValue, validator, act);
       }
    }
 }

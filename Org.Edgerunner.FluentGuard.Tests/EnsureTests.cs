@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using FluentAssertions;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
 
 namespace Org.Edgerunner.FluentGuard.Tests
@@ -43,7 +43,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       public void CreationOfValidatorPasses(string parameterName, int parameterValue, Validator<int> validator)
       {
          "Ensuring that a given parameter and its value, results in a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Where its name matches the supplied parameter name"
             .x(() => validator.ParameterName.Should().Be(parameterName));
@@ -52,25 +52,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator.ParameterValue.Should().Be(parameterValue));
       }
 
-      ///// <summary>
-      ///// Scenario1s the specified parameter name.
-      ///// </summary>
-      ///// <param name="text">The text to test with.</param>
-      ///// <param name="expectedName">The expected name.</param>
-      ///// <param name="expectedLength">The expected length.</param>
-      ///// <param name="validator">The validator to test with.</param>
-      //[Scenario]
-      //[Example("Crazy Text", "text.Length", 11)]
-      //public void CreationOfValidatorUsingALambdaPasses(string text, string expectedName, int expectedLength, Validator<int> validator)
-      //{
-      //   "Ensuring that a given parameter and its value, results in a new validator"
-      //      .x(() => validator = Ensure.That(() => text.Length));
+      /// <summary>
+      /// Scenario1s the specified parameter name.
+      /// </summary>
+      /// <param name="parameterValue">The parameter value.</param>
+      /// <param name="validator">The validator to test with.</param>
+      [Scenario]
+      [Example(2)]
+      public void CreationOfLambdaValidatorPasses(int parameterValue, Validator<int> validator)
+      {
+         "Ensuring that a given parameter and its value, results in a new validator"
+            .x(() => validator = Validate.That(() => parameterValue));
 
-      //   "Where its name matches the supplied parameter name"
-      //      .x(() => validator.ParameterName.Should().Be(expectedName));
+         "Where its name matches the supplied parameter name"
+            .x(() => validator.ParameterName.Should().Be("parameterValue"));
 
-      //   "And its value matches the supplied parameter value"
-      //      .x(() => validator.ParameterValue.Should().Be(expectedLength));
-      //}
+         "And its value matches the supplied parameter value"
+            .x(() => validator.ParameterValue.Should().Be(parameterValue));
+      }
    }
 }

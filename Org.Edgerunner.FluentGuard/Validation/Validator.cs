@@ -19,12 +19,11 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Org.Edgerunner.FluentGuard.Properties;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Class that validates data.
@@ -70,13 +69,13 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// Gets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      public virtual string ParameterName { get; private set; }
+      public virtual string ParameterName { get; }
 
       /// <summary>
       /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      public virtual T ParameterValue { get; private set; }
+      public virtual T ParameterValue { get; }
 
       /// <summary>
       ///    Combines the current conditional check with a new one using 'And' logic.
@@ -534,10 +533,10 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
+         IEquatable<T> original = ParameterValue as IEquatable<T>;
          if (original == null)
             throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
-         return original.CompareTo(referenceValue) == 0;
+         return original.Equals(referenceValue);
       }
 
       /// <summary>

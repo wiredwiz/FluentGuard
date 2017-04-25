@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="UnsignedLongValidator.cs">
+// <copyright company="Edgerunner.org" file="ByteValidator.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -18,22 +18,24 @@
 
 #endregion
 
-namespace Org.Edgerunner.FluentGuard.Validators
+using System;
+
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="ulong" />.
+   ///    A Validator class for type <see cref="byte" />.
    /// </summary>
-   /// <seealso cref="ulong" />
-   public class UnsignedLongValidator : Validator<ulong>
+   /// <seealso cref="byte" />
+   public class ByteValidator : Validator<byte>
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="UnsignedLongValidator" /> class.
+      ///    Initializes a new instance of the <see cref="ByteValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      internal UnsignedLongValidator(string parameterName, ulong parameterValue)
+      internal ByteValidator(string parameterName, byte parameterValue)
          : base(parameterName, parameterValue)
       {
       }
@@ -49,7 +51,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformEqualToOperation(byte currentValue, byte referenceValue)
       {
          return currentValue == referenceValue;
       }
@@ -63,7 +65,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformGreaterThanOperation(byte currentValue, byte referenceValue)
       {
          return currentValue > referenceValue;
       }
@@ -77,29 +79,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(byte currentValue, byte referenceValue)
       {
          return currentValue >= referenceValue;
-      }
-
-      /// <summary>
-      ///    Performs the IsNegative operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(ulong currentValue)
-      {
-         return false;
-      }
-
-      /// <summary>
-      ///    Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(ulong currentValue)
-      {
-         return currentValue > 0;
       }
 
       /// <summary>
@@ -111,7 +93,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformLessThanOperation(byte currentValue, byte referenceValue)
       {
          return currentValue < referenceValue;
       }
@@ -125,7 +107,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(ulong currentValue, ulong referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(byte currentValue, byte referenceValue)
       {
          return currentValue <= referenceValue;
       }
@@ -135,9 +117,31 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(ulong currentValue)
+      protected override bool PerformNotNullOperation(byte currentValue)
       {
          return true;
+      }
+
+      /// <summary>
+      /// Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
+      protected override bool PerformIsPositiveOperation(byte currentValue)
+      {
+         return currentValue > 0;
+      }
+
+      /// <summary>
+      /// Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
+      protected override bool PerformIsNegativeOperation(byte currentValue)
+      {
+         return false;
       }
    }
 }

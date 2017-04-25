@@ -1,5 +1,6 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="BooleanValidator.cs">
+
+// <copyright company="Edgerunner.org" file="DateTimeValidator.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -14,38 +15,32 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 using System;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   /// A Validator class for type <see cref="bool" />.
+   ///    A Validator class for type <see cref="DateTime" />.
    /// </summary>
-   /// <seealso cref="bool" />
-   public class BooleanValidator : Validator<bool>
+   /// <seealso cref="DateTime" />
+   public class DateTimeValidator : Validator<DateTime>
    {
-      /// <summary>
-      /// Performs the IsTrue operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
-      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
-      protected override bool PerformIsTrueOperation(bool currentValue)
-      {
-         return currentValue;
-      }
+      #region Constructors And Finalizers
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="BooleanValidator"/> class.
+      ///    Initializes a new instance of the <see cref="DateTimeValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">if set to <c>true</c> [parameter value].</param>
-      internal BooleanValidator(string parameterName, bool parameterValue)
+      /// <param name="parameterValue">The parameter value.</param>
+      internal DateTimeValidator(string parameterName, DateTime parameterValue)
          : base(parameterName, parameterValue)
       {
       }
+
+      #endregion
 
       /// <summary>
       ///    Performs the greater than or equal to operation.
@@ -56,9 +51,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(bool currentValue, bool referenceValue)
+      protected override bool PerformEqualToOperation(DateTime currentValue, DateTime referenceValue)
       {
-         return currentValue == referenceValue;
+         return currentValue.Equals(referenceValue);
       }
 
       /// <summary>
@@ -70,10 +65,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type boolean.</exception>
-      protected override bool PerformGreaterThanOperation(bool currentValue, bool referenceValue)
+      protected override bool PerformGreaterThanOperation(DateTime currentValue, DateTime referenceValue)
       {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOp);
+         return currentValue > referenceValue;
       }
 
       /// <summary>
@@ -85,10 +79,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type boolean.</exception>
-      protected override bool PerformGreaterThanOrEqualToOperation(bool currentValue, bool referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(DateTime currentValue, DateTime referenceValue)
       {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOrEqualToOp);
+         return currentValue >= referenceValue;
       }
 
       /// <summary>
@@ -100,10 +93,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type boolean.</exception>
-      protected override bool PerformLessThanOperation(bool currentValue, bool referenceValue)
+      protected override bool PerformLessThanOperation(DateTime currentValue, DateTime referenceValue)
       {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOp);
+         return currentValue < referenceValue;
       }
 
       /// <summary>
@@ -115,10 +107,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type boolean.</exception>
-      protected override bool PerformLessThanOrEqualToOperation(bool currentValue, bool referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(DateTime currentValue, DateTime referenceValue)
       {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOrEqualToOp);
+         return currentValue <= referenceValue;
       }
 
       /// <summary>
@@ -126,7 +117,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(bool currentValue)
+      protected override bool PerformNotNullOperation(DateTime currentValue)
       {
          return true;
       }

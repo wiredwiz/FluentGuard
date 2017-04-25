@@ -18,26 +18,28 @@
 
 using System;
 
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Factory class for creating new validator instances.
    /// </summary>
-   internal static class ValidatorFactory
+   internal class ValidatorFactory : IValidatorFactory
    {
       /// <summary>
-      /// Creates a new instance of <see cref="IValidator{T}"/>.
+      /// Creates a new instance of <see cref="Validator{T}"/>.
       /// </summary>
       /// <typeparam name="T">The type of data to validate.</typeparam>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      /// <returns>A new <see cref="IValidator{T}"/> instance.</returns>
-      public static Validator<T> Create<T>(string parameterName, T parameterValue)
+      /// <returns>A new <see cref="Validator{T}"/> instance.</returns>
+      public Validator<T> Create<T>(string parameterName, T parameterValue)
       {
          var typeData = typeof(T);
 
+         // ReSharper disable ExceptionNotDocumented
+         // ReSharper disable ExceptionNotDocumentedOptional
          if (typeData == typeof(bool))
-            return new BooleanValidator(parameterName, Convert.ToBoolean(parameterValue)) as Validator<T>;
+            return new BooleanValidator(parameterName, Convert.ToBoolean(parameterValue)) as Validator<T>;         
          if (typeData == typeof(int))
             return new IntegerValidator(parameterName, Convert.ToInt32(parameterValue)) as Validator<T>;
          if (typeData == typeof(string))
@@ -65,7 +67,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
          if (typeData == typeof(byte))
             return new ByteValidator(parameterName, Convert.ToByte(parameterValue)) as Validator<T>;
          if (typeData == typeof(sbyte))
-            return new SByteValidator(parameterName, Convert.ToSByte(parameterValue)) as Validator<T>;       
+            return new SByteValidator(parameterName, Convert.ToSByte(parameterValue)) as Validator<T>;
+         // ReSharper restore ExceptionNotDocumentedOptional
+         // ReSharper restore ExceptionNotDocumented
 
          return new Validator<T>(parameterName, parameterValue);
       }

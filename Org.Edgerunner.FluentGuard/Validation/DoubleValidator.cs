@@ -1,7 +1,6 @@
 ﻿#region Apache License 2.0
-
-// <copyright company="Edgerunner.org" file="DateTimeValidator.cs">
-// Copyright (c)  2016
+// <copyright file="DoubleValidator.cs" company="Edgerunner.org">
+// Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,27 +14,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #endregion
 
-using System;
-
-namespace Org.Edgerunner.FluentGuard.Validators
+namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="DateTime" />.
+   ///    A Validator class for type <see cref="double" />.
    /// </summary>
-   /// <seealso cref="DateTime" />
-   public class DateTimeValidator : Validator<DateTime>
+   /// <seealso cref="double" />
+   public class DoubleValidator : Validator<double>
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="DateTimeValidator" /> class.
+      ///    Initializes a new instance of the <see cref="DoubleValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
-      internal DateTimeValidator(string parameterName, DateTime parameterValue)
+      internal DoubleValidator(string parameterName, double parameterValue)
          : base(parameterName, parameterValue)
       {
       }
@@ -51,9 +47,9 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformEqualToOperation(DateTime currentValue, DateTime referenceValue)
+      protected override bool PerformEqualToOperation(double currentValue, double referenceValue)
       {
-         return currentValue.CompareTo(referenceValue) == 0;
+         return currentValue.Equals(referenceValue);
       }
 
       /// <summary>
@@ -65,7 +61,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOperation(DateTime currentValue, DateTime referenceValue)
+      protected override bool PerformGreaterThanOperation(double currentValue, double referenceValue)
       {
          return currentValue > referenceValue;
       }
@@ -79,9 +75,29 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformGreaterThanOrEqualToOperation(DateTime currentValue, DateTime referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(double currentValue, double referenceValue)
       {
          return currentValue >= referenceValue;
+      }
+
+      /// <summary>
+      ///    Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsNegativeOperation(double currentValue)
+      {
+         return currentValue < 0;
+      }
+
+      /// <summary>
+      ///    Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsPositiveOperation(double currentValue)
+      {
+         return currentValue > 0;
       }
 
       /// <summary>
@@ -93,7 +109,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected override bool PerformLessThanOperation(DateTime currentValue, DateTime referenceValue)
+      protected override bool PerformLessThanOperation(double currentValue, double referenceValue)
       {
          return currentValue < referenceValue;
       }
@@ -107,7 +123,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected override bool PerformLessThanOrEqualToOperation(DateTime currentValue, DateTime referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(double currentValue, double referenceValue)
       {
          return currentValue <= referenceValue;
       }
@@ -117,7 +133,7 @@ namespace Org.Edgerunner.FluentGuard.Validators
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(DateTime currentValue)
+      protected override bool PerformNotNullOperation(double currentValue)
       {
          return true;
       }

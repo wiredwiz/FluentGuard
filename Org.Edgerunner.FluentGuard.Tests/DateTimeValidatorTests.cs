@@ -22,13 +22,15 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.FluentGuard.Validators;
+using Org.Edgerunner.FluentGuard.Tests.Data;
+using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
+using Xunit;
 
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class IntegerValidatorTests.
+   ///    Class DateTimeValidatorTests.
    /// </summary>
    /// <seealso cref="DateTime" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
@@ -46,110 +48,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>     
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsGreaterThan), MemberType = typeof(DateTimeData))]
       public override void TestParameterGreaterThanPasses(string parameterName, DateTime parameterValue, DateTime valueToCompare, Validator<DateTime> validator)
       {
          base.TestParameterGreaterThanPasses(parameterName, parameterValue, valueToCompare, validator);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterConditionAndFailsLower(
-         string parameterName,
-         DateTime parameterValue,
-         DateTime lowerBound,
-         DateTime upperBound,
-         Validator<DateTime> validator,
-         Action act)
-      {
-         base.TestParameterConditionAndFailsLower(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterConditionAndFailsUpper(
-         string parameterName,
-         DateTime parameterValue,
-         DateTime lowerBound,
-         DateTime upperBound,
-         Validator<DateTime> validator,
-         Action act)
-      {
-         base.TestParameterConditionAndFailsUpper(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests AND combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterConditionAndPasses(
-         string parameterName,
-         DateTime parameterValue,
-         DateTime lowerBound,
-         DateTime upperBound,
-         Validator<DateTime> validator)
-      {
-         base.TestParameterConditionAndPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
-      }
-
-      /// <summary>
-      ///    Tests OR combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterConditionOrFails(
-         string parameterName,
-         DateTime parameterValue,
-         DateTime lowerBound,
-         DateTime upperBound,
-         Validator<DateTime> validator,
-         Action act)
-      {
-         base.TestParameterConditionOrFails(parameterName, parameterValue, lowerBound, upperBound, validator, act);
-      }
-
-      /// <summary>
-      ///    Tests OR combining in validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="lowerBound">The lower bound.</param>
-      /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterConditionOrPasses(
-         string parameterName,
-         DateTime parameterValue,
-         DateTime lowerBound,
-         DateTime upperBound,
-         Validator<DateTime> validator)
-      {
-         base.TestParameterConditionOrPasses(parameterName, parameterValue, lowerBound, upperBound, validator);
       }
 
       /// <summary>
@@ -161,6 +63,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsNotEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterEqualToFails(
          string parameterName,
          DateTime parameterValue,
@@ -179,6 +82,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterEqualToPasses(
          string parameterName,
          DateTime parameterValue,
@@ -197,6 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsLessThanOrEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterGreaterThanFails(
          string parameterName,
          DateTime parameterValue,
@@ -216,7 +121,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-
+      [MemberData(nameof(DateTimeData.IsLessThan), MemberType = typeof(DateTimeData))]
       public override void TestParameterGreaterThanOrEqualToFails(
          string parameterName,
          DateTime parameterValue,
@@ -235,6 +140,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
          DateTime parameterValue,
@@ -252,10 +158,11 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsFalseFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
          "Given a new validator"
-            .x(() => validator = Ensure.That(parameterName, parameterValue));
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
             .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
@@ -273,23 +180,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsNegativeFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
-         base.TestParameterIsNegativeFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsNegative validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterIsNegativePasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
-      {
-         base.TestParameterIsNegativePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsNotNegative validation.
       /// </summary>
@@ -298,23 +202,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsNotNegativeFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
-         base.TestParameterIsNotNegativeFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsNotNegative validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterIsNotNegativePasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
-      {
-         base.TestParameterIsNotNegativePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsNotPositive validation.
       /// </summary>
@@ -323,23 +224,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsNotPositiveFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
-         base.TestParameterIsNotPositiveFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsNotNegative validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterIsNotPositivePasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
-      {
-         base.TestParameterIsNotPositivePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsPositive validation.
       /// </summary>
@@ -348,23 +246,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsPositiveFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
-         base.TestParameterIsPositiveFails(parameterName, parameterValue, validator, act);
-      }
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-      /// <summary>
-      ///    Tests IsPositive validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
-      [Scenario]
-      public override void TestParameterIsPositivePasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
-      {
-         base.TestParameterIsPositivePasses(parameterName, parameterValue, validator);
-      }
+         "Testing that the parameter value is less than the value to compare against"
+            .x(() => act = () => validator.IsNegative().OtherwiseThrowException());
 
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(Resources.UnableToPerformPosNegOp));
+      }
+      
       /// <summary>
       ///    Tests IsTrue validation.
       /// </summary>
@@ -373,16 +268,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterIsTrueFails(string parameterName, DateTime parameterValue, Validator<DateTime> validator, Action act)
       {
-         "Given a new validator".x(() => validator = Ensure.That(parameterName, parameterValue));
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
 
-         "Testing that the parameter is true".x(() => act = () => validator.IsTrue().OtherwiseThrowException());
+         "Testing that the parameter is true"
+            .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
 
-         "Should throw an exception".x(
-                                       () =>
-                                          act.ShouldThrow<InvalidOperationException>()
-                                             .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<InvalidOperationException>()
+            .WithMessage(string.Format(Resources.UnableToPerformBooleanOp)));
       }
 
       /// <summary>
@@ -394,6 +291,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterLessThanFails(
          string parameterName,
          DateTime parameterValue,
@@ -413,6 +311,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsGreaterThan), MemberType = typeof(DateTimeData))]
       public override void TestParameterLessThanOrEqualToFails(
          string parameterName,
          DateTime parameterValue,
@@ -431,6 +330,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsLessThanOrEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterLessThanOrEqualToPasses(
          string parameterName,
          DateTime parameterValue,
@@ -448,6 +348,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsLessThan), MemberType = typeof(DateTimeData))]
       public override void TestParameterLessThanPasses(
          string parameterName,
          DateTime parameterValue,
@@ -466,6 +367,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterNotEqualToFails(
          string parameterName,
          DateTime parameterValue,
@@ -484,6 +386,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.IsNotEqualTo), MemberType = typeof(DateTimeData))]
       public override void TestParameterNotEqualToPasses(
          string parameterName,
          DateTime parameterValue,
@@ -500,6 +403,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="Validator{T}" /> to test with.</param>
       [Scenario]
+      [MemberData(nameof(DateTimeData.RandomDateValues), MemberType = typeof(DateTimeData))]
       public override void TestParameterNotNullPasses(string parameterName, DateTime parameterValue, Validator<DateTime> validator)
       {
          base.TestParameterNotNullPasses(parameterName, parameterValue, validator);
