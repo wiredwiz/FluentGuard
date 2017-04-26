@@ -43,8 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Validation\CombinationMode.cs" />
-    <Compile Include="ExpressionExtensions.cs" />
-    <Compile Include="UsingA.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="Validation\DateTimeValidator.cs" />
     <Compile Include="Validation\DoubleValidator.cs" />
@@ -59,11 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Validation\IBooleanValidator.cs" />
-    <Compile Include="Validation\IComparableValidator.cs" />
-    <Compile Include="Validation\IEquatableValidator.cs" />
-    <Compile Include="Validation\INullableValidator.cs" />
-    <Compile Include="Validation\IPositivityValidator.cs" />
     <Compile Include="Validation\IValidatorFactory.cs" />
     <Compile Include="Validation\NullableBooleanValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />
@@ -75,11 +68,12 @@
     <Compile Include="Validation\UnsignedLongValidator.cs" />
     <Compile Include="Validation\UnsignedNumericValidator.cs" />
     <Compile Include="Validation\UnsignedShortValidator.cs" />
+    <Compile Include="Validation\Validator.cs" />
     <Compile Include="Validation\ValidatorFactory.cs" />
     <Compile Include="Validation\IntegerValidator.cs" />
     <Compile Include="Validation\LongValidator.cs" />
     <Compile Include="Validation\ShortValidator.cs" />
-    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Validation\Validator`1.cs" />
     <Compile Include="Validation\ValidatorLinkage.cs" />
   </ItemGroup>
   <ItemGroup>
