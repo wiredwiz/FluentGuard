@@ -51,24 +51,5 @@ namespace Org.Edgerunner.FluentGuard.Tests
          "And its value matches the supplied parameter value"
             .x(() => validator.ParameterValue.Should().Be(parameterValue));
       }
-
-      /// <summary>
-      /// Scenario1s the specified parameter name.
-      /// </summary>
-      /// <param name="parameterValue">The parameter value.</param>
-      /// <param name="validator">The validator to test with.</param>
-      [Scenario]
-      [Example(2)]
-      public void CreationOfLambdaValidatorPasses(int parameterValue, Validator<int> validator)
-      {
-         "Ensuring that a given parameter and its value, results in a new validator"
-            .x(() => validator = Validate.That(() => parameterValue));
-
-         "Where its name matches the supplied parameter name"
-            .x(() => validator.ParameterName.Should().Be("parameterValue"));
-
-         "And its value matches the supplied parameter value"
-            .x(() => validator.ParameterValue.Should().Be(parameterValue));
-      }
    }
 }

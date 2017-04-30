@@ -23,7 +23,12 @@ using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class NumericValidator<T> : Validator<T>
+   /// <summary>
+   /// Class NumericValidator.
+   /// </summary>
+   /// <typeparam name="T">A numeric type.</typeparam>
+   /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
+   public class NumericValidator<T> : UnsignedNumericValidator<T>
    {
       #region Constructors And Finalizers
 
@@ -40,90 +45,18 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      ///    Determines whether the parameter being validated is equal to the specified value.
+      ///    Performs the IsNegative operation.
       /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsEqualTo(T value)
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsNegativeOperation(T currentValue)
       {
-         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         return original.CompareTo(default(T)) < 0;
       }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is greater than the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsGreaterThan(T value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is greater than or equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsGreaterThanOrEqualTo(T value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is less than the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsLessThan(T value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is less than or equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsLessThanOrEqualTo(T value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanOrEqualToX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
+      
       /// <summary>
       ///    Determines whether the parameter being validated is negative.
       /// </summary>
@@ -141,23 +74,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is not equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsNotEqualTo(T value)
-      {
-         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
       ///    Determines whether the parameter being validated is not negative.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
@@ -169,38 +85,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
          if (CurrentException == null)
             CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBeNegative);
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is not positive.
-      /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsNotPositive()
-      {
-         if (ShouldReturnAfterEvaluation(!PerformIsPositiveOperation(ParameterValue)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBePositive);
-
-         return new ValidatorLinkage<NumericValidator<T>>(this);
-      }
-
-      /// <summary>
-      ///    Determines whether the parameter being validated is positive.
-      /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
-      public ValidatorLinkage<NumericValidator<T>> IsPositive()
-      {
-         if (ShouldReturnAfterEvaluation(PerformIsPositiveOperation(ParameterValue)))
-            return new ValidatorLinkage<NumericValidator<T>>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustBePositive);
 
          return new ValidatorLinkage<NumericValidator<T>>(this);
       }

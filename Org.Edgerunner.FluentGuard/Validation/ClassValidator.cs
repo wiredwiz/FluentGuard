@@ -1,5 +1,5 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="NullableNumericValidator.cs">
+// <copyright company="Edgerunner.org" file="ClassValidator.cs">
 // Copyright (c)  2017
 // </copyright>
 // 
@@ -17,18 +17,14 @@
 #endregion
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T> where T : struct
+   public class ClassValidator<T> : Validator<T> where T : class
    {
       /// <summary>
-      /// Initializes a new instance of the <see cref="NullableUnsignedNumericValidator{T}"/> class. 
+      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
       /// </summary>
-      /// <param name="parameterName">
-      /// The name of the parameter being validated.
-      /// </param>
-      /// <param name="parameterValue">
-      /// The value of the parameter being validated.
-      /// </param>
-      public NullableNumericValidator(string parameterName, T? parameterValue)
+      /// <param name="parameterName">The name of the parameter being validated.</param>
+      /// <param name="parameterValue">The value of the parameter being validated.</param>
+      public ClassValidator(string parameterName, T parameterValue)
          : base(parameterName, parameterValue)
       {
       }

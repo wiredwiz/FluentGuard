@@ -1,5 +1,5 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="NullableNumericValidator.cs">
+// <copyright company="Edgerunner.org" file="NullableDateTimeValidator.cs">
 // Copyright (c)  2017
 // </copyright>
 // 
@@ -15,20 +15,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
+
+using System;
+
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T> where T : struct
+   public class NullableDateTimeValidator : NullableValidator<DateTime>
    {
       /// <summary>
-      /// Initializes a new instance of the <see cref="NullableUnsignedNumericValidator{T}"/> class. 
+      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
       /// </summary>
-      /// <param name="parameterName">
-      /// The name of the parameter being validated.
-      /// </param>
-      /// <param name="parameterValue">
-      /// The value of the parameter being validated.
-      /// </param>
-      public NullableNumericValidator(string parameterName, T? parameterValue)
+      /// <param name="parameterName">The name of the parameter being validated.</param>
+      /// <param name="parameterValue">The value of the parameter being validated.</param>
+      public NullableDateTimeValidator(string parameterName, DateTime? parameterValue)
          : base(parameterName, parameterValue)
       {
       }

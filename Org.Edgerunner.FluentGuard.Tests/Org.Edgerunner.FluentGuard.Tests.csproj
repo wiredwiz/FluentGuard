@@ -77,8 +77,6 @@
     <Compile Include="BooleanValidatorTests.cs" />
     <Compile Include="ByteValidatorTests.cs" />
     <Compile Include="CharacterValidatorTests.cs" />
-    <Compile Include="ContainerValidatorTests.cs" />
-    <Compile Include="Data\ContainerData.cs" />
     <Compile Include="Data\DateTimeData.cs" />
     <Compile Include="DateTimeValidatorTests.cs" />
     <Compile Include="DecimalValidatorTests.cs" />
@@ -87,7 +85,7 @@
     <Compile Include="FloatValidatorTests.cs" />
     <Compile Include="IntegerValidatorTests.cs" />
     <Compile Include="LongValidatorTests.cs" />
-    <Compile Include="Models\Container.cs" />
+    <Compile Include="NullableBooleanValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SByteValidatorTests.cs" />
     <Compile Include="ShortValidatorTests.cs" />
@@ -95,7 +93,6 @@
     <Compile Include="UnsignedShortValidatorTests.cs" />
     <Compile Include="UnsignedIntegerValidatorTests.cs" />
     <Compile Include="UnsignedLongValidatorTests.cs" />
-    <Compile Include="ValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

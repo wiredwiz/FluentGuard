@@ -40,6 +40,19 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
+      ///    Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected override bool PerformIsPositiveOperation(T currentValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         return original.CompareTo(default(T)) > 0;
+      }
+
+      /// <summary>
       ///    Determines whether the parameter being validated is equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>

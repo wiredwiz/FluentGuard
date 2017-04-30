@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="Validator`1.cs">
+// <copyright company="Edgerunner.org" file="NullableValidator.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -12,7 +12,7 @@
 // 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// WITHOUT? WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
@@ -26,7 +26,7 @@ using Org.Edgerunner.FluentGuard.Properties;
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   /// Class that validates data.
+   /// Class that validates nullable data.
    /// </summary>
    /// <typeparam name="T">The type of data to validate.</typeparam>
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
@@ -34,16 +34,20 @@ namespace Org.Edgerunner.FluentGuard.Validation
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
    // ReSharper disable once ClassTooBig
-   public class Validator<T> : Validator
+   public class NullableValidator<T> : Validator where T : struct
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
+      /// Initializes a new instance of the <see cref="NullableValidator{T}"/> class. 
       /// </summary>
-      /// <param name="parameterName">The name of the parameter being validated.</param>
-      /// <param name="parameterValue">The value of the parameter being validated.</param>
-      internal Validator(string parameterName, T parameterValue)
+      /// <param name="parameterName">
+      /// The name of the parameter being validated.
+      /// </param>
+      /// <param name="parameterValue">
+      /// The value of the parameter being validated.
+      /// </param>
+      internal NullableValidator(string parameterName, T? parameterValue)
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
@@ -63,7 +67,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Gets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      public virtual T ParameterValue { get; }
+      public virtual T? ParameterValue { get; }
 
       /// <summary>
       ///    Determines whether the current condition evaluation should return.
@@ -98,12 +102,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
       /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
-      protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformLessThanOperation(T? currentValue, T? referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
-         return original.CompareTo(referenceValue) < 0;
+         return Nullable.Compare(currentValue, referenceValue) < 0;
       }
 
       /// <summary>
@@ -113,12 +114,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
       /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than Or Equal To operation on the supplied value type.</exception>
-      protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformLessThanOrEqualToOperation(T? currentValue, T? referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
-         return original.CompareTo(referenceValue) <= 0;
+         return Nullable.Compare(currentValue, referenceValue) <= 0;
       }
 
       /// <summary>
@@ -128,12 +126,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
       /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than operation on the supplied value type.</exception>
-      protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformGreaterThanOperation(T? currentValue, T? referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
-         return original.CompareTo(referenceValue) > 0;
+         return Nullable.Compare(currentValue, referenceValue) > 0;
       }
 
       /// <summary>
@@ -143,12 +138,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
       /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on the supplied value type.</exception>
-      protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformGreaterThanOrEqualToOperation(T? currentValue, T? referenceValue)
       {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
-         return original.CompareTo(referenceValue) >= 0;
+         return Nullable.Compare(currentValue, referenceValue) >= 0;
       }
 
       /// <summary>
@@ -158,12 +150,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
       /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
-      protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformEqualToOperation(T? currentValue, T? referenceValue)
       {
-         IEquatable<T> original = ParameterValue as IEquatable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
-         return original.Equals(referenceValue);
+         return Nullable.Equals(currentValue, referenceValue);
       }
 
       /// <summary>
@@ -171,10 +160,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected virtual bool PerformNotNullOperation(T currentValue)
+      protected virtual bool PerformNotNullOperation(T? currentValue)
       {
-         object original = ParameterValue;
-         return original != null;
+         return currentValue.HasValue;
       }
 
       /// <summary>
@@ -183,7 +171,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Only strings can be evaluated for Empty.</exception>
-      protected virtual bool PerformNotEmptyOperation(T currentValue)
+      protected virtual bool PerformNotEmptyOperation(T? currentValue)
       {
          throw new InvalidOperationException(Resources.OnlyStringsCanBeEvaluatedForEmpty);
       }
@@ -194,7 +182,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
-      protected virtual bool PerformIsPositiveOperation(T currentValue)
+      protected virtual bool PerformIsPositiveOperation(T? currentValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
       }
@@ -205,7 +193,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to evaluate type for positivity or negativity.</exception>
-      protected virtual bool PerformIsNegativeOperation(T currentValue)
+      protected virtual bool PerformIsNegativeOperation(T? currentValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
       }
@@ -216,7 +204,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to evaluate type for true or false.</exception>
-      protected virtual bool PerformIsTrueOperation(T currentValue)
+      protected virtual bool PerformIsTrueOperation(T? currentValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformBooleanOp);
       }
@@ -228,7 +216,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> starts with <paramref name="referenceValue" />, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to perform a StartsWith operation on the supplied value type.</exception>
-      protected virtual bool PerformStartsWithOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformStartsWithOperation(T? currentValue, T? referenceValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformAStartsWithOp);
       }
@@ -240,7 +228,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> ends with <paramref name="referenceValue" />, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to perform an EndsWith operation on the supplied value type.</exception>
-      protected virtual bool PerformEndsWithOperation(T currentValue, T referenceValue)
+      protected virtual bool PerformEndsWithOperation(T? currentValue, T? referenceValue)
       {
          throw new InvalidOperationException(Resources.UnableToPerformAnEndsWithOp);
       }

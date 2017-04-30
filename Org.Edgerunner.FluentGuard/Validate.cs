@@ -57,6 +57,28 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedShortValidator" /> instance.</returns>
+      public static UnsignedNumericValidator<char> That(string nameOfParameter, char parameterValue)
+      {
+         return new UnsignedNumericValidator<char>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedShortValidator" /> instance.</returns>
+      public static NullableUnsignedNumericValidator<char> That(string nameOfParameter, char? parameterValue)
+      {
+         return new NullableUnsignedNumericValidator<char>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="StringValidator" /> instance.</returns>
       public static StringValidator That(string nameOfParameter, string parameterValue)
       {
@@ -69,9 +91,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="IntegerValidator" /> instance.</returns>
-      public static IntegerValidator That(string nameOfParameter, int parameterValue)
+      public static NumericValidator<int> That(string nameOfParameter, int parameterValue)
       {
-         return new IntegerValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<int>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="IntegerValidator" /> instance.</returns>
+      public static NullableNumericValidator<int> That(string nameOfParameter, int? parameterValue)
+      {
+         return new NullableNumericValidator<int>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -80,9 +113,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedIntegerValidator" /> instance.</returns>
-      public static UnsignedIntegerValidator That(string nameOfParameter, uint parameterValue)
+      public static UnsignedNumericValidator<uint> That(string nameOfParameter, uint parameterValue)
       {
-         return new UnsignedIntegerValidator(nameOfParameter, parameterValue);
+         return new UnsignedNumericValidator<uint>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedIntegerValidator" /> instance.</returns>
+      public static NullableUnsignedNumericValidator<uint> That(string nameOfParameter, uint? parameterValue)
+      {
+         return new NullableUnsignedNumericValidator<uint>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -91,9 +135,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="LongValidator" /> instance.</returns>
-      public static LongValidator That(string nameOfParameter, long parameterValue)
+      public static NumericValidator<long> That(string nameOfParameter, long parameterValue)
       {
-         return new LongValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<long>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="LongValidator" /> instance.</returns>
+      public static NullableNumericValidator<long> That(string nameOfParameter, long? parameterValue)
+      {
+         return new NullableNumericValidator<long>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -102,9 +157,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedLongValidator" /> instance.</returns>
-      public static UnsignedLongValidator That(string nameOfParameter, ulong parameterValue)
+      public static UnsignedNumericValidator<ulong> That(string nameOfParameter, ulong parameterValue)
       {
-         return new UnsignedLongValidator(nameOfParameter, parameterValue);
+         return new UnsignedNumericValidator<ulong>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedLongValidator" /> instance.</returns>
+      public static NullableUnsignedNumericValidator<ulong> That(string nameOfParameter, ulong? parameterValue)
+      {
+         return new NullableUnsignedNumericValidator<ulong>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -113,9 +179,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="ShortValidator" /> instance.</returns>
-      public static ShortValidator That(string nameOfParameter, short parameterValue)
+      public static NumericValidator<short> That(string nameOfParameter, short parameterValue)
       {
-         return new ShortValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<short>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="ShortValidator" /> instance.</returns>
+      public static NullableNumericValidator<short> That(string nameOfParameter, short? parameterValue)
+      {
+         return new NullableNumericValidator<short>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -124,9 +201,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedShortValidator" /> instance.</returns>
-      public static UnsignedShortValidator That(string nameOfParameter, ushort parameterValue)
+      public static UnsignedNumericValidator<ushort> That(string nameOfParameter, ushort parameterValue)
       {
-         return new UnsignedShortValidator(nameOfParameter, parameterValue);
+         return new UnsignedNumericValidator<ushort>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="UnsignedShortValidator" /> instance.</returns>
+      public static NullableUnsignedNumericValidator<ushort> That(string nameOfParameter, ushort? parameterValue)
+      {
+         return new NullableUnsignedNumericValidator<ushort>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -135,9 +223,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="DecimalValidator" /> instance.</returns>
-      public static DecimalValidator That(string nameOfParameter, decimal parameterValue)
+      public static NumericValidator<decimal> That(string nameOfParameter, decimal parameterValue)
       {
-         return new DecimalValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<decimal>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="DecimalValidator" /> instance.</returns>
+      public static NullableNumericValidator<decimal> That(string nameOfParameter, decimal? parameterValue)
+      {
+         return new NullableNumericValidator<decimal>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -146,9 +245,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="DoubleValidator" /> instance.</returns>
-      public static DoubleValidator That(string nameOfParameter, double parameterValue)
+      public static NumericValidator<double> That(string nameOfParameter, double parameterValue)
       {
-         return new DoubleValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<double>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="DoubleValidator" /> instance.</returns>
+      public static NullableNumericValidator<double> That(string nameOfParameter, double? parameterValue)
+      {
+         return new NullableNumericValidator<double>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -157,9 +267,20 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="FloatValidator" /> instance.</returns>
-      public static FloatValidator That(string nameOfParameter, float parameterValue)
+      public static NumericValidator<float> That(string nameOfParameter, float parameterValue)
       {
-         return new FloatValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<float>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="FloatValidator" /> instance.</returns>
+      public static NullableNumericValidator<float> That(string nameOfParameter, float? parameterValue)
+      {
+         return new NullableNumericValidator<float>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -178,10 +299,32 @@ namespace Org.Edgerunner.FluentGuard
       /// </summary>
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <returns>A new <see cref="ByteValidator" /> instance.</returns>
-      public static ByteValidator That(string nameOfParameter, byte parameterValue)
+      /// <returns>A new <see cref="DateTimeValidator" /> instance.</returns>
+      public static NullableDateTimeValidator That(string nameOfParameter, DateTime? parameterValue)
       {
-         return new ByteValidator(nameOfParameter, parameterValue);
+         return new NullableDateTimeValidator(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="ByteValidator" /> instance.</returns>
+      public static UnsignedNumericValidator<byte> That(string nameOfParameter, byte parameterValue)
+      {
+         return new UnsignedNumericValidator<byte>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="ByteValidator" /> instance.</returns>
+      public static NullableUnsignedNumericValidator<byte> That(string nameOfParameter, byte? parameterValue)
+      {
+         return new NullableUnsignedNumericValidator<byte>(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -190,9 +333,31 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="SByteValidator" /> instance.</returns>
-      public static SByteValidator That(string nameOfParameter, sbyte parameterValue)
+      public static NumericValidator<sbyte> That(string nameOfParameter, sbyte parameterValue)
       {
-         return new SByteValidator(nameOfParameter, parameterValue);
+         return new NumericValidator<sbyte>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="SByteValidator" /> instance.</returns>
+      public static NullableNumericValidator<sbyte> That(string nameOfParameter, sbyte? parameterValue)
+      {
+         return new NullableNumericValidator<sbyte>(nameOfParameter, parameterValue);
+      }
+
+      /// <summary>
+      /// Validates the specified parameter value.
+      /// </summary>
+      /// <param name="nameOfParameter">The name of parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <returns>A new <see cref="SByteValidator" /> instance.</returns>
+      public static ClassValidator<T> That<T>(string nameOfParameter, T parameterValue) where T : class
+      {
+         return new ClassValidator<T>(nameOfParameter, parameterValue);
       }
    }
 }

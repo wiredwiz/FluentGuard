@@ -12,7 +12,7 @@ namespace Org.Edgerunner.FluentGuard.Benchmark
       static void Main(string[] args)
       {
          var foo = new Dictionary<string, int> { { "test", 1} };
-         var validator = Validate.That(() => foo.Keys.Count);
+         var validator = Validate.That("foo.Keys.Count", foo.Keys.Count);
          Console.WriteLine($"Name: {validator.ParameterName}");
          Console.WriteLine($"Value: {validator.ParameterValue}");
          Console.ReadKey();

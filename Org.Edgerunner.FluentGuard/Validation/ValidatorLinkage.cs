@@ -15,9 +15,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
+using System;
+
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class ValidatorLinkage<T>
+   public class ValidatorLinkage<T> where T : Validator
    {
       /// <summary>
       /// Initializes a new instance of the <see cref="ValidatorLinkage"/> class.
@@ -32,13 +34,38 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
       public T And()
       {
-         
+         Parent.Mode = CombinationMode.And;
          return Parent;
       }
 
       public T Or()
       {
+         Parent.Mode = CombinationMode.Or;
          return Parent;
+      }
+
+      /// <summary>
+      ///    Throws a new exception.
+      /// </summary>
+      public void OtherwiseThrowException()
+      {
+         // ReSharper disable once ExceptionNotDocumented
+         // ReSharper disable once ThrowingSystemException
+         if (Parent.CurrentException != null)
+            throw Parent.CurrentException;
+      }
+
+      /// <summary>
+      /// Throws a new exception.
+      /// </summary>
+      /// <typeparam name="TE">The type of exception.</typeparam>
+      /// <param name="exception">The exception to throw.</param>
+      public void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
+      {
+         // ReSharper disable once ExceptionNotDocumented
+         // ReSharper disable once ThrowingSystemException
+         if (Parent.CurrentException != null)
+            throw exception;
       }
    }
 }

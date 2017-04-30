@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Validation\ClassValidator.cs" />
+    <Compile Include="Validation\NullableDateTimeValidator.cs" />
+    <Compile Include="Validation\NullableNumericValidator.cs" />
+    <Compile Include="Validation\NullableValidator.cs" />
     <Compile Include="Validation\CombinationMode.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="Validation\DateTimeValidator.cs" />
@@ -59,7 +63,6 @@
     </Compile>
     <Compile Include="Validation\IValidatorFactory.cs" />
     <Compile Include="Validation\NullableBooleanValidator.cs" />
-    <Compile Include="Validation\NullableNumericValidator.cs" />
     <Compile Include="Validation\NullableUnsignedNumericValidator.cs" />
     <Compile Include="Validation\NumericValidator.cs" />
     <Compile Include="Validation\SByteValidator.cs" />
