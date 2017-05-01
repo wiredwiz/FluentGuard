@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <AssemblyVersion>1.0.17121.1644</AssemblyVersion>
+    <AssemblyVersion>1.0.17121.1700</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,7 +78,6 @@
     <Compile Include="ByteValidatorTests.cs" />
     <Compile Include="CharacterValidatorTests.cs" />
     <Compile Include="Data\DateTimeData.cs" />
-    <Compile Include="Data\NullableByteData.cs" />
     <Compile Include="Data\NullableByteExampleAttribute.cs" />
     <Compile Include="Data\NullableDateTimeData.cs" />
     <Compile Include="Data\NullableExampleAttribute.cs" />
