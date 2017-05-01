@@ -207,7 +207,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
          return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
       }
-      
+
       /// <summary>
       /// Performs the IsPositive operation.
       /// </summary>
@@ -215,6 +215,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
       protected virtual bool PerformIsPositiveOperation(T? currentValue)
       {
+         if (!currentValue.HasValue)
+            return false;
+
          return Nullable.Compare(currentValue, default(T)) > 0;
       }
    }

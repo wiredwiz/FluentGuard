@@ -86,6 +86,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
       protected virtual bool PerformIsNegativeOperation(T? currentValue)
       {
+         if (!currentValue.HasValue)
+            return false;
+
          return Nullable.Compare(currentValue, default(T)) < 0;
       }
    }
