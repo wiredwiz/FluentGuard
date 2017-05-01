@@ -348,7 +348,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And().IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -372,7 +372,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And().IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -397,7 +397,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => validator.IsGreaterThanOrEqualTo(lowerBound).And().IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
@@ -422,7 +422,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the lower bound or greater than or equal to the upper bound"
-            .x(() => act = () => validator.IsLessThanOrEqualTo(lowerBound).Or().IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validator.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -450,7 +450,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the lower bound or greater than or equal to the upper bound"
-            .x(() => validator.IsLessThanOrEqualTo(lowerBound).Or().IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => validator.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());

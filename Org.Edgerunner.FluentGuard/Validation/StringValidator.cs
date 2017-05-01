@@ -1,7 +1,7 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="StringValidator.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+// <copyright company="Edgerunner.org" file="StringValidator.cs">
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +20,7 @@
 
 using System;
 using Org.Edgerunner.FluentGuard.Properties;
+// ReSharper disable ExceptionNotThrown
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -44,127 +45,20 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      ///    Performs the EndsWith operation.
+      ///    Determines whether the parameter being validated ends with the value.
       /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> ends with <paramref name="referenceValue" />, <c>false</c>
-      ///    otherwise.
-      /// </returns>
-      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
-      protected override bool PerformEndsWithOperation(string currentValue, string referenceValue)
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <exception cref="ArgumentException">Must end with <paramref name="value" />.</exception>
+      public virtual ValidatorLinkage<StringValidator> EndsWith(string value)
       {
-         return currentValue.EndsWith(referenceValue);
-      }
+         if (ShouldReturnAfterEvaluation(PerformEndsWithOperation(ParameterValue, value)))
+            return new ValidatorLinkage<StringValidator>(this);
 
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
-      ///    , <c>false</c> otherwise.
-      /// </returns>
-      protected override bool PerformEqualToOperation(string currentValue, string referenceValue)
-      {
-         return currentValue == referenceValue;
-      }
+         if (CurrentException == null)
+            CurrentException = new ArgumentException(string.Format(Resources.MustEndWithX, value), ParameterName);
 
-      /// <summary>
-      ///    Performs the greater than operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type string.</exception>
-      protected override bool PerformGreaterThanOperation(string currentValue, string referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
-      ///    , <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type string.</exception>
-      protected override bool PerformGreaterThanOrEqualToOperation(string currentValue, string referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
-      ///    otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type string.</exception>
-      protected override bool PerformLessThanOperation(string currentValue, string referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type string.</exception>
-      protected override bool PerformLessThanOrEqualToOperation(string currentValue, string referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
-      }
-
-      /// <summary>
-      ///    Performs the NotEmpty operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotEmptyOperation(string currentValue)
-      {
-         return currentValue != string.Empty;
-      }
-
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(string currentValue)
-      {
-         return currentValue != null;
-      }
-
-      /// <summary>
-      ///    Performs the StartsWith operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> starts with <paramref name="referenceValue" />, <c>false</c>
-      ///    otherwise.
-      /// </returns>
-      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
-      protected override bool PerformStartsWithOperation(string currentValue, string referenceValue)
-      {
-         return currentValue.StartsWith(referenceValue);
+         return new ValidatorLinkage<StringValidator>(this);
       }
 
       /// <summary>
@@ -172,7 +66,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
+      /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
       public ValidatorLinkage<StringValidator> IsEqualTo(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -183,13 +77,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
          return new ValidatorLinkage<StringValidator>(this);
       }
-
+      
       /// <summary>
       ///    Determines whether the parameter being validated is not equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
       public ValidatorLinkage<StringValidator> IsNotEqualTo(string value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
@@ -218,22 +112,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated is <c>null</c>.
-      /// </summary>
-      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
-      /// <exception cref="ArgumentException">Must be <c>null</c>.</exception>
-      public ValidatorLinkage<StringValidator> IsNull()
-      {
-         if (ShouldReturnAfterEvaluation(!PerformNotNullOperation(ParameterValue)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentNullException(ParameterName, Resources.MustBeNull);
-
-         return new ValidatorLinkage<StringValidator>(this);
-      }
-
-      /// <summary>
       ///    Determines whether the parameter being validated is not <c>null</c> or empty.
       /// </summary>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
@@ -255,11 +133,27 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
+      ///    Determines whether the parameter being validated is <c>null</c>.
+      /// </summary>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentException">Must be <c>null</c>.</exception>
+      public ValidatorLinkage<StringValidator> IsNull()
+      {
+         if (ShouldReturnAfterEvaluation(!PerformNotNullOperation(ParameterValue)))
+            return new ValidatorLinkage<StringValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentNullException(ParameterName, Resources.MustBeNull);
+
+         return new ValidatorLinkage<StringValidator>(this);
+      }
+
+      /// <summary>
       ///    Determines whether the parameter being validated starts with the value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentException">Must start with <paramref name="value"/>.</exception>
+      /// <exception cref="ArgumentException">Must start with <paramref name="value" />.</exception>
       public virtual ValidatorLinkage<StringValidator> StartsWith(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))
@@ -272,90 +166,67 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Determines whether the parameter being validated ends with the value.
+      ///    Performs the EndsWith operation.
       /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentException">Must end with <paramref name="value"/>.</exception>
-      public virtual ValidatorLinkage<StringValidator> EndsWith(string value)
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns>
+      ///    <c>true</c> if <paramref name="currentValue" /> ends with <paramref name="referenceValue" />, <c>false</c>
+      ///    otherwise.
+      /// </returns>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      protected virtual bool PerformEndsWithOperation(string currentValue, string referenceValue)
       {
-         if (ShouldReturnAfterEvaluation(PerformEndsWithOperation(ParameterValue, value)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentException(string.Format(Resources.MustEndWithX, value), ParameterName);
-
-         return new ValidatorLinkage<StringValidator>(this);
+         return currentValue.EndsWith(referenceValue);
       }
 
       /// <summary>
-      /// Determines whether the parameter being validated is greater than the specified value.
+      ///    Performs the greater than or equal to operation.
       /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value" />.</exception>
-      public virtual ValidatorLinkage<StringValidator> IsGreaterThan(string value)
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns>
+      ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
+      ///    , <c>false</c> otherwise.
+      /// </returns>
+      protected override bool PerformEqualToOperation(string currentValue, string referenceValue)
       {
-         if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanX, value));
-
-         return new ValidatorLinkage<StringValidator>(this);
+         return currentValue == referenceValue;
+      }
+      
+      /// <summary>
+      ///    Performs the NotEmpty operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not an empty string, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformNotEmptyOperation(string currentValue)
+      {
+         return currentValue != string.Empty;
       }
 
       /// <summary>
-      /// Determines whether the parameter being validated is greater than or equal to the specified value.
+      ///    Performs the greater than or equal to operation.
       /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value" />.</exception>
-      public virtual ValidatorLinkage<StringValidator> IsGreaterThanOrEqualTo(string value)
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformNotNullOperation(string currentValue)
       {
-         if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
-
-         return new ValidatorLinkage<StringValidator>(this);
+         return currentValue != null;
       }
 
       /// <summary>
-      /// Determines whether the parameter being validated is less than the specified value.
+      ///    Performs the StartsWith operation.
       /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value" />.</exception>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
-      public virtual ValidatorLinkage<StringValidator> IsLessThan(string value)
+      /// <param name="currentValue">The current value.</param>
+      /// <param name="referenceValue">The reference value.</param>
+      /// <returns>
+      ///    <c>true</c> if <paramref name="currentValue" /> starts with <paramref name="referenceValue" />, <c>false</c>
+      ///    otherwise.
+      /// </returns>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      protected virtual bool PerformStartsWithOperation(string currentValue, string referenceValue)
       {
-         // ReSharper disable once EventExceptionNotDocumented
-         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanX, value));
-
-         return new ValidatorLinkage<StringValidator>(this);
-      }
-
-      /// <summary>
-      /// Determines whether the parameter being validated is less than or equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value" />.</exception>
-      public virtual ValidatorLinkage<StringValidator> IsLessThanOrEqualTo(string value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<StringValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanOrEqualToX, value));
-
-         return new ValidatorLinkage<StringValidator>(this);
+         return currentValue.StartsWith(referenceValue);
       }
    }
 }

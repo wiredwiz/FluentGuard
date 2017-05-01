@@ -1,7 +1,7 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="NumericValidator.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+// <copyright company="Edgerunner.org" file="UnsignedNumericValidator.cs">
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,15 +23,24 @@ using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
+   /// <summary>
+   /// Class UnsignedNumericValidator.
+   /// </summary>
+   /// <typeparam name="T">An unsigned numeric data type.</typeparam>
+   /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
    public class UnsignedNumericValidator<T> : Validator<T>
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
+      /// Initializes a new instance of the <see cref="UnsignedNumericValidator{T}"/> class. 
       /// </summary>
-      /// <param name="parameterName">The name of the parameter being validated.</param>
-      /// <param name="parameterValue">The value of the parameter being validated.</param>
+      /// <param name="parameterName">
+      /// The name of the parameter being validated.
+      /// </param>
+      /// <param name="parameterValue">
+      /// The value of the parameter being validated.
+      /// </param>
       public UnsignedNumericValidator(string parameterName, T parameterValue)
          : base(parameterName, parameterValue)
       {
@@ -40,24 +49,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      ///    Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(T currentValue)
-      {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
-         return original.CompareTo(default(T)) > 0;
-      }
-
-      /// <summary>
       ///    Determines whether the parameter being validated is equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -74,7 +69,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsGreaterThan(T value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
@@ -91,14 +85,15 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsGreaterThanOrEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
             return new ValidatorLinkage<UnsignedNumericValidator<T>>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
+            CurrentException = new ArgumentOutOfRangeException(
+               ParameterName,
+               string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
 
          return new ValidatorLinkage<UnsignedNumericValidator<T>>(this);
       }
@@ -108,7 +103,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsLessThan(T value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
@@ -124,15 +118,16 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is less than or equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>      
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsLessThanOrEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
             return new ValidatorLinkage<UnsignedNumericValidator<T>>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanOrEqualToX, value));
+            CurrentException = new ArgumentOutOfRangeException(
+               ParameterName,
+               string.Format(Resources.MustBeLessThanOrEqualToX, value));
 
          return new ValidatorLinkage<UnsignedNumericValidator<T>>(this);
       }
@@ -142,7 +137,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsNotEqualTo(T value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
@@ -158,7 +152,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is not positive.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsNotPositive()
       {
          if (ShouldReturnAfterEvaluation(!PerformIsPositiveOperation(ParameterValue)))
@@ -174,7 +167,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is positive.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsPositive()
       {
          if (ShouldReturnAfterEvaluation(PerformIsPositiveOperation(ParameterValue)))
@@ -184,6 +176,19 @@ namespace Org.Edgerunner.FluentGuard.Validation
             CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustBePositive);
 
          return new ValidatorLinkage<UnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsPositiveOperation(T currentValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         return original.CompareTo(default(T)) > 0;
       }
    }
 }

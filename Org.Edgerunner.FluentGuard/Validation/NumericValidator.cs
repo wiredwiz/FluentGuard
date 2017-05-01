@@ -1,7 +1,7 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="NumericValidator.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+// <copyright company="Edgerunner.org" file="NumericValidator.cs">
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ using Org.Edgerunner.FluentGuard.Properties;
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   /// Class NumericValidator.
+   ///    Class NumericValidator.
    /// </summary>
    /// <typeparam name="T">A numeric type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
@@ -33,10 +33,14 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
+      /// Initializes a new instance of the <see cref="NumericValidator{T}"/> class. 
       /// </summary>
-      /// <param name="parameterName">The name of the parameter being validated.</param>
-      /// <param name="parameterValue">The value of the parameter being validated.</param>
+      /// <param name="parameterName">
+      /// The name of the parameter being validated.
+      /// </param>
+      /// <param name="parameterValue">
+      /// The value of the parameter being validated.
+      /// </param>
       public NumericValidator(string parameterName, T parameterValue)
          : base(parameterName, parameterValue)
       {
@@ -45,23 +49,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      ///    Performs the IsNegative operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsNegativeOperation(T currentValue)
-      {
-         IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
-         return original.CompareTo(default(T)) < 0;
-      }
-      
-      /// <summary>
       ///    Determines whether the parameter being validated is negative.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<NumericValidator<T>> IsNegative()
       {
          if (ShouldReturnAfterEvaluation(PerformIsNegativeOperation(ParameterValue)))
@@ -77,7 +67,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is not negative.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      /// <exception cref="System.NotImplementedException"></exception>
       public ValidatorLinkage<NumericValidator<T>> IsNotNegative()
       {
          if (ShouldReturnAfterEvaluation(!PerformIsNegativeOperation(ParameterValue)))
@@ -87,6 +76,19 @@ namespace Org.Edgerunner.FluentGuard.Validation
             CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBeNegative);
 
          return new ValidatorLinkage<NumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsNegativeOperation(T currentValue)
+      {
+         IComparable<T> original = ParameterValue as IComparable<T>;
+         if (original == null)
+            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         return original.CompareTo(default(T)) < 0;
       }
    }
 }

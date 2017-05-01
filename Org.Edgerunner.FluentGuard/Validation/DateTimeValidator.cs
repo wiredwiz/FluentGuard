@@ -114,16 +114,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(DateTime currentValue)
-      {
-         return true;
-      }
-
-      /// <summary>
       ///    Determines whether the parameter being validated is equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>

@@ -46,7 +46,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", null)]
+      [Example("foo1", null)]
       public void TestParameterNotNullFails(string parameterName, string parameterValue, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -68,7 +68,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", null)]
+      [Example("foo1", null)]
       public void TestParameterNotNullOrEmptyFailsNull(string parameterName, string parameterValue, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -90,7 +90,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "")]
+      [Example("foo1", "")]
       public void TestParameterNotNullOrEmptyFailsEmpty(string parameterName, string parameterValue, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -111,7 +111,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foobar")]
+      [Example("foo1", "foobar")]
       public void TestParameterNotNullOrEmptyPasses(string parameterName, string parameterValue, StringValidator validator)
       {
          "Given a new validator"
@@ -133,8 +133,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid", "bah")]
-      [Example("foo", "", "bah")]
+      [Example("foo1", "bar maid", "bah")]
+      [Example("foo2", "", "bah")]
       public void TestParameterStartsWithFails(string parameterName, string parameterValue, string valueToCompare, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -157,7 +157,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "Foobar Bah", null)]
+      [Example("foo1", "Foobar Bah", null)]
       public void TestParameterStartsWithFailsNull(string parameterName, string parameterValue, string nullValue, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -178,9 +178,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid", "bar")]
-      [Example("foo", "Big Bear", "Bi")]
-      [Example("foo", "Trolley", "")]
+      [Example("foo1", "bar maid", "bar")]
+      [Example("foo2", "Big Bear", "Bi")]
+      [Example("foo3", "Trolley", "")]
       public void TestParameterStartsWithPasses(string parameterName, string parameterValue, string valueToCompare, StringValidator validator)
       {
          "Given a new validator"
@@ -202,8 +202,8 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid", "bar")]
-      [Example("foo", "", "bah")]
+      [Example("foo1", "bar maid", "bar")]
+      [Example("foo2", "", "bah")]
       public void TestParameterEndsWithFails(string parameterName, string parameterValue, string valueToCompare, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -226,7 +226,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid", null)]
+      [Example("foo1", "bar maid", null)]
       public void TestParameterEndsWithFailsNull(string parameterName, string parameterValue, string nullValue, StringValidator validator, Action act)
       {
          "Given a new validator"
@@ -247,9 +247,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "bar maid", "aid")]
-      [Example("foo", "Big Bear", "ear")]
-      [Example("foo", "Trolley", "")]
+      [Example("foo1", "bar maid", "aid")]
+      [Example("foo2", "Big Bear", "ear")]
+      [Example("foo3", "Trolley", "")]
       public void TestParameterEndsWithPasses(string parameterName, string parameterValue, string valueToCompare, StringValidator validator)
       {
          "Given a new validator"
@@ -271,9 +271,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bah")]
-      [Example("foo", "", "bar")]
+      [Example("foo1", "foo", "bar")]
+      [Example("foo2", "bar", "bah")]
+      [Example("foo3", "", "bar")]
       public void TestParameterEqualToFails(
          string parameterName,
          string parameterValue,
@@ -300,9 +300,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "")]
+      [Example("foo1", "foo", "foo")]
+      [Example("foo2", "bar", "bar")]
+      [Example("foo3", "", "")]
       public void TestParameterEqualToPasses(
          string parameterName,
          string parameterValue,
@@ -318,130 +318,6 @@ namespace Org.Edgerunner.FluentGuard.Tests
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
       }
-
-      /// <summary>
-      ///    Tests greater than validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "bar")]
-      public void TestParameterGreaterThanFails(
-         string parameterName,
-         string parameterValue,
-         string valueToCompare,
-         StringValidator validator,
-         Action act)
-      {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
-
-         "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
-
-         "Should throw an exception"
-            .x(() => act.ShouldThrow<InvalidOperationException>()
-            .WithMessage(Resources.UnableToPerformAGreaterThanOp));
-      }
-
-      /// <summary>
-      ///    Tests greater than or equal to validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "bar")]
-      public void TestParameterGreaterThanOrEqualToFails(
-         string parameterName,
-         string parameterValue,
-         string valueToCompare,
-         StringValidator validator,
-         Action act)
-      {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
-
-         "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
-
-         "Should throw an exception"
-            .x(() => act.ShouldThrow<InvalidOperationException>()
-            .WithMessage(Resources.UnableToPerformAGreaterThanOrEqualToOp));
-      }
-      
-      /// <summary>
-      ///    Tests less than validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "bar")]
-      public void TestParameterLessThanFails(
-         string parameterName,
-         string parameterValue,
-         string valueToCompare,
-         StringValidator validator,
-         Action act)
-      {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
-
-         "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
-
-         "Should throw an exception"
-            .x(() => act.ShouldThrow<InvalidOperationException>()
-            .WithMessage(Resources.UnableToPerformALessThanOp));
-      }
-
-      /// <summary>
-      ///    Tests less than or equal to validation.
-      /// </summary>
-      /// <param name="parameterName">Name of the parameter.</param>
-      /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
-      /// <param name="act">The <see cref="Action" /> to test with.</param>
-      [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "bar")]
-      public void TestParameterLessThanOrEqualToFails(
-         string parameterName,
-         string parameterValue,
-         string valueToCompare,
-         StringValidator validator,
-         Action act)
-      {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
-
-         "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
-
-         "Should throw an exception"
-            .x(() => act.ShouldThrow<InvalidOperationException>()
-            .WithMessage(Resources.UnableToPerformALessThanOrEqualToOp));
-      }
       
       /// <summary>
       ///    Tests equal to validation.
@@ -452,9 +328,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foo", "foo")]
-      [Example("foo", "bar", "bar")]
-      [Example("foo", "", "")]
+      [Example("foo1", "foo", "foo")]
+      [Example("foo2", "bar", "bar")]
+      [Example("foo3", "", "")]
+      [Example("foo4", null, null)]
       public void TestParameterNotEqualToFails(
          string parameterName,
          string parameterValue,
@@ -481,9 +358,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foo", "bar")]
-      [Example("foo", "bar", "bah")]
-      [Example("foo", "", "bar")]
+      [Example("foo1", "foo", "bar")]
+      [Example("foo2", "bar", "bah")]
+      [Example("foo3", "", "bar")]
       public void TestParameterNotEqualToPasses(
          string parameterName,
          string parameterValue,
@@ -507,9 +384,9 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
       [Scenario]
-      [Example("foo", "foo")]
-      [Example("foo", "bar")]
-      [Example("foo", "")]
+      [Example("foo1", "foo")]
+      [Example("foo2", "bar")]
+      [Example("foo3", "")]
       public void TestParameterNotNullPasses(string parameterName, string parameterValue, StringValidator validator)
       {
          "Given a new validator"
@@ -520,6 +397,49 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", null)]
+      public void TestParameterIsNullPasses(string parameterName, string parameterValue, StringValidator validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => validator.IsNull().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="StringValidator" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", "foo")]
+      [Example("foo2", "")]
+      public void TestParameterIsNullFails(string parameterName, string parameterValue, StringValidator validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => act = () => validator.IsNull().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustBeNull + "\r\nParameter name: {0}", parameterName)));
       }
    }
 }

@@ -34,7 +34,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
       /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
-      protected override bool PerformIsTrueOperation(bool? currentValue)
+      protected virtual bool PerformIsTrueOperation(bool? currentValue)
       {
          return currentValue.HasValue && currentValue.Value;
       }
@@ -48,67 +48,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
          : base(parameterName, parameterValue)
       {
       }
-
-      /// <summary>
-      ///    Performs the greater than operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type bool?ean.</exception>
-      protected override bool PerformGreaterThanOperation(bool? currentValue, bool? referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
-      ///    , <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type bool?ean.</exception>
-      protected override bool PerformGreaterThanOrEqualToOperation(bool? currentValue, bool? referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
-      ///    otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type bool?ean.</exception>
-      protected override bool PerformLessThanOperation(bool? currentValue, bool? referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type bool?ean.</exception>
-      protected override bool PerformLessThanOrEqualToOperation(bool? currentValue, bool? referenceValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
-      }
-
+      
       /// <summary>
       /// Determines whether the parameter being validated is equal to the specified value.
       /// </summary>

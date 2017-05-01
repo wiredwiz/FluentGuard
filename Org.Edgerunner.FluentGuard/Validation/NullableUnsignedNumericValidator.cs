@@ -47,7 +47,107 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       #endregion
-      
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsEqualTo(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is greater than the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsGreaterThan(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeGreaterThanX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is greater than or equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsGreaterThanOrEqualTo(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(
+               ParameterName,
+               string.Format(Resources.MustBeGreaterThanOrEqualToX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is less than the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsLessThan(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeLessThanX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is less than or equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>      
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsLessThanOrEqualTo(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(
+               ParameterName,
+               string.Format(Resources.MustBeLessThanOrEqualToX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableUnsignedNumericValidator<T>> IsNotEqualTo(T? value)
+      {
+         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+
+         return new ValidatorLinkage<NullableUnsignedNumericValidator<T>>(this);
+      }
+
       /// <summary>
       ///    Determines whether the parameter being validated is not positive.
       /// </summary>
@@ -113,9 +213,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(T? currentValue)
+      protected virtual bool PerformIsPositiveOperation(T? currentValue)
       {
-         return Nullable.Compare(currentValue, default(T?)) > 0;
+         return Nullable.Compare(currentValue, default(T)) > 0;
       }
    }
 }

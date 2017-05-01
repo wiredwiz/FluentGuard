@@ -1,4 +1,5 @@
 ﻿#region Apache License 2.0
+
 // <copyright company="Edgerunner.org" file="NullableNumericValidator.cs">
 // Copyright (c)  2017
 // </copyright>
@@ -14,23 +15,78 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
+
+using System;
+using Org.Edgerunner.FluentGuard.Properties;
+
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T> where T : struct
+   /// <summary>
+   /// Class NullableNumericValidator.
+   /// </summary>
+   /// <typeparam name="T">A numeric <see cref="Nullable"/> type.</typeparam>
+   /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.NullableUnsignedNumericValidator{T}" />
+   public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T>
+      where T : struct
    {
+      #region Constructors And Finalizers
+
       /// <summary>
-      /// Initializes a new instance of the <see cref="NullableUnsignedNumericValidator{T}"/> class. 
+      ///    Initializes a new instance of the <see cref="NullableNumericValidator{T}" /> class.
       /// </summary>
       /// <param name="parameterName">
-      /// The name of the parameter being validated.
+      ///    The name of the parameter being validated.
       /// </param>
       /// <param name="parameterValue">
-      /// The value of the parameter being validated.
+      ///    The value of the parameter being validated.
       /// </param>
       public NullableNumericValidator(string parameterName, T? parameterValue)
          : base(parameterName, parameterValue)
       {
+      }
+
+      #endregion
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is negative.
+      /// </summary>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableNumericValidator<T>> IsNegative()
+      {
+         if (ShouldReturnAfterEvaluation(PerformIsNegativeOperation(ParameterValue)))
+            return new ValidatorLinkage<NullableNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustBeNegative);
+
+         return new ValidatorLinkage<NullableNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not negative.
+      /// </summary>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<NullableNumericValidator<T>> IsNotNegative()
+      {
+         if (ShouldReturnAfterEvaluation(!PerformIsNegativeOperation(ParameterValue)))
+            return new ValidatorLinkage<NullableNumericValidator<T>>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, Resources.MustNotBeNegative);
+
+         return new ValidatorLinkage<NullableNumericValidator<T>>(this);
+      }
+
+      /// <summary>
+      ///    Performs the IsNegative operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsNegativeOperation(T? currentValue)
+      {
+         return Nullable.Compare(currentValue, default(T)) < 0;
       }
    }
 }

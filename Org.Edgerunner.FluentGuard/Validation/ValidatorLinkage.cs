@@ -32,16 +32,30 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
       private T Parent { get; set; }
 
-      public T And()
+      /// <summary>
+      /// Joins two validations with an And constraint.
+      /// </summary>
+      /// <value>The validator.</value>
+      public T And
       {
-         Parent.Mode = CombinationMode.And;
-         return Parent;
+         get
+         {
+            Parent.Mode = CombinationMode.And;
+            return Parent;
+         }
       }
 
-      public T Or()
+      /// <summary>
+      /// Joins two validations with an Or constraint.
+      /// </summary>
+      /// <value>The validator.</value>
+      public T Or
       {
-         Parent.Mode = CombinationMode.Or;
-         return Parent;
+         get
+         {
+            Parent.Mode = CombinationMode.Or;
+            return Parent;
+         }
       }
 
       /// <summary>

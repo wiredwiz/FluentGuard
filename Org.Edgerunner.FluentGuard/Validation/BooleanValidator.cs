@@ -1,6 +1,7 @@
 ﻿#region Apache License 2.0
+
 // <copyright company="Edgerunner.org" file="BooleanValidator.cs">
-// Copyright (c)  2016
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 using System;
@@ -22,30 +24,87 @@ using Org.Edgerunner.FluentGuard.Properties;
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   /// A Validator class for type <see cref="bool" />.
+   ///    A Validator class for type <see cref="bool" />.
    /// </summary>
    /// <seealso cref="bool" />
    public class BooleanValidator : Validator<bool>
    {
-      /// <summary>
-      /// Performs the IsTrue operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
-      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
-      protected override bool PerformIsTrueOperation(bool currentValue)
-      {
-         return currentValue;
-      }
+      #region Constructors And Finalizers
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="BooleanValidator"/> class.
+      ///    Initializes a new instance of the <see cref="BooleanValidator" /> class.
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">if set to <c>true</c> [parameter value].</param>
       internal BooleanValidator(string parameterName, bool parameterValue)
          : base(parameterName, parameterValue)
       {
+      }
+
+      #endregion
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<BooleanValidator> IsEqualTo(bool value)
+      {
+         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<BooleanValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
+
+         return new ValidatorLinkage<BooleanValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is <c>false</c>.
+      /// </summary>
+      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
+      /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
+      public ValidatorLinkage<BooleanValidator> IsFalse()
+      {
+         if (ShouldReturnAfterEvaluation(!PerformIsTrueOperation(ParameterValue)))
+            return new ValidatorLinkage<BooleanValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentException(Resources.MustBeFalse, ParameterName);
+
+         return new ValidatorLinkage<BooleanValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is not equal to the specified value.
+      /// </summary>
+      /// <param name="value">The value to compare against.</param>
+      /// <returns>The current <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      public ValidatorLinkage<BooleanValidator> IsNotEqualTo(bool value)
+      {
+         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
+            return new ValidatorLinkage<BooleanValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+
+         return new ValidatorLinkage<BooleanValidator>(this);
+      }
+
+      /// <summary>
+      ///    Determines whether the parameter being validated is <c>true</c>.
+      /// </summary>
+      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
+      /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
+      public ValidatorLinkage<BooleanValidator> IsTrue()
+      {
+         if (ShouldReturnAfterEvaluation(PerformIsTrueOperation(ParameterValue)))
+            return new ValidatorLinkage<BooleanValidator>(this);
+
+         if (CurrentException == null)
+            CurrentException = new ArgumentException(Resources.MustBeTrue, ParameterName);
+
+         return new ValidatorLinkage<BooleanValidator>(this);
       }
 
       /// <summary>
@@ -63,137 +122,14 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Performs the greater than operation.
+      ///    Performs the IsTrue operation.
       /// </summary>
       /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than operation on type boolean.</exception>
-      protected override bool PerformGreaterThanOperation(bool currentValue, bool referenceValue)
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
+      protected virtual bool PerformIsTrueOperation(bool currentValue)
       {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
-      ///    , <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on type boolean.</exception>
-      protected override bool PerformGreaterThanOrEqualToOperation(bool currentValue, bool referenceValue)
-      {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformAGreaterThanOrEqualToOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
-      ///    otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than operation on type boolean.</exception>
-      protected override bool PerformLessThanOperation(bool currentValue, bool referenceValue)
-      {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOp);
-      }
-
-      /// <summary>
-      ///    Performs the less than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <param name="referenceValue">The reference value.</param>
-      /// <returns>
-      ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
-      ///    <c>false</c> otherwise.
-      /// </returns>
-      /// <exception cref="InvalidOperationException">Unable to perform a Less Than Or Equal To operation on type boolean.</exception>
-      protected override bool PerformLessThanOrEqualToOperation(bool currentValue, bool referenceValue)
-      {
-         throw new InvalidOperationException(Properties.Resources.UnableToPerformALessThanOrEqualToOp);
-      }
-
-      /// <summary>
-      ///    Performs the greater than or equal to operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-      protected override bool PerformNotNullOperation(bool currentValue)
-      {
-         return true;
-      }
-
-      /// <summary>
-      /// Determines whether the parameter being validated is equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      public ValidatorLinkage<BooleanValidator> IsEqualTo(bool value)
-      {
-         if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<BooleanValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
-
-         return new ValidatorLinkage<BooleanValidator>(this);
-      }
-
-      /// <summary>
-      /// Determines whether the parameter being validated is not equal to the specified value.
-      /// </summary>
-      /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
-      public ValidatorLinkage<BooleanValidator> IsNotEqualTo(bool value)
-      {
-         if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
-            return new ValidatorLinkage<BooleanValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
-
-         return new ValidatorLinkage<BooleanValidator>(this);
-      }
-
-      /// <summary>
-      /// Determines whether the parameter being validated is <c>false</c>.
-      /// </summary>
-      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
-      /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
-      public ValidatorLinkage<BooleanValidator> IsFalse()
-      {
-         if (ShouldReturnAfterEvaluation(!PerformIsTrueOperation(ParameterValue)))
-            return new ValidatorLinkage<BooleanValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentException(Resources.MustBeFalse, ParameterName);
-
-         return new ValidatorLinkage<BooleanValidator>(this);
-      }
-
-      /// <summary>
-      /// Determines whether the parameter being validated is <c>true</c>.
-      /// </summary>
-      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
-      /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
-      public ValidatorLinkage<BooleanValidator> IsTrue()
-      {
-         if (ShouldReturnAfterEvaluation(PerformIsTrueOperation(ParameterValue)))
-            return new ValidatorLinkage<BooleanValidator>(this);
-
-         if (CurrentException == null)
-            CurrentException = new ArgumentException(Resources.MustBeTrue, ParameterName);
-
-         return new ValidatorLinkage<BooleanValidator>(this);
+         return currentValue;
       }
    }
 }

@@ -247,5 +247,48 @@ namespace Org.Edgerunner.FluentGuard.Tests
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
       }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableBooleanValidator" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", null)]
+      public void TestParameterIsNullPasses(string parameterName, bool? parameterValue, NullableBooleanValidator validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => validator.IsNull().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableBooleanValidator" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", true)]
+      [Example("foo2", false)]
+      public void TestParameterIsNullFails(string parameterName, bool? parameterValue, NullableBooleanValidator validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => act = () => validator.IsNull().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
    }
 }
