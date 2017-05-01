@@ -636,5 +636,92 @@ namespace Org.Edgerunner.FluentGuard.Tests
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
       }
+
+      /// <summary>
+      /// Tests not null validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Byte}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [NullableByteExample("foo1", null)]
+      public void TestParameterNotNullFails(string parameterName, byte? parameterValue, NullableUnsignedNumericValidator<byte> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is not null"
+            .x(() => act = () => validator.IsNotNull().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      ///    Tests not null validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Byte}" /> to test with.</param>
+      [Scenario]
+      [NullableByteExample("foo1", 0)]
+      [NullableByteExample("foo2", 1)]
+      [NullableByteExample("foo3", 255)]
+      public void TestParameterNotNullPasses(string parameterName, byte? parameterValue, NullableUnsignedNumericValidator<byte> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is not null"
+            .x(() => validator.IsNotNull().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Byte}" /> to test with.</param>
+      [Scenario]
+      [NullableByteExample("foo1", null)]
+      public void TestParameterIsNullPasses(string parameterName, byte? parameterValue, NullableUnsignedNumericValidator<byte> validator)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => validator.IsNull().OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests IsNull validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Byte}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [NullableByteExample("foo1", 0)]
+      [NullableByteExample("foo2", 1)]
+      public void TestParameterIsNullFails(string parameterName, byte? parameterValue, NullableUnsignedNumericValidator<byte> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is null"
+            .x(() => act = () => validator.IsNull().OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
    }
 }

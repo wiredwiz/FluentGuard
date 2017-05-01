@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright file="CharacterValidatorTests.cs" company="Edgerunner.org">
+// <copyright file="NullableCharacterValidatorTests.cs" company="Edgerunner.org">
 // Copyright 2016 Thaddeus Ryker
 // </copyright>
 // 
@@ -22,13 +22,14 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.FluentGuard.Tests.Data;
 using Org.Edgerunner.FluentGuard.Validation;
 using Xbehave;
 
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class that tests the CharacterVaildator.
+   ///    Class that tests the NullableCharacterVaildator.
    /// </summary>
    /// <seealso cref="char" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
@@ -36,7 +37,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "Is a necessity of xBehave tests")]
 
    // ReSharper disable once ClassTooBig
-   public class CharacterValidatorTests
+   public class NullableCharacterValidatorTests
    {
       /// <summary>
       /// Tests greater than validation.
@@ -44,11 +45,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>     
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>     
       [Scenario]
-      [Example("foo", 'a', 'A')]
-      [Example("foo", 'b', 'a')]
-      public void TestParameterGreaterThanPasses(string parameterName, char parameterValue, char valueToCompare, UnsignedNumericValidator<char> validator)
+      [NullableExample("foo1", 'a', 'A')]
+      [NullableExample("foo2", 'b', 'a')]
+      [NullableExample("foo3", 'A', null)]
+      public void TestParameterGreaterThanPasses(string parameterName, char? parameterValue, char? valueToCompare, NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -67,17 +69,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'b', 'g')]
-      [Example("foo", ' ', 'b', 'g')]
+      [NullableExample("foo1", 'a', 'b', 'g')]
+      [NullableExample("foo2", ' ', 'b', 'g')]
       public void TestParameterConditionAndFailsLower(
          string parameterName,
-         char parameterValue,
-         char lowerBound,
-         char upperBound,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? lowerBound,
+         char? upperBound,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -98,17 +100,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'j', 'c', 'g')]
-      [Example("foo", 'h', 'c', 'g')]     
+      [NullableExample("foo1", 'j', 'c', 'g')]
+      [NullableExample("foo2", 'h', 'c', 'g')]     
       public void TestParameterConditionAndFailsUpper(
          string parameterName,
-         char parameterValue,
-         char lowerBound,
-         char upperBound,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? lowerBound,
+         char? upperBound,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -129,19 +131,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'c', 'c', 'g')]
-      [Example("foo", 'd', 'c', 'g')]
-      [Example("foo", 'e', 'c', 'g')]
-      [Example("foo", 'f', 'c', 'g')]
-      [Example("foo", 'g', 'c', 'g')]
+      [NullableExample("foo1", 'c', 'c', 'g')]
+      [NullableExample("foo2", 'd', 'c', 'g')]
+      [NullableExample("foo3", 'e', 'c', 'g')]
+      [NullableExample("foo4", 'f', 'c', 'g')]
+      [NullableExample("foo5", 'g', 'c', 'g')]
       public void TestParameterConditionAndPasses(
          string parameterName,
-         char parameterValue,
-         char lowerBound,
-         char upperBound,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? lowerBound,
+         char? upperBound,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -160,18 +162,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'd', 'c', 'g')]
-      [Example("foo", 'e', 'c', 'g')]
-      [Example("foo", 'f', 'c', 'g')]
+      [NullableExample("foo1", 'd', 'c', 'g')]
+      [NullableExample("foo2", 'e', 'c', 'g')]
+      [NullableExample("foo3", 'f', 'c', 'g')]
       public void TestParameterConditionOrFails(
          string parameterName,
-         char parameterValue,
-         char lowerBound,
-         char upperBound,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? lowerBound,
+         char? upperBound,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -192,20 +194,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'c', 'g')]
-      [Example("foo", 'b', 'c', 'g')]
-      [Example("foo", 'c', 'c', 'g')]
-      [Example("foo", 'g', 'c', 'g')]
-      [Example("foo", 'h', 'c', 'g')]
-      [Example("foo", 'j', 'c', 'g')]
+      [NullableExample("foo1", 'a', 'c', 'g')]
+      [NullableExample("foo2", 'b', 'c', 'g')]
+      [NullableExample("foo3", 'c', 'c', 'g')]
+      [NullableExample("foo4", 'g', 'c', 'g')]
+      [NullableExample("foo5", 'h', 'c', 'g')]
+      [NullableExample("foo6", 'j', 'c', 'g')]
       public void TestParameterConditionOrPasses(
          string parameterName,
-         char parameterValue,
-         char lowerBound,
-         char upperBound,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? lowerBound,
+         char? upperBound,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -223,16 +225,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'b')]
-      [Example("foo", 'a', 'A')]
+      [NullableExample("foo1", 'a', 'b')]
+      [NullableExample("foo2", 'a', 'A')]
+      [NullableExample("foo3", '\0', null)]
       public void TestParameterEqualToFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -252,16 +255,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'a')]
-      [Example("foo", 'A', 'A')]
-      [Example("foo", '*', '*')]
+      [NullableExample("foo1", 'a', 'a')]
+      [NullableExample("foo2", 'A', 'A')]
+      [NullableExample("foo3", '*', '*')]
+      [NullableExample("foo4", null, null)]
       public void TestParameterEqualToPasses(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -279,17 +283,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'A', 'a')]
-      [Example("foo", 'a', 'b')]
-      [Example("foo", 'a', 'a')]
+      [NullableExample("foo1", 'A', 'a')]
+      [NullableExample("foo2", 'a', 'b')]
+      [NullableExample("foo3", 'a', 'a')]
+      [NullableExample("foo4", null, 'a')]
       public void TestParameterGreaterThanFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -309,16 +314,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'A', 'a')]
-      [Example("foo", 'a', 'b')]
+      [NullableExample("foo1", 'A', 'a')]
+      [NullableExample("foo2", 'a', 'b')]
       public void TestParameterGreaterThanOrEqualToFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -338,16 +343,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'b', 'C')]
-      [Example("foo", 'b', 'a')]
-      [Example("foo", 'a', 'a')]
+      [NullableExample("foo1", 'b', 'C')]
+      [NullableExample("foo2", 'b', 'a')]
+      [NullableExample("foo3", 'a', 'a')]
+      [NullableExample("foo4", 'A', null)]
+      [NullableExample("foo5", null, null)]
       public void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -364,12 +371,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a')]
-      [Example("foo", 'A')]
-      public void TestParameterIsNotPositiveFails(string parameterName, char parameterValue, UnsignedNumericValidator<char> validator, Action act)
+      [NullableExample("foo1", 'a')]
+      [NullableExample("foo2", 'A')]
+      public void TestParameterIsNotPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -387,10 +394,11 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", '\0')]
-      public void TestParameterIsNotPositivePasses(string parameterName, char parameterValue, UnsignedNumericValidator<char> validator)
+      [NullableExample("foo1", '\0')]
+      [NullableExample("foo2", null)]
+      public void TestParameterIsNotPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -407,11 +415,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", '\0')]
-      public void TestParameterIsPositiveFails(string parameterName, char parameterValue, UnsignedNumericValidator<char> validator, Action act)
+      [NullableExample("foo1", '\0')]
+      [NullableExample("foo2", null)]
+      public void TestParameterIsPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -429,12 +438,12 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a')]
-      [Example("foo", 'A')]
-      [Example("foo", ' ')]
-      public void TestParameterIsPositivePasses(string parameterName, char parameterValue, UnsignedNumericValidator<char> validator)
+      [NullableExample("foo1", 'a')]
+      [NullableExample("foo2", 'A')]
+      [NullableExample("foo3", ' ')]
+      public void TestParameterIsPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -452,18 +461,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', '\0')]
-      [Example("foo", 'a', 'A')]
-      [Example("foo", 'a', 'a')]
-      [Example("foo", 'b', 'a')]
+      [NullableExample("foo1", 'a', '\0')]
+      [NullableExample("foo2", 'a', 'A')]
+      [NullableExample("foo3", 'a', 'a')]
+      [NullableExample("foo4", 'b', 'a')]
+      [NullableExample("foo5", 'A', null)]
       public void TestParameterLessThanFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -483,17 +493,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', '\0')]
-      [Example("foo", 'a', 'A')]
-      [Example("foo", 'b', 'a')]
+      [NullableExample("foo1", 'a', '\0')]
+      [NullableExample("foo2", 'a', 'A')]
+      [NullableExample("foo3", 'b', 'a')]
       public void TestParameterLessThanOrEqualToFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -513,17 +523,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", '\0', 'a')]
-      [Example("foo", 'A', 'a')]
-      [Example("foo", 'a', 'a')]
-      [Example("foo", 'a', 'b')]
+      [NullableExample("foo1", '\0', 'a')]
+      [NullableExample("foo2", 'A', 'a')]
+      [NullableExample("foo3", 'a', 'a')]
+      [NullableExample("foo4", 'a', 'b')]
+      [NullableExample("foo5", null, null)]
       public void TestParameterLessThanOrEqualToPasses(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -541,16 +552,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", '\0', 'a')]
-      [Example("foo", 'A', 'a')]
-      [Example("foo", 'a', 'b')]
+      [NullableExample("foo1", '\0', 'a')]
+      [NullableExample("foo2", 'A', 'a')]
+      [NullableExample("foo3", 'a', 'b')]
+      [NullableExample("foo4", null, 'b')]
       public void TestParameterLessThanPasses(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
@@ -568,17 +580,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'a')]
-      [Example("foo", 'A', 'A')]
-      [Example("foo", '\0', '\0')]
+      [NullableExample("foo1", 'a', 'a')]
+      [NullableExample("foo2", 'A', 'A')]
+      [NullableExample("foo3", '\0', '\0')]
+      [NullableExample("foo4", null, null)]
       public void TestParameterNotEqualToFails(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator,
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator,
          Action act)
       {
          "Given a new validator"
@@ -598,17 +611,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="UnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
-      [Example("foo", 'a', 'A')]
-      [Example("foo", 'A', 'a')]
-      [Example("foo", 'a', 'b')]
-      [Example("foo", '\0', ' ')]
+      [NullableExample("foo1", 'a', 'A')]
+      [NullableExample("foo2", 'A', 'a')]
+      [NullableExample("foo3", 'a', 'b')]
+      [NullableExample("foo4", '\0', ' ')]
+      [NullableExample("foo4", '\0', null)]
       public void TestParameterNotEqualToPasses(
          string parameterName,
-         char parameterValue,
-         char valueToCompare,
-         UnsignedNumericValidator<char> validator)
+         char? parameterValue,
+         char? valueToCompare,
+         NullableUnsignedNumericValidator<char> validator)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));

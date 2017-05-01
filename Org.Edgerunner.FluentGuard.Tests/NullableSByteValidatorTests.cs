@@ -45,7 +45,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>     
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>     
       [Scenario]
       [NullableSByteExample("foo1", 9, 2)]
       [NullableSByteExample("foo2", 4, 2)]
@@ -71,7 +71,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 1, 2, 5)]
@@ -103,7 +103,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 8, 2, 5)]
@@ -134,7 +134,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 2, 5)]
       [NullableSByteExample("foo2", 4, 2, 5)]
@@ -164,7 +164,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 3, 2, 6)]
@@ -197,7 +197,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 2, 5)]
       [NullableSByteExample("foo2", 1, 2, 5)]
@@ -228,7 +228,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 6)]
@@ -261,7 +261,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0, 0)]
       [NullableSByteExample("foo2", 1, 1)]
@@ -289,7 +289,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 4)]
@@ -321,7 +321,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 6)]
@@ -352,7 +352,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 4, 2)]
       [NullableSByteExample("foo2", 3, 2)]
@@ -384,7 +384,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0)]
@@ -408,7 +408,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", -1)]
       [NullableSByteExample("foo2", -4)]
@@ -429,7 +429,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", -1)]
@@ -452,7 +452,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0)]
       [NullableSByteExample("foo2", 1)]
@@ -475,7 +475,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 1)]
@@ -498,7 +498,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0)]
       [NullableSByteExample("foo2", -1)]
@@ -521,7 +521,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0)]
@@ -545,7 +545,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 1)]
       [NullableSByteExample("foo2", 4)]
@@ -567,7 +567,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 5, 2)]
@@ -598,7 +598,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 5, 2)]
@@ -630,7 +630,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 5)]
       [NullableSByteExample("foo2", 1, 1)]
@@ -661,7 +661,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 5)]
       [NullableSByteExample("foo2", 2, 3)]
@@ -690,7 +690,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 2, 2)]
@@ -722,7 +722,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NumericValidator{Sbyte}" /> to test with.</param>
+      /// <param name="validator">The <see cref="NullableNumericValidator{Sbyte}" /> to test with.</param>
       [Scenario]
       [NullableSByteExample("foo1", 0, 1)]
       [NullableSByteExample("foo2", 0, -1)]
