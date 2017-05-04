@@ -69,8 +69,8 @@
       <Currency>USD</Currency>
       <CurrencyLocation>After</CurrencyLocation>
       <EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>18</EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>
-      <NumberOfWorkDayPerYear>294</NumberOfWorkDayPerYear>
-      <NumberOfWorkHourPerDay>7</NumberOfWorkHourPerDay>
+      <NumberOfWorkDayPerYear>240</NumberOfWorkDayPerYear>
+      <NumberOfWorkHourPerDay>8</NumberOfWorkHourPerDay>
       <A2B_RatingThreshold>5</A2B_RatingThreshold>
       <B2C_RatingThreshold>10</B2C_RatingThreshold>
       <C2D_RatingThreshold>20</C2D_RatingThreshold>
