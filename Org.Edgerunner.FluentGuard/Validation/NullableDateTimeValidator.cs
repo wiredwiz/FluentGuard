@@ -198,7 +198,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected virtual bool PerformGreaterThanOperation(DateTime? currentValue, DateTime? referenceValue)
+      protected override bool PerformGreaterThanOperation(DateTime? currentValue, DateTime? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) > 0;
       }
@@ -212,7 +212,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    <c>true</c> if <paramref name="currentValue" /> is greater than or equal to <paramref name="referenceValue" />
       ///    , <c>false</c> otherwise.
       /// </returns>
-      protected virtual bool PerformGreaterThanOrEqualToOperation(DateTime? currentValue, DateTime? referenceValue)
+      protected override bool PerformGreaterThanOrEqualToOperation(DateTime? currentValue, DateTime? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) >= 0;
       }
@@ -226,7 +226,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    <c>true</c> if <paramref name="currentValue" /> is less than <paramref name="referenceValue" />, <c>false</c>
       ///    otherwise.
       /// </returns>
-      protected virtual bool PerformLessThanOperation(DateTime? currentValue, DateTime? referenceValue)
+      protected override bool PerformLessThanOperation(DateTime? currentValue, DateTime? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) < 0;
       }
@@ -240,7 +240,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    <c>true</c> if <paramref name="currentValue" /> is less than or equal to <paramref name="referenceValue" />,
       ///    <c>false</c> otherwise.
       /// </returns>
-      protected virtual bool PerformLessThanOrEqualToOperation(DateTime? currentValue, DateTime? referenceValue)
+      protected override bool PerformLessThanOrEqualToOperation(DateTime? currentValue, DateTime? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) <= 0;
       }

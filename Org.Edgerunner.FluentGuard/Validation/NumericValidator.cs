@@ -28,7 +28,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">A numeric type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
-   public class NumericValidator<T> : UnsignedNumericValidator<T>
+   public class NumericValidator<T> : UnsignedNumericValidator<T> where T : struct
    {
       #region Constructors And Finalizers
 

@@ -163,5 +163,15 @@ namespace Org.Edgerunner.FluentGuard.Validation
       {
          return Nullable.Compare(currentValue, referenceValue) <= 0;
       }
+
+      /// <summary>
+      /// Performs the IsPositive operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsPositiveOperation(T? currentValue)
+      {
+         throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+      }
    }
 }

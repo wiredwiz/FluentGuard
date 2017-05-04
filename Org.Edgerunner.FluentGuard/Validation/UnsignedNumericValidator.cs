@@ -28,7 +28,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">An unsigned numeric data type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
-   public class UnsignedNumericValidator<T> : Validator<T>
+   public class UnsignedNumericValidator<T> : Validator<T> where T : struct
    {
       #region Constructors And Finalizers
 
@@ -183,11 +183,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected virtual bool PerformIsPositiveOperation(T currentValue)
+      protected override bool PerformIsPositiveOperation(T currentValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(default(T)) > 0;
       }
    }
