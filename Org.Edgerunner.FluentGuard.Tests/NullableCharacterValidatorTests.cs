@@ -29,7 +29,7 @@ using Xbehave;
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class that tests the NullableCharacterVaildator.
+   ///    Class that tests the NullableCharacterValidator.
    /// </summary>
    /// <seealso cref="char" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]

@@ -101,6 +101,7 @@
     <Compile Include="UnsignedShortValidatorTests.cs" />
     <Compile Include="UnsignedIntegerValidatorTests.cs" />
     <Compile Include="UnsignedLongValidatorTests.cs" />
+    <Compile Include="ValidateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

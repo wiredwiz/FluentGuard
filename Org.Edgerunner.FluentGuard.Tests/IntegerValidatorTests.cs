@@ -28,7 +28,7 @@ using Xbehave;
 namespace Org.Edgerunner.FluentGuard.Tests
 {
    /// <summary>
-   ///    Class IntegerValidatorTests.
+   ///    Class that tests the IntegerValidator.
    /// </summary>
    /// <seealso cref="int" />
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "Can be skipped for unit tests.")]
