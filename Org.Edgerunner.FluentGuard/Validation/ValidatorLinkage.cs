@@ -1,6 +1,7 @@
 ﻿#region Apache License 2.0
-// <copyright file="ValidatorLinkage.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+
+// <copyright company="Edgerunner.org" file="ValidatorLinkage.cs">
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +15,35 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
+
 using System;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
-   public class ValidatorLinkage<T> where T : Validator
+   /// <summary>
+   ///    Structure used to join validators.
+   /// </summary>
+   /// <typeparam name="T">A type of Validator.</typeparam>
+   public struct ValidatorLinkage<T>
+      where T : Validator
    {
+      #region Constructors And Finalizers
+
       /// <summary>
-      /// Initializes a new instance of the <see cref="ValidatorLinkage"/> class.
+      ///    Initializes a new instance of the <see cref="ValidatorLinkage{T}" /> structure.
       /// </summary>
-      /// <param name="parent"></param>
+      /// <param name="parent">A <see cref="Validator" /> instance.</param>
       public ValidatorLinkage(T parent)
       {
          Parent = parent;
       }
 
-      private T Parent { get; set; }
+      #endregion
 
       /// <summary>
-      /// Joins two validations with an And constraint.
+      ///    Gets the <see cref="Validator" /> being joined by an And constraint.
       /// </summary>
       /// <value>The validator.</value>
       public T And
@@ -46,7 +56,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      /// Joins two validations with an Or constraint.
+      ///    Gets the <see cref="Validator" /> being joined by an Or constraint.
       /// </summary>
       /// <value>The validator.</value>
       public T Or
@@ -59,18 +69,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Throws a new exception.
+      ///    Gets or sets the parent.
       /// </summary>
-      public void OtherwiseThrowException()
-      {
-         // ReSharper disable once ExceptionNotDocumented
-         // ReSharper disable once ThrowingSystemException
-         if (Parent.CurrentException != null)
-            throw Parent.CurrentException;
-      }
+      /// <value>The parent.</value>
+      private T Parent { get; set; }
 
       /// <summary>
-      /// Throws a new exception.
+      ///    Throws a new exception.
       /// </summary>
       /// <typeparam name="TE">The type of exception.</typeparam>
       /// <param name="exception">The exception to throw.</param>
@@ -80,6 +85,17 @@ namespace Org.Edgerunner.FluentGuard.Validation
          // ReSharper disable once ThrowingSystemException
          if (Parent.CurrentException != null)
             throw exception;
+      }
+
+      /// <summary>
+      ///    Throws a new exception.
+      /// </summary>
+      public void OtherwiseThrowException()
+      {
+         // ReSharper disable once ExceptionNotDocumented
+         // ReSharper disable once ThrowingSystemException
+         if (Parent.CurrentException != null)
+            throw Parent.CurrentException;
       }
    }
 }
