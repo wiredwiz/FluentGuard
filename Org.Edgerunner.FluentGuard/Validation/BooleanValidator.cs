@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -27,6 +28,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="bool" />.
    /// </summary>
    /// <seealso cref="bool" />
+   [FullCovered]
    public class BooleanValidator : Validator<bool>
    {
       #region Constructors And Finalizers

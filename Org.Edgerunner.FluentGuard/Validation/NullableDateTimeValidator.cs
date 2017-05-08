@@ -19,10 +19,17 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
+   /// <summary>
+   /// Class for validating nullable DateTime values.
+   /// </summary>
+   /// <seealso cref="DateTime" />
+   /// <seealso cref="Nullable"/>
+   [FullCovered]
    public class NullableDateTimeValidator : NullableValidator<DateTime>
    {
       #region Constructors And Finalizers

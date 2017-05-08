@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -26,6 +27,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <seealso cref="bool" />
    /// <seealso cref="Nullable"/>
+   [FullCovered]
    public class NullableBooleanValidator : NullableValidator<bool>
    {
       /// <summary>

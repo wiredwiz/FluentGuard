@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -28,6 +29,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">An unsigned numeric data type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
+   [FullCovered]
    public class UnsignedNumericValidator<T> : Validator<T> where T : struct
    {
       #region Constructors And Finalizers

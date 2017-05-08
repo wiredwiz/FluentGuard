@@ -21,6 +21,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Validation;
 
 namespace Org.Edgerunner.FluentGuard
@@ -28,6 +29,7 @@ namespace Org.Edgerunner.FluentGuard
    /// <summary>
    /// Class for validation of inputs.
    /// </summary>
+   [FullCovered]
    public static class Validate
    {
       /// <summary>

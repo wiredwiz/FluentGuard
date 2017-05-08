@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -28,6 +29,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">A numeric <see cref="Nullable"/> type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.NullableUnsignedNumericValidator{T}" />
+   /// <seealso cref="Nullable"/>
+   [FullCovered]
    public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T>
       where T : struct
    {

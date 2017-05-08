@@ -17,12 +17,14 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    /// Foundational validator class.
    /// </summary>
+   [FullCovered]
    public class Validator
    {
       /// <summary>

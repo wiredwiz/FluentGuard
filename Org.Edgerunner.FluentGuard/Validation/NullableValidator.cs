@@ -21,6 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -33,6 +34,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
+   [FullCovered]
    // ReSharper disable once ClassTooBig
    public class NullableValidator<T> : Validator where T : struct
    {
@@ -108,7 +110,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      /// Performs the greater than or equal to operation.
+      /// Performs the not null operation.
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>

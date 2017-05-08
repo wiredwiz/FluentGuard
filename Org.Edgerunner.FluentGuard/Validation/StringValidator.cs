@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 // ReSharper disable ExceptionNotThrown
 
@@ -28,6 +29,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    A Validator class for type <see cref="string" />.
    /// </summary>
    /// <seealso cref="string" />
+   [FullCovered]
    public class StringValidator : Validator<string>
    {
       #region Constructors And Finalizers
