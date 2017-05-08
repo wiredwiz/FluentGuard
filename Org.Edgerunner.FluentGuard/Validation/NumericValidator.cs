@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -28,6 +29,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">A numeric type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
+   [FullCovered]
    public class NumericValidator<T> : UnsignedNumericValidator<T> where T : struct
    {
       #region Constructors And Finalizers
@@ -86,8 +88,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformIsNegativeOperation(T currentValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(default(T)) < 0;
       }
    }

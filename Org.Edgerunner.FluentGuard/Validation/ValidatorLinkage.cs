@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -26,6 +27,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    Structure used to join validators.
    /// </summary>
    /// <typeparam name="T">A type of Validator.</typeparam>
+   [FullCovered]
    public struct ValidatorLinkage<T>
       where T : Validator
    {
