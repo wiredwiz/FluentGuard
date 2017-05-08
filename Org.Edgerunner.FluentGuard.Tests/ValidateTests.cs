@@ -18,6 +18,7 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using FluentAssertions;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Tests.Data;
@@ -158,6 +159,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "Test that the type of validator returned is a NullableNumericValidator of type Float"
             .x(() => validator.Should().BeOfType(typeof(NullableNumericValidator<float>)));
+      }
+
+      /// <summary>
+      /// Tests the generic That() overload.
+      /// </summary>
+      /// <param name="validator">The <see cref="ClassValidator{StringBuilder}" /> to test with.</param>     
+      [Scenario]
+      public void TestValidationOfAGenericTypeReturnsCorrectValidator(Validator validator)
+      {
+         "Given a new validator created from a StringBuilder"
+            .x(() => validator = Validate.That("foo", new StringBuilder()));
+
+         "Test that the type of validator returned is a ClassValidator of type StringBuilder"
+            .x(() => validator.Should().BeOfType(typeof(ClassValidator<StringBuilder>)));
       }
    }
 }

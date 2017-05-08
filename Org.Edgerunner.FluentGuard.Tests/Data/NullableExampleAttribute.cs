@@ -18,10 +18,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq.Expressions;
 using System.Reflection;
-using Xbehave;
 using Xunit.Sdk;
 
 namespace Org.Edgerunner.FluentGuard.Tests.Data
@@ -31,11 +29,10 @@ namespace Org.Edgerunner.FluentGuard.Tests.Data
    /// </summary>
    /// <seealso cref="Xunit.Sdk.DataAttribute" />
    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-   [CLSCompliant(false)]
    public class NullableExampleAttribute : DataAttribute
    {
       /// <summary>
-      /// Initializes a new instance of the <see cref="T:Xbehave.NullableExampleAttribute" /> class.
+      /// Initializes a new instance of the <see cref="NullableExampleAttribute" /> class.
       /// </summary>
       /// <param name="data">The nullable data values to pass to the scenario.</param>
       /// <seealso cref="T:Xunit.Sdk.DataAttribute" />
@@ -47,13 +44,28 @@ namespace Org.Edgerunner.FluentGuard.Tests.Data
          _Data = data;
       }
 
-      readonly object[] _Data;
+      /// <summary>
+      /// The unit test example data
+      /// </summary>
+      private readonly object[] _Data;
 
-      private Type GetNullableType(Type type)
-      {
-         return typeof(Nullable<>).MakeGenericType(type);
+      /// <summary>
+      /// Returns the data to be used to test the theory.
+      /// </summary>
+      /// <param name="testMethod">The method that is being tested</param>
+      /// <returns>One or more sets of theory data. Each invocation of the test method
+      /// is represented by a single object array.</returns>
+      public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+      {         
+         // This is called by the WPA81 version as it does not have access to attribute ctor params
+         return new[] { _Data };
       }
 
+      /// <summary>
+      /// Converts the unit test data into the appropriate nullable type data when needed.
+      /// </summary>
+      /// <param name="datum">The datum.</param>
+      /// <returns>An object array of unit test data.</returns>
       protected virtual object[] ConvertData(object[] datum)
       {
          var data = new object[datum.Length];
@@ -72,13 +84,6 @@ namespace Org.Edgerunner.FluentGuard.Tests.Data
             }
          }
          return data;
-      }
-
-      /// <inheritdoc/>
-      public override IEnumerable<object[]> GetData(MethodInfo testMethod)
-      {         
-         // This is called by the WPA81 version as it does not have access to attribute ctor params
-         return new[] { _Data };
       }
    }
 }

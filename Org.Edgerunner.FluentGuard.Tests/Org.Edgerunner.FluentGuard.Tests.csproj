@@ -77,6 +77,7 @@
     <Compile Include="BooleanValidatorTests.cs" />
     <Compile Include="ByteValidatorTests.cs" />
     <Compile Include="CharacterValidatorTests.cs" />
+    <Compile Include="ClassValidatorTests.cs" />
     <Compile Include="Data\DateTimeData.cs" />
     <Compile Include="Data\NullableByteExampleAttribute.cs" />
     <Compile Include="Data\NullableDateTimeData.cs" />
