@@ -221,4 +221,16 @@
   <data name="MustBeNull" xml:space="preserve">
     <value>Must be null</value>
   </data>
+  <data name="MustBeOfType" xml:space="preserve">
+    <value>Must be of type {0}</value>
+  </data>
+  <data name="MustImplementInterface" xml:space="preserve">
+    <value>Must implement interface {0}</value>
+  </data>
+  <data name="MustInheritType" xml:space="preserve">
+    <value>Must inherit type {0}</value>
+  </data>
+  <data name="MustBeSameAs" xml:space="preserve">
+    <value>Must be the same instance</value>
+  </data>
 </root>

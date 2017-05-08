@@ -133,11 +133,29 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must be of type {0}.
+        /// </summary>
+        internal static string MustBeOfType {
+            get {
+                return ResourceManager.GetString("MustBeOfType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be positive.
         /// </summary>
         internal static string MustBePositive {
             get {
                 return ResourceManager.GetString("MustBePositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be the same instance.
+        /// </summary>
+        internal static string MustBeSameAs {
+            get {
+                return ResourceManager.GetString("MustBeSameAs", resourceCulture);
             }
         }
         
@@ -156,6 +174,24 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         internal static string MustEndWithX {
             get {
                 return ResourceManager.GetString("MustEndWithX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must implement interface {0}.
+        /// </summary>
+        internal static string MustImplementInterface {
+            get {
+                return ResourceManager.GetString("MustImplementInterface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must inherit type {0}.
+        /// </summary>
+        internal static string MustInheritType {
+            get {
+                return ResourceManager.GetString("MustInheritType", resourceCulture);
             }
         }
         
