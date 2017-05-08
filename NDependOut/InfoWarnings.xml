@@ -9,15 +9,8 @@
   <Info>.NET Assembly loaded from {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug} 
    Org.Edgerunner.FluentGuard.dll   v1.0.17121.1700</Info>
   <Warning>No application or third party assembly found in directory {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Release}</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validate.cs} (last modified 5/4/2017 1:18:19 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\NullableDateTimeValidator.cs} (last modified 5/2/2017 1:32:38 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\NullableValidator.cs} (last modified 5/4/2017 12:26:14 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\NullableUnsignedNumericValidator.cs} (last modified 5/4/2017 12:25:23 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\NumericValidator.cs} (last modified 5/4/2017 12:45:15 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\UnsignedNumericValidator.cs} (last modified 5/4/2017 12:23:16 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\Validator`1.cs} (last modified 5/4/2017 12:21:59 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\ValidatorLinkage.cs} (last modified 5/4/2017 1:39:15 AM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/2/2017 1:31:12 AM) are not in-sync.</Warning>
-  <Info>18 source files parsed ; all source files found ; 8 source files not in-sync with PDB</Info>
+  <Warning>Assembly {NDepend.API} is referenced by {Org.Edgerunner.FluentGuard} but is not found.</Warning>
+  <Info>18 source files parsed ; all source files found ; all source files in-sync with PDB</Info>
   <Info>0 code rule has been extracted from code.</Info>
   <Info>No dependency cycle detected in assemblies referencement graph.</Info>
   <Info>Coverage file correctly parsed:
