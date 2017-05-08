@@ -21,6 +21,7 @@
 using System;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
+// ReSharper disable ExceptionNotThrown
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {

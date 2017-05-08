@@ -215,7 +215,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected override bool PerformIsPositiveOperation(T? currentValue)
+      protected virtual bool PerformIsPositiveOperation(T? currentValue)
       {
          if (!currentValue.HasValue)
             return false;
