@@ -233,4 +233,7 @@
   <data name="MustBeSameAs" xml:space="preserve">
     <value>Must be the same instance</value>
   </data>
+  <data name="MustBeInterface" xml:space="preserve">
+    <value>Type must be an interface</value>
+  </data>
 </root>
