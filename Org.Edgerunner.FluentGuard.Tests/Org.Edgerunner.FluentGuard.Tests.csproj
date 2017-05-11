@@ -86,7 +86,7 @@
     <Compile Include="Data\NullableSByteExampleAttribute.cs" />
     <Compile Include="Data\Officer.cs" />
     <Compile Include="Data\Person.cs" />
-    <Compile Include="Data\PersonData.cs" />
+    <Compile Include="Data\ClassData.cs" />
     <Compile Include="DateTimeValidatorTests.cs" />
     <Compile Include="DecimalValidatorTests.cs" />
     <Compile Include="DoubleValidatorTests.cs" />

@@ -163,7 +163,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
          if (!type.IsInterface)
             throw new ArgumentException(Resources.MustBeInterface, nameof(type));
 
-         return type.IsInstanceOfType(currentValue);
+         return type.IsAssignableFrom(currentValue.GetType());
       }
 
       /// <summary>

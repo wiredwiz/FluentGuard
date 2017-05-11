@@ -1,5 +1,5 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="PersonData.cs">
+// <copyright company="Edgerunner.org" file="ClassData.cs">
 // Copyright (c)  2017
 // </copyright>
 // 
@@ -24,7 +24,7 @@ namespace Org.Edgerunner.FluentGuard.Tests.Data
    /// <summary>
    /// Class that generates test Person data.
    /// </summary>
-   public class PersonData
+   public class ClassData
    {
       /// <summary>
       /// Returns a data set of <see cref="Person"/> values.

@@ -61,7 +61,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="validator">The <see cref="NullableBooleanValidator" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(PersonData.Persons), MemberType = typeof(PersonData))]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
       public virtual void TestParameterNotNullPasses(string parameterName, Person parameterValue, ClassValidator<Person> validator)
       {
          "And given a new validator"
@@ -102,7 +102,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(PersonData.Persons), MemberType = typeof(PersonData))]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
       public void TestParameterIsNullFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
       {
          "Given a new validator"
@@ -124,7 +124,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(PersonData.Officers), MemberType = typeof(PersonData))]
+      [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
       public void TestParameterIsOfTypePersonFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
       {
          "Given a new validator"
@@ -168,13 +168,13 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(PersonData.Officers), MemberType = typeof(PersonData))]
+      [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
       public void TestParameterIsOfTypePersonFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
-         "Testing that the parameter is of type Person"
+         "Testing that the parameter is of type null"
             .x(() => act = () => validator.IsOfType(null).OtherwiseThrowException());
 
          "Should throw an exception"
@@ -190,7 +190,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
-      [MemberData(nameof(PersonData.Persons), MemberType = typeof(PersonData))]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
       public void TestParameterIsOfTypePersonPasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
       {
          "Given a new validator"
@@ -198,6 +198,180 @@ namespace Org.Edgerunner.FluentGuard.Tests
 
          "Testing that the parameter is of type Person"
             .x(() => act = () => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests InheritsType validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
+      public void TestParameterInheritsTypeFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter inherits from type Officer"
+            .x(() => act = () => validator.InheritsType(typeof(Officer)).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format(Resources.MustInheritType + "\r\nParameter name: {1}", typeof(Officer).Name, parameterName)));
+      }
+
+      /// <summary>
+      ///    Tests InheritsType validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", null)]
+      public void TestParameterInheritsTypeFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter inherits from type Officer"
+            .x(() => act = () => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      ///    Tests InheritsType validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
+      public void TestParameterInheritsTypeFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter inherits from type Officer"
+            .x(() => act = () => validator.InheritsType(null).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage("Value cannot be null.\r\nParameter name: type"));
+      }
+
+      /// <summary>
+      ///    Tests InheritsType validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
+      public void TestParameterInheritsTypePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter inherits from type Person"
+            .x(() => act = () => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      ///    Tests ImplementsInterface validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
+      public void TestParameterImplementsInterfaceFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter implements interface IOfficer"
+            .x(() => act = () => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format(Resources.MustImplementInterface + "\r\nParameter name: {1}", typeof(IOfficer).Name, parameterName)));
+      }
+
+      /// <summary>
+      ///    Tests ImplementsInterface validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [Example("foo1", null)]
+      public void TestParameterImplementsInterfaceFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter implements interface IOfficer"
+            .x(() => act = () => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage(string.Format(Resources.MustNotBeNull + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      ///    Tests ImplementsInterface validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
+      public void TestParameterImplementsInterfaceFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter implements interface IOfficer"
+            .x(() => act = () => validator.ImplementsInterface(null).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .WithMessage("Value cannot be null.\r\nParameter name: type"));
+      }
+
+      /// <summary>
+      ///    Tests ImplementsInterface validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
+      public void TestParameterImplementsInterfacePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter implements interface IOfficer"
+            .x(() => act = () => validator.ImplementsInterface(typeof(Officer)).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
