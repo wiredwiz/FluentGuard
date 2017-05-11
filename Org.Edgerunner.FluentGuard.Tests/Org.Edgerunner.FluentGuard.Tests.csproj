@@ -79,11 +79,14 @@
     <Compile Include="CharacterValidatorTests.cs" />
     <Compile Include="ClassValidatorTests.cs" />
     <Compile Include="Data\DateTimeData.cs" />
+    <Compile Include="Data\IOfficer.cs" />
     <Compile Include="Data\NullableByteExampleAttribute.cs" />
     <Compile Include="Data\NullableDateTimeData.cs" />
     <Compile Include="Data\NullableExampleAttribute.cs" />
     <Compile Include="Data\NullableSByteExampleAttribute.cs" />
-    <Compile Include="Data\To.cs" />
+    <Compile Include="Data\Officer.cs" />
+    <Compile Include="Data\Person.cs" />
+    <Compile Include="Data\PersonData.cs" />
     <Compile Include="DateTimeValidatorTests.cs" />
     <Compile Include="DecimalValidatorTests.cs" />
     <Compile Include="DoubleValidatorTests.cs" />

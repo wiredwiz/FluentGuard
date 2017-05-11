@@ -1,6 +1,7 @@
-﻿#region Apache License 2.0
-// <copyright file="TypeExtensions.cs" company="Edgerunner.org">
-// Copyright 2016 Thaddeus Ryker
+#region Apache License 2.0
+
+// <copyright company="Edgerunner.org" file="IOfficer.cs">
+// Copyright (c)  2017
 // </copyright>
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +15,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
+
 namespace Org.Edgerunner.FluentGuard.Tests.Data
 {
    /// <summary>
-   /// Class exposing some type extensions.
+   /// Interface that represents an Officer
    /// </summary>
-   internal static class To
+   public interface IOfficer
    {
-      public static byte Byte(uint item)
-      {
-         return (byte)item;
-      }
+      /// <summary>
+      /// Gets or sets the rank.
+      /// </summary>
+      /// <value>The rank.</value>
+      string Rank { get; set; }
    }
 }
