@@ -97,6 +97,15 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type must be an interface.
+        /// </summary>
+        internal static string MustBeInterface {
+            get {
+                return ResourceManager.GetString("MustBeInterface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be less than or equal to {0}.
         /// </summary>
         internal static string MustBeLessThanOrEqualToX {
