@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -28,7 +29,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">A type of Validator.</typeparam>
    [FullCovered]
-   public struct ValidatorLinkage<T>
+   [Immutable]
+   public struct ValidatorLinkage<T> : IEquatable<ValidatorLinkage<T>>
       where T : Validator
    {
       #region Constructors And Finalizers
@@ -71,10 +73,71 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Gets or sets the parent.
+      ///    Gets the parent.
       /// </summary>
       /// <value>The parent.</value>
-      private T Parent { get; set; }
+      private T Parent { get; }
+
+      #region Operators
+
+      /// <summary>
+      /// Implements the == operator.
+      /// </summary>
+      /// <param name="left">The left.</param>
+      /// <param name="right">The right.</param>
+      /// <returns>The result of the operator.</returns>
+      public static bool operator ==(ValidatorLinkage<T> left, ValidatorLinkage<T> right)
+      {
+         return left.Equals(right);
+      }
+
+      /// <summary>
+      /// Implements the != operator.
+      /// </summary>
+      /// <param name="left">The left.</param>
+      /// <param name="right">The right.</param>
+      /// <returns>The result of the operator.</returns>
+      public static bool operator !=(ValidatorLinkage<T> left, ValidatorLinkage<T> right)
+      {
+         return !left.Equals(right);
+      }
+
+      #endregion
+
+      #region Core Methods
+
+      /// <summary>Indicates whether this instance and a specified object are equal.</summary>
+      /// <returns>
+      ///    true if <paramref name="obj" /> and this instance are the same type and represent the same value; otherwise,
+      ///    false.
+      /// </returns>
+      /// <param name="obj">The object to compare with the current instance. </param>
+      public override bool Equals(object obj)
+      {
+         if (ReferenceEquals(null, obj)) return false;
+         return obj is ValidatorLinkage<T> && Equals((ValidatorLinkage<T>)obj);
+      }
+
+      /// <summary>Returns the hash code for this instance.</summary>
+      /// <returns>A 32-bit signed integer that is the hash code for this instance.</returns>
+      public override int GetHashCode()
+      {
+         return EqualityComparer<T>.Default.GetHashCode(Parent);
+      }
+
+      #endregion
+
+      #region IEquatable<ValidatorLinkage<T>> Members
+
+      /// <summary>Indicates whether the current object is equal to another object of the same type.</summary>
+      /// <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
+      /// <param name="other">An object to compare with this object.</param>
+      public bool Equals(ValidatorLinkage<T> other)
+      {
+         return EqualityComparer<T>.Default.Equals(Parent, other.Parent);
+      }
+
+      #endregion
 
       /// <summary>
       ///    Throws a new exception.

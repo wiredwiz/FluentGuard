@@ -160,63 +160,11 @@
   <data name="MustNotBeNull" xml:space="preserve">
     <value>Must not be null</value>
   </data>
-  <data name="MustNotBeNullOrEmpty" xml:space="preserve">
-    <value>Must not be null or empty</value>
-  </data>
   <data name="MustNotBePositive" xml:space="preserve">
     <value>Must not be positive</value>
   </data>
   <data name="MustStartWithX" xml:space="preserve">
     <value>Must start with {0}</value>
-  </data>
-  <data name="ValueIsNull" xml:space="preserve">
-    <value>Value is null</value>
-  </data>
-  <data name="ValueIsNullOrEmpty" xml:space="preserve">
-    <value>Value is null or empty</value>
-    <comment>ValueIsNullOrEmpty description</comment>
-  </data>
-  <data name="NotAMemberAccess" xml:space="preserve">
-    <value>Not a member access</value>
-    <comment>NotAMemberAccess description</comment>
-  </data>
-  <data name="UnableToAccess" xml:space="preserve">
-    <value>Unable to access {0}</value>
-    <comment>UnableToAccess description</comment>
-  </data>
-  <data name="UnableToPerformALessThanOp" xml:space="preserve">
-    <value>Unable to perform a Less Than operation on the supplied value type</value>
-    <comment>UnableToPerformALessThanOp description</comment>
-  </data>
-  <data name="UnableToPerformAGreaterThanOp" xml:space="preserve">
-    <value>Unable to perform a Greater Than operation on the supplied value type</value>
-  </data>
-  <data name="UnableToPerformAGreaterThanOrEqualToOp" xml:space="preserve">
-    <value>Unable to perform a Greater Than Or Equal To operation on the supplied value type</value>
-  </data>
-  <data name="UnableToPerformALessThanOrEqualToOp" xml:space="preserve">
-    <value>Unable to perform a Less Than Or Equal To operation on the supplied value type</value>
-  </data>
-  <data name="UnableToPerformAnEqualToOp" xml:space="preserve">
-    <value>Unable to perform an equality operation on the supplied value type</value>
-  </data>
-  <data name="OnlyStringsCanBeEvaluatedForEmpty" xml:space="preserve">
-    <value>Only strings can be evaluated for Empty</value>
-    <comment>OnlyStringsCanBeEvaluatedForEmpty description</comment>
-  </data>
-  <data name="UnableToPerformBooleanOp" xml:space="preserve">
-    <value>Unable to evalute type for true or false</value>
-  </data>
-  <data name="UnableToPerformPosNegOp" xml:space="preserve">
-    <value>Unable to evaluate type for positivity or negativity</value>
-  </data>
-  <data name="UnableToPerformAnEndsWithOp" xml:space="preserve">
-    <value>Unable to perform an EndsWith operation on the supplied value type</value>
-    <comment>UnableToPerformAnEndsWithOp description</comment>
-  </data>
-  <data name="UnableToPerformAStartsWithOp" xml:space="preserve">
-    <value>Unable to perform a StartsWith operation on the supplied value type</value>
-    <comment>UnableToPerformAStartsWithOp description</comment>
   </data>
   <data name="MustBeNull" xml:space="preserve">
     <value>Must be null</value>

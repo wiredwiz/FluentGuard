@@ -101,8 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformALessThanOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(referenceValue) < 0;
       }
 
@@ -116,8 +115,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformALessThanOrEqualToOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(referenceValue) <= 0;
       }
 
@@ -131,8 +129,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(referenceValue) > 0;
       }
 
@@ -146,8 +143,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAGreaterThanOrEqualToOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(referenceValue) >= 0;
       }
 
@@ -161,19 +157,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
       {
          IEquatable<T> original = currentValue as IEquatable<T>;
-         if (original == null)
-            throw new InvalidOperationException(Resources.UnableToPerformAnEqualToOp);
+         // ReSharper disable once PossibleNullReferenceException
          return original.Equals(referenceValue);
-      }
-
-      /// <summary>
-      ///    Performs the IsPositive operation.
-      /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-      protected virtual bool PerformIsPositiveOperation(T currentValue)
-      {
-         throw new InvalidOperationException(Resources.UnableToPerformPosNegOp);
       }
    }
 }
