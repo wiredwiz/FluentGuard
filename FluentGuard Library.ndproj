@@ -7,6 +7,7 @@
   <FrameworkAssemblies>
     <Name>mscorlib</Name>
     <Name>System</Name>
+    <Name>NDepend.API</Name>
   </FrameworkAssemblies>
   <Dirs>
     <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319</Dir>
@@ -19,7 +20,7 @@
   <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <CoverageFiles CoverageDir="" UncoverableAttribute="">
-    <CoverageFile>\\Drobo\Projects\Edgerunner FluentGuard\All tests from Solution.xml</CoverageFile>
+    <CoverageFile>$(NdProjectDir)\All tests from Solution.xml</CoverageFile>
   </CoverageFiles>
   <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="">
     <Chart Name="Size" ShowInReport="True">
