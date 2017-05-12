@@ -54,9 +54,9 @@ namespace Org.Edgerunner.FluentGuard.Tests.Data
          // ReSharper disable HeapView.BoxingAllocation
          return new[]
                    {
-                      new object[] { "foo1", new Person("Larry", 20) },
-                      new object[] { "foo2", new Person("Daryl", 28) },
-                      new object[] { "foo3", new Officer("Steve", 29, "Seargent") }
+                      new object[] { "foo1", new Person("Larry", 20), new Person("Larry", 20) },
+                      new object[] { "foo2", new Person("Daryl", 28), new Person("Daryl", 28) },
+                      new object[] { "foo3", new Officer("Steve", 29, "Seargent"), new Officer("Steve", 29, "Seargent") }
                    };
          // ReSharper restore HeapView.BoxingAllocation
          // ReSharper restore ExceptionNotDocumentedOptional

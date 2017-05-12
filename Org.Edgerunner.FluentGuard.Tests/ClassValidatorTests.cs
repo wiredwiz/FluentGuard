@@ -197,7 +197,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is of type Person"
-            .x(() => act = () => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
+            .x(() => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
@@ -284,7 +284,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter inherits from type Person"
-            .x(() => act = () => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
+            .x(() => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
@@ -365,13 +365,80 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterImplementsInterfacePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfaceFailsDueToNonInterface(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
       {
          "Given a new validator"
             .x(() => validator = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
             .x(() => act = () => validator.ImplementsInterface(typeof(Officer)).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(Resources.MustBeInterface + "\r\nParameter name: type"));
+      }
+
+      /// <summary>
+      ///    Tests ImplementsInterface validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
+      public void TestParameterImplementsInterfacePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter implements interface IOfficer"
+            .x(() => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests IsSameAs validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the first parameter.</param>
+      /// <param name="parameterValue2">The value of the second parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.OfficersAndPeople), MemberType = typeof(ClassData))]
+      public void TestParameterIsSameAsFails(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is same as"
+            .x(() => act = () => validator.IsSameAs(parameterValue2).OtherwiseThrowException());
+
+         "Should throw an exception"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format(Resources.MustBeSameAs + "\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests IsSameAs validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the first parameter.</param>
+      /// <param name="parameterValue2">The value of the second parameter.</param>
+      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>
+      [Scenario]
+      [MemberData(nameof(ClassData.OfficersAndPeople), MemberType = typeof(ClassData))]
+      public void TestParameterIsSameAsPasses(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter is same as"
+            .x(() => validator.IsSameAs(parameterValue).OtherwiseThrowException());
 
          "Should not result in an exception"
             .x(() => validator.CurrentException.Should().BeNull());
