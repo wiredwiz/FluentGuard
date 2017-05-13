@@ -61,6 +61,53 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>     
+      [Scenario]
+      [Example("foo", true, false)]
+      [Example("foo", false, true)]
+      public void TestParameterEqualToWithCustomExceptionFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is equal to the value to compare against and throwing a custom exception if not"
+            .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
+
+         "Should result in that custom exception being thrown"
+            .x(() => act.ShouldThrow<ArgumentException>()
+            .WithMessage(string.Format("Some nonsense message\r\nParameter name: {0}", parameterName)));
+      }
+
+      /// <summary>
+      /// Tests equal to validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
+      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="act">The <see cref="Action" /> to test with.</param>     
+      [Scenario]
+      [Example("foo", true, true)]
+      [Example("foo", false, false)]
+      public void TestParameterEqualToWithCustomExceptionPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      {
+         "Given a new validator"
+            .x(() => validator = Validate.That(parameterName, parameterValue));
+
+         "Testing that the parameter value is equal to the value to compare against and throwing a custom exception if not"
+            .x(() => validator.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
+
+         "Should not result in an exception"
+            .x(() => validator.CurrentException.Should().BeNull());
+      }
+
+      /// <summary>
+      /// Tests equal to validation.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The value of the parameter.</param>
+      /// <param name="valueToCompare">The value to compare.</param>
       /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>      
       [Scenario]
       [Example("foo", true, true)]
