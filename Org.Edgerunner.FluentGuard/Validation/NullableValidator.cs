@@ -21,8 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using NDepend.Attributes;
-using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.FluentGuard.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {

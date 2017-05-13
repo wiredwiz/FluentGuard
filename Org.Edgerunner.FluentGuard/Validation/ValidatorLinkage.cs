@@ -20,7 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using NDepend.Attributes;
+using Org.Edgerunner.FluentGuard.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {

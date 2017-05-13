@@ -19,7 +19,7 @@
 #endregion
 
 using System;
-using NDepend.Attributes;
+using Org.Edgerunner.FluentGuard.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 // ReSharper disable ExceptionNotThrown
 

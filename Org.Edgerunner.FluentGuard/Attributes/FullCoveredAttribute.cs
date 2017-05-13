@@ -1,5 +1,5 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="Validator.cs">
+// <copyright company="Edgerunner.org" file="FullCoveredAttribute.cs">
 // Copyright (c)  2017
 // </copyright>
 // 
@@ -17,26 +17,14 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
 
-namespace Org.Edgerunner.FluentGuard.Validation
+namespace Org.Edgerunner.FluentGuard.Attributes
 {
    /// <summary>
-   /// Foundational validator class.
+   /// This attribute can be used to declare that a code element is 100% covered by tests.
    /// </summary>
-   [FullCovered]
-   public class Validator
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Method)]
+   internal sealed class FullCoveredAttribute : Attribute
    {
-      /// <summary>
-      /// Gets or sets the current exception.
-      /// </summary>
-      /// <value>The current exception.</value>
-      internal Exception CurrentException { get; set; }
-
-      /// <summary>
-      /// Gets or sets the <see cref="CombinationMode"/> to use when combining conditions.
-      /// </summary>
-      /// <value>The mode.</value>
-      internal CombinationMode Mode { get; set; }
    }
 }

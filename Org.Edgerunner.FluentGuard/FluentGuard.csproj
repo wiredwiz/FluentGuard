@@ -13,6 +13,12 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <AssemblyVersion>1.0.17121.1700</AssemblyVersion>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.None.DateStamp.TimeStamp</AssemblyVersionSettings>
+    <AssemblyFileVersionSettings>None.None.DateStamp.TimeStamp</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>None.None.DateStamp.TimeStamp</AssemblyInfoVersionSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,9 +45,6 @@
     <AssemblyInfoVersionSettings>None.None.DateStamp.TimeStamp</AssemblyInfoVersionSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NDepend.API">
-      <HintPath>..\..\..\Tools\NDepend_2017.1.1.8920\Lib\NDepend.API.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\FullCoveredAttribute.cs" />
+    <Compile Include="Attributes\ImmutableAttribute.cs" />
     <Compile Include="Validation\ClassValidator.cs" />
     <Compile Include="Validation\NullableDateTimeValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />
