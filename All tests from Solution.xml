@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root CoveredStatements="6647" TotalStatements="10121" CoveragePercent="66" ReportType="NDependXML" DotCoverVersion="2016.1.1">
-  <Assembly Name="FluentAssertions" CoveredStatements="15" TotalStatements="685" CoveragePercent="2">
-    <Namespace Name="FluentAssertions" CoveredStatements="11" TotalStatements="208" CoveragePercent="5">
-      <Type Name="AssertionExtensions" CoveredStatements="11" TotalStatements="121" CoveragePercent="9">
+<Root CoveredStatements="6759" TotalStatements="10228" CoveragePercent="66" ReportType="NDependXML" DotCoverVersion="2016.1.1">
+  <Assembly Name="FluentAssertions" CoveredStatements="16" TotalStatements="685" CoveragePercent="2">
+    <Namespace Name="FluentAssertions" CoveredStatements="12" TotalStatements="208" CoveragePercent="6">
+      <Type Name="AssertionExtensions" CoveredStatements="12" TotalStatements="121" CoveragePercent="10">
         <Type Name="&lt;&gt;c__59&lt;T&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
           <Method Name="&lt;ShouldAllBeEquivalentTo&gt;b__59_0(EquivalencyAssertionOptions&lt;T&gt;)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="506" />
         </Type>
@@ -45,7 +45,7 @@
         <Method Name="MonitorEvents&lt;T&gt;(Object)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="714" />
         <Method Name="RepeatAsManyAs&lt;T&gt;(Object,IEnumerable&lt;T&gt;)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="544" />
         <Method Name="Should(Assembly)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="83" />
-        <Method Name="Should(Boolean)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="154" />
+        <Method Name="Should(Boolean)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="154" />
         <Method Name="Should(Byte)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="308" />
         <Method Name="Should(ConstructorInfo)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="443" />
         <Method Name="Should(DateTime)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="226" />
@@ -423,7 +423,7 @@
       </Type>
     </Namespace>
   </Assembly>
-  <Assembly Name="Org.Edgerunner.FluentGuard" CoveredStatements="815" TotalStatements="828" CoveragePercent="98">
+  <Assembly Name="Org.Edgerunner.FluentGuard" CoveredStatements="835" TotalStatements="844" CoveragePercent="99">
     <Namespace Name="Org.Edgerunner.FluentGuard" CoveredStatements="90" TotalStatements="90" CoveragePercent="100">
       <Type Name="Validate" CoveredStatements="90" TotalStatements="90" CoveragePercent="100">
         <Method Name="That(String,Boolean)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="42" />
@@ -488,7 +488,7 @@
         <Method Name="set_Culture(CultureInfo)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="58" />
       </Type>
     </Namespace>
-    <Namespace Name="Org.Edgerunner.FluentGuard.Validation" CoveredStatements="651" TotalStatements="655" CoveragePercent="99">
+    <Namespace Name="Org.Edgerunner.FluentGuard.Validation" CoveredStatements="671" TotalStatements="671" CoveragePercent="100">
       <Type Name="BooleanValidator" CoveredStatements="37" TotalStatements="37" CoveragePercent="100">
         <Method Name=".ctor(String,Boolean)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="42" />
         <Method Name="IsEqualTo(Boolean)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="54" />
@@ -625,24 +625,28 @@
         <Method Name="set_Mode(CombinationMode)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="40" />
       </Type>
       <Type Name="Validator&lt;T&gt;" CoveredStatements="41" TotalStatements="41" CoveragePercent="100">
-        <Method Name=".ctor(String,T)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="46" />
-        <Method Name="get_ParameterName()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="60" />
-        <Method Name="get_ParameterValue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="66" />
-        <Method Name="PerformEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="158" />
-        <Method Name="PerformGreaterThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="130" />
-        <Method Name="PerformGreaterThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="144" />
-        <Method Name="PerformLessThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="102" />
-        <Method Name="PerformLessThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="116" />
-        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="76" />
+        <Method Name=".ctor(String,T)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="48" />
+        <Method Name="get_ParameterName()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="62" />
+        <Method Name="get_ParameterValue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
+        <Method Name="PerformEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="160" />
+        <Method Name="PerformGreaterThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="132" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="146" />
+        <Method Name="PerformLessThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="104" />
+        <Method Name="PerformLessThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="118" />
+        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="78" />
       </Type>
-      <Type Name="ValidatorLinkage&lt;T&gt;" CoveredStatements="17" TotalStatements="21" CoveragePercent="81">
-        <Method Name=".ctor(T)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="41" />
-        <Method Name="get_And()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="54" />
-        <Method Name="get_Or()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="67" />
-        <Method Name="get_Parent()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="77" />
-        <Method Name="OtherwiseThrow&lt;TE&gt;(TE)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" FirstStatementLine="85" />
-        <Method Name="OtherwiseThrowException()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="96" />
-        <Method Name="set_Parent(T)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="77" />
+      <Type Name="ValidatorLinkage&lt;T&gt;" CoveredStatements="37" TotalStatements="37" CoveragePercent="100">
+        <Method Name=".ctor(T)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="43" />
+        <Method Name="Equals(Object)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="Equals(ValidatorLinkage&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="136" />
+        <Method Name="get_And()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="56" />
+        <Method Name="get_Or()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="69" />
+        <Method Name="get_Parent()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="79" />
+        <Method Name="GetHashCode()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="124" />
+        <Method Name="op_Equality(ValidatorLinkage&lt;T&gt;,ValidatorLinkage&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="90" />
+        <Method Name="op_Inequality(ValidatorLinkage&lt;T&gt;,ValidatorLinkage&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="101" />
+        <Method Name="OtherwiseThrow&lt;TE&gt;(TE)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="148" />
+        <Method Name="OtherwiseThrowException()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="159" />
       </Type>
     </Namespace>
   </Assembly>
@@ -653,61 +657,74 @@
       </Type>
     </Namespace>
   </Assembly>
-  <Assembly Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="3910" TotalStatements="3923" CoveragePercent="99">
-    <Namespace Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="3770" TotalStatements="3770" CoveragePercent="100">
-      <Type Name="BooleanValidatorTests" CoveredStatements="68" TotalStatements="68" CoveragePercent="100">
+  <Assembly Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="4001" TotalStatements="4014" CoveragePercent="99">
+    <Namespace Name="Org.Edgerunner.FluentGuard.Tests" CoveredStatements="3861" TotalStatements="3861" CoveragePercent="100">
+      <Type Name="BooleanValidatorTests" CoveredStatements="85" TotalStatements="85" CoveragePercent="100">
         <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
           <Method Name="&lt;TestParameterEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="48" />
           <Method Name="&lt;TestParameterEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="51" />
           <Method Name="&lt;TestParameterEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="51" />
           <Method Name="&lt;TestParameterEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="54" />
         </Type>
-        <Type Name="&lt;&gt;c__DisplayClass1_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
-          <Method Name="&lt;TestParameterEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="71" />
-          <Method Name="&lt;TestParameterEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="74" />
-          <Method Name="&lt;TestParameterEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="77" />
+        <Type Name="&lt;&gt;c__DisplayClass1_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="72" />
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="75" />
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="75" />
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="78" />
         </Type>
-        <Type Name="&lt;&gt;c__DisplayClass2_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
-          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="94" />
-          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="97" />
-          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="97" />
-          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="100" />
+        <Type Name="&lt;&gt;c__DisplayClass2_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="96" />
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="99" />
+          <Method Name="&lt;TestParameterEqualToWithCustomExceptionPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="102" />
         </Type>
         <Type Name="&lt;&gt;c__DisplayClass3_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
-          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="117" />
-          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="120" />
-          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="123" />
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="118" />
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="121" />
+          <Method Name="&lt;TestParameterEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="124" />
         </Type>
         <Type Name="&lt;&gt;c__DisplayClass4_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
-          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="138" />
-          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="141" />
-          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="141" />
-          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="144" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="141" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="144" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="144" />
+          <Method Name="&lt;TestParameterNotEqualToFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="147" />
         </Type>
         <Type Name="&lt;&gt;c__DisplayClass5_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
-          <Method Name="&lt;TestParameterIsTruePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="159" />
-          <Method Name="&lt;TestParameterIsTruePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="162" />
-          <Method Name="&lt;TestParameterIsTruePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="165" />
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="164" />
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="167" />
+          <Method Name="&lt;TestParameterNotEqualToPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="170" />
         </Type>
         <Type Name="&lt;&gt;c__DisplayClass6_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
-          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="180" />
-          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="183" />
-          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="183" />
-          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="186" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="185" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="188" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="188" />
+          <Method Name="&lt;TestParameterIsTrueFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="191" />
         </Type>
         <Type Name="&lt;&gt;c__DisplayClass7_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
-          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="201" />
-          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="204" />
-          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="207" />
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="206" />
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="209" />
+          <Method Name="&lt;TestParameterIsTruePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="212" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass8_0" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="227" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="230" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="230" />
+          <Method Name="&lt;TestParameterIsFalseFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="233" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass9_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="248" />
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="251" />
+          <Method Name="&lt;TestParameterIsFalsePasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="254" />
         </Type>
         <Method Name="TestParameterEqualToFails(String,Boolean,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="46" />
-        <Method Name="TestParameterEqualToPasses(String,Boolean,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="69" />
-        <Method Name="TestParameterIsFalseFails(String,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="178" />
-        <Method Name="TestParameterIsFalsePasses(String,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="199" />
-        <Method Name="TestParameterIsTrueFails(String,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="136" />
-        <Method Name="TestParameterIsTruePasses(String,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="157" />
-        <Method Name="TestParameterNotEqualToFails(String,Boolean,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="92" />
-        <Method Name="TestParameterNotEqualToPasses(String,Boolean,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="115" />
+        <Method Name="TestParameterEqualToPasses(String,Boolean,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="TestParameterEqualToWithCustomExceptionFails(String,Boolean,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="70" />
+        <Method Name="TestParameterEqualToWithCustomExceptionPasses(String,Boolean,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="94" />
+        <Method Name="TestParameterIsFalseFails(String,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="225" />
+        <Method Name="TestParameterIsFalsePasses(String,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="246" />
+        <Method Name="TestParameterIsTrueFails(String,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="183" />
+        <Method Name="TestParameterIsTruePasses(String,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="204" />
+        <Method Name="TestParameterNotEqualToFails(String,Boolean,Boolean,BooleanValidator,Action)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="139" />
+        <Method Name="TestParameterNotEqualToPasses(String,Boolean,Boolean,BooleanValidator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="162" />
       </Type>
       <Type Name="ByteValidatorTests" CoveredStatements="179" TotalStatements="179" CoveragePercent="100">
         <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
@@ -3588,6 +3605,51 @@
         <Method Name="TestValidationOfANullableUnsignedIntReturnsCorrectValidator(Validator)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="58" />
         <Method Name="TestValidationOfANullableUnsignedLongReturnsCorrectValidator(Validator)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="86" />
         <Method Name="TestValidationOfANullableUnsignedShortReturnsCorrectValidator(Validator)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="114" />
+      </Type>
+      <Type Name="ValidatorLinkageTester" CoveredStatements="74" TotalStatements="74" CoveragePercent="100">
+        <Type Name="&lt;&gt;c__DisplayClass0_0" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <Method Name="&lt;TestInstancesAreEqualFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="42" />
+          <Method Name="&lt;TestInstancesAreEqualFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="45" />
+          <Method Name="&lt;TestInstancesAreEqualFails&gt;b__2()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="48" />
+          <Method Name="&lt;TestInstancesAreEqualFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="51" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass1_0" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <Method Name="&lt;TestInstancesAreNotEqualPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="64" />
+          <Method Name="&lt;TestInstancesAreNotEqualPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="67" />
+          <Method Name="&lt;TestInstancesAreNotEqualPasses&gt;b__2()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="70" />
+          <Method Name="&lt;TestInstancesAreNotEqualPasses&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="73" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass2_0" CoveredStatements="5" TotalStatements="5" CoveragePercent="100">
+          <Method Name="&lt;TestInstancesAreEqualFailsDueToNull&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="85" />
+          <Method Name="&lt;TestInstancesAreEqualFailsDueToNull&gt;b__1()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="88" />
+          <Method Name="&lt;TestInstancesAreEqualFailsDueToNull&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="91" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass3_0" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+          <Method Name="&lt;TestInstancesAsObjectsAreEqualFails&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="104" />
+          <Method Name="&lt;TestInstancesAsObjectsAreEqualFails&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="107" />
+          <Method Name="&lt;TestInstancesAsObjectsAreEqualFails&gt;b__2()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="110" />
+          <Method Name="&lt;TestInstancesAsObjectsAreEqualFails&gt;b__3()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="113" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass4_0" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+          <Method Name="&lt;TestInstancesAreEqualPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="127" />
+          <Method Name="&lt;TestInstancesAreEqualPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="130" />
+          <Method Name="&lt;TestInstancesAreEqualPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="133" />
+          <Method Name="&lt;TestInstancesAreEqualPasses&gt;b__3()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="136" />
+          <Method Name="&lt;TestInstancesAreEqualPasses&gt;b__4()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="139" />
+        </Type>
+        <Type Name="&lt;&gt;c__DisplayClass5_0" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+          <Method Name="&lt;TestTwoEqualInstancesHaveSameHashPasses&gt;b__0()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="153" />
+          <Method Name="&lt;TestTwoEqualInstancesHaveSameHashPasses&gt;b__1()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="156" />
+          <Method Name="&lt;TestTwoEqualInstancesHaveSameHashPasses&gt;b__2()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="159" />
+          <Method Name="&lt;TestTwoEqualInstancesHaveSameHashPasses&gt;b__3()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="162" />
+          <Method Name="&lt;TestTwoEqualInstancesHaveSameHashPasses&gt;b__4()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="165" />
+        </Type>
+        <Method Name="TestInstancesAreEqualFails(ValidatorLinkage&lt;BooleanValidator&gt;,ValidatorLinkage&lt;BooleanValidator&gt;,Boolean)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" FirstStatementLine="40" />
+        <Method Name="TestInstancesAreEqualFailsDueToNull(ValidatorLinkage&lt;BooleanValidator&gt;,Boolean)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" FirstStatementLine="83" />
+        <Method Name="TestInstancesAreEqualPasses(BooleanValidator,ValidatorLinkage&lt;BooleanValidator&gt;,ValidatorLinkage&lt;BooleanValidator&gt;,Boolean)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="125" />
+        <Method Name="TestInstancesAreNotEqualPasses(ValidatorLinkage&lt;BooleanValidator&gt;,ValidatorLinkage&lt;BooleanValidator&gt;,Boolean)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" FirstStatementLine="62" />
+        <Method Name="TestInstancesAsObjectsAreEqualFails(ValidatorLinkage&lt;BooleanValidator&gt;,Object,Boolean)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" FirstStatementLine="102" />
+        <Method Name="TestTwoEqualInstancesHaveSameHashPasses(BooleanValidator,ValidatorLinkage&lt;BooleanValidator&gt;,ValidatorLinkage&lt;BooleanValidator&gt;,Boolean)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="151" />
       </Type>
     </Namespace>
     <Namespace Name="Org.Edgerunner.FluentGuard.Tests.Data" CoveredStatements="140" TotalStatements="153" CoveragePercent="92">
