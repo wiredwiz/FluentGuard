@@ -19,7 +19,8 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -30,6 +31,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <typeparam name="T">A numeric type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class NumericValidator<T> : UnsignedNumericValidator<T> where T : struct
    {
       #region Constructors And Finalizers
@@ -54,6 +58,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is negative.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="ArgumentException">Must be negative.</exception>
       public ValidatorLinkage<NumericValidator<T>> IsNegative()
       {
          if (ShouldReturnAfterEvaluation(PerformIsNegativeOperation(ParameterValue)))
@@ -69,6 +74,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is not negative.
       /// </summary>
       /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <exception cref="ArgumentException">Must not be negative.</exception>
       public ValidatorLinkage<NumericValidator<T>> IsNotNegative()
       {
          if (ShouldReturnAfterEvaluation(!PerformIsNegativeOperation(ParameterValue)))

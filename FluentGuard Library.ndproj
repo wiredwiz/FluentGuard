@@ -795,7 +795,7 @@ select new {
 // static methods that can be easily splitted and moved from one type 
 // to another.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid types with too many methods</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid types with too many methods</Name>
 warnif count > 0 from t in JustMyCode.Types 
 
   // Optimization: Fast discard of non-relevant types 
@@ -1066,7 +1066,7 @@ select new {
 // varies linearly from 10 minutes for a method with 15 variables,
 // up to 2 hours for a methods with 80 or more variables.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid methods with too many overloads</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid methods with too many overloads</Name>
 warnif count > 0 
 
 let lookup = JustMyCode.Methods.Where(m =>
@@ -2017,7 +2017,7 @@ select new {
 // is equal to 3 minutes per derived class used by the base class +
 // 3 minutes per member of a derived class used by the base class.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Class shouldn't be too deep in inheritance tree</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Class shouldn't be too deep in inheritance tree</Name>
         
 warnif count > 0 from t in JustMyCode.Types 
 where t.IsClass
@@ -3034,7 +3034,7 @@ select new {
 // is 5 minutes per class matched plus one minute per method
 // using such class transformed into a structure.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces with few types</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces with few types</Name>
 warnif count > 0 from n in JustMyCode.Namespaces 
 where n.Name.Length > 0 // Don't match anonymous namespaces
 let types = n.ChildTypes.Where(t => !t.IsGeneratedByCompiler)
@@ -3220,7 +3220,7 @@ select new {
 // varies linearly from interests for severity Minor for 64 bytes per instance
 // to twice interests for severity Major for 2048 bytes per instance.
 //</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Boxing/unboxing should be avoided</Name>
+      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Boxing/unboxing should be avoided</Name>
 warnif percentage > 5 from m in Application.Methods where 
   m.IsUsingBoxing || 
   m.IsUsingUnboxing
@@ -5080,7 +5080,7 @@ select new {
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Types 100% covered should be tagged with FullCoveredAttribute</Name>
         
 warnif count > 0 from t in JustMyCode.Types where
- !t.HasAttribute ("Org.Edgerunner.FluentGuard.Attributes.FullCoveredAttribute".AllowNoMatch()) &&
+ !t.HasAttribute ("NDepend.Attributes.FullCoveredAttribute".AllowNoMatch()) &&
   t.PercentageCoverage == 100 &&
  !t.IsGeneratedByCompiler
 select new { 

@@ -19,9 +19,9 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
-// ReSharper disable ExceptionNotThrown
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -30,6 +30,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <seealso cref="string" />
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class StringValidator : Validator<string>
    {
       #region Constructors And Finalizers
@@ -50,8 +53,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated ends with the value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value" />.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
       public virtual ValidatorLinkage<StringValidator> EndsWith(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformEndsWithOperation(ParameterValue, value)))
@@ -116,7 +120,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is not <c>null</c> or empty.
       /// </summary>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
       /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       /// <exception cref="ArgumentException">Must not be empty.</exception>
       public ValidatorLinkage<StringValidator> IsNotNullOrEmpty()
@@ -145,7 +149,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
             return new ValidatorLinkage<StringValidator>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentNullException(ParameterName, Resources.MustBeNull);
+            CurrentException = new ArgumentException(Resources.MustBeNull, ParameterName);
 
          return new ValidatorLinkage<StringValidator>(this);
       }
@@ -154,8 +158,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated starts with the value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="Validator{T}" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value" />.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
       public virtual ValidatorLinkage<StringValidator> StartsWith(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))

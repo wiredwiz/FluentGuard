@@ -21,7 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using Org.Edgerunner.FluentGuard.Attributes;
+using NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -29,9 +29,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// Class that validates data.
    /// </summary>
    /// <typeparam name="T">The type of data to validate.</typeparam>
-   [SuppressMessage("ReSharper", "ExceptionNotThrown",
-       Justification =
-          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
    [FullCovered]
    // ReSharper disable once ClassTooBig
@@ -98,7 +95,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
       protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -112,7 +108,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than Or Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -126,7 +121,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than operation on the supplied value type.</exception>
       protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -140,7 +134,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than Or Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -154,7 +147,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
       {
          IEquatable<T> original = currentValue as IEquatable<T>;

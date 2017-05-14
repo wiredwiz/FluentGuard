@@ -19,7 +19,8 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -29,6 +30,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <seealso cref="bool" />
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class BooleanValidator : Validator<bool>
    {
       #region Constructors And Finalizers
@@ -49,7 +53,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<BooleanValidator> IsEqualTo(bool value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -64,7 +69,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is <c>false</c>.
       /// </summary>
-      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
+      /// <returns>The current <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>false</c>.</exception>
       public ValidatorLinkage<BooleanValidator> IsFalse()
       {
@@ -81,7 +86,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is not equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>The current <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>The current <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<BooleanValidator> IsNotEqualTo(bool value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
@@ -96,7 +102,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is <c>true</c>.
       /// </summary>
-      /// <returns>The current <see cref="ValidatorLinkage{TV, TT}" /> instance.</returns>
+      /// <returns>The current <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
       /// <exception cref="System.ArgumentException">Must be <c>true</c>.</exception>
       public ValidatorLinkage<BooleanValidator> IsTrue()
       {
@@ -128,7 +134,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
-      /// <exception cref="InvalidOperationException">Unable to evalute type for true or false.</exception>
       protected virtual bool PerformIsTrueOperation(bool currentValue)
       {
          return currentValue;

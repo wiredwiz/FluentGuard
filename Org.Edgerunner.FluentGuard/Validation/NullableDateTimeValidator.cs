@@ -19,9 +19,9 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
-// ReSharper disable ExceptionNotThrown
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -31,6 +31,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <seealso cref="DateTime" />
    /// <seealso cref="Nullable"/>
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class NullableDateTimeValidator : NullableValidator<DateTime>
    {
       #region Constructors And Finalizers
@@ -55,7 +58,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsEqualTo(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -71,7 +75,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is greater than the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsGreaterThan(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
@@ -87,7 +92,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is greater than or equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsGreaterThanOrEqualTo(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
@@ -105,7 +111,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is less than the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsLessThan(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
@@ -121,7 +128,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is less than or equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsLessThanOrEqualTo(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
@@ -139,7 +147,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Determines whether the parameter being validated is not equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableDateTimeValidator}" /> instance.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value"/>.</exception>
       public ValidatorLinkage<NullableDateTimeValidator> IsNotEqualTo(DateTime? value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))

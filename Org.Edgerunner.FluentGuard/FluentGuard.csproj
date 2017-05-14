@@ -25,7 +25,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>1</WarningLevel>
   </PropertyGroup>
@@ -45,18 +45,15 @@
     <AssemblyInfoVersionSettings>None.None.DateStamp.TimeStamp</AssemblyInfoVersionSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NDepend.API, Version=2017.1.1.8920, Culture=neutral, PublicKeyToken=02f4313b97e3f583, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Tools\NDepend\Lib\NDepend.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\FullCoveredAttribute.cs" />
-    <Compile Include="Attributes\ImmutableAttribute.cs" />
     <Compile Include="Validation\ClassValidator.cs" />
     <Compile Include="Validation\NullableDateTimeValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />

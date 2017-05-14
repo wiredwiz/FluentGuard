@@ -19,7 +19,8 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -30,6 +31,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <typeparam name="T">A type of class.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class ClassValidator<T> : Validator<T>
       where T : class
    {
@@ -55,7 +59,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Determines whether the parameter being validated implements a specified interface.
       /// </summary>
       /// <param name="type">The type to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
       public ValidatorLinkage<ClassValidator<T>> ImplementsInterface(Type type)
       {
          if (ShouldReturnAfterEvaluation(PerformImplementsInterfaceOperation(ParameterValue, type)))
@@ -71,7 +75,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Determines whether the parameter being validated inherits from a specified type.
       /// </summary>
       /// <param name="type">The type to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
       public ValidatorLinkage<ClassValidator<T>> InheritsType(Type type)
       {
          if (ShouldReturnAfterEvaluation(PerformInheritsOperation(ParameterValue, type)))
@@ -86,7 +90,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is not <c>null</c>.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentNullException">Must not be <c>null</c>.</exception>
       public ValidatorLinkage<ClassValidator<T>> IsNotNull()
       {
          if (ShouldReturnAfterEvaluation(PerformNotNullOperation(ParameterValue)))
@@ -101,14 +106,15 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is <c>null</c>.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentException">Parameter must be <c>null</c>.</exception>
       public ValidatorLinkage<ClassValidator<T>> IsNull()
       {
          if (ShouldReturnAfterEvaluation(!PerformNotNullOperation(ParameterValue)))
             return new ValidatorLinkage<ClassValidator<T>>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentNullException(ParameterName, Resources.MustBeNull);
+            CurrentException = new ArgumentException(Resources.MustBeNull, ParameterName);
 
          return new ValidatorLinkage<ClassValidator<T>>(this);
       }
@@ -117,7 +123,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Determines whether the parameter being validated is of a specified type.
       /// </summary>
       /// <param name="type">The type to compare against.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentException">Must be of type <paramref name="type"/>.</exception>
+      /// <exception cref="ArgumentNullException">Thrown when the arguments are <see langword="null"/></exception>
       public ValidatorLinkage<ClassValidator<T>> IsOfType(Type type)
       {
          if (ShouldReturnAfterEvaluation(PerformIsOfTypeOperation(ParameterValue, type)))
@@ -133,7 +141,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Determines whether the parameter being validated is the same instance as the one being compared against.
       /// </summary>
       /// <param name="instance">The instance to compare to.</param>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{ClassValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentException">Must be the same as <paramref name="instance"/>.</exception>
       public ValidatorLinkage<ClassValidator<T>> IsSameAs(T instance)
       {
          if (ShouldReturnAfterEvaluation(PerformSameAsOperation(ParameterValue, instance)))
@@ -151,7 +160,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="type">The interface to compare against.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> implements <paramref name="type" />, <c>false</c> otherwise.</returns>
-      /// <exception cref="ArgumentException"><paramref name="type" /> must be an interface.</exception>
+      /// <exception cref="ArgumentException"><paramref name="currentValue" /> must implement interface <paramref name="type"/>.</exception>
       /// <exception cref="ArgumentNullException">Thrown when arguments are <see langword="null"/></exception>
       protected virtual bool PerformImplementsInterfaceOperation(T currentValue, Type type)
       {

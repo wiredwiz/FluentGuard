@@ -720,7 +720,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.IsNull().OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentNullException>()
+            .x(() => act.ShouldThrow<ArgumentException>()
             .WithMessage(string.Format(Resources.MustBeNull + "\r\nParameter name: {0}", parameterName)));
       }
    }

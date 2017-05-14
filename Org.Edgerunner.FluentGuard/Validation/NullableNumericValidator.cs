@@ -19,7 +19,8 @@
 #endregion
 
 using System;
-using Org.Edgerunner.FluentGuard.Attributes;
+using System.Diagnostics.CodeAnalysis;
+using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -31,6 +32,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.NullableUnsignedNumericValidator{T}" />
    /// <seealso cref="Nullable"/>
    [FullCovered]
+   [SuppressMessage("ReSharper", "ExceptionNotThrown",
+       Justification =
+          "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T>
       where T : struct
    {
@@ -55,7 +59,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is negative.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableNumericValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must be negative.</exception>
       public ValidatorLinkage<NullableNumericValidator<T>> IsNegative()
       {
          if (ShouldReturnAfterEvaluation(PerformIsNegativeOperation(ParameterValue)))
@@ -70,7 +75,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is not negative.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NullableNumericValidator}" /> instance of type T.</returns>
+      /// <exception cref="ArgumentOutOfRangeException">Must not be negative.</exception>
       public ValidatorLinkage<NullableNumericValidator<T>> IsNotNegative()
       {
          if (ShouldReturnAfterEvaluation(!PerformIsNegativeOperation(ParameterValue)))
