@@ -21,6 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
+using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Tests.Data;
 using Org.Edgerunner.FluentGuard.Validation;
@@ -251,7 +252,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .x(() => act.ShouldThrow<ArgumentEqualityException>()
             .WithMessage(string.Format(Resources.MustBeEqualToX + "\r\nParameter name: {1}", valueToCompare, parameterName)));
       }
 
@@ -712,7 +713,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
+            .x(() => act.ShouldThrow<ArgumentEqualityException>()
             .WithMessage(string.Format(Resources.MustNotBeEqualToX + "\r\nParameter name: {1}", valueToCompare, parameterName)));
       }
 

@@ -102,7 +102,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformEqualToOperation(T? currentValue, T? referenceValue)
       {
          return Nullable.Equals(currentValue, referenceValue);
@@ -124,7 +123,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Greater Than operation on the supplied value type.</exception>
       protected virtual bool PerformGreaterThanOperation(T? currentValue, T? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) > 0;
@@ -147,7 +145,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than operation on the supplied value type.</exception>
       protected virtual bool PerformLessThanOperation(T? currentValue, T? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) < 0;
@@ -159,7 +156,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-      /// <exception cref="System.InvalidOperationException">Unable to perform a Less Than Or Equal To operation on the supplied value type.</exception>
       protected virtual bool PerformLessThanOrEqualToOperation(T? currentValue, T? referenceValue)
       {
          return Nullable.Compare(currentValue, referenceValue) <= 0;

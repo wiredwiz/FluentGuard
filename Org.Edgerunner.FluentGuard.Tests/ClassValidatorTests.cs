@@ -19,6 +19,7 @@
 using System;
 using System.Text;
 using FluentAssertions;
+using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.FluentGuard.Tests.Data;
 using Org.Edgerunner.FluentGuard.Validation;
@@ -134,7 +135,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentException>()
+            .x(() => act.ShouldThrow<ArgumentTypeException>()
             .WithMessage(string.Format(Resources.MustBeOfType + "\r\nParameter name: {1}", typeof(Person).Name, parameterName)));
       }
 
@@ -221,7 +222,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.InheritsType(typeof(Officer)).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentException>()
+            .x(() => act.ShouldThrow<ArgumentTypeException>()
             .WithMessage(string.Format(Resources.MustInheritType + "\r\nParameter name: {1}", typeof(Officer).Name, parameterName)));
       }
 
@@ -308,7 +309,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentException>()
+            .x(() => act.ShouldThrow<ArgumentTypeException>()
             .WithMessage(string.Format(Resources.MustImplementInterface + "\r\nParameter name: {1}", typeof(IOfficer).Name, parameterName)));
       }
 
@@ -374,7 +375,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
             .x(() => act = () => validator.ImplementsInterface(typeof(Officer)).OtherwiseThrowException());
 
          "Should throw an exception"
-            .x(() => act.ShouldThrow<ArgumentException>()
+            .x(() => act.ShouldThrow<ArgumentTypeException>()
             .WithMessage(Resources.MustBeInterface + "\r\nParameter name: type"));
       }
 

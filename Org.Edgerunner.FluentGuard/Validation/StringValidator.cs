@@ -21,6 +21,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
+using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
 
 namespace Org.Edgerunner.FluentGuard.Validation
@@ -72,31 +73,31 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must be equal to <paramref name="value" />.</exception>
+      /// <exception cref="ArgumentEqualityException">Must be equal to <paramref name="value" />.</exception>
       public ValidatorLinkage<StringValidator> IsEqualTo(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
             return new ValidatorLinkage<StringValidator>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustBeEqualToX, value));
+            CurrentException = new ArgumentEqualityException(string.Format(Resources.MustBeEqualToX, value), ParameterName);
 
          return new ValidatorLinkage<StringValidator>(this);
       }
-      
+
       /// <summary>
       ///    Determines whether the parameter being validated is not equal to the specified value.
       /// </summary>
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
-      /// <exception cref="ArgumentOutOfRangeException">Must not be equal to <paramref name="value" />.</exception>
+      /// <exception cref="ArgumentEqualityException">Must not be equal to <paramref name="value" />.</exception>
       public ValidatorLinkage<StringValidator> IsNotEqualTo(string value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))
             return new ValidatorLinkage<StringValidator>(this);
 
          if (CurrentException == null)
-            CurrentException = new ArgumentOutOfRangeException(ParameterName, string.Format(Resources.MustNotBeEqualToX, value));
+            CurrentException = new ArgumentEqualityException(string.Format(Resources.MustNotBeEqualToX, value), ParameterName);
 
          return new ValidatorLinkage<StringValidator>(this);
       }
