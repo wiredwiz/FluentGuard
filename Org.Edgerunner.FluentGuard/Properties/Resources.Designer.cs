@@ -25,7 +25,6 @@ namespace Org.Edgerunner.FluentGuard.Properties
    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-   [UncoverableByTest]
    internal class Resources
    {
 
@@ -66,6 +65,7 @@ namespace Org.Edgerunner.FluentGuard.Properties
          {
             return resourceCulture;
          }
+
          set
          {
             resourceCulture = value;
