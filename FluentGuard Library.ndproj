@@ -1,26 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="FluentGuard Library" Platform="DotNet" FileWrittenByProductVersion="2017.2.1.8955">
-  <OutputDir KeepXmlFiles="False">C:\Projects\Edgerunner FluentGuard\NDependOut</OutputDir>
+  <OutputDir KeepXmlFiles="False">.\NDependOut</OutputDir>
   <Assemblies>
     <Name>Org.Edgerunner.FluentGuard</Name>
   </Assemblies>
   <FrameworkAssemblies>
     <Name>mscorlib</Name>
-    <Name>System</Name>
     <Name>NDepend.API</Name>
+    <Name>Org.Edgerunner.NDepend</Name>
+    <Name>System</Name>
   </FrameworkAssemblies>
   <Dirs>
     <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319</Dir>
     <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF</Dir>
-    <Dir>C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug</Dir>
-    <Dir>C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Release</Dir>
+    <Dir>.\Org.Edgerunner.FluentGuard\bin\Debug</Dir>
   </Dirs>
   <MergeCodeGeneratedByCompiler>True</MergeCodeGeneratedByCompiler>
   <Report Kind="0" SectionsEnabled="110591" XslPath="" Flags="261120" />
-  <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith="C:\Projects\Edgerunner FluentGuard\FluentGuard Library.ndproj" BuildFileToCompareWith="C:\Projects\Edgerunner FluentGuard\NDependOut\2017_05\06_23_44\NDependAnalysisResult_FluentGuard_Library_2017May06_23h44.ndar" NDaysAgo="30" />
-  <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith="C:\Projects\Edgerunner FluentGuard\FluentGuard Library.ndproj" BuildFileToCompareWith="C:\Projects\Edgerunner FluentGuard\NDependOut\2017_05\06_23_44\NDependAnalysisResult_FluentGuard_Library_2017May06_23h44.ndar" NDaysAgo="30" />
-  <CoverageFiles CoverageDir="" UncoverableAttribute="">
-    <CoverageFile>$(NdProjectDir)\All tests from Solution.xml</CoverageFile>
+  <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May21_22h20.ndar" NDaysAgo="30" />
+  <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May21_22h20.ndar" NDaysAgo="30" />
+  <CoverageFiles CoverageDir="" UncoverableAttribute="NDepend.Attributes.UncoverableByTestAttribute">
+    <CoverageFile>.\All tests from Solution.xml</CoverageFile>
   </CoverageFiles>
   <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="">
     <Chart Name="Size" ShowInReport="True">
@@ -67,7 +67,7 @@
       <AnnualInterestDefault>0</AnnualInterestDefault>
       <DebtStringFormat>$ManDay$</DebtStringFormat>
       <MoneyPerManHour>50</MoneyPerManHour>
-      <Currency>USD</Currency>
+      <Currency>£</Currency>
       <CurrencyLocation>After</CurrencyLocation>
       <EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>18</EstimatedNumberOfManDayToDevelop1000LogicalLinesOfCode>
       <NumberOfWorkDayPerYear>240</NumberOfWorkDayPerYear>
@@ -81,8 +81,7 @@
       <High2Critical_SeverityThreshold>72000000000</High2Critical_SeverityThreshold>
       <Critical2Blocker_SeverityThreshold>360000000000</Critical2Blocker_SeverityThreshold>
     </DebtSettings>
-  </ProjectDebtSettings>
-  <Queries>
+  </ProjectDebtSettings><Queries>
     <Group Name="Quality Gates" Active="True" ShownInReport="True">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Quality Gates Evolution</Name>
 from qg in QualityGates
@@ -392,6 +391,12 @@ select (ai - aiInBaseline).ToManDay()
 // used to infer an Annual-Interest value from a Severity level.
 // Annual Interest documentation: http://www.ndepend.com/docs/technical-debt#AnnualInterest
 //</Description>]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Classes with ExcludeNestingAttribute</Name>
+
+from t in Types.TaggedWithAnyAttributes(
+   ThirdParty.Types.Where(t => t.IsAttributeClass))
+where t.HasAttribute("*.Exclude*".AllowNoMatch())
+select t]]></Query>
     </Group>
     <Group Name="Hot Spots" Active="True" ShownInReport="True">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Types Hot Spots</Name>
@@ -795,11 +800,12 @@ select new {
 // static methods that can be easily splitted and moved from one type 
 // to another.
 //</HowToFix>]]></Query>
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid types with too many methods</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid types with too many methods</Name>
 warnif count > 0 from t in JustMyCode.Types 
 
   // Optimization: Fast discard of non-relevant types 
-  where t.Methods.Count() > 20
+  where t.Methods.Count() > 20 &&
+    !t.HasAttribute("Org.Edgerunner.NDepend.Attributes.MethodCountOkAttribute".AllowNoMatch())
 
   // Don't match these methods
   let methods = t.Methods.Where(
@@ -1066,7 +1072,7 @@ select new {
 // varies linearly from 10 minutes for a method with 15 variables,
 // up to 2 hours for a methods with 80 or more variables.
 //</HowToFix>]]></Query>
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid methods with too many overloads</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid methods with too many overloads</Name>
 warnif count > 0 
 
 let lookup = JustMyCode.Methods.Where(m =>
@@ -1074,7 +1080,10 @@ let lookup = JustMyCode.Methods.Where(m =>
   !m.IsOperator && // Don't report operator overload
 
    // Don't match overloads due tu the visitor pattern, based on a naming convention.
-  !m.SimpleName.ToLower().StartsWithAny("visit", "dispatch")
+  !m.SimpleName.ToLower().StartsWithAny("visit", "dispatch") &&
+
+  // Exclude method overloads that have been marked as verified to be Ok.
+  !m.HasAttribute("Org.Edgerunner.NDepend.Attributes.OverloadVerifiedAttribute".AllowNoMatch())
 ).ToLookup(m => m.ParentType.FullName + "."+ m.SimpleName)
 
 from @group in lookup
@@ -2017,11 +2026,12 @@ select new {
 // is equal to 3 minutes per derived class used by the base class +
 // 3 minutes per member of a derived class used by the base class.
 //</HowToFix>]]></Query>
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Class shouldn't be too deep in inheritance tree</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Class shouldn't be too deep in inheritance tree</Name>
         
 warnif count > 0 from t in JustMyCode.Types 
 where t.IsClass
 let baseClasses = t.BaseClasses.ExceptThirdParty()
+ .Where(x => !x.HasAttribute("Org.Edgerunner.NDepend.Attributes.ExcludeFromNestingCheckAttribute".AllowNoMatch()))
 where baseClasses.Count() >= 3
 orderby baseClasses.Count() descending
 
@@ -2075,7 +2085,8 @@ select new {
 //
 // The estimated Debt, which means the effort to fix such issue,
 // depends linearly upon the depth of inheritance.
-//</HowToFix>]]></Query>
+//</HowToFix>
+]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Class with no descendant should be sealed if possible</Name>
 warnif count > 0 from t in JustMyCode.Types where 
   t.IsClass && 
@@ -3220,10 +3231,11 @@ select new {
 // varies linearly from interests for severity Minor for 64 bytes per instance
 // to twice interests for severity Major for 2048 bytes per instance.
 //</HowToFix>]]></Query>
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Boxing/unboxing should be avoided</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Boxing/unboxing should be avoided</Name>
 warnif percentage > 5 from m in Application.Methods where 
-  m.IsUsingBoxing || 
-  m.IsUsingUnboxing
+  (m.IsUsingBoxing || 
+  m.IsUsingUnboxing) &&
+  !m.HasAttribute("Org.Edgerunner.NDepend.Attributes.IgnoreBoxingAttribute".AllowNoMatch())
 select new { 
    m, 
    m.NbLinesOfCode, 
@@ -3436,7 +3448,7 @@ select new {
 //</HowToFix>]]></Query>
     </Group>
     <Group Name="Architecture" Active="True" ShownInReport="False">
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>Avoid namespaces mutually dependent</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>Avoid namespaces mutually dependent</Name>
 warnif count > 0
 
 // Optimization: restraint application assemblies set
@@ -3629,7 +3641,7 @@ select new {
 // blue and black cells.**
 //</HowToFix>
       ]]></Query>
-      <Query Active="False" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces dependency cycles</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Avoid namespaces dependency cycles</Name>
 warnif count > 0
 
 // Optimization: restraint application assemblies set
@@ -4614,7 +4626,7 @@ let abstractionUsageFactorFormula = new Func<IEnumerable<IType>,double>(typesUse
 
 
 from method in Application.Methods
-  where !method.IsExcludedFromCoverage && method.NbLinesOfCode >= 0 && method.PercentageCoverage < 100 
+  where !method.IsExcludedFromCoverage && method.NbLinesOfCode >= 0 && method.PercentageCoverage < 100
 
   // Factor in case method is partially covered
   let uncoverageFactor = ((100 - method.PercentageCoverage) / 100).Value
@@ -10916,5 +10928,5 @@ select new {
 //</HowToFix>]]></Query>
       </Group>
     </Group>
-  </Queries>
-</NDepend>
+  </Queries><WarnFilter>
+  </WarnFilter></NDepend>

@@ -23,18 +23,21 @@ using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="bool" />.
+   ///    A ValidatorBase class for type <see cref="bool" />.
    /// </summary>
    /// <seealso cref="bool" />
-   [FullCovered]
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-   public class BooleanValidator : Validator<bool>
+#if DEBUG
+   [FullCovered]
+#endif
+   public class BooleanValidator : ValidatorBase<bool>
    {
       #region Constructors And Finalizers
 
@@ -56,6 +59,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must be equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<BooleanValidator> IsEqualTo(bool value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -89,6 +95,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="ValidatorLinkage{BooleanValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must not be equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<BooleanValidator> IsNotEqualTo(bool value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))

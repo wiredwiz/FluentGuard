@@ -38,10 +38,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       public void TestInstancesAreEqualFails(ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areEqual)
       {
-         "Given a first validator linkage instance"
+         "Given a first ValidatorBase linkage instance"
             .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test1", true)));
 
-         "And given a secondLinkage validator linkage instance"
+         "And given a secondLinkage ValidatorBase linkage instance"
             .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test2", true)));
 
          "Testing that both linkages are equal"
@@ -60,10 +60,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       public void TestInstancesAreNotEqualPasses(ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areNotEqual)
       {
-         "Given a first validator linkage instance"
+         "Given a first ValidatorBase linkage instance"
             .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test1", true)));
 
-         "And given a secondLinkage validator linkage instance"
+         "And given a secondLinkage ValidatorBase linkage instance"
             .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test2", true)));
 
          "Testing that both linkages are not equal"
@@ -81,7 +81,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       public void TestInstancesAreEqualFailsDueToNull(ValidatorLinkage<BooleanValidator> linkage, bool areEqual)
       {
-         "Given a new validator linkage instance"
+         "Given a new ValidatorBase linkage instance"
             .x(() => linkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test1", true)));
 
          "Testing that both linkage equals a null"
@@ -100,10 +100,10 @@ namespace Org.Edgerunner.FluentGuard.Tests
       [Scenario]
       public void TestInstancesAsObjectsAreEqualFails(ValidatorLinkage<BooleanValidator> firstLinkage, object secondLinkage, bool areEqual)
       {
-         "Given a new first validator linkage instance"
+         "Given a new first ValidatorBase linkage instance"
             .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test1", true)));
 
-         "And given a new secondLinkage validator linkage instance stored as an object"
+         "And given a new secondLinkage ValidatorBase linkage instance stored as an object"
             .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(Validate.That("test2", true)));
 
          "Testing that both linkages are equal"
@@ -116,21 +116,21 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <summary>
       /// Tests equality of <see cref="ValidatorLinkage{T}" />.
       /// </summary>
-      /// <param name="validator">The validator to test with.</param>
+      /// <param name="validatorBase">The ValidatorBase to test with.</param>
       /// <param name="firstLinkage">The first linkage.</param>
       /// <param name="secondLinkage">The second linkage.</param>
       /// <param name="areEqual">Determines whether the two linkages are equal.</param>
       [Scenario]
-      public void TestInstancesAreEqualPasses(BooleanValidator validator, ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areEqual)
+      public void TestInstancesAreEqualPasses(BooleanValidator validatorBase, ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areEqual)
       {
-         "Given a new validator instance"
-            .x(() => validator = Validate.That("test1", true));
+         "Given a new ValidatorBase instance"
+            .x(() => validatorBase = Validate.That("test1", true));
 
-         "And given a first validator linkage instance"
-            .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(validator));
+         "And given a first ValidatorBase linkage instance"
+            .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(validatorBase));
 
-         "And given a secondLinkage validator linkage instance"
-            .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(validator));
+         "And given a secondLinkage ValidatorBase linkage instance"
+            .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(validatorBase));
 
          "Testing that both linkages are equal"
             .x(() => { areEqual = firstLinkage == secondLinkage; });
@@ -142,21 +142,21 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <summary>
       /// Tests equality of <see cref="ValidatorLinkage{T}" />.
       /// </summary>
-      /// <param name="validator">The validator to test with.</param>
+      /// <param name="validatorBase">The ValidatorBase to test with.</param>
       /// <param name="firstLinkage">The first linkage.</param>
       /// <param name="secondLinkage">The second linkage.</param>
       /// <param name="areEqual">Determines whether the two linkages are equal.</param>
       [Scenario]
-      public void TestTwoEqualInstancesHaveSameHashPasses(BooleanValidator validator, ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areEqual)
+      public void TestTwoEqualInstancesHaveSameHashPasses(BooleanValidator validatorBase, ValidatorLinkage<BooleanValidator> firstLinkage, ValidatorLinkage<BooleanValidator> secondLinkage, bool areEqual)
       {
-         "Given a new validator instance"
-            .x(() => validator = Validate.That("test1", true));
+         "Given a new ValidatorBase instance"
+            .x(() => validatorBase = Validate.That("test1", true));
 
-         "And given a first validator linkage instance"
-            .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(validator));
+         "And given a first ValidatorBase linkage instance"
+            .x(() => firstLinkage = new ValidatorLinkage<BooleanValidator>(validatorBase));
 
-         "And given a secondLinkage validator linkage instance"
-            .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(validator));
+         "And given a secondLinkage ValidatorBase linkage instance"
+            .x(() => secondLinkage = new ValidatorLinkage<BooleanValidator>(validatorBase));
 
          "Testing that both linkage's hashes are equal"
             .x(() => { areEqual = firstLinkage.GetHashCode() == secondLinkage.GetHashCode(); });

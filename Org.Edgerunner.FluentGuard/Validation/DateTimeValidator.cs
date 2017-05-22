@@ -23,18 +23,21 @@ using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="DateTime" />.
+   ///    A ValidatorBase class for type <see cref="DateTime" />.
    /// </summary>
    /// <seealso cref="DateTime" />
-   [FullCovered]
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-   public class DateTimeValidator : Validator<DateTime>
+#if DEBUG
+   [FullCovered]
+#endif
+   public class DateTimeValidator : ValidatorBase<DateTime>
    {
       #region Constructors And Finalizers
 
@@ -126,6 +129,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must be equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<DateTimeValidator> IsEqualTo(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(PerformEqualToOperation(ParameterValue, value)))
@@ -143,7 +149,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value"/>.</exception>
-       public ValidatorLinkage<DateTimeValidator> IsGreaterThan(DateTime value)
+#if DEBUG
+      [IgnoreBoxing]
+#endif
+      public ValidatorLinkage<DateTimeValidator> IsGreaterThan(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOperation(ParameterValue, value)))
             return new ValidatorLinkage<DateTimeValidator>(this);
@@ -160,6 +169,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<DateTimeValidator> IsGreaterThanOrEqualTo(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(PerformGreaterThanOrEqualToOperation(ParameterValue, value)))
@@ -177,6 +189,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<DateTimeValidator> IsLessThan(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOperation(ParameterValue, value)))
@@ -194,6 +209,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<DateTimeValidator> IsLessThanOrEqualTo(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(PerformLessThanOrEqualToOperation(ParameterValue, value)))
@@ -211,6 +229,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{DateTimeValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must not be equal to <paramref name="value"/>.</exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public ValidatorLinkage<DateTimeValidator> IsNotEqualTo(DateTime value)
       {
          if (ShouldReturnAfterEvaluation(!PerformEqualToOperation(ParameterValue, value)))

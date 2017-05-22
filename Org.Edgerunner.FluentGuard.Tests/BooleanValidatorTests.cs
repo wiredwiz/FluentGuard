@@ -38,18 +38,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>     
       [Scenario]
       [Example("foo", true, false)]
       [Example("foo", false, true)]
-      public void TestParameterEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      public void TestParameterEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -62,18 +62,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>     
       [Scenario]
       [Example("foo", true, false)]
       [Example("foo", false, true)]
-      public void TestParameterEqualToWithCustomExceptionFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      public void TestParameterEqualToWithCustomExceptionFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against and throwing a custom exception if not"
-            .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
+            .x(() => act = () => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
 
          "Should result in that custom exception being thrown"
             .x(() => act.ShouldThrow<ArgumentException>()
@@ -86,21 +86,21 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>     
       [Scenario]
       [Example("foo", true, true)]
       [Example("foo", false, false)]
-      public void TestParameterEqualToWithCustomExceptionPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      public void TestParameterEqualToWithCustomExceptionPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against and throwing a custom exception if not"
-            .x(() => validator.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
+            .x(() => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrow(new ArgumentException("Some nonsense message", parameterName)));
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -109,20 +109,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>      
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>      
       [Scenario]
       [Example("foo", true, true)]
       [Example("foo", false, false)]
-      public void TestParameterEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator)
+      public void TestParameterEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -131,18 +131,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>     
       [Scenario]
       [Example("foo", true, true)]
       [Example("foo", false, false)]
-      public void TestParameterNotEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator, Action act)
+      public void TestParameterNotEqualToFails(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -155,20 +155,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>     
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>     
       [Scenario]
       [Example("foo", true, false)]
       [Example("foo", false, true)]
-      public void TestParameterNotEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validator)
+      public void TestParameterNotEqualToPasses(string parameterName, bool parameterValue, bool valueToCompare, BooleanValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
       
       /// <summary>
@@ -176,17 +176,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo", false)]
-      public void TestParameterIsTrueFails(string parameterName, bool parameterValue, BooleanValidator validator, Action act)
+      public void TestParameterIsTrueFails(string parameterName, bool parameterValue, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
-            .x(() => act = () => validator.IsTrue().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsTrue().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentException>()
@@ -198,19 +198,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       [Scenario]
       [Example("foo", true)]
-      public void TestParameterIsTruePasses(string parameterName, bool parameterValue, BooleanValidator validator)
+      public void TestParameterIsTruePasses(string parameterName, bool parameterValue, BooleanValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is true"
-            .x(() => validator.IsTrue().OtherwiseThrowException());
+            .x(() => validatorBase.IsTrue().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -218,17 +218,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo", true)]
-      public void TestParameterIsFalseFails(string parameterName, bool parameterValue, BooleanValidator validator, Action act)
+      public void TestParameterIsFalseFails(string parameterName, bool parameterValue, BooleanValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => act = () => validator.IsFalse().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsFalse().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentException>()
@@ -240,19 +240,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="BooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="BooleanValidator" /> to test with.</param>
       [Scenario]
       [Example("foo", false)]
-      public void TestParameterIsFalsePasses(string parameterName, bool parameterValue, BooleanValidator validator)
+      public void TestParameterIsFalsePasses(string parameterName, bool parameterValue, BooleanValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => validator.IsFalse().OtherwiseThrowException());
+            .x(() => validatorBase.IsFalse().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }      
    }
 }

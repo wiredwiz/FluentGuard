@@ -1,5 +1,5 @@
 ﻿#region Apache License 2.0
-// <copyright company="Edgerunner.org" file="Validator.cs">
+// <copyright company="Edgerunner.org" file="ValidatorBase.cs">
 // Copyright (c)  2017
 // </copyright>
 // 
@@ -18,14 +18,18 @@
 
 using System;
 using NDepend.Attributes;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   /// Foundational validator class.
+   /// Foundational ValidatorBase class.
    /// </summary>
+#if DEBUG
    [FullCovered]
-   public class Validator
+   [ExcludeFromNestingCheck]
+#endif
+   public abstract class ValidatorBase
    {
       /// <summary>
       /// Gets or sets the current exception.

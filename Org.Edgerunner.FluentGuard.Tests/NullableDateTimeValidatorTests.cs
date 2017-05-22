@@ -47,19 +47,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>     
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>     
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsGreaterThan), MemberType = typeof(NullableDateTimeData))]
-      public void TestParameterGreaterThanPasses(string parameterName, DateTime? parameterValue, DateTime? valueToCompare, NullableDateTimeValidator validator)
+      public void TestParameterGreaterThanPasses(string parameterName, DateTime? parameterValue, DateTime? valueToCompare, NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than the value to compare against"
-            .x(() => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsGreaterThan(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -68,7 +68,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsNotEqualTo), MemberType = typeof(NullableDateTimeData))]
@@ -76,14 +76,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -96,23 +96,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsEqualTo), MemberType = typeof(NullableDateTimeData))]
       public void TestParameterEqualToPasses(
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator)
+         NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -121,7 +121,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsLessThanOrEqualTo), MemberType = typeof(NullableDateTimeData))]
@@ -129,14 +129,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than the value to compare against"
-            .x(() => act = () => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThan(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -149,7 +149,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsLessThan), MemberType = typeof(NullableDateTimeData))]
@@ -157,14 +157,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than or equal to the value to compare against"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -177,23 +177,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(NullableDateTimeData))]
       public void TestParameterGreaterThanOrEqualToPasses(
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator)
+         NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than or equal to the value to compare against"
-            .x(() => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -202,7 +202,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsGreaterThanOrEqualTo), MemberType = typeof(NullableDateTimeData))]
@@ -210,14 +210,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsLessThan(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -230,7 +230,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsGreaterThan), MemberType = typeof(NullableDateTimeData))]
@@ -238,14 +238,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the value to compare against"
-            .x(() => act = () => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -258,23 +258,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsLessThanOrEqualTo), MemberType = typeof(NullableDateTimeData))]
       public void TestParameterLessThanOrEqualToPasses(
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator)
+         NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the value to compare against"
-            .x(() => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -283,23 +283,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsLessThan), MemberType = typeof(NullableDateTimeData))]
       public void TestParameterLessThanPasses(
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator)
+         NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
-            .x(() => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsLessThan(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -308,7 +308,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsEqualTo), MemberType = typeof(NullableDateTimeData))]
@@ -316,14 +316,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator,
+         NullableDateTimeValidator validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -336,23 +336,23 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.IsNotEqualTo), MemberType = typeof(NullableDateTimeData))]
       public void TestParameterNotEqualToPasses(
          string parameterName,
          DateTime? parameterValue,
          DateTime? valueToCompare,
-         NullableDateTimeValidator validator)
+         NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -360,19 +360,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.RandomDateValues), MemberType = typeof(NullableDateTimeData))]
-      public void TestParameterNotNullPasses(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validator)
+      public void TestParameterNotNullPasses(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is not null"
-            .x(() => validator.IsNotNull().OtherwiseThrowException());
+            .x(() => validatorBase.IsNotNull().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -380,17 +380,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterNotNullFails(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validator, Action act)
+      public void TestParameterNotNullFails(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is not null"
-            .x(() => act = () => validator.IsNotNull().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotNull().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -402,19 +402,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterIsNullPasses(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validator)
+      public void TestParameterIsNullPasses(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is null"
-            .x(() => validator.IsNull().OtherwiseThrowException());
+            .x(() => validatorBase.IsNull().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -422,17 +422,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableDateTimeValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableDateTimeValidator" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(NullableDateTimeData.RandomDateValues), MemberType = typeof(NullableDateTimeData))]
-      public void TestParameterIsNullFails(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validator, Action act)
+      public void TestParameterIsNullFails(string parameterName, DateTime? parameterValue, NullableDateTimeValidator validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is null"
-            .x(() => act = () => validator.IsNull().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNull().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()

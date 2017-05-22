@@ -46,21 +46,21 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>     
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>     
       [Scenario]
       [NullableExample("foo1", 'a', 'A')]
       [NullableExample("foo2", 'b', 'a')]
       [NullableExample("foo3", 'A', null)]
-      public void TestParameterGreaterThanPasses(string parameterName, char? parameterValue, char? valueToCompare, NullableUnsignedNumericValidator<char> validator)
+      public void TestParameterGreaterThanPasses(string parameterName, char? parameterValue, char? valueToCompare, NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than the value to compare against"
-            .x(() => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsGreaterThan(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -70,7 +70,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'b', 'g')]
@@ -80,14 +80,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          char? parameterValue,
          char? lowerBound,
          char? upperBound,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -101,7 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'j', 'c', 'g')]
@@ -111,14 +111,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          char? parameterValue,
          char? lowerBound,
          char? upperBound,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -132,7 +132,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'c', 'c', 'g')]
       [NullableExample("foo2", 'd', 'c', 'g')]
@@ -144,16 +144,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          char? parameterValue,
          char? lowerBound,
          char? upperBound,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater or equal to the lower bound and less than or equal to the upper bound"
-            .x(() => validator.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => validatorBase.IsGreaterThanOrEqualTo(lowerBound).And.IsLessThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -163,7 +163,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'd', 'c', 'g')]
@@ -174,14 +174,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          char? parameterValue,
          char? lowerBound,
          char? upperBound,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the lower bound or greater than or equal to the upper bound"
-            .x(() => act = () => validator.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -195,7 +195,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="lowerBound">The lower bound.</param>
       /// <param name="upperBound">The upper bound.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'c', 'g')]
       [NullableExample("foo2", 'b', 'c', 'g')]
@@ -208,16 +208,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          char? parameterValue,
          char? lowerBound,
          char? upperBound,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the lower bound or greater than or equal to the upper bound"
-            .x(() => validator.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
+            .x(() => validatorBase.IsLessThanOrEqualTo(lowerBound).Or.IsGreaterThanOrEqualTo(upperBound).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -226,7 +226,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'b')]
@@ -236,14 +236,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -256,7 +256,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'a')]
       [NullableExample("foo2", 'A', 'A')]
@@ -266,16 +266,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -284,7 +284,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'A', 'a')]
@@ -295,14 +295,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than the value to compare against"
-            .x(() => act = () => validator.IsGreaterThan(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThan(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -315,7 +315,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'A', 'a')]
@@ -324,14 +324,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than or equal to the value to compare against"
-            .x(() => act = () => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -344,7 +344,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'b', 'C')]
       [NullableExample("foo2", 'b', 'a')]
@@ -355,16 +355,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is greater than or equal to the value to compare against"
-            .x(() => validator.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsGreaterThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -372,18 +372,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a')]
       [NullableExample("foo2", 'A')]
-      public void TestParameterIsNotPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator, Action act)
+      public void TestParameterIsNotPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => act = () => validator.IsNotPositive().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotPositive().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -395,20 +395,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", '\0')]
       [NullableExample("foo2", null)]
-      public void TestParameterIsNotPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator)
+      public void TestParameterIsNotPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => validator.IsNotPositive().OtherwiseThrowException());
+            .x(() => validatorBase.IsNotPositive().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -416,18 +416,18 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", '\0')]
       [NullableExample("foo2", null)]
-      public void TestParameterIsPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator, Action act)
+      public void TestParameterIsPositiveFails(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => act = () => validator.IsPositive().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsPositive().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -439,21 +439,21 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a')]
       [NullableExample("foo2", 'A')]
       [NullableExample("foo3", ' ')]
-      public void TestParameterIsPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validator)
+      public void TestParameterIsPositivePasses(string parameterName, char? parameterValue, NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is false"
-            .x(() => validator.IsPositive().OtherwiseThrowException());
+            .x(() => validatorBase.IsPositive().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -462,7 +462,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', '\0')]
@@ -474,14 +474,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
-            .x(() => act = () => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsLessThan(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -494,7 +494,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', '\0')]
@@ -504,14 +504,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the value to compare against"
-            .x(() => act = () => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentOutOfRangeException>()
@@ -524,7 +524,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", '\0', 'a')]
       [NullableExample("foo2", 'A', 'a')]
@@ -535,16 +535,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than or equal to the value to compare against"
-            .x(() => validator.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsLessThanOrEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -553,7 +553,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", '\0', 'a')]
       [NullableExample("foo2", 'A', 'a')]
@@ -563,16 +563,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is less than the value to compare against"
-            .x(() => validator.IsLessThan(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsLessThan(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -581,7 +581,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'a')]
@@ -592,14 +592,14 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator,
+         NullableUnsignedNumericValidator<char> validatorBase,
          Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => act = () => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentEqualityException>()
@@ -612,7 +612,7 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <param name="valueToCompare">The value to compare.</param>
-      /// <param name="validator">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableUnsignedNumericValidator{Char}" /> to test with.</param>
       [Scenario]
       [NullableExample("foo1", 'a', 'A')]
       [NullableExample("foo2", 'A', 'a')]
@@ -623,16 +623,16 @@ namespace Org.Edgerunner.FluentGuard.Tests
          string parameterName,
          char? parameterValue,
          char? valueToCompare,
-         NullableUnsignedNumericValidator<char> validator)
+         NullableUnsignedNumericValidator<char> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter value is equal to the value to compare against"
-            .x(() => validator.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
+            .x(() => validatorBase.IsNotEqualTo(valueToCompare).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
    }
 }

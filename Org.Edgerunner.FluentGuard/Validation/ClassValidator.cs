@@ -23,19 +23,22 @@ using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for classes.
+   ///    A ValidatorBase class for classes.
    /// </summary>
    /// <typeparam name="T">A type of class.</typeparam>
-   /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
-   [FullCovered]
+   /// <seealso cref="ValidatorBase{T}" />
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-   public class ClassValidator<T> : Validator<T>
+#if DEBUG
+   [FullCovered]
+#endif
+   public class ClassValidator<T> : ValidatorBase<T>
       where T : class
    {
       #region Constructors And Finalizers
@@ -167,6 +170,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <returns><c>true</c> if <paramref name="currentValue" /> implements <paramref name="type" />, <c>false</c> otherwise.</returns>
       /// <exception cref="ArgumentTypeException"><paramref name="currentValue" /> must implement interface <paramref name="type"/>.</exception>
       /// <exception cref="ArgumentNullException">Thrown when arguments are <see langword="null"/></exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformImplementsInterfaceOperation(T currentValue, Type type)
       {
          if (currentValue == null)
@@ -190,6 +196,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    otherwise.
       /// </returns>
       /// <exception cref="ArgumentNullException">Thrown when the arguments are <see langword="null"/></exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformInheritsOperation(T currentValue, Type type)
       {
          if (currentValue == null)
@@ -207,6 +216,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="type">The type to compare against.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is of type <paramref name="type" />, <c>false</c> otherwise.</returns>
       /// <exception cref="ArgumentNullException">Thrown when the arguments are <see langword="null"/></exception>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformIsOfTypeOperation(T currentValue, Type type)
       {
          if (currentValue == null)
@@ -221,6 +233,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformNotNullOperation(T currentValue)
       {
          return currentValue != null;
@@ -232,6 +247,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is the same as <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformSameAsOperation(T currentValue, T referenceValue)
       {
          return ReferenceEquals(currentValue, referenceValue);

@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <AssemblyVersion>1.0.17121.1700</AssemblyVersion>
+    <AssemblyVersion>1.0.17135.0618</AssemblyVersion>
     <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
     <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
@@ -27,7 +27,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>1</WarningLevel>
+    <WarningLevel>2</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,12 +44,16 @@
     <AssemblyVersionSettings>None.None.DateStamp.TimeStamp</AssemblyVersionSettings>
     <AssemblyFileVersionSettings>None.None.DateStamp.TimeStamp</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.None.DateStamp.TimeStamp</AssemblyInfoVersionSettings>
+    <DocumentationFile>bin\Release\Org.Edgerunner.FluentGuard.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NDepend.API, Version=2017.1.1.8920, Culture=neutral, PublicKeyToken=02f4313b97e3f583, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Tools\NDepend\Lib\NDepend.API.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Org.Edgerunner.NDepend">
+      <HintPath>\\Drobo\Projects\Edgerunner FluentGuard\References\Org.Edgerunner.NDepend.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,7 +64,7 @@
     <Compile Include="Validation\ClassValidator.cs" />
     <Compile Include="Validation\NullableDateTimeValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />
-    <Compile Include="Validation\NullableValidator.cs" />
+    <Compile Include="Validation\NullableValidatorBase.cs" />
     <Compile Include="Validation\CombinationMode.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="Validation\DateTimeValidator.cs" />
@@ -75,8 +80,8 @@
     <Compile Include="Validation\NumericValidator.cs" />
     <Compile Include="Validation\StringValidator.cs" />
     <Compile Include="Validation\UnsignedNumericValidator.cs" />
-    <Compile Include="Validation\Validator.cs" />
-    <Compile Include="Validation\Validator`1.cs" />
+    <Compile Include="Validation\ValidatorBase.cs" />
+    <Compile Include="Validation\ValidatorBase`1.cs" />
     <Compile Include="Validation\ValidatorLinkage.cs" />
   </ItemGroup>
   <ItemGroup>

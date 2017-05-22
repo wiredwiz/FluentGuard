@@ -27,14 +27,16 @@ using Org.Edgerunner.FluentGuard.Properties;
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
-   ///    A Validator class for type <see cref="string" />.
+   ///    A ValidatorBase class for type <see cref="string" />.
    /// </summary>
    /// <seealso cref="string" />
-   [FullCovered]
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-   public class StringValidator : Validator<string>
+#if DEBUG
+   [FullCovered]
+#endif
+   public class StringValidator : ValidatorBase<string>
    {
       #region Constructors And Finalizers
 
@@ -56,7 +58,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must end with <paramref name="value" />.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value" /> is null.</exception>
       public virtual ValidatorLinkage<StringValidator> EndsWith(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformEndsWithOperation(ParameterValue, value)))
@@ -161,7 +163,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{StringValidator}" /> instance.</returns>
       /// <exception cref="ArgumentException">Must start with <paramref name="value" />.</exception>
-      /// <exception cref="ArgumentNullException"><paramref name="referenceValue" /> is null.</exception>
+      /// <exception cref="ArgumentNullException"><paramref name="value" /> is null.</exception>
       public virtual ValidatorLinkage<StringValidator> StartsWith(string value)
       {
          if (ShouldReturnAfterEvaluation(PerformStartsWithOperation(ParameterValue, value)))

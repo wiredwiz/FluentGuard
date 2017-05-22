@@ -38,17 +38,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public virtual void TestParameterNotNullFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public virtual void TestParameterNotNullFails(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is not null"
-            .x(() => act = () => validator.IsNotNull().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNotNull().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -60,19 +60,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="NullableBooleanValidator" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="NullableBooleanValidator" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public virtual void TestParameterNotNullPasses(string parameterName, Person parameterValue, ClassValidator<Person> validator)
+      public virtual void TestParameterNotNullPasses(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase)
       {
-         "And given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "And given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is not null"
-            .x(() => validator.IsNotNull().OtherwiseThrowException());
+            .x(() => validatorBase.IsNotNull().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -80,19 +80,19 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterIsNullPasses(string parameterName, Person parameterValue, ClassValidator<Person> validator)
+      public void TestParameterIsNullPasses(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is null"
-            .x(() => validator.IsNull().OtherwiseThrowException());
+            .x(() => validatorBase.IsNull().OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -100,17 +100,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterIsNullFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsNullFails(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is null"
-            .x(() => act = () => validator.IsNull().OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsNull().OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentException>()
@@ -122,17 +122,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
-      public void TestParameterIsOfTypePersonFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsOfTypePersonFails(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is of type Person"
-            .x(() => act = () => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsOfType(typeof(Person)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentTypeException>()
@@ -144,17 +144,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterIsOfTypePersonFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsOfTypePersonFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is of type Person"
-            .x(() => act = () => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsOfType(typeof(Person)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -166,17 +166,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
-      public void TestParameterIsOfTypePersonFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsOfTypePersonFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is of type null"
-            .x(() => act = () => validator.IsOfType(null).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsOfType(null).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -188,20 +188,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterIsOfTypePersonPasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsOfTypePersonPasses(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is of type Person"
-            .x(() => validator.IsOfType(typeof(Person)).OtherwiseThrowException());
+            .x(() => validatorBase.IsOfType(typeof(Person)).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -209,17 +209,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterInheritsTypeFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterInheritsTypeFails(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter inherits from type Officer"
-            .x(() => act = () => validator.InheritsType(typeof(Officer)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.InheritsType(typeof(Officer)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentTypeException>()
@@ -231,17 +231,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterInheritsTypeFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterInheritsTypeFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter inherits from type Officer"
-            .x(() => act = () => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.InheritsType(typeof(Person)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -253,17 +253,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterInheritsTypeFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterInheritsTypeFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter inherits from type Officer"
-            .x(() => act = () => validator.InheritsType(null).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.InheritsType(null).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -275,20 +275,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
-      public void TestParameterInheritsTypePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterInheritsTypePasses(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter inherits from type Person"
-            .x(() => validator.InheritsType(typeof(Person)).OtherwiseThrowException());
+            .x(() => validatorBase.InheritsType(typeof(Person)).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -296,17 +296,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterImplementsInterfaceFails(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfaceFails(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
-            .x(() => act = () => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentTypeException>()
@@ -318,17 +318,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [Example("foo1", null)]
-      public void TestParameterImplementsInterfaceFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfaceFailsDueToNullValue(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
-            .x(() => act = () => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -340,17 +340,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterImplementsInterfaceFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfaceFailsDueToNullType(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
-            .x(() => act = () => validator.ImplementsInterface(null).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.ImplementsInterface(null).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentNullException>()
@@ -362,17 +362,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Persons), MemberType = typeof(ClassData))]
-      public void TestParameterImplementsInterfaceFailsDueToNonInterface(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfaceFailsDueToNonInterface(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
-            .x(() => act = () => validator.ImplementsInterface(typeof(Officer)).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.ImplementsInterface(typeof(Officer)).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentTypeException>()
@@ -384,20 +384,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// </summary>
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.Officers), MemberType = typeof(ClassData))]
-      public void TestParameterImplementsInterfacePasses(string parameterName, Person parameterValue, ClassValidator<Person> validator, Action act)
+      public void TestParameterImplementsInterfacePasses(string parameterName, Person parameterValue, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter implements interface IOfficer"
-            .x(() => validator.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
+            .x(() => validatorBase.ImplementsInterface(typeof(IOfficer)).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
 
       /// <summary>
@@ -406,17 +406,17 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the first parameter.</param>
       /// <param name="parameterValue2">The value of the second parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.OfficersAndPeople), MemberType = typeof(ClassData))]
-      public void TestParameterIsSameAsFails(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsSameAsFails(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is same as"
-            .x(() => act = () => validator.IsSameAs(parameterValue2).OtherwiseThrowException());
+            .x(() => act = () => validatorBase.IsSameAs(parameterValue2).OtherwiseThrowException());
 
          "Should throw an exception"
             .x(() => act.ShouldThrow<ArgumentException>()
@@ -429,20 +429,20 @@ namespace Org.Edgerunner.FluentGuard.Tests
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The value of the first parameter.</param>
       /// <param name="parameterValue2">The value of the second parameter.</param>
-      /// <param name="validator">The <see cref="ClassValidator{Person}" /> to test with.</param>
+      /// <param name="validatorBase">The <see cref="ClassValidator{Person}" /> to test with.</param>
       /// <param name="act">The <see cref="Action" /> to test with.</param>
       [Scenario]
       [MemberData(nameof(ClassData.OfficersAndPeople), MemberType = typeof(ClassData))]
-      public void TestParameterIsSameAsPasses(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validator, Action act)
+      public void TestParameterIsSameAsPasses(string parameterName, Person parameterValue, Person parameterValue2, ClassValidator<Person> validatorBase, Action act)
       {
-         "Given a new validator"
-            .x(() => validator = Validate.That(parameterName, parameterValue));
+         "Given a new ValidatorBase"
+            .x(() => validatorBase = Validate.That(parameterName, parameterValue));
 
          "Testing that the parameter is same as"
-            .x(() => validator.IsSameAs(parameterValue).OtherwiseThrowException());
+            .x(() => validatorBase.IsSameAs(parameterValue).OtherwiseThrowException());
 
          "Should not result in an exception"
-            .x(() => validator.CurrentException.Should().BeNull());
+            .x(() => validatorBase.CurrentException.Should().BeNull());
       }
    }
 }

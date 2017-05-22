@@ -22,6 +22,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -29,11 +30,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    Class NumericValidator.
    /// </summary>
    /// <typeparam name="T">A numeric type.</typeparam>
-   /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.Validator{T}" />
-   [FullCovered]
+   /// <seealso cref="ValidatorBase{T}" />
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
+#if DEBUG
+   [FullCovered]
+#endif
    public class NumericValidator<T> : UnsignedNumericValidator<T> where T : struct
    {
       #region Constructors And Finalizers
@@ -91,6 +94,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformIsNegativeOperation(T currentValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;

@@ -21,24 +21,27 @@
 using System;
 using System.Collections.Generic;
 using NDepend.Attributes;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
    /// <summary>
    ///    Structure used to join validators.
    /// </summary>
-   /// <typeparam name="T">A type of Validator.</typeparam>
-   [FullCovered]
+   /// <typeparam name="T">A type of ValidatorBase.</typeparam>
    [Immutable]
+#if DEBUG
+   [FullCovered]
+#endif
    public struct ValidatorLinkage<T> : IEquatable<ValidatorLinkage<T>>
-      where T : Validator
+      where T : ValidatorBase
    {
       #region Constructors And Finalizers
 
       /// <summary>
       ///    Initializes a new instance of the <see cref="ValidatorLinkage{T}" /> structure.
       /// </summary>
-      /// <param name="parent">A <see cref="Validator" /> instance.</param>
+      /// <param name="parent">A <see cref="ValidatorBase" /> instance.</param>
       public ValidatorLinkage(T parent)
       {
          Parent = parent;
@@ -47,9 +50,12 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      ///    Gets the <see cref="Validator" /> being joined by an And constraint.
+      ///    Gets the <see cref="ValidatorBase" /> being joined by an And constraint.
       /// </summary>
-      /// <value>The validator.</value>
+      /// <value>The ValidatorBase.</value>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public T And
       {
          get
@@ -60,9 +66,12 @@ namespace Org.Edgerunner.FluentGuard.Validation
       }
 
       /// <summary>
-      ///    Gets the <see cref="Validator" /> being joined by an Or constraint.
+      ///    Gets the <see cref="ValidatorBase" /> being joined by an Or constraint.
       /// </summary>
-      /// <value>The validator.</value>
+      /// <value>The ValidatorBase.</value>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public T Or
       {
          get
@@ -112,6 +121,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    false.
       /// </returns>
       /// <param name="obj">The object to compare with the current instance. </param>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       public override bool Equals(object obj)
       {
          if (ReferenceEquals(null, obj)) return false;

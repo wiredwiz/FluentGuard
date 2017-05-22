@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="NullableValidator.cs">
+// <copyright company="Edgerunner.org" file="NullableValidatorBase.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -22,6 +22,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using NDepend.Attributes;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -33,14 +34,17 @@ namespace Org.Edgerunner.FluentGuard.Validation
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
+#if DEBUG
    [FullCovered]
+   [ExcludeFromNestingCheck]
+#endif   
    // ReSharper disable once ClassTooBig
-   public class NullableValidator<T> : Validator where T : struct
+   public abstract class NullableValidatorBase<T> : ValidatorBase where T : struct
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="NullableValidator{T}"/> class. 
+      /// Initializes a new instance of the <see cref="NullableValidatorBase{T}"/> class. 
       /// </summary>
       /// <param name="parameterName">
       /// The name of the parameter being validated.
@@ -48,7 +52,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterValue">
       /// The value of the parameter being validated.
       /// </param>
-      internal NullableValidator(string parameterName, T? parameterValue)
+      protected NullableValidatorBase(string parameterName, T? parameterValue)
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;

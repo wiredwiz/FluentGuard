@@ -1,6 +1,6 @@
 ﻿#region Apache License 2.0
 
-// <copyright company="Edgerunner.org" file="Validator`1.cs">
+// <copyright company="Edgerunner.org" file="ValidatorBase`1.cs">
 // Copyright (c)  2016
 // </copyright>
 // 
@@ -22,6 +22,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using NDepend.Attributes;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -30,18 +31,21 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">The type of data to validate.</typeparam>
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
+#if DEBUG
    [FullCovered]
+   [ExcludeFromNestingCheck]
+#endif   
    // ReSharper disable once ClassTooBig
-   public class Validator<T> : Validator
+   public abstract class ValidatorBase<T> : ValidatorBase
    {
       #region Constructors And Finalizers
 
       /// <summary>
-      ///    Initializes a new instance of the <see cref="Validator{T}" /> class.
+      ///    Initializes a new instance of the <see cref="ValidatorBase{T}" /> class.
       /// </summary>
       /// <param name="parameterName">The name of the parameter being validated.</param>
       /// <param name="parameterValue">The value of the parameter being validated.</param>
-      internal Validator(string parameterName, T parameterValue)
+      protected ValidatorBase(string parameterName, T parameterValue)
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
@@ -95,6 +99,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -108,6 +115,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -121,6 +131,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -134,6 +147,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
       {
          IComparable<T> original = ParameterValue as IComparable<T>;
@@ -147,6 +163,9 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
+#if DEBUG
+      [IgnoreBoxing]
+#endif
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)
       {
          IEquatable<T> original = currentValue as IEquatable<T>;
