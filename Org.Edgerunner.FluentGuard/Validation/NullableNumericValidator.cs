@@ -31,10 +31,12 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <typeparam name="T">A numeric <see cref="Nullable"/> type.</typeparam>
    /// <seealso cref="Org.Edgerunner.FluentGuard.Validation.NullableUnsignedNumericValidator{T}" />
    /// <seealso cref="Nullable"/>
-   [FullCovered]
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
+#if DEBUG
+   [FullCovered]
+#endif
    public class NullableNumericValidator<T> : NullableUnsignedNumericValidator<T>
       where T : struct
    {

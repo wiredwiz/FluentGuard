@@ -19,6 +19,7 @@
 using System;
 using System.Runtime.Serialization;
 using NDepend.Attributes;
+using Org.Edgerunner.NDepend.Attributes;
 
 namespace Org.Edgerunner.FluentGuard.Exceptions
 {
@@ -26,17 +27,25 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
    ///    The exception that is thrown when the value of an argument fails a type related test.
    /// </summary>
    /// <seealso cref="System.ArgumentException" />
+#if DEBUG
    [UncoverableByTest]
+#endif
    [Serializable]
    public class ArgumentTypeException : ArgumentException
    {
       /// <summary>Initializes a new instance of the <see cref="ArgumentTypeException" /> class.</summary>
+#if DEBUG
+      [OverloadVerified]
+#endif
       public ArgumentTypeException()
       {
       }
 
       /// <summary>Initializes a new instance of the <see cref="ArgumentTypeException" /> class with a specified error message.</summary>
       /// <param name="message">The error message that explains the reason for the exception. </param>
+#if DEBUG
+      [OverloadVerified]
+#endif
       public ArgumentTypeException(string message)
          : base(message)
       {
@@ -45,6 +54,9 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// <summary>Initializes a new instance of the <see cref="ArgumentTypeException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
       /// <param name="message">The error message that explains the reason for the exception. </param>
       /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception. </param>
+#if DEBUG
+      [OverloadVerified]
+#endif
       public ArgumentTypeException(string message, Exception innerException)
          : base(message, innerException)
       {
@@ -54,6 +66,9 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// <param name="message">The error message that explains the reason for the exception. </param>
       /// <param name="paramName">The name of the parameter that caused the current exception. </param>
       /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception. </param>
+#if DEBUG
+      [OverloadVerified]
+#endif
       public ArgumentTypeException(string message, string paramName, Exception innerException)
          : base(message, paramName, innerException)
       {
@@ -62,6 +77,9 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// <summary>Initializes a new instance of the <see cref="ArgumentTypeException" /> class with a specified error message and the name of the parameter that causes this exception.</summary>
       /// <param name="message">The error message that explains the reason for the exception. </param>
       /// <param name="paramName">The name of the parameter that caused the current exception. </param>
+#if DEBUG
+      [OverloadVerified]
+#endif
       public ArgumentTypeException(string message, string paramName)
          : base(message, paramName)
       {
@@ -70,6 +88,9 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// <summary>Initializes a new instance of the <see cref="ArgumentTypeException" /> class with serialized data.</summary>
       /// <param name="info">The object that holds the serialized object data. </param>
       /// <param name="context">The contextual information about the source or destination. </param>
+#if DEBUG
+      [OverloadVerified]
+#endif
       protected ArgumentTypeException(SerializationInfo info, StreamingContext context)
          : base(info, context)
       {
