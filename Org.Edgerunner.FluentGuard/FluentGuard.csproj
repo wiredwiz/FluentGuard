@@ -52,8 +52,9 @@
       <HintPath>..\..\..\Tools\NDepend\Lib\NDepend.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Org.Edgerunner.NDepend">
-      <HintPath>\\Drobo\Projects\Edgerunner FluentGuard\References\Org.Edgerunner.NDepend.dll</HintPath>
+    <Reference Include="Org.Edgerunner.NDepend, Version=1.0.17142.144, Culture=neutral, PublicKeyToken=91491c8cbd240dbb, processorArchitecture=MSIL">
+      <HintPath>..\packages\EdgerunnerNDependExtensions.1.0.17142-beta\lib\net40\Org.Edgerunner.NDepend.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,6 +90,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
