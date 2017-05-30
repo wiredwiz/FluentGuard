@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root CoveredStatements="6765" TotalStatements="10271" CoveragePercent="66" ReportType="NDependXML" DotCoverVersion="2016.1.1">
+<Root CoveredStatements="6767" TotalStatements="10271" CoveragePercent="66" ReportType="NDependXML" DotCoverVersion="2016.1.1">
   <Assembly Name="FluentAssertions" CoveredStatements="16" TotalStatements="685" CoveragePercent="2">
     <Namespace Name="FluentAssertions" CoveredStatements="12" TotalStatements="208" CoveragePercent="6">
       <Type Name="AssertionExtensions" CoveredStatements="12" TotalStatements="121" CoveragePercent="10">
@@ -478,32 +478,32 @@
     </Namespace>
     <Namespace Name="Org.Edgerunner.FluentGuard.Properties" CoveredStatements="74" TotalStatements="83" CoveragePercent="89">
       <Type Name="Resources" CoveredStatements="74" TotalStatements="83" CoveragePercent="89">
-        <Method Name=".ctor()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="39" />
-        <Method Name="get_Culture()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="71" />
-        <Method Name="get_MustBeEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="89" />
-        <Method Name="get_MustBeFalse()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="100" />
-        <Method Name="get_MustBeGreaterThanOrEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="111" />
-        <Method Name="get_MustBeGreaterThanX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="122" />
-        <Method Name="get_MustBeInterface()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="133" />
-        <Method Name="get_MustBeLessThanOrEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="144" />
-        <Method Name="get_MustBeLessThanX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="155" />
-        <Method Name="get_MustBeNegative()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="166" />
-        <Method Name="get_MustBeNull()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="177" />
-        <Method Name="get_MustBeOfType()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="188" />
-        <Method Name="get_MustBePositive()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="199" />
-        <Method Name="get_MustBeSameAs()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="210" />
-        <Method Name="get_MustBeTrue()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="221" />
-        <Method Name="get_MustEndWithX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="232" />
-        <Method Name="get_MustImplementInterface()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="243" />
-        <Method Name="get_MustInheritType()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="254" />
-        <Method Name="get_MustNotBeEmpty()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="265" />
-        <Method Name="get_MustNotBeEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="276" />
-        <Method Name="get_MustNotBeNegative()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="287" />
-        <Method Name="get_MustNotBeNull()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="298" />
-        <Method Name="get_MustNotBePositive()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="309" />
-        <Method Name="get_MustStartWithX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="320" />
-        <Method Name="get_ResourceManager()" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" FirstStatementLine="50" />
-        <Method Name="set_Culture(CultureInfo)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="78" />
+        <Method Name=".ctor()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="37" />
+        <Method Name="get_Culture()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="64" />
+        <Method Name="get_MustBeEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="80" />
+        <Method Name="get_MustBeFalse()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="89" />
+        <Method Name="get_MustBeGreaterThanOrEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="98" />
+        <Method Name="get_MustBeGreaterThanX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="107" />
+        <Method Name="get_MustBeInterface()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="116" />
+        <Method Name="get_MustBeLessThanOrEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="125" />
+        <Method Name="get_MustBeLessThanX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="134" />
+        <Method Name="get_MustBeNegative()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="143" />
+        <Method Name="get_MustBeNull()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="152" />
+        <Method Name="get_MustBeOfType()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="161" />
+        <Method Name="get_MustBePositive()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="170" />
+        <Method Name="get_MustBeSameAs()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="179" />
+        <Method Name="get_MustBeTrue()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="188" />
+        <Method Name="get_MustEndWithX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="197" />
+        <Method Name="get_MustImplementInterface()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="206" />
+        <Method Name="get_MustInheritType()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="215" />
+        <Method Name="get_MustNotBeEmpty()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="224" />
+        <Method Name="get_MustNotBeEqualToX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="233" />
+        <Method Name="get_MustNotBeNegative()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="242" />
+        <Method Name="get_MustNotBeNull()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="251" />
+        <Method Name="get_MustNotBePositive()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="260" />
+        <Method Name="get_MustStartWithX()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="269" />
+        <Method Name="get_ResourceManager()" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" FirstStatementLine="45" />
+        <Method Name="set_Culture(CultureInfo)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="71" />
       </Type>
     </Namespace>
     <Namespace Name="Org.Edgerunner.FluentGuard.Validation" CoveredStatements="671" TotalStatements="671" CoveragePercent="100">
@@ -595,13 +595,13 @@
         <Method Name=".ctor(String,Nullable&lt;T&gt;)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="55" />
         <Method Name="get_ParameterName()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="69" />
         <Method Name="get_ParameterValue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="75" />
-        <Method Name="PerformEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="110" />
-        <Method Name="PerformGreaterThanOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="131" />
-        <Method Name="PerformGreaterThanOrEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="142" />
-        <Method Name="PerformLessThanOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="153" />
-        <Method Name="PerformLessThanOrEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="164" />
-        <Method Name="PerformNotNullOperation(Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="120" />
-        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="85" />
+        <Method Name="PerformEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="113" />
+        <Method Name="PerformGreaterThanOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="134" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="145" />
+        <Method Name="PerformLessThanOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="156" />
+        <Method Name="PerformLessThanOrEqualToOperation(Nullable&lt;T&gt;,Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="167" />
+        <Method Name="PerformNotNullOperation(Nullable&lt;T&gt;)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="123" />
+        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="88" />
       </Type>
       <Type Name="NumericValidator&lt;T&gt;" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
         <Method Name=".ctor(String,T)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="54" />
@@ -646,12 +646,12 @@
         <Method Name=".ctor(String,T)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" FirstStatementLine="48" />
         <Method Name="get_ParameterName()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="62" />
         <Method Name="get_ParameterValue()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="68" />
-        <Method Name="PerformEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="170" />
-        <Method Name="PerformGreaterThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="138" />
-        <Method Name="PerformGreaterThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="154" />
-        <Method Name="PerformLessThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="106" />
-        <Method Name="PerformLessThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="122" />
-        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="78" />
+        <Method Name="PerformEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="173" />
+        <Method Name="PerformGreaterThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="141" />
+        <Method Name="PerformGreaterThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="157" />
+        <Method Name="PerformLessThanOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="109" />
+        <Method Name="PerformLessThanOrEqualToOperation(T,T)" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" FirstStatementLine="125" />
+        <Method Name="ShouldReturnAfterEvaluation(Boolean)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" FirstStatementLine="81" />
       </Type>
       <Type Name="ValidatorLinkage&lt;T&gt;" CoveredStatements="37" TotalStatements="37" CoveragePercent="100">
         <Method Name=".ctor(T)" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" FirstStatementLine="46" />
@@ -4268,7 +4268,7 @@
       <Method Name="ArgumentValid(String,String,Boolean)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="29" />
     </Type>
   </Assembly>
-  <Assembly Name="xunit.execution.desktop" CoveredStatements="1437" TotalStatements="3645" CoveragePercent="39">
+  <Assembly Name="xunit.execution.desktop" CoveredStatements="1439" TotalStatements="3645" CoveragePercent="39">
     <Namespace Name="Xunit" CoveredStatements="16" TotalStatements="17" CoveragePercent="94">
       <Type Name="ExecutionHelper" CoveredStatements="16" TotalStatements="17" CoveragePercent="94">
         <Type Name="&lt;&gt;c" CoveredStatements="1" TotalStatements="1" CoveragePercent="100">
@@ -4278,7 +4278,7 @@
         <Method Name="get_PlatformSuffix()" CoveredStatements="12" TotalStatements="13" CoveragePercent="92" FirstStatementLine="20" />
       </Type>
     </Namespace>
-    <Namespace Name="Xunit.Sdk" CoveredStatements="1385" TotalStatements="3296" CoveragePercent="42">
+    <Namespace Name="Xunit.Sdk" CoveredStatements="1387" TotalStatements="3296" CoveragePercent="42">
       <Type Name="AfterTestFinished" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
         <Method Name=".ctor(ITest,String)" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="18" />
         <Method Name="get_AttributeName()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="24" />
@@ -4499,7 +4499,7 @@
         <Method Name="Aggregate(TimeSpan)" CoveredStatements="0" TotalStatements="2" CoveragePercent="0" FirstStatementLine="62" />
         <Method Name="get_Total()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="19" />
       </Type>
-      <Type Name="ExtensibilityPointFactory" CoveredStatements="28" TotalStatements="79" CoveragePercent="35">
+      <Type Name="ExtensibilityPointFactory" CoveredStatements="29" TotalStatements="79" CoveragePercent="37">
         <Type Name="&lt;&gt;c" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
           <Method Name="&lt;CreateInstance&gt;b__2_0(Object)" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" FirstStatementLine="35" />
         </Type>
@@ -4508,7 +4508,7 @@
         </Type>
         <Method Name=".cctor()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" FirstStatementLine="14" />
         <Method Name="CreateInstance(IMessageSink,Type,Object[])" CoveredStatements="12" TotalStatements="16" CoveragePercent="75" FirstStatementLine="19" />
-        <Method Name="Dispose()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" FirstStatementLine="52" />
+        <Method Name="Dispose()" CoveredStatements="1" TotalStatements="3" CoveragePercent="33" FirstStatementLine="52" />
         <Method Name="Get&lt;TInterface&gt;(IMessageSink,Type,Object[])" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="70" />
         <Method Name="GetDataDiscoverer(IMessageSink,IAttributeInfo)" CoveredStatements="4" TotalStatements="5" CoveragePercent="80" FirstStatementLine="91" />
         <Method Name="GetDataDiscoverer(IMessageSink,Type)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="80" />
@@ -5150,9 +5150,9 @@
         <Method Name="set_ExecutionTime(Decimal)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="25" />
         <Method Name="set_Output(String)" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="28" />
       </Type>
-      <Type Name="TestFramework" CoveredStatements="20" TotalStatements="26" CoveragePercent="77">
-        <Type Name="&lt;Dispose&gt;d__13" CoveredStatements="1" TotalStatements="5" CoveragePercent="20">
-          <Method Name="MoveNext()" CoveredStatements="1" TotalStatements="5" CoveragePercent="20" FirstStatementLine="46" />
+      <Type Name="TestFramework" CoveredStatements="21" TotalStatements="26" CoveragePercent="81">
+        <Type Name="&lt;Dispose&gt;d__13" CoveredStatements="2" TotalStatements="5" CoveragePercent="40">
+          <Method Name="MoveNext()" CoveredStatements="2" TotalStatements="5" CoveragePercent="40" FirstStatementLine="46" />
         </Type>
         <Type Name="NullSourceInformationProvider" CoveredStatements="1" TotalStatements="3" CoveragePercent="33">
           <Method Name=".cctor()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" FirstStatementLine="86" />

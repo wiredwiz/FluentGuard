@@ -17,8 +17,8 @@
   </Dirs>
   <MergeCodeGeneratedByCompiler>True</MergeCodeGeneratedByCompiler>
   <Report Kind="0" SectionsEnabled="110591" XslPath="" Flags="261120" />
-  <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May21_22h20.ndar" NDaysAgo="30" />
-  <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="ParticularAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May21_22h20.ndar" NDaysAgo="30" />
+  <BuildComparisonSetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May29_21h42.ndar" NDaysAgo="5" />
+  <BaselineInUISetting ProjectMode="CurrentProject" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith=".\FluentGuard Library.ndproj" BuildFileToCompareWith=".\NDependOut\NDependAnalysisResult_FluentGuard_Library_2017May29_21h42.ndar" NDaysAgo="5" />
   <CoverageFiles CoverageDir="" UncoverableAttribute="NDepend.Attributes.UncoverableByTestAttribute">
     <CoverageFile>.\All tests from Solution.xml</CoverageFile>
   </CoverageFiles>

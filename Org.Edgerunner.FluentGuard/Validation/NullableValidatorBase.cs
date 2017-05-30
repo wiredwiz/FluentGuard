@@ -79,7 +79,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="evaluationResult">The result of a rule evaluation.</param>
       /// <returns><c>true</c> if the rule evaluation method should return, <c>false</c> otherwise.</returns>
+#if Framework45
+#elif Framework46
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
       // ReSharper disable once FlagArgument
       protected bool ShouldReturnAfterEvaluation(bool evaluationResult)
       {

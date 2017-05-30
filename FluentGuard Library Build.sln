@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentGuard", "Org.Edgerunner.FluentGuard\FluentGuard.csproj", "{F8064CF1-E1B9-40E4-873A-B9DF8C43646A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentGuard", "Org.Edgerunner.FluentGuard\FluentGuard Build.csproj", "{F8064CF1-E1B9-40E4-873A-B9DF8C43646A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Org.Edgerunner.FluentGuard.Tests", "Org.Edgerunner.FluentGuard.Tests\Org.Edgerunner.FluentGuard.Tests.csproj", "{82A70526-6388-473F-86AA-423EDFFFF6C3}"
 EndProject

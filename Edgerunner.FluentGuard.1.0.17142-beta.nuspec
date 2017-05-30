@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Edgerunner.FluentGuard</id>
+        <version>1.0.17142-beta</version>
+        <title>Edgerunner FluentGuard</title>
+        <authors>Thaddeus Ryker</authors>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://github.com/wiredwiz/FluentGuard</projectUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>A fluent syntax guard class for validating parameter values.</description>
+        <summary />
+        <copyright>Thaddeus Ryker 2017</copyright>
+        <language>en-US</language>
+        <tags>Fluent Guard</tags>
+    </metadata>
+    <files>
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\40\Org.Edgerunner.FluentGuard.dll" target="lib\net40\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\40\Org.Edgerunner.FluentGuard.pdb" target="lib\net40\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\45\Org.Edgerunner.FluentGuard.dll" target="lib\net45\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\45\Org.Edgerunner.FluentGuard.pdb" target="lib\net45\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\46\Org.Edgerunner.FluentGuard.dll" target="lib\net46\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\46\Org.Edgerunner.FluentGuard.pdb" target="lib\net46\Org.Edgerunner.FluentGuard.pdb" />
+    </files>
+</package>
