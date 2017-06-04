@@ -76,11 +76,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Org.Edgerunner.NDepend, Version=1.0.17142.144, Culture=neutral, PublicKeyToken=91491c8cbd240dbb, processorArchitecture=MSIL">
-<<<<<<< HEAD
       <HintPath>..\packages\Edgerunner.NDepend.Extensions.1.0.17142-beta\lib\net40\Org.Edgerunner.NDepend.dll</HintPath>
-=======
-      <HintPath>..\packages\EdgerunnerNDependExtensions.1.0.17142-beta\lib\net40\Org.Edgerunner.NDepend.dll</HintPath>
->>>>>>> b349185fac61a4c7c8a3920e689b5cc931407e02
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
