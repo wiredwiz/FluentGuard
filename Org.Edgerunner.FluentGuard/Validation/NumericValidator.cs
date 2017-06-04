@@ -60,7 +60,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is negative.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentException">Must be negative.</exception>
       public ValidatorLinkage<NumericValidator<T>> IsNegative()
       {
@@ -76,7 +76,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       ///    Determines whether the parameter being validated is not negative.
       /// </summary>
-      /// <returns>A new <see cref="T:Org.Edgerunner.FluentGuard.Validation.ValidatorLinkage`2" /> instance.</returns>
+      /// <returns>A new <see cref="ValidatorLinkage{NumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentException">Must not be negative.</exception>
       public ValidatorLinkage<NumericValidator<T>> IsNotNegative()
       {
