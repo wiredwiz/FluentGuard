@@ -21,7 +21,8 @@ var version = assemblyVersion.Split('.');
 var versionMajor = version[0];
 var versionMinor = version[1];
 var now = DateTime.Now;
-var newVersion = string.Format("{0}.{1}.{2}{3}.{4}", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear, now.ToString("HHmm"));
+var nugetVersion = string.Format("{0}.{1}.{2}{3}-beta", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear);
+var buildVersion = string.Format("{0}.{1}.{2}{3}.{4}", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear, now.ToString("HHmm"));
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -44,11 +45,11 @@ Task("Update Version Info")
     .IsDependentOn("Restore NuGet Packages")
     .Does(() =>
 {
-    Information("Build version set to: {0}", newVersion);
+    Information("Build version set to: {0}", buildVersion);
 	var info = new AssemblyInfoSettings();
-	info.Version = newVersion;
-	info.FileVersion = newVersion;
-	info.InformationalVersion = newVersion;
+	info.Version = buildVersion;
+	info.FileVersion = buildVersion;
+	info.InformationalVersion = buildVersion;
 	CreateAssemblyInfo("./SolutionInfo.cs", info);
 });
 
@@ -60,7 +61,6 @@ Task("Build Framework Version 4.0")
     settings.SetConfiguration("Release Net40")
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
-		.WithProperty("Version", newVersion)
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
@@ -107,7 +107,7 @@ Task("Build Nuget Package")
 	.Does(() =>
 {
 var nuGetPackSettings   = new NuGetPackSettings {
-                                     Version                 = "0.0.0.1",
+                                     Version                 = nugetVersion,
                                      OutputDirectory         = "./nuget"
                                  };
 
@@ -119,9 +119,7 @@ var nuGetPackSettings   = new NuGetPackSettings {
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Build Framework Version 4.0")
-	.IsDependentOn("Build Framework Version 4.5")
-	.IsDependentOn("Build Framework Version 4.6");
+    .IsDependentOn("Build Nuget Package");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
