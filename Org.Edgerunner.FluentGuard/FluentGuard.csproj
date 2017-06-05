@@ -83,6 +83,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="Exceptions\ArgumentEqualityException.cs" />
     <Compile Include="Exceptions\ArgumentTypeException.cs" />
     <Compile Include="Validation\ClassValidator.cs" />

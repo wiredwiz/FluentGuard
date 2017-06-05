@@ -74,6 +74,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="BooleanValidatorTests.cs" />
     <Compile Include="ByteValidatorTests.cs" />
     <Compile Include="CharacterValidatorTests.cs" />

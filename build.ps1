@@ -42,7 +42,7 @@ http://cakebuild.net
 Param(
     [string]$Script = "build.cake",
     [string]$Target = "Default",
-    [ValidateSet("Release", "Debug", "Release 4.0", "Release 4.5", "Release 4.6")]
+    [ValidateSet("Release", "Debug", "Release Net40", "Release Net45", "Release Net46")]
     [string]$Configuration = "Release",
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity = "Verbose",
