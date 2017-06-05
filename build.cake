@@ -108,6 +108,7 @@ Task("Build Nuget Package")
 {
 var nuGetPackSettings   = new NuGetPackSettings {
                                      Version                 = nugetVersion,
+									 Copyright               = string.Format("Thaddeus Ryker {0}", now.ToString("yyyy")),
                                      OutputDirectory         = "./nuget"
                                  };
 
