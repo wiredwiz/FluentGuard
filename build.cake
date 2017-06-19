@@ -45,7 +45,7 @@ Task("Update Version Info")
     .IsDependentOn("Restore NuGet Packages")
     .Does(() =>
 {
-    Information("Build version set to: {0}", buildVersion);
+  Information("Build version set to: {0}", buildVersion);
 	var info = new AssemblyInfoSettings();
 	info.Version = buildVersion;
 	info.FileVersion = buildVersion;
@@ -58,9 +58,10 @@ Task("Build Framework Version 4.0")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release Net40")
+    settings.SetConfiguration("Release")
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
+        .WithProperty("NetFramework", "NET40")        
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
@@ -69,9 +70,10 @@ Task("Build Framework Version 4.5")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release Net45")
+    settings.SetConfiguration("Release")
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
+        .WithProperty("NetFramework", "NET45")
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
@@ -80,9 +82,21 @@ Task("Build Framework Version 4.6")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release Net46")
+    settings.SetConfiguration("Release")
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
+        .WithProperty("TreatWarningsAsErrors","true"));
+});
+
+Task("Build Framework Version 4.7")
+    .IsDependentOn("Update Version Info")
+    .Does(() =>
+{
+	DotNetBuild(solution, settings =>
+    settings.SetConfiguration("Release")
+		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
+        .WithTarget("Build")
+        .WithProperty("NetFramework", "NET47")        
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
@@ -104,6 +118,7 @@ Task("Build Nuget Package")
 	.IsDependentOn("Build Framework Version 4.0")
 	.IsDependentOn("Build Framework Version 4.5")
 	.IsDependentOn("Build Framework Version 4.6")
+	.IsDependentOn("Build Framework Version 4.7")
 	.Does(() =>
 {
 var nuGetPackSettings   = new NuGetPackSettings {

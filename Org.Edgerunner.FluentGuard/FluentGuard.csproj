@@ -1,6 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!-- Set a default framework if no framework is specified -->
+  <!--<PropertyGroup Condition="'$(NetFramework)' == ''">
+    <NetFramework>NET46</NetFramework>
+  </PropertyGroup>-->
+	<PropertyGroup Condition="'$(NetFramework)' == 'NET35'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NetFramework)' == 'NET40'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NetFramework)' == 'NET45'">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+	</PropertyGroup>
+  <PropertyGroup Condition="'$(NetFramework)' == 'NET46'">
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+	</PropertyGroup>	
+  <PropertyGroup Condition="'$(NetFramework)' == 'NET47'">
+  	<TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+	</PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -24,18 +43,18 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <OutputPath>bin\Debug\$(NetFramework)</OutputPath>
+		<DefineConstants>DEBUG;TRACE;CODE_ANALYSIS;$(NetFramework)</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>2</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Net46|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\46\</OutputPath>
-    <DefineConstants>TRACE;Framework46</DefineConstants>
+    <OutputPath>bin\Release\$(NetFramework)</OutputPath>
+		<DefineConstants>TRACE;$(NetFramework)</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
@@ -46,28 +65,6 @@
     <AssemblyFileVersionSettings>None.None.DateStamp.TimeStamp</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.None.DateStamp.TimeStamp</AssemblyInfoVersionSettings>
     <DocumentationFile>bin\Release\Org.Edgerunner.FluentGuard.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Net40|AnyCPU'">
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <OutputPath>bin\Release\40\</OutputPath>
-    <DefineConstants>TRACE;Framework40</DefineConstants>
-    <DocumentationFile>bin\Release\Org.Edgerunner.FluentGuard.XML</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Net45|AnyCPU'">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <OutputPath>bin\Release\45\</OutputPath>
-    <DefineConstants>TRACE;Framework45</DefineConstants>
-    <DocumentationFile>bin\Release\Org.Edgerunner.FluentGuard.XML</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NDepend.API, Version=2017.1.1.8920, Culture=neutral, PublicKeyToken=02f4313b97e3f583, processorArchitecture=MSIL">
@@ -121,10 +118,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<!-- Fail the build if no framework is specified -->       
+  <Target Name="BeforeBuild">
+  	<Error Text="The NetFramework property haven't been set" Condition="'$(NetFramework)' == ''" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
+  
   <Target Name="AfterBuild">
   </Target>
   -->
