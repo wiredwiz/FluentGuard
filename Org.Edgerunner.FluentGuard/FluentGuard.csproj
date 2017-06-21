@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!-- Set a default framework if no framework is specified -->
-  <!--<PropertyGroup Condition="'$(NetFramework)' == ''">
+  <PropertyGroup Condition="'$(NetFramework)' == ''">
     <NetFramework>NET46</NetFramework>
-  </PropertyGroup>-->
-	<PropertyGroup Condition="'$(NetFramework)' == 'NET35'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NetFramework)' == 'NET35'">
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(NetFramework)' == 'NET40'">
@@ -13,13 +13,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(NetFramework)' == 'NET45'">
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-	</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(NetFramework)' == 'NET46'">
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-	</PropertyGroup>	
+  </PropertyGroup>
   <PropertyGroup Condition="'$(NetFramework)' == 'NET47'">
-  	<TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-	</PropertyGroup>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -44,7 +44,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\$(NetFramework)</OutputPath>
-		<DefineConstants>DEBUG;TRACE;CODE_ANALYSIS;$(NetFramework)</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS;$(NetFramework)</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>2</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
@@ -54,7 +54,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\$(NetFramework)</OutputPath>
-		<DefineConstants>TRACE;$(NetFramework)</DefineConstants>
+    <DefineConstants>TRACE;$(NetFramework)</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
@@ -118,9 +118,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-	<!-- Fail the build if no framework is specified -->       
+  <!-- Fail the build if no framework is specified -->
   <Target Name="BeforeBuild">
-  	<Error Text="The NetFramework property haven't been set" Condition="'$(NetFramework)' == ''" />
+    <Error Text="The NetFramework property haven't been set" Condition="'$(NetFramework)' == ''" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

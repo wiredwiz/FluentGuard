@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Edgerunner.FluentGuard</id>
@@ -15,11 +15,15 @@
         <tags>Fluent Guard</tags>
     </metadata>
     <files>
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\40\Org.Edgerunner.FluentGuard.dll" target="lib\net40\Org.Edgerunner.FluentGuard.dll" />
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\40\Org.Edgerunner.FluentGuard.pdb" target="lib\net40\Org.Edgerunner.FluentGuard.pdb" />
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\45\Org.Edgerunner.FluentGuard.dll" target="lib\net45\Org.Edgerunner.FluentGuard.dll" />
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\45\Org.Edgerunner.FluentGuard.pdb" target="lib\net45\Org.Edgerunner.FluentGuard.pdb" />
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\46\Org.Edgerunner.FluentGuard.dll" target="lib\net46\Org.Edgerunner.FluentGuard.dll" />
-        <file src="Org.Edgerunner.FluentGuard\bin\Release\46\Org.Edgerunner.FluentGuard.pdb" target="lib\net46\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET40\Org.Edgerunner.FluentGuard.dll" target="lib\net40\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET40\Org.Edgerunner.FluentGuard.pdb" target="lib\net40\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET45\Org.Edgerunner.FluentGuard.dll" target="lib\net45\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET45\Org.Edgerunner.FluentGuard.pdb" target="lib\net45\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET46\Org.Edgerunner.FluentGuard.dll" target="lib\net46\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\NET46\Org.Edgerunner.FluentGuard.pdb" target="lib\net46\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd14\Org.Edgerunner.FluentGuard.dll" target="lib\netstandard1.4\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd14\Org.Edgerunner.FluentGuard.pdb" target="lib\netstandard1.4\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd16\Org.Edgerunner.FluentGuard.dll" target="lib\netstandard1.6\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd16\Org.Edgerunner.FluentGuard.pdb" target="lib\netstandard1.6\Org.Edgerunner.FluentGuard.pdb" />
     </files>
 </package>

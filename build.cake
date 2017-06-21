@@ -4,14 +4,15 @@
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
-var configuration = "Release";
-var solution = "./FluentGuard Library Build.sln";
+var configuration = Argument("configuration", "Release");
+var solution = "./FluentGuard Library.sln";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
 // Define directories.
+var buildPath = "./Org.Edgerunner.FluentGuard/bin/" + configuration;
 var buildDir = Directory("./Org.Edgerunner.FluentGuard/bin") + Directory(configuration);
 
 // Define assembly info
@@ -58,7 +59,7 @@ Task("Build Framework Version 4.0")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release")
+    settings.SetConfiguration(configuration)
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
         .WithProperty("NetFramework", "NET40")        
@@ -70,7 +71,7 @@ Task("Build Framework Version 4.5")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release")
+    settings.SetConfiguration(configuration)
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
         .WithProperty("NetFramework", "NET45")
@@ -82,7 +83,7 @@ Task("Build Framework Version 4.6")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release")
+    settings.SetConfiguration(configuration)
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
         .WithProperty("TreatWarningsAsErrors","true"));
@@ -93,32 +94,59 @@ Task("Build Framework Version 4.7")
     .Does(() =>
 {
 	DotNetBuild(solution, settings =>
-    settings.SetConfiguration("Release")
+    settings.SetConfiguration(configuration)
 		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
         .WithTarget("Build")
         .WithProperty("NetFramework", "NET47")        
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
-//Task("Run-Unit-Tests")
-//    .IsDependentOn("Build40")
-//    .Does(() =>
-//{
-//	var testAssemblies = GetFiles("./**/bin/" + configuration + "/*.Tests.dll");
-//	XUnit2(testAssemblies,
-//		 new XUnit2Settings {
-//			Parallelism = ParallelismOption.All,
-//			HtmlReport = true,
-//			NoAppDomain = true,
-//			OutputDirectory = "./build"
-//		});
-//});
+
+Task("Build .Net Standard Version 1.4")
+    .IsDependentOn("Update Version Info")
+    .Does(() =>
+{
+	DotNetCoreBuild(solution, new DotNetCoreBuildSettings 
+		{
+			Framework = "netstandard1.4",
+			Configuration = configuration,
+			OutputDirectory = buildPath + "/netstd14/"
+		});
+});
+
+Task("Build .Net Standard Version 1.6")
+    .IsDependentOn("Update Version Info")
+    .Does(() =>
+{
+	DotNetCoreBuild(solution, new DotNetCoreBuildSettings 
+		{
+			Framework = "netstandard1.6",
+			Configuration = configuration,
+			OutputDirectory = buildPath + "/netstd16/"
+		});
+});
+
+Task("Run-Unit-Tests")
+    .IsDependentOn("Build Framework Version 4.6")
+    .Does(() =>
+{
+	var testAssemblies = GetFiles("./**/bin/" + configuration + "/*.Tests.dll");
+	XUnit2(testAssemblies,
+		 new XUnit2Settings {
+			Parallelism = ParallelismOption.All,
+			HtmlReport = false,
+			NoAppDomain = true
+		});
+});
 
 Task("Build Nuget Package")
+	.IsDependentOn("Run-Unit-Tests")
 	.IsDependentOn("Build Framework Version 4.0")
 	.IsDependentOn("Build Framework Version 4.5")
 	.IsDependentOn("Build Framework Version 4.6")
-	.IsDependentOn("Build Framework Version 4.7")
+	//.IsDependentOn("Build Framework Version 4.7")
+	.IsDependentOn("Build .Net Standard Version 1.4")
+	.IsDependentOn("Build .Net Standard Version 1.6")
 	.Does(() =>
 {
 var nuGetPackSettings   = new NuGetPackSettings {
