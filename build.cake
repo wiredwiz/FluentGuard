@@ -22,7 +22,7 @@ var version = assemblyVersion.Split('.');
 var versionMajor = version[0];
 var versionMinor = version[1];
 var now = DateTime.Now;
-var nugetVersion = string.Format("{0}.{1}.{2}{3}-beta", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear);
+var nugetVersion = string.Format("{0}.{1}.{2}{3}", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear);
 var buildVersion = string.Format("{0}.{1}.{2}{3}.{4}", versionMajor, versionMinor, now.ToString("yy"), now.DayOfYear, now.ToString("HHmm"));
 
 //////////////////////////////////////////////////////////////////////
@@ -144,7 +144,7 @@ Task("Build Nuget Package")
 	.IsDependentOn("Build Framework Version 4.0")
 	.IsDependentOn("Build Framework Version 4.5")
 	.IsDependentOn("Build Framework Version 4.6")
-	//.IsDependentOn("Build Framework Version 4.7")
+	.IsDependentOn("Build Framework Version 4.7")
 	.IsDependentOn("Build .Net Standard Version 1.4")
 	.IsDependentOn("Build .Net Standard Version 1.6")
 	.Does(() =>
