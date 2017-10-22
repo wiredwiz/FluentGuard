@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Org.Edgerunner.FluentGuard.Validation;
 
 namespace Org.Edgerunner.FluentGuard.Benchmark
 {
-   class Program
+   internal class Program
    {
-      static void Main(string[] args)
+      private static void Main(string[] args)
       {
          var foo = new Dictionary<string, int> { { "test", 1} };
          var watch = new Stopwatch();
@@ -25,6 +21,7 @@ namespace Org.Edgerunner.FluentGuard.Benchmark
          Console.WriteLine($"Name: {validator.ParameterName}");
          Console.WriteLine($"Value: {validator.ParameterValue}");
          Console.WriteLine($"Exectuion Time: {watch.Elapsed.TotalMilliseconds * 1000000.0} nanoseconds");
+         Console.WriteLine("Press any key to exit benchmark");
          Console.ReadKey();
       }
    }
