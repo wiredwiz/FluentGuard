@@ -55,9 +55,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Org.Edgerunner.FluentGuard\FluentGuard.csproj">
+    <ProjectReference Include="..\Org.Edgerunner.FluentGuard\Org.Edgerunner.FluentGuard.csproj">
       <Project>{f8064cf1-e1b9-40e4-873a-b9df8c43646a}</Project>
-      <Name>FluentGuard</Name>
+      <Name>Org.Edgerunner.FluentGuard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
