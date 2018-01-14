@@ -34,7 +34,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
    [ExcludeFromNestingCheck]
 #endif   

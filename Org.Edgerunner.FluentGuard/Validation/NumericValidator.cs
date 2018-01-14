@@ -34,7 +34,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
 #endif
    public class NumericValidator<T> : UnsignedNumericValidator<T> where T : struct
@@ -94,7 +94,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is negative, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformIsNegativeOperation(T currentValue)

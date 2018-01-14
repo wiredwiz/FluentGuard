@@ -21,7 +21,9 @@
 using System;
 using System.Runtime.Serialization;
 using NDepend.Attributes;
+#if NDEPEND
 using Org.Edgerunner.NDepend.Attributes;
+#endif
 
 namespace Org.Edgerunner.FluentGuard.Exceptions
 {
@@ -29,7 +31,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
    ///    The exception that is thrown when the value of an argument fails a test of equality or inequality.
    /// </summary>
    /// <seealso cref="System.ArgumentException" />
-#if DEBUG
+#if NDEPEND
    [UncoverableByTest]
 #endif
    [Serializable]
@@ -40,7 +42,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// <summary>
       ///    Initializes a new instance of the <see cref="ArgumentEqualityException" /> class.
       /// </summary>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public ArgumentEqualityException()
@@ -51,7 +53,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       ///    Initializes a new instance of the <see cref="ArgumentEqualityException" /> class.
       /// </summary>
       /// <param name="message">The error message that explains the reason for the exception.</param>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public ArgumentEqualityException(string message)
@@ -68,7 +70,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       ///    <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch
       ///    block that handles the inner exception.
       /// </param>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public ArgumentEqualityException(string message, Exception innerException)
@@ -86,7 +88,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       ///    <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch
       ///    block that handles the inner exception.
       /// </param>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public ArgumentEqualityException(string message, string paramName, Exception innerException)
@@ -99,7 +101,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// </summary>
       /// <param name="message">The error message that explains the reason for the exception.</param>
       /// <param name="paramName">The name of the parameter that caused the current exception.</param>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public ArgumentEqualityException(string message, string paramName)
@@ -112,7 +114,7 @@ namespace Org.Edgerunner.FluentGuard.Exceptions
       /// </summary>
       /// <param name="info">The object that holds the serialized object data.</param>
       /// <param name="context">The contextual information about the source or destination.</param>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       protected ArgumentEqualityException(SerializationInfo info, StreamingContext context)

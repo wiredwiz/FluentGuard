@@ -35,7 +35,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
 #endif   
    public class UnsignedNumericValidator<T> : ValidatorBase<T> where T : struct
@@ -64,7 +64,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentEqualityException">Must be equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsEqualTo(T value)
@@ -84,7 +84,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsGreaterThan(T value)
@@ -104,7 +104,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be greater than or equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsGreaterThanOrEqualTo(T value)
@@ -126,7 +126,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentOutOfRangeException">Must be less than <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsLessThan(T value)
@@ -146,7 +146,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>      
       /// <exception cref="ArgumentOutOfRangeException">Must be less than or equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsLessThanOrEqualTo(T value)
@@ -168,7 +168,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{UnsignedNumericValidator}" /> instance of type T.</returns>
       /// <exception cref="ArgumentEqualityException">Must not be equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<UnsignedNumericValidator<T>> IsNotEqualTo(T value)
@@ -219,7 +219,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is positive, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformIsPositiveOperation(T currentValue)

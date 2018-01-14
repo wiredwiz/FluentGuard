@@ -33,7 +33,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
 #endif
    public class NullableBooleanValidator : NullableValidatorBase<bool>
@@ -64,7 +64,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>A new <see cref="ValidatorLinkage{NullableBooleanValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must be equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<NullableBooleanValidator> IsEqualTo(bool? value)
@@ -84,7 +84,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="value">The value to compare against.</param>
       /// <returns>The current <see cref="ValidatorLinkage{NullableBooleanValidator}" /> instance.</returns>
       /// <exception cref="ArgumentEqualityException">Must not be equal to <paramref name="value"/>.</exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public ValidatorLinkage<NullableBooleanValidator> IsNotEqualTo(bool? value)

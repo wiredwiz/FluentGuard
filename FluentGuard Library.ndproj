@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="FluentGuard Library" Platform="DotNet" FileWrittenByProductVersion="2017.2.1.8955">
   <OutputDir KeepXmlFiles="False">.\NDependOut</OutputDir>
   <Assemblies>
@@ -81,7 +81,8 @@
       <High2Critical_SeverityThreshold>72000000000</High2Critical_SeverityThreshold>
       <Critical2Blocker_SeverityThreshold>360000000000</Critical2Blocker_SeverityThreshold>
     </DebtSettings>
-  </ProjectDebtSettings><Queries>
+  </ProjectDebtSettings>
+  <Queries>
     <Group Name="Quality Gates" Active="True" ShownInReport="True">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Quality Gates Evolution</Name>
 from qg in QualityGates
@@ -2687,7 +2688,7 @@ from t in dico.Keys
  
    // Here we've found type(s) both using and used by the suspect type.
    // A cycle involving the type t is found!
-   let typeInitCycle = usersAndUseds.Append(t)
+   let typeInitCycle = ExtensionMethodsEnumerable.Append(usersAndUseds, t)
 
 
    // Compute methodsCalled and fieldsUsed, useful to explore
@@ -3681,7 +3682,7 @@ from suspect in namespacesSuspect
 
    // Here we've found namespace(s) both using and used by the suspect namespace.
    // A cycle involving the suspect namespace is found!
-   let cycle = usersAndUsed.Append(suspect)
+   let cycle = ExtensionMethodsEnumerable.Append(usersAndUsed, suspect)
 
    // Fill hashset with namespaces in the cycle.
    // .ToArray() is needed to force the iterating process.
@@ -10928,5 +10929,7 @@ select new {
 //</HowToFix>]]></Query>
       </Group>
     </Group>
-  </Queries><WarnFilter>
-  </WarnFilter></NDepend>
+  </Queries>
+  <WarnFilter>
+  </WarnFilter>
+</NDepend>

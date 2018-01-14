@@ -23,7 +23,9 @@ using System.Diagnostics.CodeAnalysis;
 using NDepend.Attributes;
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+#if NDEPEND
 using Org.Edgerunner.NDepend.Attributes;
+#endif
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -35,7 +37,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    [SuppressMessage("ReSharper", "ExceptionNotThrown",
        Justification =
           "The exception generated in each method will eventually be thrown and detailing it in the method that generates it helps with later xml docs.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
 #endif
    public class ClassValidator<T> : ValidatorBase<T>
@@ -170,7 +172,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <returns><c>true</c> if <paramref name="currentValue" /> implements <paramref name="type" />, <c>false</c> otherwise.</returns>
       /// <exception cref="ArgumentTypeException"><paramref name="currentValue" /> must implement interface <paramref name="type"/>.</exception>
       /// <exception cref="ArgumentNullException">Thrown when arguments are <see langword="null"/></exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformImplementsInterfaceOperation(T currentValue, Type type)
@@ -196,7 +198,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    otherwise.
       /// </returns>
       /// <exception cref="ArgumentNullException">Thrown when the arguments are <see langword="null"/></exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformInheritsOperation(T currentValue, Type type)
@@ -216,7 +218,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="type">The type to compare against.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is of type <paramref name="type" />, <c>false</c> otherwise.</returns>
       /// <exception cref="ArgumentNullException">Thrown when the arguments are <see langword="null"/></exception>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformIsOfTypeOperation(T currentValue, Type type)
@@ -233,7 +235,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <param name="currentValue">The current value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue" /> is not <c>null</c>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformNotNullOperation(T currentValue)
@@ -247,7 +249,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is the same as <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformSameAsOperation(T currentValue, T referenceValue)

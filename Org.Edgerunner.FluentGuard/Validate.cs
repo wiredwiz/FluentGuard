@@ -28,7 +28,7 @@ namespace Org.Edgerunner.FluentGuard
    /// <summary>
    /// Class for validation of inputs.
    /// </summary>
-#if DEBUG
+#if NDEPEND
    [FullCovered]
    [MethodCountOk]
 #endif
@@ -40,7 +40,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="BooleanValidator" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static BooleanValidator That(string nameOfParameter, bool parameterValue)
@@ -54,7 +54,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableBooleanValidator"/> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableBooleanValidator That(string nameOfParameter, bool? parameterValue)
@@ -68,7 +68,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedNumericValidator{Char}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static UnsignedNumericValidator<char> That(string nameOfParameter, char parameterValue)
@@ -82,7 +82,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableUnsignedNumericValidator{Char}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableUnsignedNumericValidator<char> That(string nameOfParameter, char? parameterValue)
@@ -96,7 +96,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="StringValidator" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static StringValidator That(string nameOfParameter, string parameterValue)
@@ -110,7 +110,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Int32}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<int> That(string nameOfParameter, int parameterValue)
@@ -124,7 +124,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Int32}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<int> That(string nameOfParameter, int? parameterValue)
@@ -138,7 +138,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedNumericValidator{UInt32}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static UnsignedNumericValidator<uint> That(string nameOfParameter, uint parameterValue)
@@ -152,7 +152,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableUnsignedNumericValidator{UInt32}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableUnsignedNumericValidator<uint> That(string nameOfParameter, uint? parameterValue)
@@ -166,7 +166,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Long}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<long> That(string nameOfParameter, long parameterValue)
@@ -180,7 +180,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Long}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<long> That(string nameOfParameter, long? parameterValue)
@@ -194,7 +194,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedNumericValidator{Long}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static UnsignedNumericValidator<ulong> That(string nameOfParameter, ulong parameterValue)
@@ -208,7 +208,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableUnsignedNumericValidator{Long}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableUnsignedNumericValidator<ulong> That(string nameOfParameter, ulong? parameterValue)
@@ -222,7 +222,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Short}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<short> That(string nameOfParameter, short parameterValue)
@@ -236,7 +236,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Short}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<short> That(string nameOfParameter, short? parameterValue)
@@ -250,7 +250,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedNumericValidator{UInt32}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static UnsignedNumericValidator<ushort> That(string nameOfParameter, ushort parameterValue)
@@ -264,7 +264,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableUnsignedNumericValidator{UShort}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableUnsignedNumericValidator<ushort> That(string nameOfParameter, ushort? parameterValue)
@@ -278,7 +278,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Decimal}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<decimal> That(string nameOfParameter, decimal parameterValue)
@@ -292,7 +292,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Decimal}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<decimal> That(string nameOfParameter, decimal? parameterValue)
@@ -306,7 +306,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Double}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<double> That(string nameOfParameter, double parameterValue)
@@ -320,7 +320,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Double}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<double> That(string nameOfParameter, double? parameterValue)
@@ -334,7 +334,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{Float}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<float> That(string nameOfParameter, float parameterValue)
@@ -348,7 +348,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{Float}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<float> That(string nameOfParameter, float? parameterValue)
@@ -362,7 +362,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="DateTimeValidator" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static DateTimeValidator That(string nameOfParameter, DateTime parameterValue)
@@ -376,7 +376,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableDateTimeValidator" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableDateTimeValidator That(string nameOfParameter, DateTime? parameterValue)
@@ -390,7 +390,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="UnsignedNumericValidator{Byte}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static UnsignedNumericValidator<byte> That(string nameOfParameter, byte parameterValue)
@@ -404,7 +404,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableUnsignedNumericValidator{Byte}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableUnsignedNumericValidator<byte> That(string nameOfParameter, byte? parameterValue)
@@ -418,7 +418,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NumericValidator{SByte}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NumericValidator<sbyte> That(string nameOfParameter, sbyte parameterValue)
@@ -432,7 +432,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="NullableNumericValidator{SByte}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static NullableNumericValidator<sbyte> That(string nameOfParameter, sbyte? parameterValue)
@@ -447,7 +447,7 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="ClassValidator{T}" /> instance.</returns>
-#if DEBUG
+#if NDEPEND
       [OverloadVerified]
 #endif
       public static ClassValidator<T> That<T>(string nameOfParameter, T parameterValue) where T : class

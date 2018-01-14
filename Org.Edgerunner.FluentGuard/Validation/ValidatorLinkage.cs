@@ -30,7 +30,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">A type of ValidatorBase.</typeparam>
    [Immutable]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
 #endif
    public struct ValidatorLinkage<T> : IEquatable<ValidatorLinkage<T>>
@@ -53,7 +53,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Gets the <see cref="ValidatorBase" /> being joined by an And constraint.
       /// </summary>
       /// <value>The ValidatorBase.</value>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public T And
@@ -69,7 +69,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Gets the <see cref="ValidatorBase" /> being joined by an Or constraint.
       /// </summary>
       /// <value>The ValidatorBase.</value>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public T Or
@@ -121,7 +121,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    false.
       /// </returns>
       /// <param name="obj">The object to compare with the current instance. </param>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       public override bool Equals(object obj)

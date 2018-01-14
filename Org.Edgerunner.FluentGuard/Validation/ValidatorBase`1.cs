@@ -31,7 +31,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// </summary>
    /// <typeparam name="T">The type of data to validate.</typeparam>
    [SuppressMessage("ReSharper", "ExceptionNotDocumentedOptional", Justification = "The potential string format exceptions will not occurr.")]
-#if DEBUG
+#if NDEPEND
    [FullCovered]
    [ExcludeFromNestingCheck]
 #endif   
@@ -102,7 +102,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformLessThanOperation(T currentValue, T referenceValue)
@@ -118,7 +118,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is less than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformLessThanOrEqualToOperation(T currentValue, T referenceValue)
@@ -134,7 +134,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformGreaterThanOperation(T currentValue, T referenceValue)
@@ -150,7 +150,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformGreaterThanOrEqualToOperation(T currentValue, T referenceValue)
@@ -166,7 +166,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="currentValue">The current value.</param>
       /// <param name="referenceValue">The reference value.</param>
       /// <returns><c>true</c> if <paramref name="currentValue"/> is greater than or equal to <paramref name="referenceValue"/>, <c>false</c> otherwise.</returns>
-#if DEBUG
+#if NDEPEND
       [IgnoreBoxing]
 #endif
       protected virtual bool PerformEqualToOperation(T currentValue, T referenceValue)

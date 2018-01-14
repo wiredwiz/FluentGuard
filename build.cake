@@ -89,17 +89,17 @@ Task("Build Framework Version 4.6")
         .WithProperty("TreatWarningsAsErrors","true"));
 });
 
-Task("Build Framework Version 4.7")
-    .IsDependentOn("Update Version Info")
-    .Does(() =>
-{
-	DotNetBuild(solution, settings =>
-    settings.SetConfiguration(configuration)
-		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
-        .WithTarget("Build")
-        .WithProperty("NetFramework", "NET47")        
-        .WithProperty("TreatWarningsAsErrors","true"));
-});
+//Task("Build Framework Version 4.7")
+//    .IsDependentOn("Update Version Info")
+//    .Does(() =>
+//{
+//	DotNetBuild(solution, settings =>
+//    settings.SetConfiguration(configuration)
+//		.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
+//        .WithTarget("Build")
+//        .WithProperty("NetFramework", "NET47")        
+//        .WithProperty("TreatWarningsAsErrors","true"));
+//});
 
 
 Task("Build .Net Standard Version 1.4")
@@ -144,7 +144,7 @@ Task("Build Nuget Package")
 	.IsDependentOn("Build Framework Version 4.0")
 	.IsDependentOn("Build Framework Version 4.5")
 	.IsDependentOn("Build Framework Version 4.6")
-	.IsDependentOn("Build Framework Version 4.7")
+//	.IsDependentOn("Build Framework Version 4.7")
 	.IsDependentOn("Build .Net Standard Version 1.4")
 	.IsDependentOn("Build .Net Standard Version 1.6")
 	.Does(() =>

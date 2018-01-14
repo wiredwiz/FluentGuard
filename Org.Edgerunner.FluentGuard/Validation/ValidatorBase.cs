@@ -25,7 +25,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
    /// <summary>
    /// Foundational ValidatorBase class.
    /// </summary>
-#if DEBUG
+#if NDEPEND
    [FullCovered]
    [ExcludeFromNestingCheck]
 #endif

@@ -31,7 +31,7 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-#if DEBUG
+#if NDEPEND
       [UncoverableByTest]
 #endif
       internal Resources() {
@@ -57,14 +57,14 @@ namespace Org.Edgerunner.FluentGuard.Properties {
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
-#if DEBUG
+#if NDEPEND
          [UncoverableByTest]
 #endif
          get
          {
                 return resourceCulture;
             }
-#if DEBUG
+#if NDEPEND
          [UncoverableByTest]
 #endif
          set
