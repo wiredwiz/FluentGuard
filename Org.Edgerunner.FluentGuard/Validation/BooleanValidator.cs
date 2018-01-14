@@ -20,10 +20,12 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using NDepend.Attributes;
+
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+
 #if NDEPEND
+using NDepend.Attributes;
 using Org.Edgerunner.NDepend.Attributes;
 #endif
 

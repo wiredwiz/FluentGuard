@@ -20,8 +20,11 @@
 
 using System;
 using System.Collections.Generic;
+
+#if NDEPEND
 using NDepend.Attributes;
 using Org.Edgerunner.NDepend.Attributes;
+#endif
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
@@ -29,8 +32,8 @@ namespace Org.Edgerunner.FluentGuard.Validation
    ///    Structure used to join validators.
    /// </summary>
    /// <typeparam name="T">A type of ValidatorBase.</typeparam>
-   [Immutable]
 #if NDEPEND
+   [Immutable]
    [FullCovered]
 #endif
    public struct ValidatorLinkage<T> : IEquatable<ValidatorLinkage<T>>

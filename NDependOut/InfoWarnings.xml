@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <InfoWarnings>
   <Info>Begin full analysis with NDepend v2017.3.2</Info>
-  <Info>Input directory resolved to absolute directory path: from    {.\Org.Edgerunner.FluentGuard\bin\Debug}    to    {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug}</Info>
+  <Info>Input directories resolved to absolute directory path:
+    - from    {.\Org.Edgerunner.FluentGuard\bin\Debug}    to    {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug}
+    - from    {.\Org.Edgerunner.FluentGuard\bin\NDepend}    to    {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\NDepend}</Info>
   <Info>Output directory resolved to absolute directory path: C:\Projects\Edgerunner FluentGuard\NDependOut</Info>
   <Info>Coverage file resolved to absolute file path: from {.\All tests from Solution.xml} to {C:\Projects\Edgerunner FluentGuard\All tests from Solution.xml}</Info>
   <Info>Concurrent mode</Info>
-  <Warning>NDepend.API.dll versioning issue: Assembly {Org.Edgerunner.FluentGuard} is referencing {NDepend.API.dll v2017.2.1.8955} instead of {NDepend.API.dll v2017.3.2.9010}
-If this assembly contains some code rules, they might not be extracted.</Warning>
   <Info>.NET Assemblies loaded from {C:\Windows\Microsoft.NET\Framework\v4.0.30319} 
    mscorlib.dll   v4.0.0.0
    System.dll   v4.0.0.0</Info>
-  <Info>.NET Assemblies loaded from {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug} 
-   Org.Edgerunner.FluentGuard.dll   v1.0.17147.2031
-   NDepend.API.dll   v2017.2.1.8955
+  <Info>.NET Assembly loaded from {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\Debug} 
    Org.Edgerunner.NDepend.dll   v1.0.17142.144</Info>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Validation\NumericValidator.cs} (last modified 6/4/2017 5:51:45 PM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/29/2017 9:43:04 PM) are not in-sync.</Warning>
-  <Warning>The source file {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\Properties\AssemblyInfo.cs} (last modified 6/4/2017 10:05:26 PM) and the PDB file of the assembly {Org.Edgerunner.FluentGuard} (last modified 5/29/2017 9:43:04 PM) are not in-sync.</Warning>
-  <Info>20 source files parsed ; all source files found ; 2 source files not in-sync with PDB</Info>
+  <Info>.NET Assemblies loaded from {C:\Projects\Edgerunner FluentGuard\Org.Edgerunner.FluentGuard\bin\NDepend} 
+   Org.Edgerunner.FluentGuard.dll   v1.0.17365.1951
+   NDepend.API.dll   v2017.3.2.9010</Info>
+  <Info>20 source files parsed ; all source files found ; all source files in-sync with PDB</Info>
   <Info>0 code rule has been extracted from code.</Info>
   <Info>No dependency cycle detected in assemblies referencement graph.</Info>
   <Info>Coverage file correctly parsed:

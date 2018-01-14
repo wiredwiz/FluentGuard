@@ -8,7 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+#if NDEPEND
 using NDepend.Attributes;
+#endif
 
 namespace Org.Edgerunner.FluentGuard.Properties {
     using System;

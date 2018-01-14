@@ -20,8 +20,9 @@
 
 using System;
 using System.Runtime.Serialization;
-using NDepend.Attributes;
+
 #if NDEPEND
+using NDepend.Attributes;
 using Org.Edgerunner.NDepend.Attributes;
 #endif
 

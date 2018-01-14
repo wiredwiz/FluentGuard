@@ -17,8 +17,11 @@
 #endregion
 
 using System;
+
+#if NDEPEND
 using NDepend.Attributes;
 using Org.Edgerunner.NDepend.Attributes;
+#endif
 
 namespace Org.Edgerunner.FluentGuard.Validation
 {
