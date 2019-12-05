@@ -85,6 +85,9 @@
       <HintPath>..\packages\Edgerunner.NDepend.Extensions.1.0.17142-beta\lib\net40\Org.Edgerunner.NDepend.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Org.Edgerunner.Pooling">
+      <HintPath>..\References\Org.Edgerunner.Pooling.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
@@ -94,6 +97,7 @@
     </Compile>
     <Compile Include="Exceptions\ArgumentEqualityException.cs" />
     <Compile Include="Exceptions\ArgumentTypeException.cs" />
+    <Compile Include="Pooling\IPooledResource.cs" />
     <Compile Include="Validation\ClassValidator.cs" />
     <Compile Include="Validation\NullableDateTimeValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />
