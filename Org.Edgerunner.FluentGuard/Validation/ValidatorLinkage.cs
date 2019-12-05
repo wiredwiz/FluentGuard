@@ -161,9 +161,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="exception">The exception to throw.</param>
       public void OtherwiseThrow<TE>(TE exception) where TE : Exception, new()
       {
+         var currentException = Parent.CurrentException;
+         Parent.CurrentException = null;
+         Parent.Free();
+
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
-         if (Parent.CurrentException != null)
+         if (currentException != null)
             throw exception;
       }
 
@@ -172,10 +176,14 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       public void OtherwiseThrowException()
       {
+         var currentException = Parent.CurrentException;
+         Parent.CurrentException = null;
+         Parent.Free();
+
          // ReSharper disable once ExceptionNotDocumented
          // ReSharper disable once ThrowingSystemException
-         if (Parent.CurrentException != null)
-            throw Parent.CurrentException;
+         if (currentException != null)
+            throw currentException;
       }
    }
 }

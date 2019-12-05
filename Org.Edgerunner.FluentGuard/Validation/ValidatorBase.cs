@@ -45,5 +45,10 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       /// <value>The mode.</value>
       internal CombinationMode Mode { get; set; }
+
+      /// <summary>
+      /// Frees this instance from the pool and thus allows it to be garbage collected.
+      /// </summary>
+      internal abstract void Free();
    }
 }

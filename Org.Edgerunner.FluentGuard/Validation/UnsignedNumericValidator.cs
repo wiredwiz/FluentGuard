@@ -232,5 +232,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
          // ReSharper disable once PossibleNullReferenceException
          return original.CompareTo(default(T)) > 0;
       }
+
+      /// <summary>
+      /// Frees this instance from the pool and thus allows it to be garbage collected.
+      /// </summary>
+      internal override void Free()
+      {
+         return;
+      }
    }
 }

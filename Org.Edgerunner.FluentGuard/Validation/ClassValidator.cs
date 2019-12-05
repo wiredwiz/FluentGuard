@@ -22,7 +22,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
+using Org.Edgerunner.FluentGuard.Pooling;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -45,6 +47,17 @@ namespace Org.Edgerunner.FluentGuard.Validation
    public class ClassValidator<T> : ValidatorBase<T>
       where T : class
    {
+      /// <summary>
+      /// The static object pool instance to use with static pooling methods.
+      /// </summary>
+      private static readonly ObjectPool<ClassValidator<T>> PoolInstance = CreatePool();
+
+      /// <summary>
+      /// Gets the object pool that this instance is pooled in.
+      /// </summary>
+      /// <value>The object pool.</value>
+      private ObjectPool<ClassValidator<T>> Pool { get; }
+
       #region Constructors And Finalizers
 
       /// <summary>
@@ -59,6 +72,49 @@ namespace Org.Edgerunner.FluentGuard.Validation
       public ClassValidator(string parameterName, T parameterValue)
          : base(parameterName, parameterValue)
       {
+      }
+
+      /// <summary>
+      /// Initializes a new instance of the <see cref="ClassValidator{T}" /> class utilizing an object pool for re-use.
+      /// </summary>
+      /// <param name="pool">The object pool to use.</param>
+      public ClassValidator(ObjectPool<ClassValidator<T>> pool)
+      {
+         Pool = pool;
+      }
+
+      #endregion
+
+      #region Static
+
+      /// <summary>
+      /// Creates the object pool.
+      /// </summary>
+      /// <returns>The object pool.</returns>
+      private static ObjectPool<ClassValidator<T>> CreatePool()
+      {
+         ObjectPool<ClassValidator<T>> pool = null;
+         // ReSharper disable once AccessToModifiedClosure
+         pool = new ObjectPool<ClassValidator<T>>(() => new ClassValidator<T>(pool), 20);
+         return pool;
+      }
+
+      /// <summary>
+      /// Gets a new <see cref="ClassValidator{T}" /> instance.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The parameter value.</param>
+      /// <returns>a <see cref="ClassValidator{T}" /> instance.</returns>
+      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
+      public static ClassValidator<T> GetInstance(string parameterName, T parameterValue)
+      {
+         if (!Validate.UsingObjectPooling)
+            return new ClassValidator<T>(parameterName, parameterValue);
+
+         var instance = PoolInstance.Allocate();
+         instance.ParameterName = parameterName;
+         instance.ParameterValue = parameterValue;
+         return instance;
       }
 
       #endregion
@@ -258,5 +314,20 @@ namespace Org.Edgerunner.FluentGuard.Validation
       {
          return ReferenceEquals(currentValue, referenceValue);
       }
+
+      #region IPooledResource Members
+      /// <summary>
+      /// Frees this instance from the pool and thus allows it to be garbage collected.
+      /// </summary>
+      internal override void Free()
+      {
+         Mode = CombinationMode.And;
+         CurrentException = null;
+         ParameterName = string.Empty;
+         ParameterValue = default(T);
+         Pool?.Free(this);
+      }
+
+      #endregion
    }
 }

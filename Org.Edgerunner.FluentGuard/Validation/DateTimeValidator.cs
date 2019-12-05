@@ -246,5 +246,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
          return new ValidatorLinkage<DateTimeValidator>(this);
       }
+
+      /// <summary>
+      /// Frees this instance from the pool and thus allows it to be garbage collected.
+      /// </summary>
+      internal override void Free()
+      {
+         return;
+      }
    }
 }

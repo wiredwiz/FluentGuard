@@ -49,9 +49,17 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterName">The name of the parameter being validated.</param>
       /// <param name="parameterValue">The value of the parameter being validated.</param>
       protected ValidatorBase(string parameterName, T parameterValue)
+         : this()
       {
          ParameterName = parameterName;
          ParameterValue = parameterValue;
+      }
+
+      /// <summary>
+      ///    Initializes a new instance of the <see cref="ValidatorBase{T}" /> class.
+      /// </summary>
+      protected ValidatorBase()
+      {
          Mode = CombinationMode.And;
          CurrentException = null;
       }
@@ -59,16 +67,16 @@ namespace Org.Edgerunner.FluentGuard.Validation
       #endregion
 
       /// <summary>
-      /// Gets the name of the parameter being checked.
+      /// Gets or sets the name of the parameter being checked.
       /// </summary>
       /// <value>The name of the parameter.</value>
-      public virtual string ParameterName { get; }
+      public virtual string ParameterName { get; protected set; }
 
       /// <summary>
-      /// Gets the parameter value being checked.
+      /// Gets or sets the parameter value being checked.
       /// </summary>
       /// <value>The parameter value.</value>
-      public virtual T ParameterValue { get; }
+      public virtual T ParameterValue { get; protected set; }
 
       /// <summary>
       ///    Determines whether the current condition evaluation should return.

@@ -39,6 +39,12 @@ namespace Org.Edgerunner.FluentGuard
    public static class Validate
    {
       /// <summary>
+      /// Gets or sets a value indicating whether to use object pooling.
+      /// </summary>
+      /// <value><c>true</c> if [using object pooling]; otherwise, <c>false</c>.</value>
+      public static bool UsingObjectPooling { get; set; } = true;
+
+      /// <summary>
       /// Validates the specified parameter value.
       /// </summary>
       /// <param name="nameOfParameter">The name of parameter.</param>
@@ -451,12 +457,13 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="ClassValidator{T}" /> instance.</returns>
+      /// <exception cref="T:System.OutOfMemoryException">There is not enough memory available on the system to allocate the pool or instance.</exception>
 #if NDEPEND
       [OverloadVerified]
 #endif
       public static ClassValidator<T> That<T>(string nameOfParameter, T parameterValue) where T : class
       {
-         return new ClassValidator<T>(nameOfParameter, parameterValue);
+         return ClassValidator<T>.GetInstance(nameOfParameter, parameterValue);
       }
    }
 }
