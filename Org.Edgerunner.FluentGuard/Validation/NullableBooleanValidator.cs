@@ -21,6 +21,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
+using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -43,14 +44,17 @@ namespace Org.Edgerunner.FluentGuard.Validation
    public class NullableBooleanValidator : NullableValidatorBase<bool>
    {
       /// <summary>
-      /// Performs the IsTrue operation.
+      /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      /// <param name="currentValue">The current value.</param>
-      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
-      protected virtual bool PerformIsTrueOperation(bool? currentValue)
-      {
-         return currentValue.HasValue && currentValue.Value;
-      }
+      private static readonly ObjectPool<NullableBooleanValidator> PoolInstance = CreatePool();
+
+      /// <summary>
+      /// Gets the object pool that this instance is pooled in.
+      /// </summary>
+      /// <value>The object pool.</value>
+      private ObjectPool<NullableBooleanValidator> Pool { get; }
+
+      #region Constructors And Finalizers
 
       /// <summary>
       /// Initializes a new instance of the <see cref="NullableBooleanValidator"/> class.
@@ -60,6 +64,61 @@ namespace Org.Edgerunner.FluentGuard.Validation
       internal NullableBooleanValidator(string parameterName, bool? parameterValue)
          : base(parameterName, parameterValue)
       {
+      }
+
+      /// <summary>
+      ///    Initializes a new instance of the <see cref="NullableBooleanValidator" /> class.
+      /// </summary>
+      /// <param name="pool">The object pool to use.</param>
+      internal NullableBooleanValidator(ObjectPool<NullableBooleanValidator> pool)
+      {
+         Pool = pool;
+      }
+
+      #endregion
+
+      #region Static
+
+      /// <summary>
+      /// Creates the object pool.
+      /// </summary>
+      /// <returns>The object pool.</returns>
+      private static ObjectPool<NullableBooleanValidator> CreatePool()
+      {
+         ObjectPool<NullableBooleanValidator> pool = null;
+         // ReSharper disable once AccessToModifiedClosure
+         pool = new ObjectPool<NullableBooleanValidator>(() => new NullableBooleanValidator(pool), 20);
+         return pool;
+      }
+
+      /// <summary>
+      /// Gets a new <see cref="NullableBooleanValidator" /> instance.
+      /// </summary>
+      /// <param name="parameterName">Name of the parameter.</param>
+      /// <param name="parameterValue">The parameter value.</param>
+      /// <returns>a <see cref="NullableBooleanValidator" /> instance.</returns>
+      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
+      public static NullableBooleanValidator GetInstance(string parameterName, bool? parameterValue)
+      {
+         if (!Validate.UsingObjectPooling)
+            return new NullableBooleanValidator(parameterName, parameterValue);
+
+         var instance = PoolInstance.Allocate();
+         instance.ParameterName = parameterName;
+         instance.ParameterValue = parameterValue;
+         return instance;
+      }
+
+      #endregion
+
+      /// <summary>
+      /// Performs the IsTrue operation.
+      /// </summary>
+      /// <param name="currentValue">The current value.</param>
+      /// <returns><c>true</c> if <paramref name="currentValue" /> is true, <c>false</c> otherwise.</returns>
+      protected virtual bool PerformIsTrueOperation(bool? currentValue)
+      {
+         return currentValue.HasValue && currentValue.Value;
       }
 
       /// <summary>
@@ -171,7 +230,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// </summary>
       internal override void Free()
       {
-         return;
+         Mode = CombinationMode.And;
+         CurrentException = null;
+         ParameterName = string.Empty;
+         ParameterValue = null;
+         Pool?.Free(this);
       }
    }
 }

@@ -315,7 +315,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
          return ReferenceEquals(currentValue, referenceValue);
       }
 
-      #region IPooledResource Members
       /// <summary>
       /// Frees this instance from the pool and thus allows it to be garbage collected.
       /// </summary>
@@ -327,7 +326,5 @@ namespace Org.Edgerunner.FluentGuard.Validation
          ParameterValue = default(T);
          Pool?.Free(this);
       }
-
-      #endregion
    }
 }
