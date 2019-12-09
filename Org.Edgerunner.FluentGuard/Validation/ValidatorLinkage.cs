@@ -130,7 +130,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       public override bool Equals(object obj)
       {
          if (ReferenceEquals(null, obj)) return false;
-         return obj is ValidatorLinkage<T> && Equals((ValidatorLinkage<T>)obj);
+         return obj is ValidatorLinkage<T> linkage && Equals(linkage);
       }
 
       /// <summary>Returns the hash code for this instance.</summary>
