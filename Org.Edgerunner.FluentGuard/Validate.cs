@@ -55,7 +55,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static BooleanValidator That(string nameOfParameter, bool parameterValue)
       {
-         return new BooleanValidator(nameOfParameter, parameterValue);
+         return BooleanValidator.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -69,7 +69,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableBooleanValidator That(string nameOfParameter, bool? parameterValue)
       {
-         return new NullableBooleanValidator(nameOfParameter, parameterValue);
+         return NullableBooleanValidator.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -83,7 +83,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static UnsignedNumericValidator<char> That(string nameOfParameter, char parameterValue)
       {
-         return new UnsignedNumericValidator<char>(nameOfParameter, parameterValue);
+         return UnsignedNumericValidator<char>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -97,7 +97,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableUnsignedNumericValidator<char> That(string nameOfParameter, char? parameterValue)
       {
-         return new NullableUnsignedNumericValidator<char>(nameOfParameter, parameterValue);
+         return NullableUnsignedNumericValidator<char>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -111,7 +111,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static StringValidator That(string nameOfParameter, string parameterValue)
       {
-         return new StringValidator(nameOfParameter, parameterValue);
+         return StringValidator.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -125,7 +125,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<int> That(string nameOfParameter, int parameterValue)
       {
-         return new NumericValidator<int>(nameOfParameter, parameterValue);
+         return NumericValidator<int>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -139,7 +139,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<int> That(string nameOfParameter, int? parameterValue)
       {
-         return new NullableNumericValidator<int>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<int>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -153,7 +153,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static UnsignedNumericValidator<uint> That(string nameOfParameter, uint parameterValue)
       {
-         return new UnsignedNumericValidator<uint>(nameOfParameter, parameterValue);
+         return UnsignedNumericValidator<uint>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -167,7 +167,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableUnsignedNumericValidator<uint> That(string nameOfParameter, uint? parameterValue)
       {
-         return new NullableUnsignedNumericValidator<uint>(nameOfParameter, parameterValue);
+         return NullableUnsignedNumericValidator<uint>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -181,7 +181,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<long> That(string nameOfParameter, long parameterValue)
       {
-         return new NumericValidator<long>(nameOfParameter, parameterValue);
+         return NumericValidator<long>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -195,7 +195,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<long> That(string nameOfParameter, long? parameterValue)
       {
-         return new NullableNumericValidator<long>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<long>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -209,7 +209,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static UnsignedNumericValidator<ulong> That(string nameOfParameter, ulong parameterValue)
       {
-         return new UnsignedNumericValidator<ulong>(nameOfParameter, parameterValue);
+         return UnsignedNumericValidator<ulong>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -223,7 +223,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableUnsignedNumericValidator<ulong> That(string nameOfParameter, ulong? parameterValue)
       {
-         return new NullableUnsignedNumericValidator<ulong>(nameOfParameter, parameterValue);
+         return NullableUnsignedNumericValidator<ulong>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -237,7 +237,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<short> That(string nameOfParameter, short parameterValue)
       {
-         return new NumericValidator<short>(nameOfParameter, parameterValue);
+         return NumericValidator<short>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -251,7 +251,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<short> That(string nameOfParameter, short? parameterValue)
       {
-         return new NullableNumericValidator<short>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<short>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -265,7 +265,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static UnsignedNumericValidator<ushort> That(string nameOfParameter, ushort parameterValue)
       {
-         return new UnsignedNumericValidator<ushort>(nameOfParameter, parameterValue);
+         return UnsignedNumericValidator<ushort>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -279,7 +279,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableUnsignedNumericValidator<ushort> That(string nameOfParameter, ushort? parameterValue)
       {
-         return new NullableUnsignedNumericValidator<ushort>(nameOfParameter, parameterValue);
+         return NullableUnsignedNumericValidator<ushort>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -293,7 +293,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<decimal> That(string nameOfParameter, decimal parameterValue)
       {
-         return new NumericValidator<decimal>(nameOfParameter, parameterValue);
+         return NumericValidator<decimal>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -307,7 +307,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<decimal> That(string nameOfParameter, decimal? parameterValue)
       {
-         return new NullableNumericValidator<decimal>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<decimal>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -321,7 +321,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<double> That(string nameOfParameter, double parameterValue)
       {
-         return new NumericValidator<double>(nameOfParameter, parameterValue);
+         return NumericValidator<double>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -335,7 +335,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<double> That(string nameOfParameter, double? parameterValue)
       {
-         return new NullableNumericValidator<double>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<double>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -349,7 +349,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<float> That(string nameOfParameter, float parameterValue)
       {
-         return new NumericValidator<float>(nameOfParameter, parameterValue);
+         return NumericValidator<float>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -363,7 +363,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<float> That(string nameOfParameter, float? parameterValue)
       {
-         return new NullableNumericValidator<float>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<float>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -377,7 +377,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static DateTimeValidator That(string nameOfParameter, DateTime parameterValue)
       {
-         return new DateTimeValidator(nameOfParameter, parameterValue);
+         return DateTimeValidator.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -391,7 +391,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableDateTimeValidator That(string nameOfParameter, DateTime? parameterValue)
       {
-         return new NullableDateTimeValidator(nameOfParameter, parameterValue);
+         return NullableDateTimeValidator.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -405,7 +405,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static UnsignedNumericValidator<byte> That(string nameOfParameter, byte parameterValue)
       {
-         return new UnsignedNumericValidator<byte>(nameOfParameter, parameterValue);
+         return UnsignedNumericValidator<byte>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -419,7 +419,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableUnsignedNumericValidator<byte> That(string nameOfParameter, byte? parameterValue)
       {
-         return new NullableUnsignedNumericValidator<byte>(nameOfParameter, parameterValue);
+         return NullableUnsignedNumericValidator<byte>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -433,7 +433,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NumericValidator<sbyte> That(string nameOfParameter, sbyte parameterValue)
       {
-         return new NumericValidator<sbyte>(nameOfParameter, parameterValue);
+         return NumericValidator<sbyte>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -447,7 +447,7 @@ namespace Org.Edgerunner.FluentGuard
 #endif
       public static NullableNumericValidator<sbyte> That(string nameOfParameter, sbyte? parameterValue)
       {
-         return new NullableNumericValidator<sbyte>(nameOfParameter, parameterValue);
+         return NullableNumericValidator<sbyte>.GetInstance(nameOfParameter, parameterValue);
       }
 
       /// <summary>
@@ -457,7 +457,6 @@ namespace Org.Edgerunner.FluentGuard
       /// <param name="nameOfParameter">The name of parameter.</param>
       /// <param name="parameterValue">The value of the parameter.</param>
       /// <returns>A new <see cref="ClassValidator{T}" /> instance.</returns>
-      /// <exception cref="T:System.OutOfMemoryException">There is not enough memory available on the system to allocate the pool or instance.</exception>
 #if NDEPEND
       [OverloadVerified]
 #endif

@@ -105,7 +105,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
       /// <returns>a <see cref="ClassValidator{T}" /> instance.</returns>
-      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
       public static ClassValidator<T> GetInstance(string parameterName, T parameterValue)
       {
          if (!Validate.UsingObjectPooling)

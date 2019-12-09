@@ -97,7 +97,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
       /// <returns>a <see cref="NullableBooleanValidator" /> instance.</returns>
-      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
       public static NullableBooleanValidator GetInstance(string parameterName, bool? parameterValue)
       {
          if (!Validate.UsingObjectPooling)

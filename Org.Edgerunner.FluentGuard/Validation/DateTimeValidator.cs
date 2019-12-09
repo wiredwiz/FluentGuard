@@ -98,7 +98,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
       /// <returns>a <see cref="DateTimeValidator" /> instance.</returns>
-      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
       public static DateTimeValidator GetInstance(string parameterName, DateTime parameterValue)
       {
          if (!Validate.UsingObjectPooling)

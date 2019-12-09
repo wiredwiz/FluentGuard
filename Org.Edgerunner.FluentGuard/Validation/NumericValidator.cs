@@ -102,7 +102,6 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterName">Name of the parameter.</param>
       /// <param name="parameterValue">The parameter value.</param>
       /// <returns>a <see cref="NumericValidator{T}" /> instance.</returns>
-      /// <exception cref="OutOfMemoryException">There is not enough memory available on the system.</exception>
       public static new NumericValidator<T> GetInstance(string parameterName, T parameterValue)
       {
          if (!Validate.UsingObjectPooling)
@@ -110,7 +109,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
 
          var instance = PoolInstance.Allocate();
          instance.ParameterName = parameterName;
-         instance.ParameterValue = default(T);
+         instance.ParameterValue = parameterValue;
          return instance;
       }
 
