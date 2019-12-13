@@ -14,3 +14,8 @@ The following is an example of a compound fluent guard statement
 ```csharp
 Validate.That(nameof(myNumber), myNumber).IsGreaterThan(0).And.IsLessThan(10).OtherwiseThrowException();
 ```
+
+Throwing a custom exception is as simple as follows
+```csharp
+Validate.That(nameof(myNumber), myNumber).IsPositive().OtherwiseThrow(new MyException());
+```
