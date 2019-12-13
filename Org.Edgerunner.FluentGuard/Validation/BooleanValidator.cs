@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -47,13 +46,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<BooleanValidator> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<BooleanValidator> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<BooleanValidator> Pool { get; }
+      private Pooling.ObjectPool<BooleanValidator> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -71,7 +70,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="BooleanValidator" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal BooleanValidator(ObjectPool<BooleanValidator> pool)
+      internal BooleanValidator(Pooling.ObjectPool<BooleanValidator> pool)
       {
          Pool = pool;
       }
@@ -84,11 +83,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<BooleanValidator> CreatePool()
+      private static Pooling.ObjectPool<BooleanValidator> CreatePool()
       {
-         ObjectPool<BooleanValidator> pool = null;
+         Pooling.ObjectPool<BooleanValidator> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<BooleanValidator>(() => new BooleanValidator(pool), 20);
+         pool = new Pooling.ObjectPool<BooleanValidator>(() => new BooleanValidator(pool), 20);
          return pool;
       }
 

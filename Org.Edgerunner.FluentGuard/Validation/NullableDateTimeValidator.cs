@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -48,13 +47,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<NullableDateTimeValidator> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<NullableDateTimeValidator> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<NullableDateTimeValidator> Pool { get; }
+      private Pooling.ObjectPool<NullableDateTimeValidator> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -76,7 +75,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="NullableDateTimeValidator" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal NullableDateTimeValidator(ObjectPool<NullableDateTimeValidator> pool)
+      internal NullableDateTimeValidator(Pooling.ObjectPool<NullableDateTimeValidator> pool)
       {
          Pool = pool;
       }
@@ -89,11 +88,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<NullableDateTimeValidator> CreatePool()
+      private static Pooling.ObjectPool<NullableDateTimeValidator> CreatePool()
       {
-         ObjectPool<NullableDateTimeValidator> pool = null;
+         Pooling.ObjectPool<NullableDateTimeValidator> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<NullableDateTimeValidator>(() => new NullableDateTimeValidator(pool), 20);
+         pool = new Pooling.ObjectPool<NullableDateTimeValidator>(() => new NullableDateTimeValidator(pool), 20);
          return pool;
       }
 

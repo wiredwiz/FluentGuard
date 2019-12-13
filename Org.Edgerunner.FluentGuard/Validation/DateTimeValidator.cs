@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -47,13 +46,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<DateTimeValidator> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<DateTimeValidator> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<DateTimeValidator> Pool { get; }
+      private Pooling.ObjectPool<DateTimeValidator> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -71,7 +70,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="DateTimeValidator" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal DateTimeValidator(ObjectPool<DateTimeValidator> pool)
+      internal DateTimeValidator(Pooling.ObjectPool<DateTimeValidator> pool)
       {
          Pool = pool;
       }
@@ -84,11 +83,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<DateTimeValidator> CreatePool()
+      private static Pooling.ObjectPool<DateTimeValidator> CreatePool()
       {
-         ObjectPool<DateTimeValidator> pool = null;
+         Pooling.ObjectPool<DateTimeValidator> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<DateTimeValidator>(() => new DateTimeValidator(pool), 20);
+         pool = new Pooling.ObjectPool<DateTimeValidator>(() => new DateTimeValidator(pool), 20);
          return pool;
       }
 

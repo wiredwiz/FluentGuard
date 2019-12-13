@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -48,13 +47,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<UnsignedNumericValidator<T>> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<UnsignedNumericValidator<T>> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<UnsignedNumericValidator<T>> Pool { get; }
+      private Pooling.ObjectPool<UnsignedNumericValidator<T>> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -76,7 +75,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="UnsignedNumericValidator{T}" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal UnsignedNumericValidator(ObjectPool<UnsignedNumericValidator<T>> pool)
+      internal UnsignedNumericValidator(Pooling.ObjectPool<UnsignedNumericValidator<T>> pool)
       {
          Pool = pool;
       }
@@ -96,11 +95,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<UnsignedNumericValidator<T>> CreatePool()
+      private static Pooling.ObjectPool<UnsignedNumericValidator<T>> CreatePool()
       {
-         ObjectPool<UnsignedNumericValidator<T>> pool = null;
+         Pooling.ObjectPool<UnsignedNumericValidator<T>> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<UnsignedNumericValidator<T>>(() => new UnsignedNumericValidator<T>(pool), 20);
+         pool = new Pooling.ObjectPool<UnsignedNumericValidator<T>>(() => new UnsignedNumericValidator<T>(pool), 20);
          return pool;
       }
 

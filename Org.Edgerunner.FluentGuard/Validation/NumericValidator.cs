@@ -22,7 +22,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -47,13 +46,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<NumericValidator<T>> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<NumericValidator<T>> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<NumericValidator<T>> Pool { get; }
+      private Pooling.ObjectPool<NumericValidator<T>> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -75,7 +74,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="NumericValidator{T}" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal NumericValidator(ObjectPool<NumericValidator<T>> pool)
+      internal NumericValidator(Pooling.ObjectPool<NumericValidator<T>> pool)
       {
          Pool = pool;
       }
@@ -88,11 +87,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<NumericValidator<T>> CreatePool()
+      private static Pooling.ObjectPool<NumericValidator<T>> CreatePool()
       {
-         ObjectPool<NumericValidator<T>> pool = null;
+         Pooling.ObjectPool<NumericValidator<T>> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<NumericValidator<T>>(() => new NumericValidator<T>(pool), 20);
+         pool = new Pooling.ObjectPool<NumericValidator<T>>(() => new NumericValidator<T>(pool), 20);
          return pool;
       }
 

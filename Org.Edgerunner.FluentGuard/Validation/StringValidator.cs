@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -46,13 +45,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<StringValidator> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<StringValidator> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<StringValidator> Pool { get; }
+      private Pooling.ObjectPool<StringValidator> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -70,7 +69,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="StringValidator" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal StringValidator(ObjectPool<StringValidator> pool)
+      internal StringValidator(Pooling.ObjectPool<StringValidator> pool)
       {
          Pool = pool;
       }
@@ -83,11 +82,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<StringValidator> CreatePool()
+      private static Pooling.ObjectPool<StringValidator> CreatePool()
       {
-         ObjectPool<StringValidator> pool = null;
+         Pooling.ObjectPool<StringValidator> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<StringValidator>(() => new StringValidator(pool), 20);
+         pool = new Pooling.ObjectPool<StringValidator>(() => new StringValidator(pool), 20);
          return pool;
       }
 

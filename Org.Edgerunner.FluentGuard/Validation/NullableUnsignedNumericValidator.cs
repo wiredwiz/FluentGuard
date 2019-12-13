@@ -23,7 +23,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -48,13 +47,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<NullableUnsignedNumericValidator<T>> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<NullableUnsignedNumericValidator<T>> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<NullableUnsignedNumericValidator<T>> Pool { get; }
+      private Pooling.ObjectPool<NullableUnsignedNumericValidator<T>> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -64,11 +63,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<NullableUnsignedNumericValidator<T>> CreatePool()
+      private static Pooling.ObjectPool<NullableUnsignedNumericValidator<T>> CreatePool()
       {
-         ObjectPool<NullableUnsignedNumericValidator<T>> pool = null;
+         Pooling.ObjectPool<NullableUnsignedNumericValidator<T>> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<NullableUnsignedNumericValidator<T>>(() => new NullableUnsignedNumericValidator<T>(pool), 20);
+         pool = new Pooling.ObjectPool<NullableUnsignedNumericValidator<T>>(() => new NullableUnsignedNumericValidator<T>(pool), 20);
          return pool;
       }
 
@@ -109,7 +108,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="NullableUnsignedNumericValidator{T}" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal NullableUnsignedNumericValidator(ObjectPool<NullableUnsignedNumericValidator<T>> pool)
+      internal NullableUnsignedNumericValidator(Pooling.ObjectPool<NullableUnsignedNumericValidator<T>> pool)
       {
          Pool = pool;
       }

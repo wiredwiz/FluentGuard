@@ -21,7 +21,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -46,13 +45,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<NullableBooleanValidator> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<NullableBooleanValidator> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<NullableBooleanValidator> Pool { get; }
+      private Pooling.ObjectPool<NullableBooleanValidator> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -70,7 +69,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="NullableBooleanValidator" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal NullableBooleanValidator(ObjectPool<NullableBooleanValidator> pool)
+      internal NullableBooleanValidator(Pooling.ObjectPool<NullableBooleanValidator> pool)
       {
          Pool = pool;
       }
@@ -83,11 +82,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<NullableBooleanValidator> CreatePool()
+      private static Pooling.ObjectPool<NullableBooleanValidator> CreatePool()
       {
-         ObjectPool<NullableBooleanValidator> pool = null;
+         Pooling.ObjectPool<NullableBooleanValidator> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<NullableBooleanValidator>(() => new NullableBooleanValidator(pool), 20);
+         pool = new Pooling.ObjectPool<NullableBooleanValidator>(() => new NullableBooleanValidator(pool), 20);
          return pool;
       }
 

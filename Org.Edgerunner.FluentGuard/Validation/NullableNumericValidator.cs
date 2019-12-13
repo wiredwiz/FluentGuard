@@ -22,7 +22,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Properties;
-using Org.Edgerunner.Pooling;
 
 #if NDEPEND
 using NDepend.Attributes;
@@ -48,13 +47,13 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <summary>
       /// The static object pool instance to use with static pooling methods.
       /// </summary>
-      private static readonly ObjectPool<NullableNumericValidator<T>> PoolInstance = CreatePool();
+      private static readonly Pooling.ObjectPool<NullableNumericValidator<T>> PoolInstance = CreatePool();
 
       /// <summary>
       /// Gets the object pool that this instance is pooled in.
       /// </summary>
       /// <value>The object pool.</value>
-      private ObjectPool<NullableNumericValidator<T>> Pool { get; }
+      private Pooling.ObjectPool<NullableNumericValidator<T>> Pool { get; }
 
       #region Constructors And Finalizers
 
@@ -76,7 +75,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       ///    Initializes a new instance of the <see cref="NullableNumericValidator{T}" /> class.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      internal NullableNumericValidator(ObjectPool<NullableNumericValidator<T>> pool)
+      internal NullableNumericValidator(Pooling.ObjectPool<NullableNumericValidator<T>> pool)
       {
          Pool = pool;
       }
@@ -89,11 +88,11 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Creates the object pool.
       /// </summary>
       /// <returns>The object pool.</returns>
-      private static ObjectPool<NullableNumericValidator<T>> CreatePool()
+      private static Pooling.ObjectPool<NullableNumericValidator<T>> CreatePool()
       {
-         ObjectPool<NullableNumericValidator<T>> pool = null;
+         Pooling.ObjectPool<NullableNumericValidator<T>> pool = null;
          // ReSharper disable once AccessToModifiedClosure
-         pool = new ObjectPool<NullableNumericValidator<T>>(() => new NullableNumericValidator<T>(pool), 20);
+         pool = new Pooling.ObjectPool<NullableNumericValidator<T>>(() => new NullableNumericValidator<T>(pool), 20);
          return pool;
       }
 
