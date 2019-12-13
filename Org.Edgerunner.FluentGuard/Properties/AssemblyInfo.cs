@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 
 [assembly: CLSCompliant(false)]
-[assembly: InternalsVisibleTo("Org.Edgerunner.FluentGuard.Tests")]
+[assembly: InternalsVisibleTo("Org.Edgerunner.FluentGuard.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010001365b9cf9aa521d3cf2fac3a0300e903a72898e930c37aa47d348374d85df3142851c1c7f962e0275d29e01c33245d223d5509779a951411261b65443c770e8c793efe778bf1983da62e3ba81d52918b6b1d95e1d9267ec2bfed744cb6d0ad7e63084b04446b953ae610e08847505f627325e320465d43d95467e99b2827898")]

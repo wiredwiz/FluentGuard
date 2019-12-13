@@ -41,6 +41,12 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SigningKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=4.16.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.16.0\lib\net45\FluentAssertions.dll</HintPath>
@@ -123,6 +129,8 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="SigningKey.pfx" />
+    <None Include="SigningKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Org.Edgerunner.FluentGuard\Org.Edgerunner.FluentGuard.csproj">
