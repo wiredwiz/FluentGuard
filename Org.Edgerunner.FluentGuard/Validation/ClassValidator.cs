@@ -22,7 +22,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 
 using Org.Edgerunner.FluentGuard.Exceptions;
-using Org.Edgerunner.FluentGuard.Pooling;
 using Org.Edgerunner.FluentGuard.Properties;
 using Org.Edgerunner.Pooling;
 

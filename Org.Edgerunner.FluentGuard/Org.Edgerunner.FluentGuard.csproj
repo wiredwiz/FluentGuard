@@ -103,7 +103,6 @@
     </Compile>
     <Compile Include="Exceptions\ArgumentEqualityException.cs" />
     <Compile Include="Exceptions\ArgumentTypeException.cs" />
-    <Compile Include="Pooling\IPooledResource.cs" />
     <Compile Include="Validation\ClassValidator.cs" />
     <Compile Include="Validation\NullableDateTimeValidator.cs" />
     <Compile Include="Validation\NullableNumericValidator.cs" />
