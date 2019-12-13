@@ -67,7 +67,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// <param name="parameterValue">
       ///    The value of the parameter being validated.
       /// </param>
-      public ClassValidator(string parameterName, T parameterValue)
+      internal ClassValidator(string parameterName, T parameterValue)
          : base(parameterName, parameterValue)
       {
       }
@@ -76,7 +76,7 @@ namespace Org.Edgerunner.FluentGuard.Validation
       /// Initializes a new instance of the <see cref="ClassValidator{T}" /> class utilizing an object pool for re-use.
       /// </summary>
       /// <param name="pool">The object pool to use.</param>
-      public ClassValidator(Pooling.ObjectPool<ClassValidator<T>> pool)
+      internal ClassValidator(Pooling.ObjectPool<ClassValidator<T>> pool)
       {
          Pool = pool;
       }

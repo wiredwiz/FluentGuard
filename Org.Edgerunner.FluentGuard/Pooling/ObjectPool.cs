@@ -37,7 +37,7 @@ namespace Org.Edgerunner.FluentGuard.Pooling
    /// If there is no intent for reusing the object, do not use pool - just use "new".
    /// </summary>
    /// <typeparam name="T">An object type to pool.</typeparam>
-   public class ObjectPool<T> where T : class
+   internal class ObjectPool<T> where T : class
    {
       [DebuggerDisplay("{Value,nq}")]
       private struct Element
