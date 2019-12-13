@@ -25,5 +25,7 @@
         <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd14\Org.Edgerunner.FluentGuard.pdb" target="lib\netstandard1.4\Org.Edgerunner.FluentGuard.pdb" />
         <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd16\Org.Edgerunner.FluentGuard.dll" target="lib\netstandard1.6\Org.Edgerunner.FluentGuard.dll" />
         <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd16\Org.Edgerunner.FluentGuard.pdb" target="lib\netstandard1.6\Org.Edgerunner.FluentGuard.pdb" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd20\Org.Edgerunner.FluentGuard.dll" target="lib\netstandard2.0\Org.Edgerunner.FluentGuard.dll" />
+        <file src="Org.Edgerunner.FluentGuard\bin\Release\netstd20\Org.Edgerunner.FluentGuard.pdb" target="lib\netstandard2.0\Org.Edgerunner.FluentGuard.pdb" />
     </files>
 </package>

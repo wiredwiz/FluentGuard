@@ -126,6 +126,18 @@ Task("Build .Net Standard Version 1.6")
 		});
 });
 
+Task("Build .Net Standard Version 2.0")
+    .IsDependentOn("Update Version Info")
+    .Does(() =>
+{
+	DotNetCoreBuild(solution, new DotNetCoreBuildSettings 
+		{
+			Framework = "netstandard2.0",
+			Configuration = configuration,
+			OutputDirectory = buildPath + "/netstd20/"
+		});
+});
+
 Task("Run-Unit-Tests")
     .IsDependentOn("Build Framework Version 4.6")
     .Does(() =>
@@ -147,6 +159,7 @@ Task("Build Nuget Package")
 //	.IsDependentOn("Build Framework Version 4.7")
 	.IsDependentOn("Build .Net Standard Version 1.4")
 	.IsDependentOn("Build .Net Standard Version 1.6")
+	.IsDependentOn("Build .Net Standard Version 2.0")
 	.Does(() =>
 {
 var nuGetPackSettings   = new NuGetPackSettings {
