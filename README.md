@@ -26,8 +26,8 @@ Below is an example of a much more complex compound guard statement
 ```csharp
 Validate.That(nameof(myNullableNumber), myNullableNumber)
   .IsNotNull()
-  .And.
-  IsEqualTo(10)
+  .And
+  .IsEqualTo(10)
   .Or
   .IsGreaterThanOrEqualTo(15)
   .And
