@@ -22,8 +22,12 @@ Throwing a custom exception is as simple as follows
 Validate.That(nameof(myNumber), myNumber).IsPositive().OtherwiseThrow(new MyException());
 ```
 
-Below is an example of a much more complex compound guard statement
+Below are examples of more complex compound guard statements
 ```csharp
 Validate.That(nameof(myNumber), myNumber)
   .IsEqualTo(10).Or.IsEqualTo(15).Or.IsGreaterThan(100).OtherwiseThrowException();
+  
+// If you planned to make use of foo as an IVehicle then a pattern matching expression would make more sense.
+Validate.That(nameof(foo), foo)
+  .IsNotNull().And.ImplementsInterface(typeof(IVehicle)).OtherwiseThrowException();
 ```
