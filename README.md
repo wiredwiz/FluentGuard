@@ -4,7 +4,7 @@ FluentGuard is a fluent syntax guard library for use in .Net projects.  The late
 
 Compound conditionals using 'And' and 'Or' are evaluated in the order in which they occur.  This means you need to be careful about how you chain together compound guard checks.
 
-The library is heavily tested and contains just over 4000 unit tests.  It contains published dll's for .Net framework 4.0, 4.5, and 4.6 as well as .Net Standard 1.2, 1.4 and 2.0.  The fluent design of the library insures that all guard methods you are presented with are relevant to the data type you are validating.  In most cases you do not need to determine the type of exception to throw, the library decides the appropriate exception based on the guard check.  However, should you wish to throw a custom exception, you are free to do so.
+The library is heavily tested and contains just over 4000 unit tests.  It contains published dll's for .Net framework 4.0, 4.5, and 4.6 as well as .Net Standard 1.2, 1.4 and 2.0.  If you wish to use the library, I recommend adding a reference to the binaries on Nuget.  You can find the library by looking for Edgerunner.FluentGuard.  The fluent design of the library insures that all guard methods you are presented with are relevant to the data type you are validating.  In most cases you do not need to determine the type of exception to throw, the library decides the appropriate exception based on the guard check.  However, should you wish to throw a custom exception, you are free to do so.
 
 # Examples
 Below is an example of checking an object for null.
