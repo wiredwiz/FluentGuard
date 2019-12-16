@@ -24,13 +24,11 @@ Validate.That(nameof(myNumber), myNumber).IsPositive().OtherwiseThrow(new MyExce
 
 Below is an example of a much more complex compound guard statement
 ```csharp
-Validate.That(nameof(myNullableNumber), myNullableNumber)
-  .IsNotNull()
-  .And
+Validate.That(nameof(myNumber), myNumber)
   .IsEqualTo(10)
   .Or
-  .IsGreaterThanOrEqualTo(15)
-  .And
-  .IsLessThanOrEqualTo(20)
+  .IsEqualTo(15)
+  .Or
+  .IsGreaterThan(100)
   .OtherwiseThrowException();
 ```
